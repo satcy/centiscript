@@ -1,0 +1,125 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
+
+body{
+background-color: #333;   
+}
+.wrap{
+text-align: center;    
+}
+
+.title{
+font-family: 'Playfair Display', sans-serif ;
+color: #393939;
+line-height: 90%;
+font-size: 4.373em;
+margin: .93em 0 .9em 0;
+letter-spacing: 0.39em;    
+text-shadow: 0px -1px 1px rgba(255,255,255,0.47);
+-ms-filter:"progid:DXImageTransform.Microsoft.DropShadow(color=#ffffff,offx=0,offy=-1)"; /* IE8 */
+display:block; /* IE */
+}
+
+.footer{
+font-family: 'Droid Sans Mono', sans-serif ;
+color:#777;
+font-size:0.7em;
+}
+.twitter-share-button{
+margin-top: 5px;   
+}
+
+a:link { color: #EEE; }
+a:visited { color: #EEE; }
+a:hover { color: #00ffff; }
+a:active { color: #0080ff; }
+
+.sampler{
+font-family: 'Droid Sans Mono', sans-serif ;
+color:#999;
+font-size:0.9em; 
+    margin:0px 0px 10px 0px;
+}
+
+#idStrlength{
+font: bold 34px Arial, sans-serif;
+color: #777;
+font-size: 1.73em;
+margin: 0 0 0.8em 0;
+letter-spacing: -1px;
+}
+
+#canvas0{
+margin-bottom: 30px;    
+}
+
+.canvas_wrap{
+clear: both;
+}
+
+.editor_wrap{
+width: 720px;
+margin: 0 auto;
+}
+
+.editor_textarea{}
+.editor_tools{}
+.editor_remain{
+	float: right;
+}
+.editor_btn{
+	float: left;
+}
+
+textarea#editor{
+border:0;
+padding:0px 5px;
+font-size:1em;
+font-family: 'Droid Sans Mono', sans-serif ;
+color:#333;
+border:solid 2px #ccc;
+margin:0 0 20px;
+width:720px;   
+height:10em;
+line-height:1.6em;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+button#tweet{
+border:solid 1px #ccc;
+background-color: #999;
+padding:10px 30px;
+margin:0 0 20px;
+font-family:Arial, sans-serif;
+font-size:1.2em;
+font-weight:bold;
+color:#333;
+cursor:pointer;
+}
+
+button#tweet:hover {
+background-color: #00ffff;
+color: #000;
+}
+
+button#run{
+border:solid 1px #ccc;
+background-color: #999;
+padding:0px 30px;
+margin:0 0 20px;
+font-family:Arial, sans-serif;
+font-size:1.2em;
+font-weight:bold;
+color:#333;
+cursor:pointer;
+}
+
+button#run:hover {
+background-color: #00ffff;
+color: #000;
+}
