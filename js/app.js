@@ -1,3 +1,25 @@
+if ( !window.requestAnimationFrame ) {
+
+    window.requestAnimationFrame = ( function() {
+
+        return window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+
+            window.setTimeout( callback, 1000 / 60 );
+
+        };
+
+    } )();
+
+}
+window.cancelAnimationFrame = window.cancelAnimationFrame ||
+  window.mozCancelAnimationFrame ||
+  window.webkitCancelAnimationFrame ||
+  window.msCancelAnimationFrame;
+
 if (!window.XMLHttpRequest){
   XMLHttpRequest = function () {
     try {
@@ -19,25 +41,33 @@ var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
 var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
-var c = 0;
-var interval = 0;
-
 var canvas = null;
 var ctx = null;
 
+//
+var c = 0;
 var w = 400;
 var h = 400;
 var cx = w/2;
 var cy = h/2;
+Math.PI2 = Math.PI*2;
+//
+var encoder;
+var bToGif = false;
+var gifFrameCnt = 0;
+var maxGifFrameNum = 90;
+var imageUrl;
 
 var bgcolor = {r:0, g:0, b:0};
 
 var editor;
 
+var bFill = true;
+
+var timer;
 
 var drawMethod = '(function(){ctx.fillStyle="rgb(200, 0, 0)";ctx.fillRect(0, 0, 600, 40);})()';
 drawMethod = 'clear();for(i=0; i<w; i++ ){x=(i);y=(noise(x*0.01,c*0.01));y*=(h/2);col(255);rect(x,h/2,1,y);}';
-
 
 function run(){
     var tw;
@@ -56,7 +86,7 @@ function parse(tw){
     tw = tw.replace(/\s/g, "");
     tw = tw.replace(/\b/g, "");
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
-    tw = tw.replace(/(for\()([A-Za-z_]+)(\,)([A-Za-z0-9_]+)(\,)([A-Za-z0-9_]+)(\))/g, "for($2=$4;$2<$6;$2++)");
+    tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\))/g, "for($2=$4;$2<$6;$2++)");
     for ( var i=0; i<MATHS.length; i++ ) {
         var math_word = "" + MATHS[i] + "\\(";
         tw = tw.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
@@ -83,13 +113,24 @@ function parse(tw){
 }
 
 function start(){
-    interval = setInterval(onFrame.bind(this), 33);    
+    if ( timer ) cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(onFrame);
 }
 
 function onFrame(){
+    timer = requestAnimationFrame(onFrame);
     evalInContext(drawMethod, this);
     c++;
+    if ( bToGif ) {
+        encoder.addFrame(ctx);
+        gifFrameCnt ++;
+        if ( gifFrameCnt > maxGifFrameNum ) {
+            endToGif();
+        }
+    }
 }
+
+//centi funcs
 
 function bg(){
     var len = arguments.length;
@@ -103,6 +144,14 @@ function bg(){
         bgcolor.b = parseInt(arguments[2]);     
     }
     clear();
+}
+
+function lg(){
+    console.log(arguments);
+}
+
+function arr(target){
+    target = [];
 }
 
 function sz(_w, _h){ size(_w, _h); }
@@ -180,8 +229,18 @@ function col(){
     ctx.strokeStyle = s;
 }
 
+function fill(){
+    bFill = true;
+}
+
+function strk(){ stroke(); }
+function stroke(){
+    bFill = false;
+}
+
 function rect(_x, _y, _w, _h){
-    ctx.fillRect(_x, _y, _w, _h);
+    if ( bFill ) ctx.fillRect(_x, _y, _w, _h);
+    else ctx.strokeRect(_x, _y, _w, _h);
 }
 
 function ln(_x1, _y1, _x2, _y2){ line(_x1, _y1, _x2, _y2); }
@@ -192,9 +251,17 @@ function line(_x1, _y1, _x2, _y2){
     ctx.stroke();
 }
 
+function oval(_x, _y, _rad) {
+    ctx.beginPath();
+    ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
+    if ( bFill ) ctx.fill();
+    else ctx.stroke()
+}
+
+// centi funcs
+
 function reset(){
     c = 0;
-    clearInterval(interval);
 }
 
 function init(){
@@ -217,34 +284,60 @@ function tweet(){
     if ( !code ) {
         return;
     }
-    if ( canvas.toBlob ) {
-        canvas.toBlob( function(blob) {
-            
-            var formData = new FormData();
-
-            var url = "http://ex.rzm.co.jp/centiscript/?c="+escape(code);
-
-            formData.append("image", blob );
-            formData.append("tweet", "(centiscript) " + url);
-            formData.append("url", url);
-            
-            var xhr = new XMLHttpRequest;
-            xhr.open( "POST", "http://ex.rzm.co.jp/centiscript/p/upload.php" );
-            xhr.onreadystatechange = function(){
-                //console.log(xhr.readyState, xhr.status);
-                if (xhr.readyState === 4 && xhr.status === 200){
-                  //console.log(1, xhr.responseText);
-                    eval(xhr.responseText);
-                }
-                if (xhr.readyState === 4 && xhr.status === 0){
-                  //console.log(2, xhr.responseText);
-                    eval(xhr.responseText);
-                }
-            };
-            xhr.send(formData);
-            
-        }, "image/png");
+    if ( gifFrameCnt > 0 ) {
+        var blob = window.dataURLtoBlob && window.dataURLtoBlob(imageUrl);
+        postData(blob);
+    } else if ( canvas.toBlob ) {
+        canvas.toBlob( postData, "image/png");
     }
+
+    function postData(blob){
+        var formData = new FormData();
+
+        var url = "http://ex.rzm.co.jp/centiscript/?c="+escape(code);
+
+        formData.append("image", blob );
+        formData.append("tweet", "(centiscript) " + url);
+        formData.append("url", url);
+        
+        var xhr = new XMLHttpRequest;
+        xhr.open( "POST", "http://ex.rzm.co.jp/centiscript/p/upload.php" );
+        xhr.onreadystatechange = function(){
+            //console.log(xhr.readyState, xhr.status);
+            if (xhr.readyState === 4 && xhr.status === 200){
+              //console.log(1, xhr.responseText);
+                eval(xhr.responseText);
+            }
+            if (xhr.readyState === 4 && xhr.status === 0){
+              //console.log(2, xhr.responseText);
+                eval(xhr.responseText);
+            }
+        };
+        xhr.send(formData);
+    }
+}
+
+function togif(){
+    if ( !bToGif ) {
+        encoder = new GIFEncoder();
+        bToGif = true;
+        gifFrameCnt = 0;
+        encoder.setRepeat(0);
+        encoder.setDelay(33);
+        encoder.start();
+        document.getElementById('togif').innerHTML = "Stop REC";
+    } else {
+        endToGif();
+    }
+}
+
+function endToGif(){
+    bToGif = false;
+    encoder.finish();
+    imageUrl = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+    document.getElementById('gif_image').src = imageUrl;
+    document.getElementById('togif').innerHTML = "REC";
+    encoder = null;
 }
 
 function setSample(str){
