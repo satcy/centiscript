@@ -222,7 +222,7 @@ function col(){
         s = "rgb(" + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + ")";
     } else if ( len == 3 ) {    
         s = "rgb(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + ")";
-    } else if ( lend == 4 ) {
+    } else if ( len == 4 ) {
         s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + "," + parseInt(arguments[3]) + ")";
     }
     ctx.fillStyle = s;
@@ -342,7 +342,7 @@ function endToGif(){
 
 function setSample(str){
     //console.log(str);
-    editor.value = "";
+    //editor.value = "";
     editor.value = str;
     strlength(str);
     run();

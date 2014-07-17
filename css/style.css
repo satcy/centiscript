@@ -96,25 +96,31 @@ box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
 button#togif{
 border:solid 1px #ccc;
 background-color: #999;
-padding:10px 30px;
-margin:0 0 20px;
+padding:0px 30px;
+margin:0 0 0px;
 font-family:Arial, sans-serif;
 font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
+height:50px;
+}
+button#togif:hover {
+background-color: #00ffff;
+color: #000;
 }
 
 button#tweet{
 border:solid 1px #ccc;
 background-color: #999;
-padding:10px 30px;
-margin:0 0 20px;
+padding:0px 30px;
+margin:0 0 0px;
 font-family:Arial, sans-serif;
 font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
+height:50px;
 }
 
 button#tweet:hover {
@@ -126,12 +132,13 @@ button#run{
 border:solid 1px #ccc;
 background-color: #999;
 padding:0px 30px;
-margin:0 0 20px;
+margin:0 0 0px;
 font-family:Arial, sans-serif;
 font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
+height:50px;
 }
 
 button#run:hover {
