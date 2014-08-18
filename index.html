@@ -49,23 +49,23 @@ ga('send', 'pageview');
   <div class="title">(centiscript)</div>
   <div class="sampler">
     Sample: 
-    <a href="javascript:void(0)" onClick="setSample('sz(720,360)frame(){clear()for(i,0,327){col(255)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y, cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)}}')">1</a>
-    <a href="javascript:void(0)" onClick="setSample('size(720,360)frame(){clear()for(i,0,1027){col(0,195,230)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y, cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)}}')">2</a>
-    <a href="javascript:void(0)" onClick="setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
-    <a href="javascript:void(0)" onClick="setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
-    <a href="javascript:void(0)" onClick="setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){clear()for(i,0,327){col(255)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y, cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)}}')">1</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)frame(){clear()for(i,0,1027){col(0,195,230)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y, cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)}}')">2</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
   </div>
   
   <div class="editor_wrap">
     <form>
       <div class="editor_textarea">
-        <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeyup="strlength(value)">sz(720,270)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(0,100,rnd(100,230))rect(x,h/2,1,y)}}</textarea>
+        <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeyup="CENTI.strlength(value)">sz(720,270)bg(0)a=([])v=([])for(i,0,w){a[i]=(0)v[i]=(0)}frame(){clear()for(i,0,w){v[i]+=nz(i*0.004,c*0.01)a[i]+=(v[i])v[i]+=((0-a[i])*0.01)x=(i)y=(a[i])col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}</textarea>
       </div>
       <div class="editor_tools">
         <span class="editor_btn">
-          <button type="button" id="run" name="run" onclick="window.run()">▶</button>  
-          <button type="button" id="togif" name="togif" onclick="window.togif()">REC</button>
-          <button type="button" id="tweet" name="tweet" onclick="window.tweet()">Tweet</button>    
+          <button type="button" id="run" name="run" onclick="CENTI.run()">▶</button>  
+          <button type="button" id="togif" name="togif" onclick="CENTI.togif()">REC</button>
+          <button type="button" id="tweet" name="tweet" onclick="CENTI.tweet()">Tweet</button>    
         </span>
         <span class="editor_remain">
           <div id="idStrlength">0</div>
@@ -75,11 +75,11 @@ ga('send', 'pageview');
     </form>
   </div>
   <div class="canvas_wrap">
-    <canvas id="canvas0" width="400" height="400"></canvas>
+    <canvas id="canvas0" width="720" height="360"></canvas>
   <div>
   <img id="gif_image">
   <div class="footer">DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</div>
-  <div class="footer">Ver. 0.1.9</div>
+  <div class="footer">Ver. 0.2.0</div>
   <div class="footer">Written by <a href="https://twitter.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></div>
   <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->

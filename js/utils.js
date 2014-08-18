@@ -35,7 +35,6 @@ if (!window.XMLHttpRequest){
   };
 }
 
-
 function evalInContext(source, context) {
     source = '(function(' + Object.keys(context).join(', ') + ') {' + source + '})';
     

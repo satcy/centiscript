@@ -1,55 +1,70 @@
 
 
-var KEYWORDS = ["bg", "size", "col", "frame", "w", "h", "rect", "clear", "for", "c"];
-var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "SQRT1_2", "SQRT2"];
+var KEYWORDS = ["x", "y", "cx", "cy", "bg", "size", "col", "frame", "w", "h", "rect", "clear", "for", "c"];
+var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "PI2", "SQRT1_2", "SQRT2"];
 var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
 var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
-var canvas = null;
-var ctx = null;
+PI2 = Math.PI2 = Math.PI*2.0;
 
-//
-var x=0;
-var y=0;
-//
-var c = 0;
-var w = 400;
-var h = 400;
-var cx = w/2;
-var cy = h/2;
-Math.PI2 = Math.PI*2;
-//
-var encoder;
-var bToGif = false;
-var gifFrameCnt = 0;
-var maxGifFrameNum = 90;
-var imageUrl;
+var Centi = function(name){
+    this.name = name ? name : "ct";
 
-var bgcolor = {r:0, g:0, b:0};
+    this.canvas = null;
+    this.ctx = null;
+    
+    this.x=0;
+    this.y=0;
+    //
+    this.c = 0;
+    this.w = 720;
+    this.h = 360;
+    this.cx = this.w/2;
+    this.cy = this.h/2;
+    //
+    
 
-var bFill = true;
+    this.bgcolor = {r:0, g:0, b:0};
 
-var timer;
+    this.bFill = true;
 
-var drawMethod = '(function(){ctx.fillStyle="rgb(200, 0, 0)";ctx.fillRect(0, 0, 600, 40);})()';
-drawMethod = 'clear();for(i=0; i<w; i++ ){x=(i);y=(noise(x*0.01,c*0.01));y*=(h/2);col(255);rect(x,h/2,1,y);}';
+    this.drawMethod = '';
+
+    this.toGifFunc = null;
+
+    
+
+};
+
+Centi.prototype.init = function(canvas){
+    this.canvas = canvas;
+
+    if ( canvas.getContext ) {
+        this.ctx = canvas.getContext("2d");
+        this.clear();
+        return true;
+    } else {
+        return false;
+    }
+};
 
 
 
-function parse(tw){
+
+Centi.prototype.parse = function(tw){
     
     tw = tw.replace(/\s/g, "");
     tw = tw.replace(/\b/g, "");
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
     tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\))/g, "for($2=$4;$2<$6;$2++)");
-    for ( var i=0; i<MATHS.length; i++ ) {
-        var math_word = "" + MATHS[i] + "\\(";
-        tw = tw.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
-    }
-    for ( var i=0; i<MATH_PROPS.length; i++ ) {
-        tw = tw.replace(new RegExp(MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
-    }
+    // for ( var i=0; i<MATHS.length; i++ ) {
+    //     var math_word = "" + MATHS[i] + "\\(";
+    //     tw = tw.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
+    // }
+    // for ( var i=0; i<MATH_PROPS.length; i++ ) {
+    //     tw = tw.replace(new RegExp(MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+    // }
 //    for ( var i=0; i<CTX_FUNCS.length; i++ ) {
 //        var math_word = "" + CTX_FUNCS[i] + "\\(";
 //        tw = tw.replace(new RegExp(math_word, "g"), "ctx." + CTX_FUNCS[i] + "(");
@@ -59,74 +74,91 @@ function parse(tw){
     var frameMethod = frameReg.test(tw) ? tw.match(frameReg)[0] : "frame(){}";
     frameMethod = frameMethod.slice(frameMethod.indexOf("{")+1, frameMethod.lastIndexOf("}"));
 
-    drawMethod = frameMethod;
+    var forReg = new RegExp(this.name+".for\\(", "g");
+    var valueReg = /(^[A-Za-z_][A-Za-z0-9_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,])/g;
+    var valueReg2 = /([A-Za-z_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,])/g;
+    setupMethod = setupMethod.replace(valueReg2, this.name + "."+"$1"+"$2");
+    setupMethod = setupMethod.replace(valueReg, this.name + "."+"$1"+"$2");
+    //setupMethod = setupMethod.replace(new RegExp(this.name + "." + this.name, "g"), this.name);
+    setupMethod = setupMethod.replace(forReg, "for(");
+    for ( var i=0; i<MATHS.length; i++ ) {
+        var math_word = this.name + "." + MATHS[i] + "\\(";
+        setupMethod = setupMethod.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
+    }
+    for ( var i=0; i<MATH_PROPS.length; i++ ) {
+        setupMethod = setupMethod.replace(new RegExp(this.name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+    }
+    //console.log(setupMethod);
+
+    frameMethod = frameMethod.replace(valueReg2, this.name + "."+"$1"+"$2");
+    frameMethod = frameMethod.replace(valueReg, this.name + "."+"$1"+"$2");
+    //frameMethod = frameMethod.replace(new RegExp(this.name + "." + this.name, "g"), this.name);
+    frameMethod = frameMethod.replace(forReg, "for(");
+    for ( var i=0; i<MATHS.length; i++ ) {
+        var math_word = this.name + "." + MATHS[i] + "\\(";
+        frameMethod = frameMethod.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
+    }
+    for ( var i=0; i<MATH_PROPS.length; i++ ) {
+        frameMethod = frameMethod.replace(new RegExp(this.name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+    }
+    //console.log(frameMethod);
+
+    this.drawMethod = frameMethod;
     //console.log(setupMethod);
     //console.log(drawMethod);
-    bg(0);
+    this.bg(0);
     evalInContext(setupMethod, this);
     return true;
 
 }
 
-function start(){
-    if ( timer ) cancelAnimationFrame(timer);
-    timer = requestAnimationFrame(onFrame);
-}
-
-function onFrame(){
-    timer = requestAnimationFrame(onFrame);
-    evalInContext(drawMethod, this);
-    c++;
-    if ( bToGif ) {
-        encoder.addFrame(ctx);
-        gifFrameCnt ++;
-        if ( gifFrameCnt > maxGifFrameNum ) {
-            endToGif();
-        }
-    }
-}
+Centi.prototype.update = function(){
+    evalInContext(this.drawMethod, this);
+    this.c++;
+    if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
+};
 
 //centi funcs
 
-function bg(){
+Centi.prototype.bg = function(){
     var len = arguments.length;
     if ( len == 1 ) {
-        bgcolor.r = parseInt(arguments[0]);
-        bgcolor.g = parseInt(arguments[0]);
-        bgcolor.b = parseInt(arguments[0]); 
+        this.bgcolor.r = parseInt(arguments[0]);
+        this.bgcolor.g = parseInt(arguments[0]);
+        this.bgcolor.b = parseInt(arguments[0]); 
     } else if ( len == 3 ) {
-        bgcolor.r = parseInt(arguments[0]);
-        bgcolor.g = parseInt(arguments[1]);
-        bgcolor.b = parseInt(arguments[2]);     
+        this.bgcolor.r = parseInt(arguments[0]);
+        this.bgcolor.g = parseInt(arguments[1]);
+        this.bgcolor.b = parseInt(arguments[2]);     
     }
-    clear();
+    this.clear();
 }
 
-function lg(){
+Centi.prototype.lg = function(){
     console.log(arguments);
 }
 
-function arr(target){
-    target = [];
+Centi.prototype.arr = function(target){
+    target = new Array();
 }
 
-function sz(_w, _h){ size(_w, _h); }
-function size(_w, _h){
-    w = parseInt(_w);
-    h = parseInt(_h);
-    canvas.width = w;
-    canvas.height = h;
-    cx = w/2;
-    cy = h/2;
+Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); }
+Centi.prototype.size = function(_w, _h){
+    this.w = parseInt(_w);
+    this.h = parseInt(_h);
+    this.canvas.width = this.w;
+    this.canvas.height = this.h;
+    this.cx = this.w/2;
+    this.cy = this.h/2;
 }
 
-function clr(){ clear(); }
-function clear(){
-    ctx.fillStyle = "rgb("+bgcolor.r+","+bgcolor.g+","+bgcolor.b+")";
-    ctx.fillRect(0,0,w, h);    
+Centi.prototype.clr = function(){ this.clear(); }
+Centi.prototype.clear = function(){
+    this.ctx.fillStyle = "rgb("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+")";
+    this.ctx.fillRect(0,0,this.w, this.h);    
 }
 
-function rnd(){
+Centi.prototype.rnd = function(){
     var len = arguments.length;
     if ( len == 1 ) {
         return Math.random()*arguments[0];   
@@ -136,7 +168,7 @@ function rnd(){
         return Math.random();
     }
 }
-function rand(){
+Centi.prototype.rand = function(){
     var len = arguments.length;
     if ( len == 1 ) {
         return Math.random()*arguments[0];   
@@ -147,7 +179,7 @@ function rand(){
     }
 }
 
-function nz() {
+Centi.prototype.nz = function() {
     var len = arguments.length;
     if ( len == 1 ) {
         return perlin.perlin2(arguments[0], 0);   
@@ -158,7 +190,7 @@ function nz() {
     }
     return 0; 
 }
-function noise(){
+Centi.prototype.noise = function(){
     var len = arguments.length;
     if ( len == 1 ) {
         return perlin.perlin2(arguments[0], 0);   
@@ -171,7 +203,7 @@ function noise(){
 }
 
 
-function col(){
+Centi.prototype.col = function(){
     var len = arguments.length;
     var s = "rgb(0,0,0)";
     if ( len == 1 ) {
@@ -183,46 +215,49 @@ function col(){
     } else if ( len == 4 ) {
         s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + "," + parseInt(arguments[3])/255.0 + ")";
     }
-    ctx.fillStyle = s;
-    ctx.strokeStyle = s;
+    this.ctx.fillStyle = s;
+    this.ctx.strokeStyle = s;
 }
 
-function fill(){
-    bFill = true;
+Centi.prototype.fill = function(){
+    this.bFill = true;
 }
 
-function strk(){ stroke(); }
-function stroke(){
-    bFill = false;
+Centi.prototype.strk = function(){ this.stroke(); }
+Centi.prototype.stroke = function(){
+    this.bFill = false;
 }
 
-function rect(_x, _y, _w, _h){
-    if ( bFill ) ctx.fillRect(_x, _y, _w, _h);
-    else ctx.strokeRect(_x, _y, _w, _h);
+Centi.prototype.rect = function(_x, _y, _w, _h){
+    if ( this.bFill ) this.ctx.fillRect(_x, _y, _w, _h);
+    else this.ctx.strokeRect(_x, _y, _w, _h);
 }
 
-function ln(_x1, _y1, _x2, _y2){ line(_x1, _y1, _x2, _y2); }
-function line(_x1, _y1, _x2, _y2){
-    ctx.beginPath();
-    ctx.moveTo(_x1, _y1);
-    ctx.lineTo(_x2, _y2);
-    ctx.stroke();
+Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); }
+Centi.prototype.line = function(_x1, _y1, _x2, _y2){
+    this.ctx.beginPath();
+    this.ctx.moveTo(_x1, _y1);
+    this.ctx.lineTo(_x2, _y2);
+    this.ctx.stroke();
 }
 
-function oval(_x, _y, _rad) {
-    ctx.beginPath();
-    ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
-    if ( bFill ) ctx.fill();
-    else ctx.stroke()
+Centi.prototype.oval = function(_x, _y, _rad) {
+    this.ctx.beginPath();
+    this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
+    if ( this.bFill ) this.ctx.fill();
+    else this.ctx.stroke()
 }
 
-function interp(a, b, rate){
+Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
 }
 
 // centi funcs
 
-function reset(){
-    c = 0;
-    bFill = true;
+Centi.prototype.reset = function(){
+    this.c = 0;
+    this.bFill = true;
 }
+
+var CT_FUNCS = Object.getOwnPropertyNames(Centi.prototype);
+

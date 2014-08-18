@@ -23,16 +23,23 @@ var ctxFull;
 var winW;
 var winH;
 
-function resizeCanvas() {
-    canvasFull.width = window.innerWidth;
-    canvasFull.height = window.innerHeight;
-    winW = canvasFull.width;
-    winH = canvasFull.height;   
-}
+var ct;
 
-function onFrame(){
-    timer = requestAnimationFrame(onFrame);
-    evalInContext(drawMethod, this);
+var CENTI = {
+    timer:0
+};
+
+
+CENTI.start = function(){
+    if ( CENTI.timer ) cancelAnimationFrame(CENTI.timer);
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+} 
+
+CENTI.onFrame = function(){
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+    ct.update();
+    var w = ct.w;
+    var h = ct.h;
     var numW = Math.ceil(winW/w) + 1;
     var numH = Math.ceil(winH/h);
     var sX = (winW - w * numW )/2;
@@ -40,51 +47,57 @@ function onFrame(){
     
     for ( var i=0; i<numW; i++ ) {
         for ( var j=0; j<numH; j++ ) {
-            ctxFull.drawImage(canvas, sX + i*w, sY + j*h, w, h);
+            ctxFull.drawImage(ct.canvas, sX + i*w, sY + j*h, w, h);
         }
     }
     
-    c++;
-    if ( c>450 ) {
+    if ( ct.c>450 ) {
         var rand = Math.floor(Math.random()*prgs.length)
-        setSample(prgs[rand]);
+        CENTI.setSample(prgs[rand]);
     }
+} 
+
+
+CENTI.resizeCanvas = function() {
+    canvasFull.width = window.innerWidth;
+    canvasFull.height = window.innerHeight;
+    winW = canvasFull.width;
+    winH = canvasFull.height;   
 }
 
-function init(){
+
+CENTI.init = function(){
     
-    canvas = document.getElementById("canvas0");
-    if ( canvas.getContext ) {
-        ctx = canvas.getContext("2d");
-        clear();
-    } else {
+    var canvas = document.getElementById("canvas0");
+    ct = new Centi();
+    if ( !ct.init(canvas) ) {
         return;
     }
 
     canvasFull = document.getElementById("canvasFull");
     ctxFull = canvasFull.getContext("2d");
-    window.addEventListener('resize', resizeCanvas, false);
-    resizeCanvas();
+    window.addEventListener('resize', CENTI.resizeCanvas, false);
+    CENTI.resizeCanvas();
 
     var rand = Math.floor(Math.random()*prgs.length);
-    setSample(prgs[rand]);
+    CENTI.setSample(prgs[rand]);
 }
 
-function run(tw){
-    reset();
-    if ( parse(tw) ) {
-        start();   
+CENTI.run = function(tw){
+    ct.reset();
+    if ( ct.parse(tw) ) {
+        CENTI.start();   
     } else {
         alert("unsuccess");   
     }
 }
 
-function setSample(str){
-    run(str);
+CENTI.setSample = function(str){
+    CENTI.run(str);
 }
 
 
 window.onload = function(){
-    init();
+    CENTI.init();
 };
 
