@@ -54,6 +54,11 @@ ga('send', 'pageview');
     <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
     <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
     <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)bg(0)frame(){clr()for(i,0,1000){r=((sin(c*0.1+i*0.03)+1)*127.5)a=((sin(c*0.1+i*0.04)+1)*127.5)col(155,r,r,a)x=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)line(cx+x,0,cx+x,h)line(cx-x,0,cx-x,h)}}')">6</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)bg(0)frame(){clr()ww=(520)for(j,0,15){ox=((ww/2)*(j%5))oy=((ww/2)*floor(j/5))for(i,0,150){x=(cos(i*0.2+c*0.1)*ww/4)y=(sin(i*0.2+c*0.1)*ww/4)x2=(cos(i*0.2+c*0.11)*ww/6)y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)line(ox+x,y+oy,ox+x2,y2+oy)}}}')">7</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)bg(0)frame(){clr()col(170)vl=(h/2)w2=(w/3)for(i,0,w2){col((cos(c*0.01+i*0.25)/2+0.5)*255)x=(i*3)y=(cy)line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)}}')">8</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}')">9</a>
+    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)frame(){clr()cr=(PI*2/3)t=(c/1000)p1=(sin(c*0.003)+1)for(i,0,85){rad=((c*10+i*5)%w)col(255-i*3)for(j,0,3){tlt=(c*0.01+i*p1*0.03)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}')">10</a>
   </div>
   
   <div class="editor_wrap">
