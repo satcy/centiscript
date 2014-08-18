@@ -158,6 +158,8 @@ Centi.prototype.clear = function(){
     this.ctx.fillRect(0,0,this.w, this.h);    
 }
 
+// Randomize
+
 Centi.prototype.rnd = function(){
     var len = arguments.length;
     if ( len == 1 ) {
@@ -202,6 +204,51 @@ Centi.prototype.noise = function(){
     return 0;
 }
 
+// draw
+
+Centi.prototype.rect = function(_x, _y, _w, _h){
+    if ( this.bFill ) this.ctx.fillRect(_x, _y, _w, _h);
+    else this.ctx.strokeRect(_x, _y, _w, _h);
+}
+
+Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); }
+Centi.prototype.line = function(_x1, _y1, _x2, _y2){
+    this.ctx.beginPath();
+    this.ctx.moveTo(_x1, _y1);
+    this.ctx.lineTo(_x2, _y2);
+    this.ctx.stroke();
+}
+
+Centi.prototype.oval = function(_x, _y, _rad) {
+    this.ctx.beginPath();
+    this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
+    if ( this.bFill ) this.ctx.fill();
+    else this.ctx.stroke()
+}
+
+// transform
+
+Centi.prototype.push = function(){
+    this.ctx.save();
+};
+
+Centi.prototype.pop = function(){
+    this.ctx.restore();
+};
+
+Centi.prototype.rotate = function(_rota){
+    this.ctx.rotate(_rota);
+};
+
+Centi.prototype.scale = function(_x, _y){
+    this.ctx.scale(_x, _y);
+};
+
+Centi.prototype.translate = function(_x, _y){
+    this.ctx.translate(_x, _y);
+};
+
+// util
 
 Centi.prototype.col = function(){
     var len = arguments.length;
@@ -226,26 +273,6 @@ Centi.prototype.fill = function(){
 Centi.prototype.strk = function(){ this.stroke(); }
 Centi.prototype.stroke = function(){
     this.bFill = false;
-}
-
-Centi.prototype.rect = function(_x, _y, _w, _h){
-    if ( this.bFill ) this.ctx.fillRect(_x, _y, _w, _h);
-    else this.ctx.strokeRect(_x, _y, _w, _h);
-}
-
-Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); }
-Centi.prototype.line = function(_x1, _y1, _x2, _y2){
-    this.ctx.beginPath();
-    this.ctx.moveTo(_x1, _y1);
-    this.ctx.lineTo(_x2, _y2);
-    this.ctx.stroke();
-}
-
-Centi.prototype.oval = function(_x, _y, _rad) {
-    this.ctx.beginPath();
-    this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
-    if ( this.bFill ) this.ctx.fill();
-    else this.ctx.stroke()
 }
 
 Centi.prototype.interp = function(a, b, rate){

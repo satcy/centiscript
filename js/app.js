@@ -1,42 +1,62 @@
-var editor;
 
-function init(){
-    
-    canvas = document.getElementById("canvas0");
-    if ( canvas.getContext ) {
-        ctx = canvas.getContext("2d");
-        clear();
-    } else {
-        document.getElementById('editor').value = "disable canvas.";
+var ct;
+
+var CENTI = {
+    timer:0,
+    editor:null,
+
+    encoder:null,
+    bToGif:false,
+    gifFrameCnt:0,
+    maxGifFrameNum:90,
+
+    imageUrl:null
+};
+
+
+CENTI.start = function(){
+    if ( CENTI.timer ) cancelAnimationFrame(CENTI.timer);
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+} 
+
+CENTI.onFrame = function(){
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+    ct.update();
+} 
+
+CENTI.init = function(){
+    CENTI.editor = document.getElementById('editor');
+    var canvas = document.getElementById("canvas0");
+    ct = new Centi();
+    if ( !ct.init(canvas) ) {
+        CENTI.editor.value = "disable canvas.";
     }
-    
-    editor = document.getElementById('editor');
 }
 
-function run(){
+CENTI.run = function(){
     var tw;
-    tw = editor.value;
+    tw = CENTI.editor.value;
     //console.log(tw);
-    reset();
-    if ( parse(tw) ) {
-        start();   
+    ct.reset();
+    if ( ct.parse(tw) ) {
+        CENTI.start();
     } else {
         alert("unsuccess");   
     }
 }
 
-function tweet(){
+CENTI.tweet = function(){
     var code;
-    code = editor.value;
+    code = CENTI.editor.value;
     code = code.replace(/\s/g, "");
     if ( !code ) {
         return;
     }
-    if ( gifFrameCnt > 0 ) {
-        var blob = window.dataURLtoBlob && window.dataURLtoBlob(imageUrl);
-        postData(blob);
-    } else if ( canvas.toBlob ) {
-        canvas.toBlob( postData, "image/png");
+    if ( CENTI.gifFrameCnt > 0 ) {
+        var blob = window.dataURLtoBlob && window.dataURLtoBlob(CENTI.imageUrl);
+        if ( blob ) postData(blob);
+    } else if ( ct.canvas.toBlob ) {
+        ct.canvas.toBlob( postData, "image/png");
     }
 
     function postData(blob){
@@ -65,51 +85,66 @@ function tweet(){
     }
 }
 
-function togif(){
-    if ( !bToGif ) {
-        encoder = new GIFEncoder();
-        bToGif = true;
-        gifFrameCnt = 0;
-        encoder.setRepeat(0);
-        encoder.setDelay(33);
-        encoder.start();
+CENTI.togif = function(){
+    if ( !CENTI.bToGif ) {
+        CENTI.encoder = new GIFEncoder();
+        CENTI.bToGif = true;
+        CENTI.gifFrameCnt = 0;
+        CENTI.encoder.setRepeat(0);
+        CENTI.encoder.setDelay(33);
+        CENTI.encoder.start();
         document.getElementById('togif').innerHTML = "Stop REC";
+        ct.toGifFunc = CENTI.pushGif;
     } else {
-        endToGif();
+        CENTI.endToGif();
     }
 }
 
-function endToGif(){
-    bToGif = false;
-    encoder.finish();
-    imageUrl = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
-    document.getElementById('gif_image').src = imageUrl;
+CENTI.pushGif = function(ctx){
+    if ( CENTI.bToGif ) {
+        CENTI.encoder.addFrame(ctx);
+        CENTI.gifFrameCnt ++;
+        if ( CENTI.gifFrameCnt > CENTI.maxGifFrameNum ) {
+            CENTI.endToGif();
+        }
+    }
+}
+CENTI.endToGif = function(){
+    CENTI.bToGif = false;
+    CENTI.encoder.finish();
+    CENTI.imageUrl = 'data:image/gif;base64,'+encode64(CENTI.encoder.stream().getData());
+    document.getElementById('gif_image').src = CENTI.imageUrl;
     document.getElementById('togif').innerHTML = "REC";
-    encoder = null;
+    CENTI.encoder = null;
+
+    ct.toGifFunc = null;
 }
 
-function strlength(str) {
+CENTI.strlength = function(str) {
     str = str.replace(/\s/g, "");
   document.getElementById("idStrlength").innerHTML = (str.length);
 }
 
-function setSample(str){
+CENTI.setSample = function(str){
     //console.log(str);
     //editor.value = "";
-    editor.value = str;
-    strlength(str);
-    run();
+    CENTI.editor.value = str;
+    CENTI.strlength(str);
+    CENTI.run();
 }
 
 
 window.onload = function(){
-    init();
-    var params = get_url_vars();
-    
-	if ( params["c"] ) {
-        editor.value = unescape(params["c"]);
-        run();
-    }
-    strlength(editor.value);
+    setTimeout(function(){
+        CENTI.init();
+        var params = get_url_vars();
+        
+        if ( params["c"] ) {
+            CENTI.editor.value = unescape(params["c"]);
+            CENTI.run();
+        }
+        CENTI.strlength(editor.value);
+    }, 250);
+     
 };
 
