@@ -103,7 +103,7 @@ font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
-height:50px;
+height:40px;
 }
 button#togif:hover {
 background-color: #00ffff;
@@ -120,7 +120,7 @@ font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
-height:50px;
+height:40px;
 }
 
 button#tweet:hover {
@@ -138,7 +138,7 @@ font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
-height:50px;
+height:40px;
 }
 
 button#run:hover {
