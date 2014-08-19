@@ -2,7 +2,7 @@ var prgs = [
 'sz(1200,480)bg(0)frame(){clr()col(170)vl=(h/2)w2=(w/3)for(i,0,w2){col((cos(c*0.01+i*0.25)/2+0.5)*255)x=(i*3)y=(cy)line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)}}'
 ,'sz(720,360)frame(){clr()cr=(PI*2/3)t=(c/1000)p1=(sin(c*0.003)+1)for(i,0,85){rad=((c*10+i*5)%h)col(255-i*3)for(j,0,3){tlt=(c*0.01+i*p1*0.03)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}'
 ,'sz(640,320)bg(0)frame(){clr()col(170)vl=(80)w2=(w*2)phase=(0.0023)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.09+i*0.022)*vl,y+sin(c*0.11+i*0.015)*vl,x+sin(c*0.1+i*0.03)*vl,y+cos(c*0.13+i*0.02)*vl)}}'
-,'sz(600,300)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.003,c*0.04)*h*3)col(200,255,abs(y/h)*255)rect(x,cy,1,y)}}'
+,'sz(1200,300)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.003,c*0.04)*h*3)col(200,255,abs(y/h)*255)rect(x,cy,1,y)}}'
 ,'sz(720,360)bg(0)frame(){clr()stroke()arc=((cos(c*0.01)+1)*w/3)for(i,0,100){r=((sin(c*0.02+i*0.03)+1)*w/2)rad=(cos(c*0.013+i*0.05)*PI2)x=(cos(rad)*r)y=(sin(rad)*r)col(0,r/2,255)oval(x+cx,y+cy,arc)}}'
 ,'sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}'
 ,'sz(720,360)frame(){clr()cr=(PI*2/3)t=(c/100)for(i,0,85){rad=(i*6)col(255-i*3)for(j,0,3){tlt=0.24*sin((c+i)*0.1)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}'
@@ -108,6 +108,9 @@ CENTI.run = function(tw){
     ct.reset();
     ct.c = Math.random()*99999999;
     frameCount = ct.c;
+    var offset = Math.floor(Math.random()*winW/3 + 5);
+    ctxFull.drawImage(canvasFull, 0, 0, winW, winH, offset, 0, winW, winH);
+    ctxFull.drawImage(canvasFull, 0, 0, 1, winH, 0, 0, offset, winH);
     if ( ct.parse(tw) ) {
         CENTI.start();
         CENTI.posRate = Math.random()*1.1 - 0.05;

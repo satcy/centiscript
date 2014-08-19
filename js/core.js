@@ -57,7 +57,7 @@ Centi.prototype.parse = function(tw){
     tw = tw.replace(/\s/g, "");
     tw = tw.replace(/\b/g, "");
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
-    tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\))/g, "for($2=$4;$2<$6;$2++)");
+    tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)\*\+\/]+)(\))/g, "for($2=$4;$2<$6;$2++)");
     // for ( var i=0; i<MATHS.length; i++ ) {
     //     var math_word = "" + MATHS[i] + "\\(";
     //     tw = tw.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
@@ -75,11 +75,13 @@ Centi.prototype.parse = function(tw){
     frameMethod = frameMethod.slice(frameMethod.indexOf("{")+1, frameMethod.lastIndexOf("}"));
 
     var forReg = new RegExp(this.name+".for\\(", "g");
-    var valueReg = /(^[A-Za-z_][A-Za-z0-9_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,])/g;
-    var valueReg2 = /([A-Za-z_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,])/g;
+    var numbersReg = new RegExp("(" + this.name + ")\.([0-9\.]+)", "g");
+    //var valueReg = /(^[A-Za-z_][A-Za-z0-9_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,])/g;
+    var valueReg2 = /([A-Za-z0-9_]+)([\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,\^])/g;
     setupMethod = setupMethod.replace(valueReg2, this.name + "."+"$1"+"$2");
-    setupMethod = setupMethod.replace(valueReg, this.name + "."+"$1"+"$2");
+    //setupMethod = setupMethod.replace(valueReg, this.name + "."+"$1"+"$2");
     //setupMethod = setupMethod.replace(new RegExp(this.name + "." + this.name, "g"), this.name);
+    setupMethod = setupMethod.replace(numbersReg, "$2");
     setupMethod = setupMethod.replace(forReg, "for(");
     for ( var i=0; i<MATHS.length; i++ ) {
         var math_word = this.name + "." + MATHS[i] + "\\(";
@@ -91,8 +93,9 @@ Centi.prototype.parse = function(tw){
     //console.log(setupMethod);
 
     frameMethod = frameMethod.replace(valueReg2, this.name + "."+"$1"+"$2");
-    frameMethod = frameMethod.replace(valueReg, this.name + "."+"$1"+"$2");
+    //frameMethod = frameMethod.replace(valueReg, this.name + "."+"$1"+"$2");
     //frameMethod = frameMethod.replace(new RegExp(this.name + "." + this.name, "g"), this.name);
+    frameMethod = frameMethod.replace(numbersReg, "$2");
     frameMethod = frameMethod.replace(forReg, "for(");
     for ( var i=0; i<MATHS.length; i++ ) {
         var math_word = this.name + "." + MATHS[i] + "\\(";
@@ -136,10 +139,6 @@ Centi.prototype.bg = function(){
 
 Centi.prototype.lg = function(){
     console.log(arguments);
-}
-
-Centi.prototype.arr = function(target){
-    target = new Array();
 }
 
 Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); }
@@ -278,6 +277,14 @@ Centi.prototype.stroke = function(){
 Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
 }
+
+Centi.prototype.vec2 = function(_x, _y){
+    return new Centi.Vec2(_x, _y);
+}
+Centi.Vec2 = function(_x, _y){
+    this.x = _x;
+    this.y = _y;
+};
 
 // centi funcs
 
