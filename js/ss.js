@@ -7,7 +7,7 @@ var prgs = [
 ,'sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}'
 ,'sz(720,360)frame(){clr()cr=(PI*2/3)t=(c/100)for(i,0,85){rad=(i*6)col(255-i*3)for(j,0,3){tlt=0.24*sin((c+i)*0.1)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}'
 ,'sz(720,360)frame(){clear()step=(6)for(i,0,70){col(255-i*3)stroke()oval(cx+cos(c*0.13+i+0.1)*step,cy+sin(c*0.1+i+0.13)*step,i*step)}}'
-,'sz(720,720)bg(0)frame(){clr()col(255)cw=(72)for(i,-1,12){for(j,-1,12){x=(cw*i+sin(c*0.0013)*cw)y=(cw*j+cos(c*0.003)*cw)rect(x,y,1,1)rect(x,y,sin(c*0.033+i*0.1+j*3)*cw,1)rect(x,y,1,cos(c*0.05+i*sin(c*0.01)+j*8.3)*cw)}}}'
+,'sz(360,360)bg(0)frame(){clr()col(255)cw=(36)for(i,-1,12){for(j,-1,12){x=(cw*i+sin(c*0.0013)*cw)y=(cw*j+cos(c*0.003)*cw)rect(x,y,1,1)rect(x,y,sin(c*0.033+i*0.1+j*3)*cw,1)rect(x,y,1,cos(c*0.05+i*sin(c*0.01)+j*8.3)*cw)}}}'
 ,'sz(720,360)frame(){for(i,0,100){col(rnd(255),rnd(100,255),rnd(130,255))x=((c*3+i)%(w+300)-150)line(x+cos(c*0.037+i*0.055)*100,0,x+sin(c*0.013+i*0.037)*100,h)}}'
 ,'sz(1720,720)frame(){num=(50)for(j,0,5){for(i,0,num){r=((nz(i*0.1,c*0.003)+1)*w/3)rad=((PI2/num)*i+c/283)x=(cos(rad)*r)y=(sin(rad)*r)r=((nz(((i+1)%num)*0.1,c*0.003)+1)*w/3)rad=((PI2/num)*(i+1)+c/283)x2=(cos(rad)*r)y2=(sin(rad)*r)col((c*0.25)%255)line(x+cx,y+cy,x2+cx,y2+cy)}c++;}c--;}'
 ,'sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))x=rnd(-100,w+100)line(x,0,x+100,h)}}'
