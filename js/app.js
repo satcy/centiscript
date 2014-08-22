@@ -133,6 +133,54 @@ CENTI.setSample = function(str){
     CENTI.run();
 }
 
+CENTI.onFileChanged = function(){
+    var file = document.getElementById('readfile').files[0];
+    // console.log('File name: ' + file.name);
+    // console.log('File type: ' + file.type);
+    // console.log('Size: ' + file.size);
+    // console.log('Last modified date: ' + file.lastModifiedDate);
+    
+    var reader = new FileReader();
+    reader.onloadend = function (e) {
+        editor.value = this.result;
+    };
+    
+    reader.readAsText(file);
+}
+
+CENTI.saveFile = function(){
+    var blob = new Blob([CENTI.editor.value], {type:"text/plain"});
+    
+    window.saveAs(blob, "centi_"+ CENTI.getTimeStampString() +".ct");
+}
+
+CENTI.exportFile = function(){
+    var code;
+    code = CENTI.editor.value;
+    if ( !code ) {
+        return;
+    }
+    var ext = ".png";
+    if ( CENTI.gifFrameCnt > 0 ) {
+        var blob = window.dataURLtoBlob && window.dataURLtoBlob(CENTI.imageUrl);
+        ext = ".gif";
+        if ( blob ) postData(blob);
+    } else if ( ct.canvas.toBlob ) {
+        ct.canvas.toBlob( postData, "image/png");
+    }
+
+    function postData(blob){
+        window.saveAs(blob, "centi_" + CENTI.getTimeStampString() + ext);
+    }
+}
+
+CENTI.getTimeStampString = function(){
+    var date = new Date();
+    var str = date.getFullYear() + (date.getMonth() < 11 ? "0" + (date.getMonth()+1) : (date.getMonth() + 1) ) + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate() ) + 
+    (date.getHours() < 10 ? "0" + date.getHours() : date.getHours() ) + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + 
+    (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds());
+    return str;
+}
 
 window.onload = function(){
     setTimeout(function(){

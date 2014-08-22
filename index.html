@@ -31,6 +31,7 @@ WebFontConfig = {
 <script src="lib/gif/GIFEncoder.js"></script>
 <script src="lib/gif/LZWEncoder.js"></script>
 <script src="lib/gif/NeuQuant.js"></script>
+<script src="lib/FileSaver.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/core.js"></script>
 <script src="js/app.js"></script>
@@ -49,23 +50,33 @@ WebFontConfig = {
   <a href="https://github.com/satcy/centiscript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 <div class="wrap">
   <div class="title"><a href="./"></a>(centiscript)</div>
-  <div class="sampler">
-    Sample: 
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){clear()for(i,0,327){col(255)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y, cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)}}')">1</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)frame(){clear()for(i,0,1027){col(0,195,230)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y, cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)}}')">2</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)bg(0)frame(){clr()for(i,0,1000){r=((sin(c*0.1+i*0.03)+1)*127.5)a=((sin(c*0.1+i*0.04)+1)*127.5)col(155,r,r,a)x=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)line(cx+x,0,cx+x,h)line(cx-x,0,cx-x,h)}}')">6</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)bg(0)frame(){clr()ww=(520)for(j,0,15){ox=((ww/2)*(j%5))oy=((ww/2)*floor(j/5))for(i,0,150){x=(cos(i*0.2+c*0.1)*ww/4)y=(sin(i*0.2+c*0.1)*ww/4)x2=(cos(i*0.2+c*0.11)*ww/6)y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)line(ox+x,y+oy,ox+x2,y2+oy)}}}')">7</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)bg(0)frame(){clr()col(170)vl=(h/2)w2=(w/3)for(i,0,w2){col((cos(c*0.01+i*0.25)/2+0.5)*255)x=(i*3)y=(cy)line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)}}')">8</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}')">9</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)frame(){clr()cr=(PI*2/3)t=(c/1000)p1=(sin(c*0.003)+1)for(i,0,85){rad=((c*10+i*5)%w)col(255-i*3)for(j,0,3){tlt=(c*0.01+i*p1*0.03)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}')">10</a>
-    <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,270)bg(0)frame(){clr()num=(w/3)for(i,0,num){ww=(cos(i*0.03+c*0.013)*w/2)hh=(30)push()translate(i*3,cy)rotate(nz(i*0.0015,c*0.002)*60)col(0)fill()rect(-ww/2,-hh/2,ww,hh)col(205,(sin(i*0.06+c*0.03)+1)*128,255)strk()rect(-ww/2,-hh/2,ww,hh)pop()}}')">11</a>
-  </div>
+  
   
   <div class="editor_wrap">
+    <div class="sampler">
+      Sample: 
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){clear()for(i,0,327){col(255)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y, cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)}}')">1</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)frame(){clear()for(i,0,1027){col(0,195,230)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y, cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)}}')">2</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)bg(0)frame(){clr()for(i,0,1000){r=((sin(c*0.1+i*0.03)+1)*127.5)a=((sin(c*0.1+i*0.04)+1)*127.5)col(155,r,r,a)x=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)line(cx+x,0,cx+x,h)line(cx-x,0,cx-x,h)}}')">6</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)bg(0)frame(){clr()ww=(520)for(j,0,15){ox=((ww/2)*(j%5))oy=((ww/2)*floor(j/5))for(i,0,150){x=(cos(i*0.2+c*0.1)*ww/4)y=(sin(i*0.2+c*0.1)*ww/4)x2=(cos(i*0.2+c*0.11)*ww/6)y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)line(ox+x,y+oy,ox+x2,y2+oy)}}}')">7</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)bg(0)frame(){clr()col(170)vl=(h/2)w2=(w/3)for(i,0,w2){col((cos(c*0.01+i*0.25)/2+0.5)*255)x=(i*3)y=(cy)line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)}}')">8</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}')">9</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)frame(){clr()cr=(PI*2/3)t=(c/1000)p1=(sin(c*0.003)+1)for(i,0,85){rad=((c*10+i*5)%w)col(255-i*3)for(j,0,3){tlt=(c*0.01+i*p1*0.03)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}')">10</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,270)bg(0)frame(){clr()num=(w/3)for(i,0,num){ww=(cos(i*0.03+c*0.013)*w/2)hh=(30)push()translate(i*3,cy)rotate(nz(i*0.0015,c*0.002)*60)col(0)fill()rect(-ww/2,-hh/2,ww,hh)col(205,(sin(i*0.06+c*0.03)+1)*128,255)strk()rect(-ww/2,-hh/2,ww,hh)pop()}}')">11</a>
+    </div>
     <form>
+      <script type="text/javascript" language="javascript">
+          <!--
+          document.open();
+          if ( checkFileReaderApi() ) {
+            document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></button></div>');
+          }
+          document.close();
+          // -->
+        </script>  
       <div class="editor_textarea">
         <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeyup="CENTI.strlength(value)">sz(720,360)bg(0)a=([])v=([])for(i,0,w){a[i]=(0)v[i]=(0)}frame(){drawMe(0,0,w,h,-2,-2,w+4,h+4)for(i,0,w){v[i]+=nz(i*0.004,c*0.01)a[i]+=(v[i])v[i]+=((0-a[i])*0.01)x=(i)y=(a[i])col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}</textarea>
       </div>
@@ -73,7 +84,17 @@ WebFontConfig = {
         <span class="editor_btn">
           <button type="button" id="run" name="run" onclick="CENTI.run()">▶</button>  
           <button type="button" id="togif" name="togif" onclick="CENTI.togif()">REC</button>
-          <button type="button" id="tweet" name="tweet" onclick="CENTI.tweet()">Tweet</button>    
+          <button type="button" id="tweet" name="tweet" onclick="CENTI.tweet()">Tweet</button> 
+           <script type="text/javascript" language="javascript">
+          <!--
+          document.open();
+          if ( checkFileWriterApi() ) {
+            document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save Script</button>\n');
+            document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>');
+          }
+          document.close();
+          // -->
+        </script> 
         </span>
         <span class="editor_remain">
           <div id="idStrlength">0</div>
@@ -85,9 +106,9 @@ WebFontConfig = {
   <div class="canvas_wrap">
     <canvas id="canvas0" width="720" height="360"></canvas>
   <div>
-  <img id="gif_image">
+  <img id="gif_image" />
   <div class="footer">DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</div>
-  <div class="footer">Ver. 0.2.2</div>
+  <div class="footer">Ver. 0.2.3</div>
   <div class="footer">Written by <a href="https://twitter.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></div>
   <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->

@@ -8,6 +8,8 @@ background-color: #333;
 text-align: center;    
 }
 
+
+
 .title{
 position: relative;
 font-family: 'Playfair Display', sans-serif ;
@@ -20,6 +22,7 @@ text-shadow: 0px -1px 1px rgba(255,255,255,0.47);
 -ms-filter:"progid:DXImageTransform.Microsoft.DropShadow(color=#ffffff,offx=0,offy=-1)"; /* IE8 */
 display:block; /* IE */
 }
+
 .title a{
 display: block;
 position: absolute;
@@ -43,11 +46,16 @@ a:visited { color: #EEE; }
 a:hover { color: #00ffff; }
 a:active { color: #0080ff; }
 
+.editor_wrap{
+	text-align: left;
+}
+
 .sampler{
+float: right;
 font-family: 'Droid Sans Mono', sans-serif ;
 color:#999;
 font-size:0.9em; 
-    margin:0px 0px 10px 0px;
+margin:0px 0px 10px 0px;
 }
 
 #idStrlength{
@@ -71,7 +79,7 @@ width: 720px;
 margin: 0 auto;
 }
 
-.editor_textarea{}
+.editor_textarea{clear: both;}
 .editor_tools{}
 .editor_remain{
 	float: right;
@@ -102,10 +110,10 @@ border-radius: 3px;
 box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
-button#togif{
+button{
 border:solid 1px #ccc;
 background-color: #999;
-padding:0px 30px;
+padding:0px 15px;
 margin:0 0 0px;
 font-family:Arial, sans-serif;
 font-size:1.2em;
@@ -114,43 +122,51 @@ color:#333;
 cursor:pointer;
 height:40px;
 }
-button#togif:hover {
+button:hover {
 background-color: #00ffff;
 color: #000;
 }
 
-button#tweet{
+#tweet{
+	margin-left: 6px;
+}
+#savefile{
+	margin-left: 6px;
+}
+
+.file {
+float: left;
+display: inline-block;
+overflow: hidden;
+position: relative;
 border:solid 1px #ccc;
 background-color: #999;
-padding:0px 30px;
-margin:0 0 0px;
+padding:5px 5px;
+margin:0px;
+margin-bottom: 10px;
 font-family:Arial, sans-serif;
 font-size:1.2em;
 font-weight:bold;
 color:#333;
 cursor:pointer;
-height:40px;
+vertical-align:middle;
+/*height:40px;*/
 }
-
-button#tweet:hover {
+.file:hover {
 background-color: #00ffff;
 color: #000;
 }
 
-button#run{
-border:solid 1px #ccc;
-background-color: #999;
-padding:0px 30px;
-margin:0 0 0px;
-font-family:Arial, sans-serif;
-font-size:1.2em;
-font-weight:bold;
-color:#333;
-cursor:pointer;
-height:40px;
-}
-
-button#run:hover {
-background-color: #00ffff;
-color: #000;
+.file input[type="file"] {
+  opacity: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+  z-index: 999;
+  height: 300px;
+  cursor: pointer;
 }

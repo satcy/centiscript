@@ -64,3 +64,11 @@ function get_url_vars(){
   }
   return vars;
 }
+
+function checkFileReaderApi(){
+  return window.File && window.FileReader && window.FileList && window.Blob;
+}
+
+function checkFileWriterApi(){
+  return window.File && window.saveAs && window.FileList && window.Blob;
+}
