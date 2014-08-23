@@ -220,6 +220,11 @@ Centi.prototype.line = function(_x1, _y1, _x2, _y2){
     this.ctx.stroke();
 };
 
+Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
+Centi.prototype.lineWidth = function(_w){
+    this.ctx.lineWidth = _w;
+};
+
 Centi.prototype.moveTo = function(_x1, _y1){
     this.ctx.moveTo(_x1, _y1);
 };
