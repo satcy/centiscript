@@ -217,11 +217,17 @@ Centi.prototype.line = function(_x1, _y1, _x2, _y2){
     this.ctx.stroke();
 }
 
-Centi.prototype.curve = function(_x1, _y1, _cp1x, _cp1y, _cp2x, _cp2y, _x2, _y2){
-    this.beginShape();
-    this.moveTo(_x1, _y1);
-    this.curveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x2, _y2);
-    this.endShape();
+Centi.prototype.curve = function(){
+    if ( arguments.length == 8 ) {
+        this.beginShape();
+        this.moveTo(arguments[0], arguments[1]);
+        this.curveTo(arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7]);
+        this.endShape();
+    } else if ( arguments.length == 1 ) {
+        if ( arguments[0].length && arguments[0].length == 8 ) {
+            this.curve(arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5], arguments[0][6], arguments[0][7])
+        }
+    } 
 }
 
 Centi.prototype.lw = function(_w){ this.lineWidth(_w); }
@@ -237,8 +243,14 @@ Centi.prototype.lineTo = function(_x1, _y1){
     this.ctx.lineTo(_x1, _y1);
 }
 
-Centi.prototype.curveTo = function(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y){
-    this.ctx.bezierCurveTo(_cp1x, _cp1y, _cp2x, _cp2y, _x, _y);
+Centi.prototype.curveTo = function(){
+    if ( arguments.length == 6 ) {
+        this.ctx.bezierCurveTo(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
+    } else if ( arguments.length == 1 ) {
+        if ( arguments[0].length && arguments[0].length == 6 ) {
+            this.ctx.bezierCurveTo(arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5]);
+        }
+    }
 }
 
 Centi.prototype.beginShape = function(){
@@ -318,28 +330,33 @@ Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
 }
 
-Centi.prototype.curves = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x, _cp2y, _x2, _y2) {
+Centi.prototype.curves = function() {
+    var len = arguments.length;
+    if ( len == 9 ) {
+        return this.getPointsOnCurve(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8]);
+    } else if ( len == 2 ) {
+        if ( arguments[1].length && arguments[1].length == 8 ) {
+            return this.getPointsOnCurve(arguments[0], arguments[1][0], arguments[1][1], arguments[1][2], arguments[1][3], arguments[1][4], arguments[1][5], arguments[1][6], arguments[1][7]);
+        }
+    } else if ( len == 1 ) {
+        if ( arguments[0].length && arguments[0].length == 9 ) {
+            return this.getPointsOnCurve( arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5], arguments[0][6], arguments[0][7], arguments[0][8]);
+        }
+    }
+}
+
+Centi.prototype.getPointsOnCurve = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x, _cp2y, _x2, _y2) {
     if ( _div < 2 ) _div = 2;
     var arr = [];
     for ( var i=0; i<_div; i++ ) {
         var r = i/(_div-1.0);
-        var n = 3;
-
-        var tx = [_x1, _cp1x, _cp2x, _x2];
-        var ty = [_y1, _cp1y, _cp2y, _y2];
-
-        for( var j=0; j<n; j++ ){
-            for( var k=0; k<n-j; k++ ){
-                tx[k]=this.interp(tx[k], tx[k+1], r);
-                ty[k]=this.interp(ty[k], ty[k+1], r);
-            }
-        }
         
         arr.push(this.getPointOnCubicBezier(r, _x1, _cp1x, _cp2x, _x2));
         arr.push(this.getPointOnCubicBezier(r, _y1, _cp1y, _cp2y, _y2));
     }
     return arr;
 }
+
 Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     var _k = 1 - _t;
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
