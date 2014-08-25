@@ -149,6 +149,10 @@ Centi.prototype.clear = function(){
     this.ctx.fillRect(0,0,this.w, this.h);    
 }
 
+Centi.prototype.obj = function(){
+    return new Object();
+}
+
 // Randomize
 
 Centi.prototype.rnd = function(){
