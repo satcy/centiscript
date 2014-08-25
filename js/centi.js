@@ -334,6 +334,17 @@ Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
 }
 
+Centi.prototype.dist = function(){
+    var len = arguments.length;
+    if ( len == 4 ) {
+        var dx = (arguments[0] - arguments[2]);
+        var dy = (arguments[1] - arguments[3]);
+        return Math.sqrt(dx*dx + dy*dy);
+    } else if ( len == 2 && arguments[0].hasOwnProperty("x") && arguments[0].hasOwnProperty("y") && arguments[1].hasOwnProperty("x") && arguments[1].hasOwnProperty("y") ) {
+        return this.dist(arguments[0].x, arguments[0].y, arguments[1].x, arguments[1].y);
+    }
+}
+
 Centi.prototype.curves = function() {
     var len = arguments.length;
     if ( len == 9 ) {

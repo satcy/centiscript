@@ -48,7 +48,7 @@ CENTI.run = function(){
 CENTI.tweet = function(){
     var code;
     code = CENTI.editor.value;
-    code = code.replace(/\s/g, "");
+    //code = code.replace(/\s/g, "");
     if ( !code ) {
         return;
     }
