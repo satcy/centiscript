@@ -10,6 +10,8 @@ var Centi = function(name){
 
     this.canvas = null;
     this.ctx = null;
+
+    this.GOLD = (1+Math.sqrt(5))/2;
     
     this.x=0;
     this.y=0;
@@ -365,7 +367,6 @@ Centi.prototype.getPointsOnCurve = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x,
     var arr = [];
     for ( var i=0; i<_div; i++ ) {
         var r = i/(_div-1.0);
-        
         arr.push(this.getPointOnCubicBezier(r, _x1, _cp1x, _cp2x, _x2));
         arr.push(this.getPointOnCubicBezier(r, _y1, _cp1y, _cp2y, _y2));
     }
