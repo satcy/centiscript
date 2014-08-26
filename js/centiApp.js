@@ -87,13 +87,13 @@ CENTI.tweet = function(){
     function postData(blob){
         var formData = new FormData();
 
-        var url = "http://ex.rzm.co.jp/centiscript/?c="+escape(code);
+        var url = "http://ex.rzm.co.jp/centiscript/?c="+encodeURIComponent(code);
         
         var title = CENTI.inputTitle.value;
         if ( title == "Title" ) {
             title = "";
         } else {
-            url += "&t="+escape(title);
+            url += "&t="+encodeURIComponent(title);
             title += " ";
         }
 
@@ -159,8 +159,8 @@ CENTI.strlength = function(str) {
 }
 
 CENTI.checkTitle = function(str) {
-    if ( str.length > 40 ) {
-        CENTI.inputTitle.value = str.slice(0,40);
+    if ( str.length > 50 ) {
+        CENTI.inputTitle.value = str.slice(0,50);
     }
 }
 
