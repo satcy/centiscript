@@ -356,7 +356,7 @@ Centi.prototype.transform = function(_a, _b, _c, _d, _e, _f){
     this.ctx.transform(_a, _b, _c, _d, _e, _f);
 }
 
-// Utils
+// Math
 
 Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
@@ -371,6 +371,29 @@ Centi.prototype.dist = function(){
     } else if ( len == 2 && arguments[0].hasOwnProperty("x") && arguments[0].hasOwnProperty("y") && arguments[1].hasOwnProperty("x") && arguments[1].hasOwnProperty("y") ) {
         return this.dist(arguments[0].x, arguments[0].y, arguments[1].x, arguments[1].y);
     }
+}
+
+Centi.prototype.wrap = function(_a, _min, _max){
+    var d = _max - _min;
+    if ( d > 0 ) {
+        if ( _a < _min ) _a += d;
+        if ( _a > _max ) _a -= d;
+        return _a;
+    } else {
+        return _a;
+    }
+}
+
+Centi.prototype.minMax = function(_a, _min, _max){
+    return Math.min(_min, Math.max(_a, _max));
+}
+
+Centi.prototype.map = function(_num, _in_min, _in_max, _out_min, _out_max){
+    return ((_num - _in_min)/(_in_max - _in_min))*(_out_max - _out_min) + _out_min;
+}
+
+Centi.prototype.zmap = function(_num, _in_min, _in_max, _out_min, _out_max){
+    return return this.minMax(this.map(_num, _in_min, _in_max, _out_min, _out_max), _out_min, _out_max);
 }
 
 Centi.prototype.curves = function() {
@@ -415,6 +438,16 @@ Centi.prototype.nears = function(_pt, _count, _distance){
     return this.kdtree.nearest(_pt, _count, _distance);
 }
 
+Centi.prototype.r2d = function(_radian){
+    return (_radian * 180) / Math.PI;
+}
+
+Centi.prototype.d2r = function(_degree){
+    return (_degree * Math.PI) / 180;
+}
+
+// Array
+
 Centi.prototype.sortNum = function(_arr){
     _arr.sort(
         function(a,b){
@@ -427,14 +460,6 @@ Centi.prototype.sortNum = function(_arr){
 
 Centi.prototype.reverse = function(_arr){
     _arr.reverse();
-}
-
-Centi.prototype.r2d = function(_radian){
-    return (_radian * 180) / Math.PI;
-}
-
-Centi.prototype.d2r = function(_degree){
-    return (_degree * Math.PI) / 180;
 }
 
 // Geometry
