@@ -393,7 +393,7 @@ Centi.prototype.map = function(_num, _in_min, _in_max, _out_min, _out_max){
 }
 
 Centi.prototype.zmap = function(_num, _in_min, _in_max, _out_min, _out_max){
-    return return this.minMax(this.map(_num, _in_min, _in_max, _out_min, _out_max), _out_min, _out_max);
+    return this.minMax(this.map(_num, _in_min, _in_max, _out_min, _out_max), _out_min, _out_max);
 }
 
 Centi.prototype.curves = function() {
