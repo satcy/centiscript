@@ -26,6 +26,7 @@ WebFontConfig = {
 </script>
 <script src="lib/canvas-to-blob.min.js"></script>
 <script src="lib/perlin.js"></script>
+<script src="lib/kdTree-min.js"></script>
 <script src="lib/dataURLtoBlob.js"></script>
 <script src="lib/gif/b64.js"></script>
 <script src="lib/gif/GIFEncoder.js"></script>
@@ -55,17 +56,17 @@ WebFontConfig = {
   <div class="editor_wrap">
     <div class="sampler">
       Sample: 
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){clear()for(i,0,327){col(255)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y, cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)}}')">1</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)frame(){clear()for(i,0,1027){col(0,195,230)x=(w/2)y=(h/2)line(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y, cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)}}')">2</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,127){col(rnd(255),rnd(255),rnd(255))line(rnd(w),rnd(h),rnd(w),rnd(h))}}')">3</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)frame(){for(i,0,15){col(rnd(100,255))rect(0,rnd(h),w,rnd(30))}}')">4</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)bg(33,33,33)frame(){clear()for(i,0,w){x=(i)y=(nz(x*0.02,c*0.1)*h)col(rnd(100,230),0,0)rect(x,h/2,1,y)}}')">5</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)bg(0)frame(){clr()for(i,0,1000){r=((sin(c*0.1+i*0.03)+1)*127.5)a=((sin(c*0.1+i*0.04)+1)*127.5)col(155,r,r,a)x=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)line(cx+x,0,cx+x,h)line(cx-x,0,cx-x,h)}}')">6</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)bg(0)frame(){clr()ww=(520)for(j,0,15){ox=((ww/2)*(j%5))oy=((ww/2)*floor(j/5))for(i,0,150){x=(cos(i*0.2+c*0.1)*ww/4)y=(sin(i*0.2+c*0.1)*ww/4)x2=(cos(i*0.2+c*0.11)*ww/6)y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)line(ox+x,y+oy,ox+x2,y2+oy)}}}')">7</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)bg(0)frame(){clr()col(170)vl=(h/2)w2=(w/3)for(i,0,w2){col((cos(c*0.01+i*0.25)/2+0.5)*255)x=(i*3)y=(cy)line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)}}')">8</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)bg(0)frame(){clr()col(170)vl=(15)w2=(w*2)phase=(0.13)for(i,0,w2){rad=(w-i)x=(cos((i+c)*phase)*rad+cx)y=(sin((i+c)*phase)*rad+cy)line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)}}')">9</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)frame(){clr()cr=(PI*2/3)t=(c/1000)p1=(sin(c*0.003)+1)for(i,0,85){rad=((c*10+i*5)%w)col(255-i*3)for(j,0,3){tlt=(c*0.01+i*p1*0.03)line(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)}}}')">10</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,270)bg(0)frame(){clr()num=(w/3)for(i,0,num){ww=(cos(i*0.03+c*0.013)*w/2)hh=(30)push()translate(i*3,cy)rotate(nz(i*0.0015,c*0.002)*60)col(0)fill()rect(-ww/2,-hh/2,ww,hh)col(205,(sin(i*0.06+c*0.03)+1)*128,255)strk()rect(-ww/2,-hh/2,ww,hh)pop()}}')">11</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nclear()\nfor(i,0,327){\ncol(255)\nx=(w/2)\ny=(h/2)\nline(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y,cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)\n}\n}')">1</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)\nframe()\n{\nclear()\nfor(i,0,1027)\n{\ncol(0,195,230)\nx=(w/2)\ny=(h/2)\nline(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y,cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)\n}\n}')">2</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nfor(i,0,127)\n{\ncol(rnd(255),rnd(255),rnd(255))\nline(rnd(w),rnd(h),rnd(w),rnd(h))\n}\n}')">3</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nfor(i,0,15)\n{\ncol(rnd(100,255))\nrect(0,rnd(h),w,rnd(30))\n}\n}')">4</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nbg(33,33,33)\nframe()\n{\nclear()\nfor(i,0,w)\n{\nx=(i)\ny=(nz(x*0.02,c*0.1)*h)\ncol(rnd(100,230),0,0)\nrect(x,h/2,1,y)\n}\n}')">5</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)\nbg(0)\nframe()\n{\nclr()\nfor(i,0,1000)\n{\nr=((sin(c*0.1+i*0.03)+1)*127.5)\na=((sin(c*0.1+i*0.04)+1)*127.5)\ncol(155,r,r,a)\nx=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)\nline(cx+x,0,cx+x,h)\nline(cx-x,0,cx-x,h)\n}\n}')">6</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)\nbg(0)\nframe()\n{\nclr()\nww=(520)\nfor(j,0,15)\n{\nox=((ww/2)*(j%5))\noy=((ww/2)*floor(j/5))\nfor(i,0,150)\n{\nx=(cos(i*0.2+c*0.1)*ww/4)\ny=(sin(i*0.2+c*0.1)*ww/4)\nx2=(cos(i*0.2+c*0.11)*ww/6)\ny2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)\nline(ox+x,y+oy,ox+x2,y2+oy)\n}\n}\n}')">7</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)\nbg(0)\nframe()\n{\nclr()\ncol(170)\nvl=(h/2)\nw2=(w/3)\nfor(i,0,w2)\n{\ncol((cos(c*0.01+i*0.25)/2+0.5)*255)\nx=(i*3)\ny=(cy)\nline(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)\n}\n}')">8</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)\nbg(0)\nframe()\n{\nclr()\ncol(170)\nvl=(15)\nw2=(w*2)\nphase=(0.13)\nfor(i,0,w2)\n{\nrad=(w-i)\nx=(cos((i+c)*phase)*rad+cx)\ny=(sin((i+c)*phase)*rad+cy)\nline(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)\n}\n}')">9</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)\nframe()\n{\nclr()\ncr=(PI*2/3)\nt=(c/1000)\np1=(sin(c*0.003)+1)\nfor(i,0,85)\n{\nrad=((c*10+i*5)%w)\ncol(255-i*3)\nfor(j,0,3)\n{\ntlt=(c*0.01+i*p1*0.03)\nline(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)\n}\n}\n}')">10</a>
+      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,270)\nbg(0)\nframe()\n{\nclr()\nnum=(w/3)\nfor(i,0,num)\n{\nww=(cos(i*0.03+c*0.013)*w/2)\nhh=(30)\npush()\ntranslate(i*3,cy)\nrotate(nz(i*0.0015,c*0.002)*60)\ncol(0)\nfill()\nrect(-ww/2,-hh/2,ww,hh)\ncol(205,(sin(i*0.06+c*0.03)+1)*128,255)\nstrk()\nrect(-ww/2,-hh/2,ww,hh)\npop()\n}\n}')">11</a>
     </div>
     <form>
       <script type="text/javascript" language="javascript">

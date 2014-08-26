@@ -1,3 +1,27 @@
+/*
+The MIT License (MIT)
+
+Copyright (c) 2014 Satoshi HORII
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
 var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "PI2", "SQRT1_2", "SQRT2"];
 var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
@@ -30,6 +54,8 @@ var Centi = function(name){
     this.drawMethod = '';
 
     this.toGifFunc = null;
+
+    this.kdtree;
 }
 
 Centi.prototype.init = function(canvas){
@@ -376,6 +402,17 @@ Centi.prototype.getPointsOnCurve = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x,
 Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     var _k = 1 - _t;
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
+}
+
+Centi.prototype.tree = function(_pts){
+    this.kdtree = new kdTree(_pts, distance, ["x", "y"]);
+    function distance(a, b) {
+        return Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2);
+    }
+}
+
+Centi.prototype.nears = function(_pt, _count, _distance){
+    return this.kdtree.nearest(_pt, _count, _distance);
 }
 
 Centi.prototype.sortNum = function(_arr){
