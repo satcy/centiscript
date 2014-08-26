@@ -27,6 +27,7 @@ var ct;
 var CENTI = {
     timer:0,
     editor:null,
+    inputTitle:null,
 
     encoder:null,
     bToGif:false,
@@ -49,6 +50,7 @@ CENTI.onFrame = function(){
 
 CENTI.init = function(){
     CENTI.editor = document.getElementById('editor');
+    CENTI.inputTitle = document.getElementById('inputtitle');
     var canvas = document.getElementById("canvas0");
     ct = new Centi();
     if ( !ct.init(canvas) ) {
@@ -86,9 +88,17 @@ CENTI.tweet = function(){
         var formData = new FormData();
 
         var url = "http://ex.rzm.co.jp/centiscript/?c="+escape(code);
+        
+        var title = CENTI.inputTitle.value;
+        if ( title == "Title" ) {
+            title = "";
+        } else {
+            url += "&t="+escape(title);
+            title += " ";
+        }
 
         formData.append("image", blob );
-        formData.append("tweet", "(centiscript) " + url);
+        formData.append("tweet", title + "(centiscript) " + url);
         formData.append("url", url);
         
         var xhr = new XMLHttpRequest;
@@ -148,6 +158,17 @@ CENTI.strlength = function(str) {
   document.getElementById("idStrlength").innerHTML = (str.length);
 }
 
+CENTI.checkTitle = function(str) {
+    if ( str.length > 40 ) {
+        CENTI.inputTitle.value = str.slice(0,40);
+    }
+}
+
+CENTI.setTitle = function(str){
+    CENTI.inputTitle.value = str;
+    CENTI.inputTitle.style.color = "#333";
+}
+
 CENTI.setSample = function(str){
     //console.log(str);
     //editor.value = "";
@@ -162,6 +183,8 @@ CENTI.onFileChanged = function(){
     // console.log('File type: ' + file.type);
     // console.log('Size: ' + file.size);
     // console.log('Last modified date: ' + file.lastModifiedDate);
+
+    CENTI.setTitle(file.name);
     
     var reader = new FileReader();
     reader.onloadend = function (e) {
@@ -210,11 +233,16 @@ window.onload = function(){
         CENTI.init();
         var params = get_url_vars();
         
+        if ( params["t"] ) {
+            CENTI.setTitle(/*unescape*/(params["t"]));
+        }
+
         if ( params["c"] ) {
-            CENTI.editor.value = unescape(params["c"]);
+            CENTI.editor.value = /*unescape*/(params["c"]);
             CENTI.run();
         }
         CENTI.strlength(editor.value);
+        
     }, 250);
      
 };

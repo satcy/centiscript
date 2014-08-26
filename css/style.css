@@ -90,6 +90,25 @@ margin: 0 auto;
 #gif_image{
 	margin-bottom: 25px;
 }
+textarea#inputtitle{
+order:0;
+padding:0px 5px;
+font-size:1em;
+font-family: 'Droid Sans Mono', sans-serif ;
+color:#999;
+border:solid 2px #ccc;
+margin:0 0 10px;
+width:720px;   
+height:2aem;
+line-height:1.6em;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+resize: none; 
+}
 
 textarea#editor{
 border:0;
