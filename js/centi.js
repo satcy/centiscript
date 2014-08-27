@@ -139,6 +139,7 @@ Centi.prototype.update = function(){
 Centi.prototype.reset = function(){
     this.c = 0;
     this.bFill = true;
+    this.lw(1);
 }
 
 //centi funcs

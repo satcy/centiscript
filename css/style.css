@@ -41,7 +41,7 @@ font-size:0.7em;
 margin-top: 5px;   
 }
 
-a:link { color: #EEE; }
+a:link { color: #EEE; text-decoration: none; }
 a:visited { color: #EEE; }
 a:hover { color: #00ffff; }
 a:active { color: #0080ff; }
@@ -188,4 +188,21 @@ color: #000;
   z-index: 999;
   height: 300px;
   cursor: pointer;
+}
+
+#result{
+	width:720px;
+	margin: 0 auto;
+}
+#result img{
+	margin-bottom: 3px;
+}
+#list_one{
+	text-align: center;
+	background-color: #111;
+	font-size:0.8em;
+	font-family: 'Droid Sans Mono', sans-serif ;
+	color:#999;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
 }
