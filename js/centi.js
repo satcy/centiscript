@@ -56,7 +56,7 @@ var Centi = function(name){
     this.toGifFunc = null;
 
     this.kdtree;
-}
+};
 
 Centi.prototype.init = function(canvas){
     this.canvas = canvas;
@@ -68,7 +68,7 @@ Centi.prototype.init = function(canvas){
     } else {
         return false;
     }
-}
+};
 
 Centi.prototype.parse = function(tw){
     
@@ -128,19 +128,19 @@ Centi.prototype.parse = function(tw){
     evalInContext(setupMethod, this);
     return true;
 
-}
+};
 
 Centi.prototype.update = function(){
     evalInContext(this.drawMethod, this);
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
-}
+};
 
 Centi.prototype.reset = function(){
     this.c = 0;
     this.bFill = true;
     this.lw(1);
-}
+};
 
 //centi funcs
 
@@ -156,13 +156,13 @@ Centi.prototype.bg = function(){
         this.bgcolor.b = parseInt(arguments[2]);     
     }
     this.clear();
-}
+};
 
 Centi.prototype.lg = function(){
     console.log(arguments);
-}
+};
 
-Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); }
+Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); };
 Centi.prototype.size = function(_w, _h){
     this.w = parseInt(_w);
     this.h = parseInt(_h);
@@ -170,17 +170,17 @@ Centi.prototype.size = function(_w, _h){
     this.canvas.height = this.h;
     this.cx = this.w/2;
     this.cy = this.h/2;
-}
+};
 
-Centi.prototype.clr = function(){ this.clear(); }
+Centi.prototype.clr = function(){ this.clear(); };
 Centi.prototype.clear = function(){
     this.ctx.fillStyle = "rgb("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+")";
     this.ctx.fillRect(0,0,this.w, this.h);    
-}
+};
 
 Centi.prototype.obj = function(){
     return new Object();
-}
+};
 
 // Randomize
 
@@ -193,7 +193,8 @@ Centi.prototype.rnd = function(){
     } else {
         return Math.random();
     }
-}
+};
+
 Centi.prototype.rand = function(){
     var len = arguments.length;
     if ( len == 1 ) {
@@ -203,7 +204,7 @@ Centi.prototype.rand = function(){
     } else {
         return Math.random();
     }
-}
+};
 
 Centi.prototype.nz = function() {
     var len = arguments.length;
@@ -215,7 +216,8 @@ Centi.prototype.nz = function() {
         return perlin.perlin3(arguments[0], arguments[1], arguments[2]);   
     }
     return 0; 
-}
+};
+
 Centi.prototype.noise = function(){
     var len = arguments.length;
     if ( len == 1 ) {
@@ -226,29 +228,29 @@ Centi.prototype.noise = function(){
         return perlin.perlin3(arguments[0], arguments[1], arguments[2]);   
     }
     return 0;
-}
+};
 
 // Draw
 
 Centi.prototype.rect = function(_x, _y, _w, _h){
     if ( this.bFill ) this.ctx.fillRect(_x, _y, _w, _h);
     else this.ctx.strokeRect(_x, _y, _w, _h);
-}
+};
 
 Centi.prototype.oval = function(_x, _y, _rad) {
     this.ctx.beginPath();
     this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
     if ( this.bFill ) this.ctx.fill();
     else this.ctx.stroke()
-}
+};
 
-Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); }
+Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); };
 Centi.prototype.line = function(_x1, _y1, _x2, _y2){
     this.ctx.beginPath();
     this.ctx.moveTo(_x1, _y1);
     this.ctx.lineTo(_x2, _y2);
     this.ctx.stroke();
-}
+};
 
 Centi.prototype.curve = function(){
     if ( arguments.length == 8 ) {
@@ -261,20 +263,20 @@ Centi.prototype.curve = function(){
             this.curve(arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5], arguments[0][6], arguments[0][7])
         }
     } 
-}
+};
 
-Centi.prototype.lw = function(_w){ this.lineWidth(_w); }
+Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
 Centi.prototype.lineWidth = function(_w){
     this.ctx.lineWidth = _w;
-}
+};
 
 Centi.prototype.moveTo = function(_x1, _y1){
     this.ctx.moveTo(_x1, _y1);
-}
+};
 
 Centi.prototype.lineTo = function(_x1, _y1){
     this.ctx.lineTo(_x1, _y1);
-}
+};
 
 Centi.prototype.curveTo = function(){
     if ( arguments.length == 6 ) {
@@ -284,16 +286,16 @@ Centi.prototype.curveTo = function(){
             this.ctx.bezierCurveTo(arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5]);
         }
     }
-}
+};
 
 Centi.prototype.beginShape = function(){
     this.ctx.beginPath();
-}
+};
 
 Centi.prototype.endShape = function(){
     if ( this.bFill ) this.ctx.fill();
     else this.ctx.stroke();
-}
+};
 
 Centi.prototype.drawMe = function(){
     var len = arguments.length;
@@ -304,7 +306,7 @@ Centi.prototype.drawMe = function(){
     } else if ( len == 8 ) {
         this.ctx.drawImage(this.canvas, arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7]);   
     }
-}
+};
 
 Centi.prototype.col = function(){
     var len = arguments.length;
@@ -320,48 +322,48 @@ Centi.prototype.col = function(){
     }
     this.ctx.fillStyle = s;
     this.ctx.strokeStyle = s;
-}
+};
 
 Centi.prototype.fill = function(){
     this.bFill = true;
-}
+};
 
 Centi.prototype.strk = function(){ this.stroke(); };
 Centi.prototype.stroke = function(){
     this.bFill = false;
-}
+};
 
 // Transform
 
 Centi.prototype.push = function(){
     this.ctx.save();
-}
+};
 
 Centi.prototype.pop = function(){
     this.ctx.restore();
-}
+};
 
 Centi.prototype.rotate = function(_rota){
     this.ctx.rotate(_rota);
-}
+};
 
 Centi.prototype.scale = function(_x, _y){
     this.ctx.scale(_x, _y);
-}
+};
 
 Centi.prototype.translate = function(_x, _y){
     this.ctx.translate(_x, _y);
-}
+};
 
 Centi.prototype.transform = function(_a, _b, _c, _d, _e, _f){
     this.ctx.transform(_a, _b, _c, _d, _e, _f);
-}
+};
 
 // Math
 
 Centi.prototype.interp = function(a, b, rate){
     return b + (a-b)*rate;
-}
+};
 
 Centi.prototype.dist = function(){
     var len = arguments.length;
@@ -372,7 +374,7 @@ Centi.prototype.dist = function(){
     } else if ( len == 2 && arguments[0].hasOwnProperty("x") && arguments[0].hasOwnProperty("y") && arguments[1].hasOwnProperty("x") && arguments[1].hasOwnProperty("y") ) {
         return this.dist(arguments[0].x, arguments[0].y, arguments[1].x, arguments[1].y);
     }
-}
+};
 
 Centi.prototype.wrap = function(_a, _min, _max){
     var d = _max - _min;
@@ -383,19 +385,62 @@ Centi.prototype.wrap = function(_a, _min, _max){
     } else {
         return _a;
     }
-}
+};
 
 Centi.prototype.minMax = function(_a, _min, _max){
     return Math.min(_min, Math.max(_a, _max));
-}
+};
 
 Centi.prototype.map = function(_num, _in_min, _in_max, _out_min, _out_max){
     return ((_num - _in_min)/(_in_max - _in_min))*(_out_max - _out_min) + _out_min;
-}
+};
 
 Centi.prototype.zmap = function(_num, _in_min, _in_max, _out_min, _out_max){
     return this.minMax(this.map(_num, _in_min, _in_max, _out_min, _out_max), _out_min, _out_max);
-}
+};
+
+Centi.prototype.avg = function(_arr){
+    if ( _arr && _arr.length > 0 ) {
+        var l = _arr.length;
+        var val = 0;
+        for ( var i=0; i<l; i++ ) {
+            val += _arr[i];
+        }
+        return val/l;
+    } else {
+        return 0;
+    }
+};
+
+
+Centi.prototype.cent = function() {
+    var len        = arguments.length;
+    if ( len == 1 && arguments[0].length > 1 ) {
+        len = arguments[0].length;
+        var centroid      = { x: 0, y: 0 };
+        var area          = 0;
+        
+        for (var i = 0; i < len; i++ ) {
+            var curr = arguments[0][i];
+            var next = arguments[0][(i+1)%len];
+            
+            centroid.x += (curr.x + next.x) * (curr.x*next.y - next.x*curr.y);
+            centroid.y += (curr.y + next.y) * (curr.x*next.y - next.x*curr.y);
+            
+            area += (curr.x*next.y - next.x*curr.y);
+        }
+        
+        area = area / 2.0;
+        
+        centroid.x = centroid.x / (6 * area);
+        centroid.y = centroid.y / (6 * area);
+        
+        return centroid;
+    } else {
+        return {x:0, y:0};
+    }
+    
+};
 
 Centi.prototype.curves = function() {
     var len = arguments.length;
@@ -410,7 +455,7 @@ Centi.prototype.curves = function() {
             return this.getPointsOnCurve( arguments[0][0], arguments[0][1], arguments[0][2], arguments[0][3], arguments[0][4], arguments[0][5], arguments[0][6], arguments[0][7], arguments[0][8]);
         }
     }
-}
+};
 
 Centi.prototype.getPointsOnCurve = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x, _cp2y, _x2, _y2) {
     if ( _div < 2 ) _div = 2;
@@ -421,31 +466,31 @@ Centi.prototype.getPointsOnCurve = function(_div, _x1, _y1, _cp1x, _cp1y, _cp2x,
         arr.push(this.getPointOnCubicBezier(r, _y1, _cp1y, _cp2y, _y2));
     }
     return arr;
-}
+};
 
 Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     var _k = 1 - _t;
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
-}
+};
 
 Centi.prototype.tree = function(_pts){
     this.kdtree = new kdTree(_pts, distance, ["x", "y"]);
     function distance(a, b) {
         return Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2);
     }
-}
+};
 
 Centi.prototype.nears = function(_pt, _count, _distance){
     return this.kdtree.nearest(_pt, _count, _distance);
-}
+};
 
 Centi.prototype.r2d = function(_radian){
     return (_radian * 180) / Math.PI;
-}
+};
 
 Centi.prototype.d2r = function(_degree){
     return (_degree * Math.PI) / 180;
-}
+};
 
 // Array
 
@@ -457,11 +502,11 @@ Centi.prototype.sortNum = function(_arr){
             return 0;
         }
     );
-}
+};
 
 Centi.prototype.reverse = function(_arr){
     _arr.reverse();
-}
+};
 
 // Geometry
 
@@ -471,7 +516,7 @@ Centi.prototype.vec2 = function(_x, _y){
 Centi.Vec2 = function(_x, _y){
     this.x = _x;
     this.y = _y;
-}
+};
 
 // centi funcs
 

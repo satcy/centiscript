@@ -80,7 +80,7 @@ WebFontConfig = {
         </script>  
       <div class="editor_textarea">
         <textarea name="inputtitle" id="inputtitle" rows="1" cols="50" wrap="hard" onfocus="if(this.value==this.defaultValue){this.value='';this.style.color='#333';}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#999999'}" onkeyup="CENTI.checkTitle(value)">Title</textarea>
-        <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeyup="CENTI.strlength(value)">sz(720,360)bg(0)a=([])for(i,0,w){a[i]=obj()a[i].x=(0)a[i].v=(0)}frame(){drawMe(0,0,w,h,-2,-2,w+4,h+4)for(i,0,w){a[i].v+=nz(i*0.004,c*0.01)a[i].x+=(a[i].v)a[i].v+=((0-a[i].x)*0.01)x=(i)y=(a[i].x)col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}</textarea>
+        <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeydown="CENTI.insertTab(this, event);" onkeyup="CENTI.strlength(value)">sz(720,360)bg(0)a=([])for(i,0,w){a[i]=obj()a[i].x=(0)a[i].v=(0)}frame(){drawMe(0,0,w,h,-2,-2,w+4,h+4)for(i,0,w){a[i].v+=nz(i*0.004,c*0.01)a[i].x+=(a[i].v)a[i].v+=((0-a[i].x)*0.01)x=(i)y=(a[i].x)col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}</textarea>
       </div>
       <div class="editor_tools">
         <span class="editor_btn">

@@ -153,6 +153,35 @@ CENTI.endToGif = function(){
     ct.toGifFunc = null;
 }
 
+CENTI.insertTab = function(o, e){
+    var kC = e.keyCode ? e.keyCode : e.charCode ? e.charCode : e.which;
+    if (kC == 9 && !e.shiftKey && !e.ctrlKey && !e.altKey) {
+        var oS = o.scrollTop;
+        if (o.setSelectionRange) {
+            // Opera + FireFox + Safari
+            var sS = o.selectionStart;
+            var sE = o.selectionEnd;
+            o.value = o.value.substring(0, sS) + "\t" + o.value.substr(sE);
+            o.setSelectionRange(sS + 1, sS + 1);
+            o.focus();
+        } else if (o.createTextRange) {
+            // IE
+            document.selection.createRange().text = "\t"; // String.fromCharCode(9)
+            //o.onblur = function() { o.focus(); o.onblur = null; };
+            e.returnValue = false;
+        } else {
+            alert('Please contact the admin and tell xe that the tab functionality does not work in your browser.');
+        }
+        o.scrollTop = oS; // Return to the original scroll position.
+        if (e.preventDefault) // DOM
+        {
+            e.preventDefault();
+        }
+        return false; // Not needed, but good practice.
+    }
+    return true;
+};
+
 CENTI.strlength = function(str) {
     str = str.replace(/\s/g, "");
   document.getElementById("idStrlength").innerHTML = (str.length);
