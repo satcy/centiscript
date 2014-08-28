@@ -274,7 +274,7 @@ CENTI.getTweetsList = function(){
                 var url = myData[i].url;
                 var name = myData[i].user;
                 var id_str = myData[i].id;
-                var txt = "<div id='list_one'><a href='" + url + "'><img src='" + img + "' width='233'></a>\n(<a href='https://twitter.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</div>\n";
+                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n(<a href='https://twitter.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</div>\n";
                 if ( i%3 == 0 ) d1 += txt;
                 else if ( i%3 == 1 ) d2 += txt;
                 else d3 += txt;
@@ -284,6 +284,11 @@ CENTI.getTweetsList = function(){
             d3 += "</span>";
             document.getElementById("result").innerHTML = (d1 + "\n" + d2 + "\n" + d3);
         }
+        echo.init({
+          offset: 100,
+          throttle: 250,
+          unload: false
+        });
     }
 
     httpObj.send(null);
