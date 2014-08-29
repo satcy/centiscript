@@ -137,8 +137,8 @@ Centi.prototype.modFunction = function(_str){
     var funcNum = (_str.match(/function/g)||[]).length;
     if ( funcNum > 0 ) {
         var txt = _str;
-        var index = 0;
-        var current = txt.indexOf("function", index) + 7;
+        var current = 0;
+        current = txt.indexOf("function", current) + 7;
         var flag = 0;
         var preFlag = flag;
         while ( current < txt.length ) {
@@ -147,6 +147,9 @@ Centi.prototype.modFunction = function(_str){
             if ( s == '}' ) flag--;
             if ( preFlag == 1 && flag == 0 ) {
                 txt = txt.slice(0, current+1) + ";" + txt.slice(current+1);
+                funcNum--;
+                if ( funcNum > 0 ) current = txt.indexOf("function", current) + 7;
+                else if ( funcNum == 0 ) break;
             }
             preFlag = flag;
             current++;
