@@ -83,40 +83,43 @@ Centi.prototype.parse = function(tw){
     frameMethod = frameMethod.slice(frameMethod.indexOf("{")+1, frameMethod.lastIndexOf("}"));
 
     var forReg = new RegExp(this.name+".for\\(", "g");
+    var whileReg = new RegExp(this.name+".while\\(", "g");
     var ifReg = new RegExp(this.name+".if\\(", "g");
     var elseReg = new RegExp(this.name+".else\\{", "g");
     var elseIfReg = new RegExp(this.name+".elseIf\\(", "g");
     var numbersReg = new RegExp("(" + this.name + ")\.([0-9\.]+)", "g");
     var valueReg = /([A-Za-z0-9_]+)([\.\!\~\|\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,\^])/g;
+    var funcReg = new RegExp(this.name+".func\\(", "g");
+    var argmentReg = /(\$)([0-9]+)/g;
+    var returnReg = new RegExp(this.name+".return\\(([\\w\\W]+)", "g");
     var objReg = new RegExp("\\." + this.name + "\\.", "g");
-    setupMethod = setupMethod.replace(valueReg, this.name + "."+"$1"+"$2");
-    setupMethod = setupMethod.replace(numbersReg, "$2");
-    setupMethod = setupMethod.replace(forReg, "for(");
-    setupMethod = setupMethod.replace(ifReg, "if(");
-    setupMethod = setupMethod.replace(elseReg, "else{");
-    setupMethod = setupMethod.replace(elseIfReg, "else if(");
-    setupMethod = setupMethod.replace(objReg, ".");
-    for ( var i=0; i<MATHS.length; i++ ) {
-        var math_word = this.name + "." + MATHS[i] + "\\(";
-        setupMethod = setupMethod.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
-    }
-    for ( var i=0; i<MATH_PROPS.length; i++ ) {
-        setupMethod = setupMethod.replace(new RegExp(this.name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
-    }
 
-    frameMethod = frameMethod.replace(valueReg, this.name + "."+"$1"+"$2");
-    frameMethod = frameMethod.replace(numbersReg, "$2");
-    frameMethod = frameMethod.replace(forReg, "for(");
-    frameMethod = frameMethod.replace(ifReg, "if(");
-    frameMethod = frameMethod.replace(elseReg, "else{");
-    frameMethod = frameMethod.replace(elseIfReg, "else if(");
-    frameMethod = frameMethod.replace(objReg, ".");
-    for ( var i=0; i<MATHS.length; i++ ) {
-        var math_word = this.name + "." + MATHS[i] + "\\(";
-        frameMethod = frameMethod.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
-    }
-    for ( var i=0; i<MATH_PROPS.length; i++ ) {
-        frameMethod = frameMethod.replace(new RegExp(this.name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+    setupMethod = replace(setupMethod, this.name);
+    setupMethod = this.modFunction(setupMethod);
+
+    frameMethod = replace(frameMethod, this.name);
+    frameMethod = this.modFunction(frameMethod);
+
+    function replace(str, name){
+        str = str.replace(valueReg, name + "."+"$1"+"$2");
+        str = str.replace(numbersReg, "$2");
+        str = str.replace(forReg, "for(");
+        str = str.replace(whileReg, "while(");
+        str = str.replace(ifReg, "if(");
+        str = str.replace(elseReg, "else{");
+        str = str.replace(elseIfReg, "else if(");
+        str = str.replace(funcReg, "function(");
+        str = str.replace(argmentReg, "arguments[" + '$2' + ']');
+        str = str.replace(returnReg, "return "+'($1');
+        str = str.replace(objReg, ".");
+        for ( var i=0; i<MATHS.length; i++ ) {
+            var math_word = name + "." + MATHS[i] + "\\(";
+            str = str.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
+        }
+        for ( var i=0; i<MATH_PROPS.length; i++ ) {
+            str = str.replace(new RegExp(name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+        }
+        return str;
     }
 
     //console.log(setupMethod);
@@ -129,6 +132,30 @@ Centi.prototype.parse = function(tw){
     return true;
 
 };
+
+Centi.prototype.modFunction = function(_str){
+    var funcNum = (_str.match(/function/g)||[]).length;
+    if ( funcNum > 0 ) {
+        var txt = _str;
+        var index = 0;
+        var current = txt.indexOf("function", index) + 7;
+        var flag = 0;
+        var preFlag = flag;
+        while ( current < txt.length ) {
+            var s = txt.charAt(current);
+            if ( s == '{' ) flag++;
+            if ( s == '}' ) flag--;
+            if ( preFlag == 1 && flag == 0 ) {
+                txt = txt.slice(0, current+1) + ";" + txt.slice(current+1);
+            }
+            preFlag = flag;
+            current++;
+        }
+        _str = txt;
+    }
+    return _str;
+};
+
 
 Centi.prototype.update = function(){
     evalInContext(this.drawMethod, this);
@@ -417,25 +444,25 @@ Centi.prototype.cent = function() {
     var len        = arguments.length;
     if ( len == 1 && arguments[0].length > 1 ) {
         len = arguments[0].length;
-        var centroid      = { x: 0, y: 0 };
+        var center      = { x: 0, y: 0 };
         var area          = 0;
         
         for (var i = 0; i < len; i++ ) {
-            var curr = arguments[0][i];
-            var next = arguments[0][(i+1)%len];
+            var p1 = arguments[0][i];
+            var p2 = arguments[0][(i+1)%len];
             
-            centroid.x += (curr.x + next.x) * (curr.x*next.y - next.x*curr.y);
-            centroid.y += (curr.y + next.y) * (curr.x*next.y - next.x*curr.y);
+            center.x += (p1.x + p2.x) * (p1.x*p2.y - p2.x*p1.y);
+            center.y += (p1.y + p2.y) * (p1.x*p2.y - p2.x*p1.y);
             
-            area += (curr.x*next.y - next.x*curr.y);
+            area += (p1.x*p2.y - p2.x*p1.y);
         }
         
         area = area / 2.0;
         
-        centroid.x = centroid.x / (6 * area);
-        centroid.y = centroid.y / (6 * area);
+        center.x = center.x / (6 * area);
+        center.y = center.y / (6 * area);
         
-        return centroid;
+        return center;
     } else {
         return {x:0, y:0};
     }
