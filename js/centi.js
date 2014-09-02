@@ -41,7 +41,7 @@ var Centi = function(name){
         analyser: null,
         processor: null
     };
-    this.fft = new Uint8Array(2048);
+    this.fft = new Uint8Array(1024);
     this.waveUint = new Uint8Array(2048);
     this.wave = new Float32Array(2048);
     // 
@@ -125,7 +125,7 @@ Centi.prototype.init = function(canvas, audioContext){
             } else if (/Win(dows )?(NT 5\.1|XP)/.test(navigator.userAgent)) {
                 return 4096;  //Windows XP
             } else if (/Mac|PPC/.test(navigator.userAgent)) {
-                return 1024;  //Mac OS X
+                return /*1024*/4096;  //Mac OS X
             } else if (/Linux/.test(navigator.userAgent)) {
                 return 8192;  //Linux
             } else if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
@@ -139,7 +139,7 @@ Centi.prototype.init = function(canvas, audioContext){
         this.dsp.analyser.connect(this.dsp.context.destination);
         var inc_time = 1.0/this.dsp.context.sampleRate;
         
-        var processor = this.dsp.context.createScriptProcessor(4096, 2, 2);
+        var processor = this.dsp.context.createScriptProcessor(getBufferSize(), 2, 2);
         this.dsp.processor = processor;
         var dummy = this.dsp.context.createBufferSource();
         dummy.connect(processor);
