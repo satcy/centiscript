@@ -36,26 +36,28 @@ var Centi = function(name){
     this.ctx = null;
 
     this.GOLD = (1+Math.sqrt(5))/2;
-    
+    //
     this.x=0;
     this.y=0;
     //
     this.c = 0;
+    this.time = 0;
     this.w = 720;
     this.h = 360;
     this.cx = this.w/2;
     this.cy = this.h/2;
     //
-    
+    this.initSec = new Date().getTime()/1000;
+    //
     this.bgcolor = {r:0, g:0, b:0};
-
     this.bFill = true;
-
-    this.drawMethod = '';
-
-    this.toGifFunc = null;
-
     this.kdtree;
+    //
+    this.drawMethod = '';
+    //
+    this.toGifFunc = null;
+    //
+    
 };
 
 Centi.prototype.init = function(canvas){
@@ -91,7 +93,7 @@ Centi.prototype.parse = function(tw){
     var valueReg = /([A-Za-z0-9_]+)([\.\!\~\|\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,\^])/g;
     var funcReg = new RegExp(this.name+".func\\(", "g");
     var argmentReg = /(\$)([0-9]+)/g;
-    var returnReg = new RegExp(this.name+".return\\(([\\w\\W]+)", "g");
+    var returnReg = new RegExp(this.name+".return\\(", "g");
     var objReg = new RegExp("\\." + this.name + "\\.", "g");
 
     setupMethod = replace(setupMethod, this.name);
@@ -110,7 +112,7 @@ Centi.prototype.parse = function(tw){
         str = str.replace(elseIfReg, "else if(");
         str = str.replace(funcReg, "function(");
         str = str.replace(argmentReg, "arguments[" + '$2' + ']');
-        str = str.replace(returnReg, "return "+'($1');
+        str = str.replace(returnReg, "return (");
         str = str.replace(objReg, ".");
         for ( var i=0; i<MATHS.length; i++ ) {
             var math_word = name + "." + MATHS[i] + "\\(";
@@ -159,8 +161,31 @@ Centi.prototype.modFunction = function(_str){
     return _str;
 };
 
+Centi.prototype.getInnerExpression = function(_str){
+    var txt = _str;
+    var start = 0;
+    var current = 0;
+    start = current = txt.indexOf("{", current);
+    if ( start == -1 ) return false;
+    var flag = 0;
+    var preFlag = flag;
+    while ( current < txt.length ) {
+        var s = txt.charAt(current);
+        if ( s == '{' ) flag++;
+        if ( s == '}' ) flag--;
+        if ( preFlag == 1 && flag == 0 ) {
+            txt = txt.slice(start, current);
+            break;
+        }
+        preFlag = flag;
+        current++;
+    }
+    if ( flag == 0 ) return txt;
+    else return false;
+};
 
 Centi.prototype.update = function(){
+    this.time = new Date().getTime()/1000 - this.initSec;
     evalInContext(this.drawMethod, this);
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
@@ -168,6 +193,7 @@ Centi.prototype.update = function(){
 
 Centi.prototype.reset = function(){
     this.c = 0;
+    this.initSec = new Date().getTime()/1000;
     this.bFill = true;
     this.lw(1);
 };
@@ -503,6 +529,15 @@ Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
 };
 
+Centi.prototype.r2d = function(_radian){
+    return (_radian * 180) / Math.PI;
+};
+
+Centi.prototype.d2r = function(_degree){
+    return (_degree * Math.PI) / 180;
+};
+
+// kdTree
 Centi.prototype.tree = function(_pts){
     this.kdtree = new kdTree(_pts, distance, ["x", "y"]);
     function distance(a, b) {
@@ -514,13 +549,14 @@ Centi.prototype.nears = function(_pt, _count, _distance){
     return this.kdtree.nearest(_pt, _count, _distance);
 };
 
-Centi.prototype.r2d = function(_radian){
-    return (_radian * 180) / Math.PI;
-};
+// BPM
+Centi.prototype.bpm = function(_bpm){
 
-Centi.prototype.d2r = function(_degree){
-    return (_degree * Math.PI) / 180;
-};
+}
+
+Centi.prototype.onBeat = function(){
+
+}
 
 // Array
 
