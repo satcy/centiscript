@@ -96,3 +96,25 @@ function checkFileReaderApi(){
 function checkFileWriterApi(){
   return window.File && window.saveAs && window.FileList && window.Blob;
 }
+
+var audioContext = null;
+
+function getAudioContext(){
+    return audioContext || (audioContext = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext)());
+}
+
+var audioAnalyser = null;
+
+function getAudioAnalyser(){
+    return audioAnalyser || (audioAnalyser = getAudioContext().createAnalyser());
+}
+
+if ( !Array.prototype.forEach ) {
+    Array.prototype.forEach = function(callback, context){
+        for ( var i=0; i<this.length; i++ ) {
+            callback.call(context || null, this[i], i, this);
+        }
+    };
+}
+
+

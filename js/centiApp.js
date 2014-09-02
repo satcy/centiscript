@@ -52,8 +52,9 @@ CENTI.init = function(){
     CENTI.editor = document.getElementById('editor');
     CENTI.inputTitle = document.getElementById('inputtitle');
     var canvas = document.getElementById("canvas0");
+    if ( ct ) ct.destroy();
     ct = new Centi();
-    if ( !ct.init(canvas) ) {
+    if ( !ct.init(canvas, getAudioContext()) ) {
         CENTI.editor.value = "disable canvas.";
     }
 }
