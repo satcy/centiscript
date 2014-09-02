@@ -137,9 +137,10 @@ Centi.prototype.init = function(canvas, audioContext){
 
         this.dsp.analyser = this.dsp.context.createAnalyser();
         this.dsp.analyser.connect(this.dsp.context.destination);
+        console.log(this.dsp.analyser);
         var inc_time = 1.0/this.dsp.context.sampleRate;
         
-        var processor = this.dsp.context.createScriptProcessor(getBufferSize(), 2, 2);
+        var processor = this.dsp.context.createScriptProcessor(getBufferSize(), 0, 2);
         this.dsp.processor = processor;
         var dummy = this.dsp.context.createBufferSource();
         dummy.connect(processor);
@@ -149,7 +150,6 @@ Centi.prototype.init = function(canvas, audioContext){
         
         processor.onaudioprocess = function(event) {
             //self.time = self.now() - self.initSec;
-            //console.log(self.time);
             //var inputLs = event.inputBuffer.getChannelData(0);  
             //var inputRs = event.inputBuffer.getChannelData(1);  
             self.updateBeat();
@@ -251,22 +251,19 @@ Centi.prototype.parse = function(tw){
     this.dspMethod = dspMethod;
 
     if ( this.drawMethod != '' ) {
-        if ( this.drawMethod ) this.drawMethod = 'return (function(){' + this.drawMethod + '});';
-        this.drawFunc = evalInContext(this.drawMethod, this);
+        this.drawFunc = evalInContext('return (function(){' + this.drawMethod + '});', this);
     } else {
         this.drawFunc = null;
     }
 
     if ( this.beatMethod != '' ) {
-        if ( this.beatMethod ) this.beatMethod = 'return (function(){' + this.beatMethod + '});';
-        this.beatFunc = evalInContext(this.beatMethod, this);
+        this.beatFunc = evalInContext('return (function(){' + this.beatMethod + '});', this);
     } else {
         this.beatFunc = null;
     }
 
     if ( this.dspMethod != '' ) {
-        if ( this.dspMethod ) this.dspMethod = 'return (function(){' + this.dspMethod + '});';
-        this.dspFunc = evalInContext(this.dspMethod, this);
+        this.dspFunc = evalInContext('return (function(){' + this.dspMethod + '});', this);
     } else {
         this.dspFunc = null;
     }
