@@ -41,6 +41,7 @@ var Centi = function(name){
         analyser: null,
         processor: null
     };
+    this.sampleRate = 44100;
     this.fft = new Uint8Array(1024);
     this.waveUint = new Uint8Array(2048);
     this.wave = new Float32Array(2048);
@@ -138,6 +139,7 @@ Centi.prototype.init = function(canvas, audioContext){
         this.dsp.analyser = this.dsp.context.createAnalyser();
         this.dsp.analyser.connect(this.dsp.context.destination);
         console.log(this.dsp.analyser);
+        this.sampleRate = this.dsp.context.sampleRate;
         var inc_time = 1.0/this.dsp.context.sampleRate;
         
         var processor = this.dsp.context.createScriptProcessor(getBufferSize(), 0, 2);
@@ -153,8 +155,8 @@ Centi.prototype.init = function(canvas, audioContext){
             //var inputLs = event.inputBuffer.getChannelData(0);  
             //var inputRs = event.inputBuffer.getChannelData(1);  
             self.updateBeat();
-            var outL = event.outputBuffer.getChannelData(0);  //Left  channel
-            var outR = event.outputBuffer.getChannelData(1);  //Right channel
+            var outL = event.outputBuffer.getChannelData(0);
+            var outR = event.outputBuffer.getChannelData(1);
             for (var i = 0; i < this.bufferSize; i++) {
                 var t = self.time;
                 var value = self.evalDsp();
@@ -567,6 +569,31 @@ Centi.prototype.transform = function(_a, _b, _c, _d, _e, _f){
     this.ctx.transform(_a, _b, _c, _d, _e, _f);
 };
 
+// draw audio visualization
+
+Centi.prototype.drawFFT = function(_x, _y, _w, _h, _skip, _barW){
+    var barW = _barW || 2;
+    var skip = _skip || 9;
+    var n = this.fft.length;
+    var cx = _w/n;
+    var sc = _h/255;
+    for ( var i=0; i<n; i+=skip ) {
+        this.rect(_x + i*cx, _y + _h, barW, -this.fft[i]*sc);
+    }
+};
+
+Centi.prototype.drawWave = function(_x, _y, _w, _h, _skip){
+    var skip = _skip || 9;
+    var n = this.wave.length;
+    var cx = _w/(n-1);
+    var sc = _h/2;
+    this.beginShape();
+    for ( var i=0; i<n; i+=skip ) {
+        this.lineTo(_x + i * cx, _y + sc + this.wave[i] * sc);
+    }
+    this.endShape();
+};
+
 // Math
 
 Centi.prototype.interp = function(a, b, rate){
@@ -707,7 +734,7 @@ Centi.prototype.bpm = function(_bpm, _divide){
     this.tempo.divide = _divide ? _divide : 4;
     this.tempo.sec = (60/this.tempo.bpm*4)/this.tempo.divide;
     this.tempo.preSec = this.time;
-}
+};
 
 Centi.prototype.updateBeat = function(){
     if ( this.time - this.tempo.preSec >= this.tempo.sec ) {
@@ -716,7 +743,11 @@ Centi.prototype.updateBeat = function(){
         this.tempo.preSec = this.time;
         this.beat ++;
     }
-}
+};
+
+Centi.prototype.n2f = function(_note) {
+    return Math.pow(2, (_note - 69) / 12) * 440.0;
+};
 
 // Array
 
