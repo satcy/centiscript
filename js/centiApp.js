@@ -218,7 +218,7 @@ CENTI.onFileChanged = function(){
     
     var reader = new FileReader();
     reader.onloadend = function (e) {
-        editor.value = this.result;
+        CENTI.editor.value = this.result;
     };
     
     reader.readAsText(file);
@@ -308,7 +308,7 @@ window.onload = function(){
             CENTI.editor.value = /*unescape*/(params["c"]);
             CENTI.run();
         }
-        CENTI.strlength(editor.value);
+        CENTI.strlength(CENTI.editor.value);
 
         CENTI.getTweetsList();
         

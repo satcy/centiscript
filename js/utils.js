@@ -98,9 +98,11 @@ function checkFileWriterApi(){
 }
 
 var audioContext = null;
+var audioContextClass = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
 
 function getAudioContext(){
-    return audioContext || (audioContext = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext)());
+  if ( audioContextClass ) return audioContext || (audioContext = new audioContextClass());
+  else null;
 }
 
 var audioAnalyser = null;
