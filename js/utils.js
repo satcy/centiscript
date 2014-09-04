@@ -101,8 +101,9 @@ var audioContext = null;
 var audioContextClass = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
 
 function getAudioContext(){
-  if ( audioContextClass ) return audioContext || (audioContext = new audioContextClass());
-  else null;
+  if ( audioContext ) return audioContext;
+  if ( !audioContext && audioContextClass ) return (audioContext = new audioContextClass());
+  else return null;
 }
 
 var audioAnalyser = null;

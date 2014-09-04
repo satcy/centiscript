@@ -99,13 +99,11 @@ CENTI.resizeCanvas = function() {
 
 
 CENTI.init = function(){
-    
     var canvas = document.getElementById("canvas0");
     ct = new Centi();
-    if ( !ct.init(canvas) ) {
+    if ( !ct.init(canvas, getAudioContext()) ) {
         return;
     }
-
     canvasFull = document.getElementById("canvasFull");
     ctxFull = canvasFull.getContext("2d");
     window.addEventListener('resize', CENTI.resizeCanvas, false);
@@ -116,6 +114,7 @@ CENTI.init = function(){
 }
 
 CENTI.run = function(tw){
+
     ct.reset();
     ct.c = Math.floor(Math.random()*99999999);
     frameCount = Math.floor(Math.random()*99999999);

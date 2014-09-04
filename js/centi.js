@@ -85,10 +85,18 @@ var Centi = function(name){
 };
 
 Centi.prototype.destroy = function(){
-    processor.disconnect();
-    this.dsp.processor.onaudioprocess = null;
-    this.dsp.analyser.disconnect();
-    this.dsp.analyser = null;
+    if ( this.dsp.processor ) {
+        this.dsp.processor.disconnect();
+        this.dsp.processor.onaudioprocess = null;
+        this.dsp.processor = null;
+    }
+    if ( this.dsp.analyser ) {
+        this.dsp.analyser.disconnect();
+        this.dsp.analyser = null;
+    }
+    if ( this.dsp.context ) {
+        this.dsp.context.distination.disconnect();
+    }
     this.dsp.context = null;
     this.canvas = null;
     this.ctx = null;
@@ -114,6 +122,7 @@ Centi.prototype.init = function(canvas, audioContext){
     if ( audioContext ) {
         this.dsp.enable = true;
         this.dsp.context = audioContext;
+
         this.dsp.context.createScriptProcessor = this.dsp.context.createScriptProcessor || this.dsp.context.createJavaScriptNode;
         
         var getBufferSize = function() {
@@ -138,7 +147,7 @@ Centi.prototype.init = function(canvas, audioContext){
 
         this.dsp.analyser = this.dsp.context.createAnalyser();
         this.dsp.analyser.connect(this.dsp.context.destination);
-        console.log(this.dsp.analyser);
+        //console.log(this.dsp.analyser);
         this.sampleRate = this.dsp.context.sampleRate;
         var inc_time = 1.0/this.dsp.context.sampleRate;
         
@@ -159,7 +168,7 @@ Centi.prototype.init = function(canvas, audioContext){
             var outR = event.outputBuffer.getChannelData(1);
             for (var i = 0; i < this.bufferSize; i++) {
                 var t = self.time;
-                var value = self.evalDsp();
+                var value = self.doDsp();
                 outL[i] = value;
                 outR[i] = value;
                 self.time += inc_time;
@@ -177,7 +186,7 @@ Centi.prototype.init = function(canvas, audioContext){
     }
 };
 
-Centi.prototype.evalDsp = function(){
+Centi.prototype.doDsp = function(){
     return ( this.dspFunc ) ? this.dspFunc() : 0;
 };
 
@@ -274,7 +283,6 @@ Centi.prototype.parse = function(tw){
     this.bpm(120,4);
     evalInContext(setupMethod, this);
     return true;
-
 };
 
 Centi.prototype.modFunction = function(_str){
@@ -709,11 +717,13 @@ Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
 };
 
-Centi.prototype.r2d = function(_radian){
+Centi.prototype.radToDeg = function(_radian) { return this.r2d(_radian); }; 
+Centi.prototype.r2d = function(_radian) {
     return (_radian * 180) / Math.PI;
 };
 
-Centi.prototype.d2r = function(_degree){
+Centi.prototype.degToRad = function(_degree) { return this.d2r(_degree); }; 
+Centi.prototype.d2r = function(_degree) {
     return (_degree * Math.PI) / 180;
 };
 
@@ -746,6 +756,7 @@ Centi.prototype.updateBeat = function(){
     }
 };
 
+Centi.prototype.noteToFreq = function(_note) { return n2f(_note); };
 Centi.prototype.n2f = function(_note) {
     return Math.pow(2, (_note - 69) / 12) * 440.0;
 };

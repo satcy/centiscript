@@ -37,17 +37,6 @@ var CENTI = {
     imageUrl:null
 };
 
-
-CENTI.start = function(){
-    if ( CENTI.timer ) cancelAnimationFrame(CENTI.timer);
-    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
-} 
-
-CENTI.onFrame = function(){
-    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
-    ct.update();
-} 
-
 CENTI.init = function(){
     CENTI.editor = document.getElementById('editor');
     CENTI.inputTitle = document.getElementById('inputtitle');
@@ -57,7 +46,7 @@ CENTI.init = function(){
     if ( !ct.init(canvas, getAudioContext()) ) {
         CENTI.editor.value = "disable canvas.";
     }
-}
+};
 
 CENTI.run = function(){
     var tw;
@@ -69,7 +58,18 @@ CENTI.run = function(){
     } else {
         alert("unsuccess");   
     }
-}
+};
+
+
+CENTI.start = function(){
+    if ( CENTI.timer ) cancelAnimationFrame(CENTI.timer);
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+};
+
+CENTI.onFrame = function(){
+    CENTI.timer = requestAnimationFrame(CENTI.onFrame);
+    ct.update();
+}; 
 
 CENTI.tweet = function(){
     var code;
