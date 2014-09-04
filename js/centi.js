@@ -622,8 +622,9 @@ Centi.prototype.wrap = function(_a, _min, _max){
     }
 };
 
+Centi.prototype.minmax = function(_a, _min, _max){ return this.minMax(_a, _min, _max); };
 Centi.prototype.minMax = function(_a, _min, _max){
-    return Math.min(_min, Math.max(_a, _max));
+    return Math.min(_max, Math.max(_a, _min));
 };
 
 Centi.prototype.map = function(_num, _in_min, _in_max, _out_min, _out_max){
@@ -763,6 +764,16 @@ Centi.prototype.sortNum = function(_arr){
 
 Centi.prototype.reverse = function(_arr){
     _arr.reverse();
+};
+
+Centi.prototype.fold = function(_arr){
+    if ( _arr.reduce ) {
+        return _arr.reduce(function(a,b){return a+b;});
+    } else {
+        var a = 0;
+        for ( var i=0; i<_arr.length; i++ ) a += _arr[i];
+        return a;
+    }
 };
 
 // Geometry

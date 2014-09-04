@@ -93,7 +93,8 @@ CENTI.tweet = function(){
         var title = CENTI.inputTitle.value;
         if ( title == "Title" ) {
             title = "";
-        } else {
+        }
+        if ( title != "" ) {
             url += "&t="+encodeURIComponent(title);
             title += " ";
         }
