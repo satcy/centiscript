@@ -30,6 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
+    this.ver = '0.3.2';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -81,7 +82,7 @@ var Centi = function(name){
     //
     this.toGifFunc = null;
     //
-    
+
 };
 
 Centi.prototype.destroy = function(){
@@ -115,7 +116,7 @@ Centi.prototype.destroy = function(){
 
 Centi.prototype.init = function(canvas, audioContext){
     this.canvas = canvas;
-
+    
     this.initSec = this.now();
     this.time = 0;
     
@@ -197,15 +198,19 @@ Centi.prototype.parse = function(tw){
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
     tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)\*\+\/]+)(\))/g, "for($2=$4;$2<$6;$2++)");
 
-    var setupMethod = tw.replace(/frame\([\w\W]+/i, '');
-    setupMethod = setupMethod.replace(/beat\([\w\W]+/i, '');
-    setupMethod = setupMethod.replace(/dsp\([\w\W]+/i, '');
+    // var setupMethod = tw.replace(/frame\([\w\W]+/i, '');
+    // setupMethod = setupMethod.replace(/beat\([\w\W]+/i, '');
+    // setupMethod = setupMethod.replace(/dsp\([\w\W]+/i, '');
     //var frameMethod = frameReg.test(tw) ? tw.match(frameReg)[0] : "frame(){}";
     //frameMethod = frameMethod.slice(frameMethod.indexOf("{")+1, frameMethod.lastIndexOf("}"));
     var frameMethod = this.getInnerExpression(tw.slice(tw.indexOf('frame(')));
     var beatMethod = this.getInnerExpression(tw.slice(tw.indexOf('beat(')));
     var dspMethod = this.getInnerExpression(tw.slice(tw.indexOf('dsp(')));
 
+    var setupMethod = tw.replace('frame(){' + frameMethod + '}', '');
+    setupMethod = setupMethod.replace('beat(){' + beatMethod + '}', '');
+    setupMethod = setupMethod.replace('dsp(){' + dspMethod + '}', '');
+    
     var forReg = new RegExp(this.name+".for\\(", "g");
     var whileReg = new RegExp(this.name+".while\\(", "g");
     var ifReg = new RegExp(this.name+".if\\(", "g");
@@ -217,6 +222,7 @@ Centi.prototype.parse = function(tw){
     var argmentReg = /(\$)([0-9]+)/g;
     var returnReg = new RegExp(this.name+".return\\(", "g");
     var objReg = new RegExp("\\." + this.name + "\\.", "g");
+    var threeReg = new RegExp(this.name+".THREE.", "g");
 
     setupMethod = replace(setupMethod, this.name);
     setupMethod = this.modFunction(setupMethod);
@@ -242,6 +248,7 @@ Centi.prototype.parse = function(tw){
         str = str.replace(argmentReg, "arguments[" + '$2' + ']');
         str = str.replace(returnReg, "return (");
         str = str.replace(objReg, ".");
+        str = str.replace(threeReg, "THREE.");
         for ( var i=0; i<MATHS.length; i++ ) {
             var math_word = name + "." + MATHS[i] + "\\(";
             str = str.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
@@ -281,7 +288,9 @@ Centi.prototype.parse = function(tw){
 
     this.bg(0);
     this.bpm(120,4);
+    
     evalInContext(setupMethod, this);
+    
     return true;
 };
 
@@ -352,12 +361,24 @@ Centi.prototype.update = function(){
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
 };
 
+Centi.prototype.updateBeat = function(){
+    if ( this.time - this.tempo.preSec >= this.tempo.sec ) {
+        if ( this.beatFunc ) this.beatFunc();
+        //if ( this.beatMethod ) evalInContext(this.beatMethod, this);
+        this.tempo.preSec = this.time;
+        this.beat ++;
+    }
+};
+
 Centi.prototype.reset = function(){
     this.c = 0;
     this.initSec = this.now();
     this.time = 0;
     this.bFill = true;
     this.lw(1);
+    this.lj(0);
+    this.lc(0);
+    this.bm(0);
 };
 
 //centi funcs
@@ -376,9 +397,8 @@ Centi.prototype.bg = function(){
     this.clear();
 };
 
-Centi.prototype.lg = function(){
-    console.log(arguments);
-};
+Centi.prototype.lg = function(){ console.log(arguments); };
+Centi.prototype.log = function(){ console.log(arguments); };
 
 Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); };
 Centi.prototype.size = function(_w, _h){
@@ -392,13 +412,16 @@ Centi.prototype.size = function(_w, _h){
 
 Centi.prototype.clr = function(){ this.clear(); };
 Centi.prototype.clear = function(){
+    var mode = this.ctx.globalCompositeOperation;
+    this.ctx.globalCompositeOperation = 'source-over';
+    //this.log(this.ctx.globalCompositeOperation, mode );
     this.ctx.fillStyle = "rgb("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+")";
     this.ctx.fillRect(0,0,this.w, this.h);    
+    this.ctx.globalCompositeOperation = mode;
 };
 
-Centi.prototype.obj = function(){
-    return new Object();
-};
+Centi.prototype.Obj = function(){ return new Object(); };
+Centi.prototype.obj = function(){ return new Object(); };
 
 // Randomize
 
@@ -483,11 +506,6 @@ Centi.prototype.curve = function(){
     } 
 };
 
-Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
-Centi.prototype.lineWidth = function(_w){
-    this.ctx.lineWidth = _w;
-};
-
 Centi.prototype.moveTo = function(_x1, _y1){
     this.ctx.moveTo(_x1, _y1);
 };
@@ -523,6 +541,36 @@ Centi.prototype.drawMe = function(){
         this.ctx.drawImage(this.canvas, arguments[0], arguments[1], arguments[2], arguments[3]);
     } else if ( len == 8 ) {
         this.ctx.drawImage(this.canvas, arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7]);   
+    }
+};
+
+Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
+Centi.prototype.lineWidth = function(_w){
+    this.ctx.lineWidth = _w;
+};
+
+Centi.prototype.lj = function(_val){ this.lineJoin(_val); };
+Centi.prototype.lineJoin = function(_val){
+    if ( _val == 0 ) this.ctx.lineJoin = 'bevel';
+    else if ( _val == 1 ) this.ctx.lineJoin = 'round';
+    else if ( _val == 2 ) this.ctx.lineJoin = 'miter';
+};
+
+Centi.prototype.lc = function(_val){ this.lineCap(_val); };
+Centi.prototype.lineCap = function(_val){
+    if ( _val == 0 ) this.ctx.lineCap = 'butt';
+    else if ( _val == 1 ) this.ctx.lineCap = 'round';
+    else if ( _val == 2 ) this.ctx.lineCap = 'square';
+};
+
+Centi.prototype.bm = function(_val){ this.blendMode(_val); };
+Centi.prototype.blendMode = function(_val){
+    var mode = 'source-over';
+    var modes = ['source-over', 'multiply', 'screen', 'overlay', 'darken', 'lighten','color-dodge', 'color-burn',
+    'hard-light', 'soft-light','difference', 'exclusion', 'hue','saturation','color','luminosity'];
+    if ( _val < modes.length ) {
+        mode = modes[_val];
+        this.ctx.globalCompositeOperation = mode;
     }
 };
 
@@ -746,17 +794,10 @@ Centi.prototype.bpm = function(_bpm, _divide){
     this.tempo.sec = (60/this.tempo.bpm*4)/this.tempo.divide;
     this.tempo.preSec = this.time;
 };
+// --private
 
-Centi.prototype.updateBeat = function(){
-    if ( this.time - this.tempo.preSec >= this.tempo.sec ) {
-        if ( this.beatFunc ) this.beatFunc();
-        //if ( this.beatMethod ) evalInContext(this.beatMethod, this);
-        this.tempo.preSec = this.time;
-        this.beat ++;
-    }
-};
 
-Centi.prototype.noteToFreq = function(_note) { return n2f(_note); };
+Centi.prototype.noteToFreq = function(_note) { return this.n2f(_note); };
 Centi.prototype.n2f = function(_note) {
     return Math.pow(2, (_note - 69) / 12) * 440.0;
 };
@@ -789,9 +830,9 @@ Centi.prototype.fold = function(_arr){
 
 // Geometry
 
-Centi.prototype.vec2 = function(_x, _y){
-    return new Centi.Vec2(_x, _y);
-}
+Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
+Centi.prototype.vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
+// --private
 Centi.Vec2 = function(_x, _y){
     this.x = _x;
     this.y = _y;
@@ -800,7 +841,13 @@ Centi.Vec2 = function(_x, _y){
 // Utils
 Centi.prototype.now = function(){
     return new Date().getTime() / 1000;
-}
+};
+
+Centi.prototype.new = function(constructor, args){
+    function F() { constructor.apply(this, args); }
+    F.prototype = constructor.prototype;
+    return new F();
+};
 
 // centi funcs
 

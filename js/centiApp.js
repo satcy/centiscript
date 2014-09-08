@@ -43,6 +43,7 @@ CENTI.init = function(){
     var canvas = document.getElementById("canvas0");
     if ( ct ) ct.destroy();
     ct = new Centi();
+    if ( document.getElementById('version') ) document.getElementById('version').innerHTML = "ver. " + ct.ver;
     if ( !ct.init(canvas, getAudioContext()) ) {
         CENTI.editor.value = "disable canvas.";
     }
@@ -260,6 +261,7 @@ CENTI.getTimeStampString = function(){
 }
 
 CENTI.getTweetsList = function(){
+    if ( !document.getElementById("result") ) return;
     var httpObj = new XMLHttpRequest();
     var path = "http://ex.rzm.co.jp/centiscript/p/searchimg.php";
     httpObj.open("get", path, true);
