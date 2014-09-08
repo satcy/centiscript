@@ -115,13 +115,23 @@ CENTI.init = function(){
 
 CENTI.run = function(tw){
 
-    ct.reset();
     ct.c = Math.floor(Math.random()*99999999);
     frameCount = Math.floor(Math.random()*99999999);
     var offset = Math.floor(Math.random()*winW/3 + 5);
     ctxFull.drawImage(canvasFull, 0, 0, winW, winH, offset, 0, winW, winH);
     ctxFull.drawImage(canvasFull, 0, 0, 1, winH, 0, 0, offset, winH);
+
+    var element = document.getElementById("canvas_wrap"); 
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    };
+
+    ct.canvas = document.createElement('canvas');
+    ct.canvas.id = 'canvas0';
+    document.getElementById("canvas_wrap").appendChild(ct.canvas);
+    
     if ( ct.parse(tw) ) {
+        ct.start();
         CENTI.start();
         CENTI.posRate = Math.random()*1.1 - 0.05;
     } else {

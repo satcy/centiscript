@@ -53,8 +53,17 @@ CENTI.run = function(){
     var tw;
     tw = CENTI.editor.value;
     //console.log(tw);
-    ct.reset();
+    var element = document.getElementById("canvas_wrap"); 
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    };
+
+    ct.canvas = document.createElement('canvas');
+    ct.canvas.id = 'canvas0';
+    document.getElementById("canvas_wrap").appendChild(ct.canvas);
     if ( ct.parse(tw) ) {
+        //ct.reset();
+        ct.start();
         CENTI.start();
     } else {
         alert("unsuccess");   

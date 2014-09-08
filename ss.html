@@ -28,10 +28,7 @@ WebFontConfig = {
 <script src="lib/perlin.js"></script>
 <script src="lib/kdTree-min.js"></script>
 <script src="lib/dataURLtoBlob.js"></script>
-<script src="lib/gif/b64.js"></script>
-<script src="lib/gif/GIFEncoder.js"></script>
-<script src="lib/gif/LZWEncoder.js"></script>
-<script src="lib/gif/NeuQuant.js"></script>
+<script src="lib/three.js/build/three.min.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/centi.js"></script>
 <script src="js/ss.js"></script>
@@ -48,7 +45,9 @@ WebFontConfig = {
 </head>
 <body style="overflow:hidden;">
   <canvas id="canvasFull" width="400" height="400"></canvas>
-  <canvas id="canvas0" width="400" height="400" style="visibility:hidden;position:absolute;top:0;"></canvas>
+  <div class="canvas_wrap" id="canvas_wrap" style="visibility:hidden;position:absolute;top:0;">
+    <canvas id="canvas0" width="400" height="400"></canvas>
+  </div>
 </body>
 
 
