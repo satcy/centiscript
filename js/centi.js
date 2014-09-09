@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.3';
+    this.ver = '0.3.4';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -84,10 +84,11 @@ var Centi = function(name){
     this.toGifFunc = null;
     //THREE
     this.b3d = false;
-    this.renderer = null;
-    this.scene = null;
-    this.cam = null;
+
+    this.pluginInstances = [];
 };
+
+Centi.plugins = [];
 
 Centi.prototype.destroy = function(){
     if ( this.dsp.processor ) {
@@ -118,9 +119,8 @@ Centi.prototype.destroy = function(){
     this.wave = null;
 
     this.b3d = false;
-    this.renderer = null;
-    this.scene = null;
-    this.cam = null;
+
+    this.pluginInstances = null;
 };
 
 Centi.prototype.init = function(canvas, audioContext){
@@ -187,6 +187,12 @@ Centi.prototype.init = function(canvas, audioContext){
     } else {
         this.dsp.enable = false;
     }
+
+    for ( var i=0; i<Centi.plugins.length; i++ ){
+        var plugin = new (Centi.plugins[i])(this);
+        this.pluginInstances.push(plugin);
+    }
+
     if ( canvas.getContext ) {
         //this.ctx = canvas.getContext("2d");
         //this.clear();
@@ -207,11 +213,6 @@ Centi.prototype.parse = function(tw){
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
     tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)\*\+\/]+)(\))/g, "for($2=$4;$2<$6;$2++)");
 
-    // var setupMethod = tw.replace(/frame\([\w\W]+/i, '');
-    // setupMethod = setupMethod.replace(/beat\([\w\W]+/i, '');
-    // setupMethod = setupMethod.replace(/dsp\([\w\W]+/i, '');
-    //var frameMethod = frameReg.test(tw) ? tw.match(frameReg)[0] : "frame(){}";
-    //frameMethod = frameMethod.slice(frameMethod.indexOf("{")+1, frameMethod.lastIndexOf("}"));
     var frameMethod = this.getInnerExpression(tw.slice(tw.indexOf('frame(')));
     var beatMethod = this.getInnerExpression(tw.slice(tw.indexOf('beat(')));
     var dspMethod = this.getInnerExpression(tw.slice(tw.indexOf('dsp(')));
@@ -233,7 +234,7 @@ Centi.prototype.parse = function(tw){
     var argmentReg = /(\$)([0-9]+)/g;
     var returnReg = new RegExp(this.name+".return\\(", "g");
     var objReg = new RegExp("\\." + this.name + "\\.", "g");
-    var threeReg = new RegExp(this.name+".THREE.", "g");
+    var pluginInstances = this.pluginInstances;
 
     setupMethod = replace(setupMethod, this.name);
     setupMethod = this.modFunction(setupMethod);
@@ -259,7 +260,11 @@ Centi.prototype.parse = function(tw){
         str = str.replace(argmentReg, "arguments[" + '$2' + ']');
         str = str.replace(returnReg, "return (");
         str = str.replace(objReg, ".");
-        str = str.replace(threeReg, "THREE.");
+
+        for ( var i=0; i<pluginInstances.length; i++ ) {
+            var threeReg = new RegExp(name + "." + pluginInstances[i].prefix + ".", "g");
+            str = str.replace(threeReg, pluginInstances[i].prefix + ".");
+        }
         for ( var i=0; i<MATHS.length; i++ ) {
             var math_word = name + "." + MATHS[i] + "\\(";
             str = str.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
@@ -303,8 +308,13 @@ Centi.prototype.parse = function(tw){
 };
 
 Centi.prototype.start = function(){
-    buildContext(this);
-
+    for ( var i=0; i<this.pluginInstances.length; i++ ) {
+        this.pluginInstances[i].preSetup();
+    }
+    if ( this.b3d == false ) {
+        this.ctx = this.canvas.getContext("2d");
+        this.clear();
+    }
     this.reset();
 
     this.bg(0);
@@ -312,30 +322,8 @@ Centi.prototype.start = function(){
     
     evalInContext(this.setupMethod, this);
 
-    if ( this.b3d ) {
-        this.size(this.w, this.h);
-        try {
-            console.log(this.canvas.width, this.canvas.height);
-            this.renderer = new THREE.WebGLRenderer({canvas:this.canvas, preserveDrawingBuffer: true});
-        } catch(e){
-            this.renderer = new THREE.CanvasRenderer({canvas:this.canvas});
-        }
-        this.cam = new THREE.PerspectiveCamera( 60, this.w/this.h, 1, 100000 );
-        this.cam.position.set( 0, 0, 367 );
-    }
-
-    function buildContext(obj){
-        if ( obj.b3d ) {
-            obj.ctx = null;
-            
-            obj.scene = new THREE.Scene();
-        } else {
-            obj.renderer = null;
-            obj.scene = null;
-            obj.cam = null;
-            obj.ctx = obj.canvas.getContext("2d");
-            obj.clear();
-        }
+    for ( var i=0; i<this.pluginInstances.length; i++ ) {
+        this.pluginInstances[i].postSetup();
     }
 
 };
@@ -390,6 +378,11 @@ Centi.prototype.getInnerExpression = function(_str){
 };
 
 Centi.prototype.update = function(){
+    for ( var i=0; i<this.pluginInstances.length; i++ ) {
+        this.pluginInstances[i].preUpdate();
+    }
+    
+
     if ( this.dsp.enable == false ) {
         this.time = this.now() - this.initSec;
         this.updateBeat();
@@ -402,7 +395,10 @@ Centi.prototype.update = function(){
     }
     
     if ( this.drawFunc ) this.drawFunc();
-    if ( this.b3d && this.renderer ) this.renderer.render(this.scene, this.cam);  
+    //if ( this.b3d && this.renderer ) this.renderer.render(this.scene, this.cam);  
+    for ( var i=0; i<this.pluginInstances.length; i++ ) {
+        this.pluginInstances[i].postUpdate();
+    }
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
 };
@@ -435,7 +431,7 @@ Centi.prototype.c3d = function(){ this.b3d = true; };
 
 
 Centi.prototype.bg = function(){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     var len = arguments.length;
     if ( len == 1 ) {
         this.bgcolor.r = parseInt(arguments[0]);
@@ -464,7 +460,7 @@ Centi.prototype.size = function(_w, _h){
 
 Centi.prototype.clr = function(){ this.clear(); };
 Centi.prototype.clear = function(){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     var mode = this.ctx.globalCompositeOperation;
     this.ctx.globalCompositeOperation = 'source-over';
     //this.log(this.ctx.globalCompositeOperation, mode );
@@ -527,11 +523,13 @@ Centi.prototype.noise = function(){
 // Draw
 
 Centi.prototype.rect = function(_x, _y, _w, _h){
+    if ( this.ctx == null ) return;
     if ( this.bFill ) this.ctx.fillRect(_x, _y, _w, _h);
     else this.ctx.strokeRect(_x, _y, _w, _h);
 };
 
 Centi.prototype.oval = function(_x, _y, _rad) {
+    if ( this.ctx == null ) return;
     this.ctx.beginPath();
     this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
     if ( this.bFill ) this.ctx.fill();
@@ -540,6 +538,7 @@ Centi.prototype.oval = function(_x, _y, _rad) {
 
 Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); };
 Centi.prototype.line = function(_x1, _y1, _x2, _y2){
+    if ( this.ctx == null ) return;
     this.ctx.beginPath();
     this.ctx.moveTo(_x1, _y1);
     this.ctx.lineTo(_x2, _y2);
@@ -547,6 +546,7 @@ Centi.prototype.line = function(_x1, _y1, _x2, _y2){
 };
 
 Centi.prototype.curve = function(){
+    if ( this.ctx == null ) return;
     if ( arguments.length == 8 ) {
         this.beginShape();
         this.moveTo(arguments[0], arguments[1]);
@@ -560,14 +560,17 @@ Centi.prototype.curve = function(){
 };
 
 Centi.prototype.moveTo = function(_x1, _y1){
+    if ( this.ctx == null ) return;
     this.ctx.moveTo(_x1, _y1);
 };
 
 Centi.prototype.lineTo = function(_x1, _y1){
+    if ( this.ctx == null ) return;
     this.ctx.lineTo(_x1, _y1);
 };
 
 Centi.prototype.curveTo = function(){
+    if ( this.ctx == null ) return;
     if ( arguments.length == 6 ) {
         this.ctx.bezierCurveTo(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
     } else if ( arguments.length == 1 ) {
@@ -578,15 +581,18 @@ Centi.prototype.curveTo = function(){
 };
 
 Centi.prototype.beginShape = function(){
+    if ( this.ctx == null ) return;
     this.ctx.beginPath();
 };
 
 Centi.prototype.endShape = function(){
+    if ( this.ctx == null ) return;
     if ( this.bFill ) this.ctx.fill();
     else this.ctx.stroke();
 };
 
 Centi.prototype.drawMe = function(){
+    if ( this.ctx == null ) return;
     var len = arguments.length;
     if ( len == 2 ) {
         this.ctx.drawImage(this.canvas, arguments[0], arguments[1]);
@@ -599,13 +605,13 @@ Centi.prototype.drawMe = function(){
 
 Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
 Centi.prototype.lineWidth = function(_w){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.lineWidth = _w;
 };
 
 Centi.prototype.lj = function(_val){ this.lineJoin(_val); };
 Centi.prototype.lineJoin = function(_val){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     if ( _val == 0 ) this.ctx.lineJoin = 'bevel';
     else if ( _val == 1 ) this.ctx.lineJoin = 'round';
     else if ( _val == 2 ) this.ctx.lineJoin = 'miter';
@@ -613,7 +619,7 @@ Centi.prototype.lineJoin = function(_val){
 
 Centi.prototype.lc = function(_val){ this.lineCap(_val); };
 Centi.prototype.lineCap = function(_val){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     if ( _val == 0 ) this.ctx.lineCap = 'butt';
     else if ( _val == 1 ) this.ctx.lineCap = 'round';
     else if ( _val == 2 ) this.ctx.lineCap = 'square';
@@ -621,7 +627,7 @@ Centi.prototype.lineCap = function(_val){
 
 Centi.prototype.bm = function(_val){ this.blendMode(_val); };
 Centi.prototype.blendMode = function(_val){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     var mode = 'source-over';
     var modes = ['source-over', 'multiply', 'screen', 'overlay', 'darken', 'lighten','color-dodge', 'color-burn',
     'hard-light', 'soft-light','difference', 'exclusion', 'hue','saturation','color','luminosity'];
@@ -659,32 +665,32 @@ Centi.prototype.stroke = function(){
 // Transform
 
 Centi.prototype.push = function(){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.save();
 };
 
 Centi.prototype.pop = function(){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.restore();
 };
 
 Centi.prototype.rotate = function(_rota){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.rotate(_rota);
 };
 
 Centi.prototype.scale = function(_x, _y){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.scale(_x, _y);
 };
 
 Centi.prototype.translate = function(_x, _y){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.translate(_x, _y);
 };
 
 Centi.prototype.transform = function(_a, _b, _c, _d, _e, _f){
-    if ( this.b3d ) return;
+    if ( this.ctx == null ) return;
     this.ctx.transform(_a, _b, _c, _d, _e, _f);
 };
 
