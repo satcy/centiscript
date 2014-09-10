@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.4';
+    this.ver = '0.3.5';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -56,6 +56,8 @@ var Centi = function(name){
     this.time = 0;
     this.w = 720;
     this.h = 360;
+    this.sizeW = this.w;
+    this.sizeH = this.h;
     this.cx = this.w/2;
     this.cy = this.h/2;
     //
@@ -264,6 +266,10 @@ Centi.prototype.parse = function(tw){
         for ( var i=0; i<pluginInstances.length; i++ ) {
             var threeReg = new RegExp(name + "." + pluginInstances[i].prefix + ".", "g");
             str = str.replace(threeReg, pluginInstances[i].prefix + ".");
+            if ( pluginInstances[i].shortPrefix ) {
+                threeReg = new RegExp(name + "." + pluginInstances[i].shortPrefix + ".", "g");
+                str = str.replace(threeReg, pluginInstances[i].prefix + ".");
+            }
         }
         for ( var i=0; i<MATHS.length; i++ ) {
             var math_word = name + "." + MATHS[i] + "\\(";
@@ -450,8 +456,17 @@ Centi.prototype.log = function(){ console.log(arguments); };
 
 Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); };
 Centi.prototype.size = function(_w, _h){
-    this.w = parseInt(_w);
-    this.h = parseInt(_h);
+    this.sizeW = _w;
+    this.sizeH = _h;
+    var w, h;
+    if ( _w <= 1 ) w = window.innerWidth * _w;
+    else w = _w;
+       
+    if ( _h <= 1 ) h = window.innerHeight * _h;
+    else h = _h;
+
+    this.w = w;
+    this.h = h;
     this.canvas.width = this.w;
     this.canvas.height = this.h;
     this.cx = this.w/2;

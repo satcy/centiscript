@@ -30,6 +30,7 @@ Centi.plugins.push(
 		this.target = centi;
 
 		this.prefix = 'THREE';
+		this.shortPrefix = 'T';
 		this.target.renderer = null;
 		this.target.scene = null;
 		this.target.cam = null;

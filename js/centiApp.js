@@ -47,6 +47,13 @@ CENTI.init = function(){
     if ( !ct.init(canvas, getAudioContext()) ) {
         CENTI.editor.value = "disable canvas.";
     }
+
+    if ( window.addEventListener ) window.addEventListener( 'resize', onReize, false );
+    else if ( window.onresize ) window.onreize = onReize;
+
+    function onReize(){
+        ct.size(ct.sizeW, ct.sizeH);
+    }
 };
 
 CENTI.run = function(){
