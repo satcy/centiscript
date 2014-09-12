@@ -48,10 +48,10 @@ CENTI.init = function(){
         CENTI.editor.value = "disable canvas.";
     }
 
-    if ( window.addEventListener ) window.addEventListener( 'resize', onReize, false );
-    else if ( window.onresize ) window.onreize = onReize;
+    if ( window.addEventListener ) window.addEventListener( 'resize', onResize, false );
+    else if ( window.onresize ) window.onresize = onReize;
 
-    function onReize(){
+    function onResize(){
         ct.size(ct.sizeW, ct.sizeH);
     }
 };
