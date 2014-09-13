@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.5';
+    this.ver = '0.3.6';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -489,17 +489,7 @@ Centi.prototype.obj = function(){ return new Object(); };
 
 // Randomize
 
-Centi.prototype.rnd = function(){
-    var len = arguments.length;
-    if ( len == 1 ) {
-        return Math.random()*arguments[0];   
-    } else if ( len == 2 ) {
-        return Math.random()*(arguments[1] - arguments[0]) + arguments[0];
-    } else {
-        return Math.random();
-    }
-};
-
+Centi.prototype.rnd = function(){ return this.rand.apply(this, arguments); };
 Centi.prototype.rand = function(){
     var len = arguments.length;
     if ( len == 1 ) {
@@ -512,15 +502,7 @@ Centi.prototype.rand = function(){
 };
 
 Centi.prototype.nz = function() {
-    var len = arguments.length;
-    if ( len == 1 ) {
-        return perlin.perlin2(arguments[0], 0);   
-    } else if ( len == 2 ) {
-        return perlin.perlin2(arguments[0], arguments[1]);
-    } else if ( len == 3 ) {
-        return perlin.perlin3(arguments[0], arguments[1], arguments[2]);   
-    }
-    return 0; 
+    return this.noise.apply(this, arguments);
 };
 
 Centi.prototype.noise = function(){
@@ -536,6 +518,26 @@ Centi.prototype.noise = function(){
 };
 
 // Draw
+
+Centi.prototype.tri = function(){ };
+Centi.prototype.tri = function(){
+    if ( this.ctx == null ) return;
+    if ( arguments.length == 6 ) {
+        this.beginShape();
+        this.moveTo(arguments[0], arguments[1]);
+        this.lineTo(arguments[2], arguments[3]);
+        this.lineTo(arguments[4], arguments[5]);
+        this.lineTo(arguments[0], arguments[1]);
+        this.endShape();
+    } else if ( arguments.length == 3 ) {
+        this.beginShape();
+        this.moveTo(arguments[0].x, arguments[0].y);
+        this.lineTo(arguments[1].x, arguments[1].y);
+        this.lineTo(arguments[2].x, arguments[2].y);
+        this.lineTo(arguments[0].x, arguments[0].y);
+        this.endShape();
+    }
+};
 
 Centi.prototype.rect = function(_x, _y, _w, _h){
     if ( this.ctx == null ) return;
@@ -606,6 +608,7 @@ Centi.prototype.endShape = function(){
     else this.ctx.stroke();
 };
 
+Centi.prototype.me = function(){ this.drawMe.apply(this, arguments); };
 Centi.prototype.drawMe = function(){
     if ( this.ctx == null ) return;
     var len = arguments.length;
@@ -652,6 +655,9 @@ Centi.prototype.blendMode = function(_val){
     }
 };
 
+Centi.prototype.hcol = function(_hex){
+    this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF);
+};
 Centi.prototype.col = function(){
     var len = arguments.length;
     var s = "rgb(0,0,0)";
@@ -927,11 +933,28 @@ Centi.prototype.now = function(){
     return new Date().getTime() / 1000;
 };
 
+// Generator
+Centi.prototype.grid = function(_w, _h, _col, _row){
+    var cw = _w/_col;
+    var ch = _h/_row;
+    var i, j;
+    var a = [];
+    for ( i=0; i<_col; i++ ) {
+        for ( j=0; j<_row; j++ ) {
+            a.push( {ix:i, iy:j, x:i*cw, y:j*ch, w:cw, h:ch} );
+        }
+    }
+    return a;
+};
+
+// OOP
 Centi.prototype.new = function(constructor, args){
     function F() { constructor.apply(this, args); }
     F.prototype = constructor.prototype;
     return new F();
 };
+
+
 
 // centi funcs
 
