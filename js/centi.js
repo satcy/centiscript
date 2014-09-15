@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.6';
+    this.ver = '0.3.7';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -954,6 +954,21 @@ Centi.prototype.new = function(constructor, args){
     return new F();
 };
 
+// 7seg
+Centi.prototype.seg = function(_num, _x, _y, _w, _h){
+    var bin = [1,2,11,19,20,29,37];
+    var data = [0x77,0x24,0x5D,0x6D,0x2E,0x6B,0x7B,0x25,0x7F,0x6F];
+    if ( _num > 9 ) _num = 9;
+    var n=(data[_num]);
+    for(var i=0; i<7; i++){
+        if( n & 1 ){
+            var p = (bin[i] & 7);
+            var q = (bin[i] >> 3);
+            ct.line(_x+_w*(p & 1),_y+0.5*_h*( p >> 1),_x+_w*(q & 1),_y+0.5*_h*(q >> 1));
+        }
+        n=(n >> 1);
+    }
+};
 
 
 // centi funcs
