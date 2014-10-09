@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.7';
+    this.ver = '0.3.8';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -79,6 +79,7 @@ var Centi = function(name){
     this.drawMethod = '';
     this.beatMethod = '';
     this.dspMethod = '';
+    this.setupFunc = null;
     this.drawFunc = null;
     this.beatFunc = null;
     this.dspFunc = null;
@@ -113,6 +114,7 @@ Centi.prototype.destroy = function(){
 
     this.toGifFunc = null;
 
+    this.setupFunc = null;
     this.drawFunc = null;
     this.beatFunc = null;
     this.dspFunc = null;
@@ -309,6 +311,13 @@ Centi.prototype.parse = function(tw){
     }
 
     this.setupMethod = setupMethod;
+
+    if ( this.setupMethod != '' ) {
+        this.setupFunc = evalInContext('return (function(){' + this.setupMethod + '});', this);
+    } else {
+        this.setupFunc = null;
+    }
+    
     
     return true;
 };
@@ -326,7 +335,7 @@ Centi.prototype.start = function(){
     this.bg(0);
     this.bpm(120,4);
     
-    evalInContext(this.setupMethod, this);
+    if ( this.setupFunc ) this.setupFunc();
 
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].postSetup();

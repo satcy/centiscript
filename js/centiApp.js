@@ -139,12 +139,15 @@ CENTI.tweet = function(){
 
 CENTI.togif = function(){
     if ( !CENTI.bToGif ) {
-        CENTI.encoder = new GIFEncoder();
+        CENTI.encoder =  new GIF({
+            workers: 2,
+            quality: 10,
+            width: ct.w,
+            height: ct.h,
+            workerScript: "lib/gif/gif.worker.js"
+        });
         CENTI.bToGif = true;
         CENTI.gifFrameCnt = 0;
-        CENTI.encoder.setRepeat(0);
-        CENTI.encoder.setDelay(33);
-        CENTI.encoder.start();
         document.getElementById('togif').innerHTML = "Stop REC";
         ct.toGifFunc = CENTI.pushGif;
     } else {
@@ -154,7 +157,7 @@ CENTI.togif = function(){
 
 CENTI.pushGif = function(ctx){
     if ( CENTI.bToGif ) {
-        CENTI.encoder.addFrame(ctx);
+        CENTI.encoder.addFrame(ctx, {copy: true, delay:33});
         CENTI.gifFrameCnt ++;
         if ( CENTI.gifFrameCnt > CENTI.maxGifFrameNum ) {
             CENTI.endToGif();
@@ -162,11 +165,16 @@ CENTI.pushGif = function(ctx){
     }
 }
 CENTI.endToGif = function(){
+    if ( !CENTI.bToGif ) return;
     CENTI.bToGif = false;
-    CENTI.encoder.finish();
-    CENTI.imageUrl = 'data:image/gif;base64,'+encode64(CENTI.encoder.stream().getData());
-    document.getElementById('gif_image').src = CENTI.imageUrl;
-    document.getElementById('togif').innerHTML = "REC";
+    CENTI.encoder.on('finished', function(blob) {
+        window.open(URL.createObjectURL(blob));
+        CENTI.imageUrl = URL.createObjectURL(blob);
+        document.getElementById('gif_image').src = CENTI.imageUrl;
+        document.getElementById('togif').innerHTML = "REC";
+    });
+    CENTI.encoder.render();
+    document.getElementById('togif').innerHTML = "Processing...";
     CENTI.encoder = null;
 
     ct.toGifFunc = null;
@@ -294,7 +302,7 @@ CENTI.getTweetsList = function(){
                 var url = myData[i].url;
                 var name = myData[i].user;
                 var id_str = myData[i].id;
-                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n(<a href='https://twitter.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</div>\n";
+                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n<span id='list_one_name'>(<a href='https://twitter.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</span></div>\n";
                 if ( i%3 == 0 ) d1 += txt;
                 else if ( i%3 == 1 ) d2 += txt;
                 else d3 += txt;
