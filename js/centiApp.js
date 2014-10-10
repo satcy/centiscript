@@ -34,7 +34,8 @@ var CENTI = {
     gifFrameCnt:0,
     maxGifFrameNum:90,
 
-    imageUrl:null
+    imageUrl:null,
+    blob:null
 };
 
 CENTI.init = function(){
@@ -96,7 +97,7 @@ CENTI.tweet = function(){
         return;
     }
     if ( CENTI.gifFrameCnt > 0 ) {
-        var blob = window.dataURLtoBlob && window.dataURLtoBlob(CENTI.imageUrl);
+        var blob = CENTI.blob;
         if ( blob ) postData(blob);
     } else if ( ct.canvas.toBlob ) {
         ct.canvas.toBlob( postData, "image/png");
@@ -168,7 +169,7 @@ CENTI.endToGif = function(){
     if ( !CENTI.bToGif ) return;
     CENTI.bToGif = false;
     CENTI.encoder.on('finished', function(blob) {
-        window.open(URL.createObjectURL(blob));
+        CENTI.blob = blob;
         CENTI.imageUrl = URL.createObjectURL(blob);
         document.getElementById('gif_image').src = CENTI.imageUrl;
         document.getElementById('togif').innerHTML = "REC";
@@ -222,7 +223,6 @@ CENTI.checkTitle = function(str) {
 
 CENTI.setTitle = function(str){
     CENTI.inputTitle.value = str;
-    CENTI.inputTitle.style.color = "#333";
 }
 
 CENTI.setSample = function(str){

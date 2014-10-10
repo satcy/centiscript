@@ -121,6 +121,19 @@ border-radius: 2px;
 resize: none; 
 }
 
+textarea::-webkit-input-placeholder {
+    color: #999;
+}
+textarea:-moz-placeholder {
+    color: #999;
+}
+textarea::-moz-placeholder {
+    color: #999;
+}
+textarea:-ms-input-placeholder {
+    color: #999;
+}
+
 textarea#editor{
 border:0;
 padding:0px 5px;

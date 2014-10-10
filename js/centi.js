@@ -554,12 +554,29 @@ Centi.prototype.rect = function(_x, _y, _w, _h){
     else this.ctx.strokeRect(_x, _y, _w, _h);
 };
 
-Centi.prototype.oval = function(_x, _y, _rad) {
+Centi.prototype.oval = function(_x, _y, _rad, _res) {
     if ( this.ctx == null ) return;
-    this.ctx.beginPath();
-    this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
-    if ( this.bFill ) this.ctx.fill();
-    else this.ctx.stroke()
+    _res = _res || -1;
+    if ( _res == -1 ) {
+        this.ctx.beginPath();
+        this.ctx.arc(_x, _y, _rad, 0, Math.PI * 2, true);
+        if ( this.bFill ) this.ctx.fill();
+        else this.ctx.stroke();
+    } else {
+        if ( _res < 3 ) _res = 3;
+        var cr = Math.PI2/_res;
+        this.ctx.beginPath();
+        for ( var i=0; i<_res; i++ ) {
+            var x1 = Math.cos(cr*i)*_rad + _x;
+            var y1 = Math.sin(cr*i)*_rad + _y;
+            var x2 = Math.cos(cr*(i+1))*_rad + _x;
+            var y2 = Math.sin(cr*(i+1))*_rad + _y;
+            this.lineTo(x1, y1);
+            this.lineTo(x2, y2);
+        }
+        if ( this.bFill ) this.ctx.fill();
+        else this.ctx.stroke();
+    }
 };
 
 Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); };
