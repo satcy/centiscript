@@ -572,11 +572,15 @@ Centi.prototype.oval = function(_x, _y, _rad, _res) {
         if ( _res < 3 ) _res = 3;
         var cr = Math.PI2/_res;
         this.ctx.beginPath();
+        var int_res = parseInt(_res);
         for ( var i=0; i<_res; i++ ) {
-            var x1 = Math.cos(cr*i)*_rad + _x;
-            var y1 = Math.sin(cr*i)*_rad + _y;
-            var x2 = Math.cos(cr*(i+1))*_rad + _x;
-            var y2 = Math.sin(cr*(i+1))*_rad + _y;
+            var r1 = cr*i;
+            var r2 = cr*(i+1);
+            if ( i > int_res - 1 ) r2 = 0; 
+            var x1 = Math.cos(r1)*_rad + _x;
+            var y1 = Math.sin(r1)*_rad + _y;
+            var x2 = Math.cos(r2)*_rad + _x;
+            var y2 = Math.sin(r2)*_rad + _y;
             this.lineTo(x1, y1);
             this.lineTo(x2, y2);
         }
