@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.8';
+    this.ver = '0.3.9';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -89,6 +89,12 @@ var Centi = function(name){
     this.b3d = false;
 
     this.pluginInstances = [];
+
+    var props = [];
+    for(var prop in this){
+        if ( CT_FUNCS.indexOf(prop) == -1 ) props.push(prop);
+    }
+    this.ctProps = props;
 };
 
 Centi.plugins = [];

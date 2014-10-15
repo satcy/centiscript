@@ -276,6 +276,63 @@ CENTI.exportFile = function(){
     }
 }
 
+CENTI.exportJS = function(){
+    var reg0 = /\)\;/g;
+    var reg1 = /\{/g;
+    var f0 = ct.setupMethod.replace(reg0, ");\n").replace(reg1, "{\n");
+    var f1 = ct.drawMethod.replace(reg0, ");\n").replace(reg1, "{\n");
+    var f2 = ct.beatMethod.replace(reg0, ");\n").replace(reg1, "{\n");
+    var f3 = ct.dspMethod.replace(reg0, ");\n").replace(reg1, "{\n");
+    var temp = 
+    '//<script src="https://rawgit.com/satcy/centiscript/master/js/centi.min.js"></script>' + "\n" +
+    "//<canvas id='c'></canvas>" + "\n" +
+    "\n" +
+    "var __ctName;" + "\n" +
+    "window.onload = function(){" + "\n" +
+    "   var canvas = document.getElementById('c');" + "\n" +
+    "   __ctName = new Centi('__ctName');" + "\n" +
+    "   __ctName.init(canvas, getAudioContext());" + "\n" +
+    "   __ctName.setupFunc = init;" + "\n" +
+    "   __ctName.drawFunc = draw;" + "\n" +
+    "   __ctName.beatFunc = beat;" + "\n" +
+    "   __ctName.dspFunc = dsp;" + "\n" +
+    "   __ctName.start();" + "\n" +
+    "\n" +
+    "   requestAnimationFrame(update);" + "\n" +
+    "\n" +
+    "   function init(){" + "\n" +
+    "" + f0 + "\n" +
+    "   }" + "\n" +
+    "   function draw(){" + "\n" +
+    "" + f1 + "\n" +
+    "   }" + "\n" +
+    "   function beat(){" + "\n" +
+    "" + f2 + "\n" +
+    "   }" + "\n" +
+    "   function dsp(){" + "\n" +
+    "" + f3 + "\n" +
+    "   }" + "\n" +
+    "   function update(){" + "\n" +
+    "       requestAnimationFrame(update);" + "\n" +
+    "       __ctName.update();" + "\n" +
+    "   }" + "\n" +
+    "\n" +
+    "   if ( window.addEventListener ) {" + "\n" +
+    "       window.addEventListener('resize', onResize, false);" + "\n" +
+    "   } else if ( window.onresize ) {" + "\n" +
+    "       window.onresize = onResize;" + "\n" +
+    "   }" + "\n" +
+    "\n" +
+    "   function onResize(){" + "\n" +
+    "       __ctName.size(__ctName.sizeW, __ctName.sizeH);" + "\n" +
+    "   }" + "\n" +
+    "};";
+    temp = temp.replace(/__ctName/g, ct.name);
+    var blob = new Blob([temp], {type:"text/plain"});
+    
+    window.saveAs(blob, "centi_"+ CENTI.getTimeStampString() +".js");
+}
+
 CENTI.getTimeStampString = function(){
     var date = new Date();
     var str = date.getFullYear() + (date.getMonth() < 11 ? "0" + (date.getMonth()+1) : (date.getMonth() + 1) ) + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate() ) + 

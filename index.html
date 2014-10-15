@@ -30,10 +30,7 @@ WebFontConfig = {
 <script src="lib/canvas-to-blob.min.js"></script>
 <script src="lib/dataURLtoBlob.js"></script>
 
-<script src="lib/gif/b64.js"></script>
-<script src="lib/gif/GIFEncoder.js"></script>
-<script src="lib/gif/LZWEncoder.js"></script>
-<script src="lib/gif/NeuQuant.js"></script>
+<script src="lib/gif/gif.js"></script>
 
 <script src="lib/FileSaver.js"></script>
 
@@ -101,8 +98,9 @@ WebFontConfig = {
           <!--
           document.open();
           if ( checkFileWriterApi() ) {
-            document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save Script</button>\n');
-            document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>');
+            document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save</button>\n');
+            document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>\n');
+            document.write('<button type="button" id="exportjs" name="exportjs" onclick="CENTI.exportJS()">Export JS</button>\n');
           }
           document.close();
           // -->
@@ -129,5 +127,7 @@ WebFontConfig = {
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 </div>
 </body>
+
+</html>>
 
 </html>
