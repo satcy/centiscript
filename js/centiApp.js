@@ -284,19 +284,37 @@ CENTI.exportJS = function(){
     var f1 = ct.drawMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
     var f2 = ct.beatMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
     var f3 = ct.dspMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
+    var f4 = ct.mouseMoveMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
+    var f5 = ct.mouseDownMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
+    var f6 = ct.mouseUpMethod.replace(reg0, ");\n").replace(reg1, "{\n").replace(reg2, "}\n");
+    var is3d = /c3d\(\)/.test(f0);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f1);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f2);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f3);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f4);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f5);
+    if ( !is3d ) is3d = /c3d\(\)/.test(f6);
+
     var temp = 
-    '//<script src="https://rawgit.com/satcy/centiscript/master/js/centi.min.js"></script>' + "\n" +
+    ((is3d) ? '//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>' + "\n" : "" ) + 
+    '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/centi.min.js"></script>' + "\n" +
+    ((is3d) ? '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/plugin/centi.three.js"></script>' + "\n" : "" ) + 
     "//<canvas id='c'></canvas>" + "\n" +
     "\n" +
-    "var __ctName;" + "\n" +
+    "(function(){" + "\n" +
     "window.onload = function(){" + "\n" +
+    "   var __ctName;" + "\n" +
     "   var canvas = document.getElementById('c');" + "\n" +
-    "   __ctName = new Centi('__ctName');" + "\n" +
+    "   __ctName = new Centi('__ctName');" + "\n" + 
+    ((is3d) ? "   __ctName.c3d();" + "\n" : "") +
     "   __ctName.init(canvas, getAudioContext());" + "\n" +
     "   __ctName.setupFunc = init;" + "\n" +
     "   __ctName.drawFunc = draw;" + "\n" +
     "   __ctName.beatFunc = beat;" + "\n" +
     "   __ctName.dspFunc = dsp;" + "\n" +
+    "   __ctName.mouseMove = onMouseMove;" + "\n" +
+    "   __ctName.mouseDown = onMouseDown;" + "\n" +
+    "   __ctName.mouseUp = onMouseUp;" + "\n" +
     "   __ctName.start();" + "\n" +
     "\n" +
     "   requestAnimationFrame(update);" + "\n" +
@@ -313,6 +331,15 @@ CENTI.exportJS = function(){
     "   function dsp(){" + "\n" +
     "" + f3 + "\n" +
     "   }" + "\n" +
+    "   function onMouseMove(e){" + "\n" +
+    "" + f4 + "\n" +
+    "   }" + "\n" +
+    "   function onMouseDown(e){" + "\n" +
+    "" + f5 + "\n" +
+    "   }" + "\n" +
+    "   function onMouseUp(e){" + "\n" +
+    "" + f6 + "\n" +
+    "   }" + "\n" +
     "   function update(){" + "\n" +
     "       requestAnimationFrame(update);" + "\n" +
     "       __ctName.update();" + "\n" +
@@ -327,7 +354,8 @@ CENTI.exportJS = function(){
     "   function onResize(){" + "\n" +
     "       __ctName.size(__ctName.sizeW, __ctName.sizeH);" + "\n" +
     "   }" + "\n" +
-    "};";
+    "};" + "\n" +
+    "})();";
     temp = temp.replace(/__ctName/g, ct.name);
     var blob = new Blob([temp], {type:"text/plain"});
     

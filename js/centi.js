@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.3.9';
+    this.ver = '0.4.0';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -61,6 +61,11 @@ var Centi = function(name){
     this.cx = this.w/2;
     this.cy = this.h/2;
     //
+    //mouse
+    this.mx = 0;
+    this.my = 0;
+    this.down = false;
+    //
     this.tempo = {
         bpm: 120,
         sec: 0.5,
@@ -83,6 +88,13 @@ var Centi = function(name){
     this.drawFunc = null;
     this.beatFunc = null;
     this.dspFunc = null;
+
+    this.mouseMoveMethod = '';
+    this.mouseDownMethod = '';
+    this.mouseUpMethod = '';
+    this.mouseMove = null;
+    this.mouseDown = null;
+    this.mouseUp = null;
     //
     this.toGifFunc = null;
     //THREE
@@ -125,13 +137,30 @@ Centi.prototype.destroy = function(){
     this.beatFunc = null;
     this.dspFunc = null;
 
+    this.mouseMove = null;
+    this.mouseDown = null;
+    this.mouseUp = null;
+
     this.fft = null;
     this.wave = null;
 
     this.b3d = false;
 
+    this.unbindEvents();
+
     this.pluginInstances = null;
 };
+
+Centi.prototype.unbindEvents = function(){
+    if ( this.canvas ) {
+        Events.unbind(this.canvas, 'click');
+        Events.unbind(this.canvas, 'mouseover');
+        Events.unbind(this.canvas, 'mouseout');
+        Events.unbind(this.canvas, 'mousedown');
+        Events.unbind(this.canvas, 'mouseup');
+        Events.unbind(this.canvas, 'mousemove');
+    }
+}
 
 Centi.prototype.init = function(canvas, audioContext){
     this.canvas = canvas;
@@ -227,9 +256,16 @@ Centi.prototype.parse = function(tw){
     var beatMethod = this.getInnerExpression(tw.slice(tw.indexOf('beat(')));
     var dspMethod = this.getInnerExpression(tw.slice(tw.indexOf('dsp(')));
 
+    var mouseMoveMethod = this.getInnerExpression(tw.slice(tw.indexOf('move(')));
+    var mouseDownMethod = this.getInnerExpression(tw.slice(tw.indexOf('down(')));
+    var mouseUpMethod = this.getInnerExpression(tw.slice(tw.indexOf('up(')));
+
     var setupMethod = tw.replace('frame(){' + frameMethod + '}', '');
     setupMethod = setupMethod.replace('beat(){' + beatMethod + '}', '');
     setupMethod = setupMethod.replace('dsp(){' + dspMethod + '}', '');
+    setupMethod = setupMethod.replace('move(){' + mouseMoveMethod + '}', '');
+    setupMethod = setupMethod.replace('down(){' + mouseDownMethod + '}', '');
+    setupMethod = setupMethod.replace('up(){' + mouseUpMethod + '}', '');
     if ( /c3d\(\)/.test(setupMethod) ) this.c3d();
     else this.c2d();
     
@@ -257,6 +293,15 @@ Centi.prototype.parse = function(tw){
 
     dspMethod = replace(dspMethod, this.name);
     dspMethod = this.modFunction(dspMethod);
+
+    mouseMoveMethod = replace(mouseMoveMethod, this.name);
+    mouseMoveMethod = this.modFunction(mouseMoveMethod);
+
+    mouseDownMethod = replace(mouseDownMethod, this.name);
+    mouseDownMethod = this.modFunction(mouseDownMethod);
+
+    mouseUpMethod = replace(mouseUpMethod, this.name);
+    mouseUpMethod = this.modFunction(mouseUpMethod);
 
     function replace(str, name){
         str = str.replace(valueReg, name + "."+"$1"+"$2");
@@ -293,10 +338,17 @@ Centi.prototype.parse = function(tw){
     // console.log(frameMethod);
     // console.log(beatMethod);
     // console.log(dspMethod);
+    // console.log(mouseMoveMethod);
+    // console.log(mouseDownMethod);
+    // console.log(mouseUpMethod);
 
     this.drawMethod = frameMethod;
     this.beatMethod = beatMethod;
     this.dspMethod = dspMethod;
+
+    this.mouseMoveMethod = mouseMoveMethod;
+    this.mouseDownMethod = mouseDownMethod;
+    this.mouseUpMethod = mouseUpMethod;
 
     if ( this.drawMethod != '' ) {
         this.drawFunc = evalInContext('return (function(){' + this.drawMethod + '});', this);
@@ -314,6 +366,24 @@ Centi.prototype.parse = function(tw){
         this.dspFunc = evalInContext('return (function(){' + this.dspMethod + '});', this);
     } else {
         this.dspFunc = null;
+    }
+
+    if ( this.mouseMoveMethod != '' ) {
+        this.mouseMove = evalInContext('return (function(){' + this.mouseMoveMethod + '});', this);
+    } else {
+        this.mouseMove = null;
+    }
+
+    if ( this.mouseDownMethod != '' ) {
+        this.mouseDown = evalInContext('return (function(){' + this.mouseDownMethod + '});', this);
+    } else {
+        this.mouseDown = null;
+    }
+
+    if ( this.mouseUpMethod != '' ) {
+        this.mouseUp = evalInContext('return (function(){' + this.mouseUpMethod + '});', this);
+    } else {
+        this.mouseUp = null;
     }
 
     this.setupMethod = setupMethod;
@@ -346,6 +416,37 @@ Centi.prototype.start = function(){
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].postSetup();
     }
+    try {
+        this.unbindEvents();
+    } catch(e){}
+    var self = this;
+    Events.bind(this.canvas, 'click', function(e){
+    });
+    Events.bind(this.canvas, 'mouseover', function(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;
+    });
+    Events.bind(this.canvas, 'mouseout', function(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;
+    });
+    Events.bind(this.canvas, 'mousedown', function(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;
+        self.down = true;
+        if ( self.mouseDown ) self.mouseDown(e);
+    });
+    Events.bind(this.canvas, 'mouseup', function(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;
+        self.down = false;
+        if ( self.mouseUp ) self.mouseUp(e);
+    });
+    Events.bind(this.canvas, 'mousemove', function(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;
+        if ( self.mouseMove ) self.mouseMove(e);
+    });
 
 };
 
@@ -963,6 +1064,30 @@ Centi.Vec2 = function(_x, _y){
     this.x = _x;
     this.y = _y;
 };
+Centi.Vec2.prototype.normalized = function(){
+    var len = Math.sqrt(this.x*this.x + this.y*this.y);
+    return new Centi.Vec2(this.x/len, this.y/len); 
+};
+Centi.Vec2.prototype.normalize = function(){
+    var len = Math.sqrt(this.x*this.x + this.y*this.y);
+    this.x = this.x/len;
+    this.y = this.y/len; 
+};
+Centi.Vec2.prototype.dist = function(_pt){
+    return this.distance(_pt);
+}
+Centi.Vec2.prototype.distance = function(_pt){
+    if ( _pt ) {
+        var dx = this.x - _pt.x;
+        var dy = this.y - _pt.y;
+        var len = Math.sqrt(dx + dy);
+        return len;
+    } else {
+        var len = Math.sqrt(this.x*this.x + this.y*this.y);
+        return len;
+    } 
+};
+
 
 // Utils
 Centi.prototype.now = function(){

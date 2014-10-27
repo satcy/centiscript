@@ -39,13 +39,15 @@ if ( !window.requestAnimationFrame ) {
     } )();
 
 }
-window.cancelAnimationFrame = window.cancelAnimationFrame ||
-  window.mozCancelAnimationFrame ||
-  window.webkitCancelAnimationFrame ||
-  window.msCancelAnimationFrame;
+if ( !window.cancelAnimationFrame ) {
+  window.cancelAnimationFrame = window.cancelAnimationFrame ||
+    window.mozCancelAnimationFrame ||
+    window.webkitCancelAnimationFrame ||
+    window.msCancelAnimationFrame;
+}
 
-if (!window.XMLHttpRequest){
-  XMLHttpRequest = function () {
+if ( !window.XMLHttpRequest ){
+  window.XMLHttpRequest = function () {
     try {
       return new ActiveXObject("Msxml2.XMLHTTP.6.0");
     } catch (e) {}
@@ -59,57 +61,74 @@ if (!window.XMLHttpRequest){
   };
 }
 
-function evalInContext(source, context) {
-    source = '(function(' + Object.keys(context).join(', ') + ') {' + source + '})';
-    
-    var compiled = eval(source);
-    return compiled.apply(context, values());
-    // you likely don't need this - use underscore, jQuery, etc
-    function values() {
-        var result = [];
-        for (var property in context)
-            if (context.hasOwnProperty(property))
-                result.push(context[property]);
-        return result;
-    }
-}
-
-function get_url_vars(){
-  var vars = new Object();
-  var params;
-  var temp_params = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-  for(var i = 0; i <temp_params.length; i++) {
-    params = temp_params[i].split('=');
-    
-    if(params.length == 2) {
-        //vars[params[0]] = params[1];
-        vars[decodeURIComponent(params[0])] = decodeURIComponent(params[1]);
-    }
+if ( !window.evalInContext ) {
+  window.evalInContext = function(source, context) {
+      source = '(function(' + Object.keys(context).join(', ') + ') {' + source + '})';
+      
+      var compiled = eval(source);
+      return compiled.apply(context, values());
+      // you likely don't need this - use underscore, jQuery, etc
+      function values() {
+          var result = [];
+          for (var property in context)
+              if (context.hasOwnProperty(property))
+                  result.push(context[property]);
+          return result;
+      }
   }
-  return vars;
 }
 
-function checkFileReaderApi(){
-  return window.File && window.FileReader && window.FileList && window.Blob;
+if ( !window.get_url_vars ) {
+  window.get_url_vars = function(){
+    var vars = new Object();
+    var params;
+    var temp_params = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i <temp_params.length; i++) {
+      params = temp_params[i].split('=');
+      
+      if(params.length == 2) {
+          //vars[params[0]] = params[1];
+          vars[decodeURIComponent(params[0])] = decodeURIComponent(params[1]);
+      }
+    }
+    return vars;
+  }
 }
 
-function checkFileWriterApi(){
-  return window.File && window.saveAs && window.FileList && window.Blob;
+if ( !window.checkFileReaderApi ) {
+  window.checkFileReaderApi = function(){
+    return window.File && window.FileReader && window.FileList && window.Blob;
+  }
 }
 
-var audioContext = null;
-var audioContextClass = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
-
-function getAudioContext(){
-  if ( audioContext ) return audioContext;
-  if ( !audioContext && audioContextClass ) return (audioContext = new audioContextClass());
-  else return null;
+if ( !window.checkFileWriterApi ) {
+  window.checkFileWriterApi = function(){
+    return window.File && window.saveAs && window.FileList && window.Blob;
+  }
 }
 
-var audioAnalyser = null;
+if ( !window.audioContext ) {
+  window.audioContext = null;
+}
+if ( !window.audioContextClass ) {
+  window.audioContextClass = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
+}
+if ( !window.getAudioContext ) {
+  window.getAudioContext = function(){
+    if ( window.audioContext ) return window.audioContext;
+    if ( !window.audioContext && window.audioContextClass ) return (window.audioContext = new window.audioContextClass());
+    else return null;
+  }
+}
 
-function getAudioAnalyser(){
-    return audioAnalyser || (audioAnalyser = getAudioContext().createAnalyser());
+if ( !window.audioContext ) {
+  window.audioContext = null;
+}
+
+if ( !window.getAudioAnalyser ) {
+  window.getAudioAnalyser = function(){
+      return window.audioAnalyser || (window.audioAnalyser = window.getAudioContext().createAnalyser());
+  }
 }
 
 if ( !Array.prototype.forEach ) {
