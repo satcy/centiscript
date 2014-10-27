@@ -1068,6 +1068,17 @@ Centi.prototype.fold = function(_arr){
     }
 };
 
+Centi.prototype.remove = function(_arr, _eval){
+    var a = [];
+    var l = _arr.length;
+    for ( var i=0; i<l; i++ ) {
+        if ( !_eval(_arr[i]) ) {
+            a.push(_arr[i]);
+        }
+    }
+    return a;
+};
+
 // Geometry
 
 Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
