@@ -1079,6 +1079,11 @@ Centi.prototype.remove = function(_arr, _eval){
     return a;
 };
 
+Centi.prototype.clip = function(_arr, _num){
+    if ( _arr.length < _num ) return _arr;
+    return _arr.slice(_arr.length-_num);
+};
+
 // Geometry
 
 Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
