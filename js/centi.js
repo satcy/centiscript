@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.4.0';
+    this.ver = '0.4.1';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -416,9 +416,11 @@ Centi.prototype.start = function(){
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].postSetup();
     }
+
     try {
         this.unbindEvents();
     } catch(e){}
+
     var self = this;
     Events.bind(this.canvas, 'click', function(e){
     });
@@ -431,23 +433,70 @@ Centi.prototype.start = function(){
         self.my = e.layerY;
     });
     Events.bind(this.canvas, 'mousedown', function(e){
+        onDown(e);
+        Events.bind(document, 'mouseup', function(e){
+            Events.unbind(document, 'mouseup');
+            onUp(e);
+        });
+    });
+    
+    Events.bind(this.canvas, 'mousemove', onMove);
+
+    if ( this.canvas.addEventListener && document.addEventListener ) {
+        this.canvas.removeEventListener("touchstart", this);
+        this.canvas.removeEventListener("touchmove", this);
+        document.removeEventListener("touchend", this);
+        document.removeEventListener("touchcancel", this);
+
+        this.canvas.addEventListener("touchstart", this, false);
+        this.canvas.addEventListener("touchmove", this, false);
+        
+        document.addEventListener("touchend", this, false);
+        document.addEventListener("touchcancel", this, false);
+    }
+
+    function onDown(e){
         self.mx = e.layerX;
         self.my = e.layerY;
         self.down = true;
         if ( self.mouseDown ) self.mouseDown(e);
-    });
-    Events.bind(this.canvas, 'mouseup', function(e){
+    }
+
+    function onUp(e){
         self.mx = e.layerX;
         self.my = e.layerY;
         self.down = false;
         if ( self.mouseUp ) self.mouseUp(e);
-    });
-    Events.bind(this.canvas, 'mousemove', function(e){
+    }
+
+    function onMove(e){
         self.mx = e.layerX;
         self.my = e.layerY;
         if ( self.mouseMove ) self.mouseMove(e);
-    });
+    }
+};
 
+Centi.prototype.handleEvent = function(e){
+    switch ( e.type ) {
+        case "touchstart":
+            this.mx = e.layerX;
+            this.my = e.layerY;
+            this.down = false;
+            if ( this.mouseDown ) this.mouseDown(e);
+            break;
+        case "touchmove":
+            this.mx = e.layerX;
+            this.my = e.layerY;
+            if ( this.mouseMove ) this.mouseMove(e);
+            break;
+        case "touchend":
+        case "touchcancel":
+            this.mx = e.layerX;
+            this.my = e.layerY;
+            this.down = false;
+            if ( this.mouseUp ) this.mouseUp(e);
+            break;
+    }
 };
 
 Centi.prototype.modFunction = function(_str){
@@ -1160,6 +1209,69 @@ Centi.prototype.seg = function(_num, _x, _y, _w, _h){
     }
 };
 
+Centi.prototype.glitch = function(amount){
+    var x, y, w = this.w, h = this.h,
+
+    i, _len = amount || 6,
+
+    channelOffset = (Math.floor(this.rand(-_len*2, _len*2)) * w * + Math.floor(this.rand(-_len, _len))) * 4,
+
+    maxOffset = _len * _len / 100 * w,
+
+    chunkWidth, chunkHeight,
+
+    tempCanvas = document.createElement("canvas"),
+    tempCtx = tempCanvas.getContext("2d"),
+
+    srcData, targetImageData, data;
+
+    tempCanvas.width = w;
+    tempCanvas.height = h;
+
+    tempCtx.drawImage(this.canvas, 0, 0, w, h);
+
+    srcData = tempCtx.getImageData(0, 0, w, h).data;
+
+    for (i = 0; i < _len; i++) {
+        y = Math.floor(this.rand(0, h));
+
+        chunkHeight = Math.min(Math.floor(this.rand(1, h / 4)), h - y);
+
+        x = Math.floor(this.rand(1, maxOffset));
+        chunkWidth = w - x;
+
+        tempCtx.drawImage(this.canvas,
+            0, y, chunkWidth, chunkHeight,
+            x, y, chunkWidth, chunkHeight);
+
+        tempCtx.drawImage(this.canvas,
+            chunkWidth, y, x, chunkHeight,
+            0, y, x, chunkHeight);
+    }
+
+    targetImageData = tempCtx.getImageData(0, 0, w, h);
+
+    data = targetImageData.data;
+
+    for(i = Math.floor(this.rand(0, 3)), _len = srcData.length; i < _len; i += 4) {
+        data[i+channelOffset] = srcData[i];
+    }
+
+    for(i = 0; i < _len; i++) {
+        data[i++] *= 2;
+        data[i++] *= 2;
+        data[i++] *= 2;
+    }
+
+    tempCtx.putImageData(targetImageData, 0, 0);
+
+    tempCtx.fillStyle = "rgb(0,0,0)";
+    for (i = 0; i < h; i += 2) {
+        tempCtx.fillRect (0, i, w, 1);
+    }
+
+    this.ctx.drawImage(tempCanvas, 0, 0);
+};
 
 // centi funcs
 
