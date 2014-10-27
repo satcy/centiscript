@@ -76,7 +76,7 @@ var Centi = function(name){
     //
     this.initSec = this.now();
     //
-    this.bgcolor = {r:0, g:0, b:0};
+    this.bgcolor = {r:0, g:0, b:0, a:255};
     this.bFill = true;
     this.kdtree;
     //
@@ -559,10 +559,22 @@ Centi.prototype.bg = function(){
         this.bgcolor.r = parseInt(arguments[0]);
         this.bgcolor.g = parseInt(arguments[0]);
         this.bgcolor.b = parseInt(arguments[0]); 
+        this.bgcolor.a = 255; 
+    } else if ( len == 2 ) {
+        this.bgcolor.r = parseInt(arguments[0]);
+        this.bgcolor.g = parseInt(arguments[0]);
+        this.bgcolor.b = parseInt(arguments[0]); 
+        this.bgcolor.a = parseInt(arguments[1]); 
     } else if ( len == 3 ) {
         this.bgcolor.r = parseInt(arguments[0]);
         this.bgcolor.g = parseInt(arguments[1]);
-        this.bgcolor.b = parseInt(arguments[2]);     
+        this.bgcolor.b = parseInt(arguments[2]);  
+        this.bgcolor.a = 255;   
+    } else if ( len == 4 ) {
+        this.bgcolor.r = parseInt(arguments[0]);
+        this.bgcolor.g = parseInt(arguments[1]);
+        this.bgcolor.b = parseInt(arguments[2]); 
+        this.bgcolor.a = parseInt(arguments[3]);     
     }
     this.clear();
 };
@@ -595,7 +607,8 @@ Centi.prototype.clear = function(){
     var mode = this.ctx.globalCompositeOperation;
     this.ctx.globalCompositeOperation = 'source-over';
     //this.log(this.ctx.globalCompositeOperation, mode );
-    this.ctx.fillStyle = "rgb("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+")";
+    this.ctx.clearRect(0, 0, this.w, this.h);
+    this.ctx.fillStyle = "rgba("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+","+(this.bgcolor.a/255.0)+")";
     this.ctx.fillRect(0,0,this.w, this.h);    
     this.ctx.globalCompositeOperation = mode;
 };
