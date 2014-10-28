@@ -1209,7 +1209,7 @@ Centi.prototype.seg = function(_num, _x, _y, _w, _h){
     }
 };
 
-Centi.prototype.glitch = function(amount){
+Centi.prototype.crash = function(amount){
     var x, y, w = this.w, h = this.h,
 
     i, _len = amount || 6,
