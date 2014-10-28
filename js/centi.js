@@ -422,6 +422,7 @@ Centi.prototype.start = function(){
     } catch(e){}
 
     var self = this;
+    /*
     Events.bind(this.canvas, 'click', function(e){
     });
     Events.bind(this.canvas, 'mouseover', function(e){
@@ -432,6 +433,8 @@ Centi.prototype.start = function(){
         self.mx = e.layerX;
         self.my = e.layerY;
     });
+    */
+    /*
     Events.bind(this.canvas, 'mousedown', function(e){
         onDown(e);
         Events.bind(document, 'mouseup', function(e){
@@ -441,6 +444,16 @@ Centi.prototype.start = function(){
     });
     
     Events.bind(this.canvas, 'mousemove', onMove);
+    */
+    if ( this.canvas.addEventListener ) {
+        this.canvas.removeEventListener("mousemove", this);
+        this.canvas.removeEventListener("mousedown", this);
+        this.canvas.removeEventListener("mouseup", this);
+
+        this.canvas.addEventListener("mousemove", this, false);
+        this.canvas.addEventListener("mousedown", this, false);
+        this.canvas.addEventListener("mouseup", this, false);
+    }
 
     if ( this.canvas.addEventListener && document.addEventListener ) {
         this.canvas.removeEventListener("touchstart", this);
@@ -456,46 +469,71 @@ Centi.prototype.start = function(){
     }
 
     function onDown(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;
+        setMousePosition(e);
         self.down = true;
         if ( self.mouseDown ) self.mouseDown(e);
     }
 
     function onUp(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;
+        setMousePosition(e);
         self.down = false;
         if ( self.mouseUp ) self.mouseUp(e);
     }
 
     function onMove(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;
+        setMousePosition(e);
         if ( self.mouseMove ) self.mouseMove(e);
+    }
+
+    function setMousePosition(e){
+        self.mx = e.clientX - self.canvas.offsetLeft;
+        self.my = e.clientY - self.canvas.offsetTop;
     }
 };
 
 Centi.prototype.handleEvent = function(e){
+    var self = this;
     switch ( e.type ) {
-        case "touchstart":
-            this.mx = e.layerX;
-            this.my = e.layerY;
+        case "mousedown":
+            setMousePosition(e);
+            this.down = true;
+            if ( this.mouseDown ) this.mouseDown(e);
+            break;
+        case "mousemove":
+            setMousePosition(e);
+            if ( this.mouseMove ) this.mouseMove(e);
+            break;
+        case "mouseup":
+            setMousePosition(e);
             this.down = false;
+            if ( this.mouseUp ) this.mouseUp(e);
+            break;
+
+        case "touchstart":
+            serTouchPosition(e);
+            this.down = true;
             if ( this.mouseDown ) this.mouseDown(e);
             break;
         case "touchmove":
-            this.mx = e.layerX;
-            this.my = e.layerY;
+            serTouchPosition(e);
             if ( this.mouseMove ) this.mouseMove(e);
             break;
         case "touchend":
         case "touchcancel":
-            this.mx = e.layerX;
-            this.my = e.layerY;
+            serTouchPosition(e);
             this.down = false;
             if ( this.mouseUp ) this.mouseUp(e);
             break;
+    }
+    function setMousePosition(e){
+        var rect = self.canvas.getBoundingClientRect();
+        self.mx = e.clientX - rect.left;
+        self.my = e.clientY - rect.top;
+    }
+
+    function serTouchPosition(e){
+        self.mx = e.layerX;
+        self.my = e.layerY;   
     }
 };
 
