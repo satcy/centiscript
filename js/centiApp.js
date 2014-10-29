@@ -297,7 +297,7 @@ CENTI.exportJS = function(){
 
     var temp = 
     ((is3d) ? '//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>' + "\n" : "" ) + 
-    '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/centi.min.js"></script>' + "\n" +
+    '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/release/centi.min.'+ct.ver+'.js"></script>' + "\n" +
     ((is3d) ? '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/plugin/centi.three.js"></script>' + "\n" : "" ) + 
     "//<canvas id='c'></canvas>" + "\n" +
     "\n" +
