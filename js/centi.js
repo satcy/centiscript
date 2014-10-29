@@ -1189,19 +1189,28 @@ Centi.Vec2.prototype.normalize = function(){
     this.x = this.x/len;
     this.y = this.y/len; 
 };
-Centi.Vec2.prototype.dist = function(_pt){
-    return this.distance(_pt);
+Centi.Vec2.prototype.dist = function(){
+    return this.distance.apply(this, arguments);
 }
-Centi.Vec2.prototype.distance = function(_pt){
-    if ( _pt ) {
-        var dx = this.x - _pt.x;
-        var dy = this.y - _pt.y;
-        var len = Math.sqrt(dx + dy);
-        return len;
-    } else {
+Centi.Vec2.prototype.distance = function(){
+    var l = arguments.length;
+    if ( l == 1 ) {
+        var _pt = arguments[0];
+        if ( _pt ) {
+            var dx = this.x - _pt.x;
+            var dy = this.y - _pt.y;
+            var len = Math.sqrt(dx*dx + dy*dy);
+            return len;
+        }
+    } else if ( l == 0 ) {
         var len = Math.sqrt(this.x*this.x + this.y*this.y);
         return len;
-    } 
+    } else if ( l == 2 ) {
+        var dx = this.x - arguments[0];
+        var dy = this.y - arguments[1];
+        var len = Math.sqrt(dx*dx + dy*dy);
+        return len;
+    }  
 };
 
 
