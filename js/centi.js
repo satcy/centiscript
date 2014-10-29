@@ -30,11 +30,14 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.4.1';
+    this.ver = '0.4.2';
     this.name = name ? name : "ct";
 
     this.canvas = null;
     this.ctx = null;
+
+    this.tempCanvas = null;
+    this.tempCtx = null;
     //DSP
     this.dsp = {
         enable: false,
@@ -127,6 +130,9 @@ Centi.prototype.destroy = function(){
     this.dsp.context = null;
     this.canvas = null;
     this.ctx = null;
+    this.tempCanvas = null;
+    this.tempCtx = null;
+
     this.dsp = null;
     this.tempo = null;
 
@@ -151,19 +157,11 @@ Centi.prototype.destroy = function(){
     this.pluginInstances = null;
 };
 
-Centi.prototype.unbindEvents = function(){
-    if ( this.canvas ) {
-        Events.unbind(this.canvas, 'click');
-        Events.unbind(this.canvas, 'mouseover');
-        Events.unbind(this.canvas, 'mouseout');
-        Events.unbind(this.canvas, 'mousedown');
-        Events.unbind(this.canvas, 'mouseup');
-        Events.unbind(this.canvas, 'mousemove');
-    }
-}
-
 Centi.prototype.init = function(canvas, audioContext){
     this.canvas = canvas;
+
+    this.tempCanvas = document.createElement("canvas"),
+    this.tempCtx = this.tempCanvas.getContext("2d");
     
     this.initSec = this.now();
     this.time = 0;
@@ -417,34 +415,6 @@ Centi.prototype.start = function(){
         this.pluginInstances[i].postSetup();
     }
 
-    try {
-        this.unbindEvents();
-    } catch(e){}
-
-    var self = this;
-    /*
-    Events.bind(this.canvas, 'click', function(e){
-    });
-    Events.bind(this.canvas, 'mouseover', function(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;
-    });
-    Events.bind(this.canvas, 'mouseout', function(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;
-    });
-    */
-    /*
-    Events.bind(this.canvas, 'mousedown', function(e){
-        onDown(e);
-        Events.bind(document, 'mouseup', function(e){
-            Events.unbind(document, 'mouseup');
-            onUp(e);
-        });
-    });
-    
-    Events.bind(this.canvas, 'mousemove', onMove);
-    */
     if ( this.canvas.addEventListener ) {
         this.canvas.removeEventListener("mousemove", this);
         this.canvas.removeEventListener("mousedown", this);
@@ -468,27 +438,6 @@ Centi.prototype.start = function(){
         document.addEventListener("touchcancel", this, false);
     }
 
-    function onDown(e){
-        setMousePosition(e);
-        self.down = true;
-        if ( self.mouseDown ) self.mouseDown(e);
-    }
-
-    function onUp(e){
-        setMousePosition(e);
-        self.down = false;
-        if ( self.mouseUp ) self.mouseUp(e);
-    }
-
-    function onMove(e){
-        setMousePosition(e);
-        if ( self.mouseMove ) self.mouseMove(e);
-    }
-
-    function setMousePosition(e){
-        self.mx = e.clientX - self.canvas.offsetLeft;
-        self.my = e.clientY - self.canvas.offsetTop;
-    }
 };
 
 Centi.prototype.handleEvent = function(e){
@@ -686,6 +635,9 @@ Centi.prototype.size = function(_w, _h){
     this.canvas.height = this.h;
     this.cx = this.w/2;
     this.cy = this.h/2;
+
+    this.tempCanvas.width = this.w;
+    this.tempCanvas.height = this.h;
 };
 
 Centi.prototype.clr = function(){ this.clear(); };
@@ -735,7 +687,6 @@ Centi.prototype.noise = function(){
 
 // Draw
 
-Centi.prototype.tri = function(){ };
 Centi.prototype.tri = function(){
     if ( this.ctx == null ) return;
     if ( arguments.length == 6 ) {
@@ -1177,8 +1128,8 @@ Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
 Centi.prototype.vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
 // --private
 Centi.Vec2 = function(_x, _y){
-    this.x = _x;
-    this.y = _y;
+    this.x = _x || 0;
+    this.y = _y || 0;
 };
 Centi.Vec2.prototype.normalized = function(){
     var len = Math.sqrt(this.x*this.x + this.y*this.y);
@@ -1256,6 +1207,48 @@ Centi.prototype.seg = function(_num, _x, _y, _w, _h){
     }
 };
 
+//Special Effects
+Centi.prototype.shrink = function(radiusX, radiusY){
+    radiusX = radiusX || 1;
+    radiusX = (radiusX<1) ? 1 : radiusX;
+
+    radiusY = radiusY || radiusX;
+    radiusY = (radiusY<1) ? 1 : radiusY;
+
+    var w = this.w/radiusX;
+    var h = this.h/radiusY;
+
+    this.tempCtx.clearRect(0, 0, this.w, this.h);
+    this.tempCtx.drawImage(this.canvas, 0,0,this.w,this.h,0,0,w,h);
+    this.ctx.drawImage(this.tempCanvas, 0,0,w,h,0,0,this.w,this.h);
+};
+
+Centi.prototype.mosaic = function(radiusX, radiusY){
+    radiusX = radiusX || 1;
+    radiusX = (radiusX<1) ? 1 : radiusX;
+
+    radiusY = radiusY || radiusX;
+    radiusY = (radiusY<1) ? 1 : radiusY;
+
+    var w = Math.floor(this.w/radiusX);
+    var h = Math.floor(this.h/radiusY);
+
+    this.tempCtx.clearRect(0, 0, this.w, this.h);
+    this.tempCtx.drawImage(this.canvas, 0,0,this.w,this.h,0,0,w,h);
+    var channelList = this.tempCtx.getImageData( 0, 0, w, h ).data;
+
+    radiusX = this.w/w;
+    radiusY = this.h/h;
+    
+    for ( var i = 0; i < h; i += 1 ) {
+        for ( var j = 0; j < w; j += 1 ) {
+            var n = (j + i * w) * 4;
+            this.ctx.fillStyle = 'rgb(' + channelList[n] + ', ' + channelList[n + 1] + ', ' + channelList[n + 2] + ')';
+            this.ctx.fillRect( j*radiusX, i*radiusY, radiusX, radiusY );
+        }
+    }
+};
+
 Centi.prototype.crash = function(amount){
     var x, y, w = this.w, h = this.h,
 
@@ -1267,13 +1260,15 @@ Centi.prototype.crash = function(amount){
 
     chunkWidth, chunkHeight,
 
-    tempCanvas = document.createElement("canvas"),
-    tempCtx = tempCanvas.getContext("2d"),
+    tempCanvas = this.tempCanvas,
+    tempCtx = this.tempCtx,
 
     srcData, targetImageData, data;
 
     tempCanvas.width = w;
     tempCanvas.height = h;
+
+    tempCtx.clearRect(0, 0, this.w, this.h);
 
     tempCtx.drawImage(this.canvas, 0, 0, w, h);
 
