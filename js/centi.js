@@ -30,7 +30,7 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 PI2 = Math.PI2 = Math.PI*2.0;
 
 var Centi = function(name){
-    this.ver = '0.4.2';
+    this.ver = '0.4.3';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -551,8 +551,9 @@ Centi.prototype.update = function(){
             this.wave[i] = (this.waveUint[i]/255 - 0.5)*2.0;
         }
     }
-    
+    this.push();
     if ( this.drawFunc ) this.drawFunc();
+    this.pop();
     //if ( this.b3d && this.renderer ) this.renderer.render(this.scene, this.cam);  
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].postUpdate();
@@ -785,6 +786,104 @@ Centi.prototype.curveTo = function(){
     }
 };
 
+Centi.prototype.lines = function(_pts, _closed){
+    _closed = _closed || false;
+    var l = _pts.length;
+    if ( l >= 2 ) {
+        var arr = _pts;
+        var first = arr[0];
+        var isPoint = ( first.hasOwnProperty("x") && first.hasOwnProperty("y") );
+        if ( isPoint ) {
+            var pt;
+            for ( var i=0; i<l; i++ ) {
+                pt = arr[i];
+                if ( i==0 ) this.moveTo(pt.x, pt.y);
+                else this.lineTo(pt.x, pt.y);
+            }
+            if ( _closed ) {
+                pt = arr[0];
+                this.lineTo(pt.x, pt.y);
+            }
+        } else {
+            var x,y;
+            for ( var i=0; i<l; i+=2 ) {
+                x = arr[i];
+                y = arr[i+1];
+                if ( i==0 ) this.moveTo(x, y);
+                else this.lineTo(x, y);
+            }
+            if ( _closed ) {
+                x = arr[0];
+                y = arr[1];
+                this.lineTo(x, y);
+            }
+        }
+    }
+};
+
+Centi.prototype.strk2fill = function(a, wid, sub){
+    if ( !a ) return [];
+    var l=a.length;
+    if ( l == 0 ) return [];
+    wid = wid || 1;
+    sub = parseInt(sub) || 1;
+    if ( sub <= 0 ) sub = 1;
+    var pre;
+    var arr = [];
+    var left = [];
+    var right = [];
+    for ( var i=0; i<l; i+=sub ) {
+      if ( pre ) {
+        var pt = a[i];
+        var vec = this.Vec2(pre.y-pt.y, pt.x-pre.x);
+        vec = vec.normalized();
+
+        var pt1 = this.Vec2(pt.x + vec.x*wid/2, pt.y + vec.y*wid/2);
+        var pt2 = this.Vec2(pt.x - vec.x*wid/2, pt.y - vec.y*wid/2);
+
+        var pt3 = this.Vec2(pre.x + vec.x*wid/2, pre.y + vec.y*wid/2);
+        var pt4 = this.Vec2(pre.x - vec.x*wid/2, pre.y - vec.y*wid/2);
+        if ( i == sub ) {
+          left.push(pt3);
+          right.unshift(pt4);
+        } else if ( i > sub ) {
+          var pre1 = left[left.length - 1];
+          var pre2 = right[0];
+          left[left.length - 1].x = (pre1.x + pt3.x)/2;
+          left[left.length - 1].y = (pre1.y + pt3.y)/2;
+          
+          right[0].x = (pre2.x + pt4.x)/2;
+          right[0].y = (pre2.y + pt4.y)/2;
+          
+        }
+        left.push(pt1);
+        right.unshift(pt2);
+        pre = pt;
+      } else {
+        pre = a[i];
+      }
+    }
+    l = left.length;
+    arr = arr.concat(left);
+    arr = arr.concat(right);
+    return arr;
+};
+
+Centi.prototype.xys2pts = function(a){
+    var arr = a || [];
+    if ( arr.length == 0 ) return [];
+    var first = arr[0];
+    var isPoint = ( first.hasOwnProperty("x") && first.hasOwnProperty("y") );
+    if ( isPoint ) return arr;
+
+    var arr2 = [];
+    var l = arr.length;
+    for ( var i=0; i<l; i+=2 ) {
+        arr2.push(this.Vec2(arr[i], arr[i+1]));
+    }
+    return arr2;
+};
+
 Centi.prototype.beginShape = function(){
     if ( this.ctx == null ) return;
     this.ctx.beginPath();
@@ -948,8 +1047,8 @@ Centi.prototype.dist = function(){
 Centi.prototype.wrap = function(_a, _min, _max){
     var d = _max - _min;
     if ( d > 0 ) {
-        if ( _a < _min ) _a += d;
-        if ( _a > _max ) _a -= d;
+        while ( _a < _min ) _a += d;
+        while ( _a > _max ) _a -= d;
         return _a;
     } else {
         return _a;
