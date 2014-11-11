@@ -1028,11 +1028,11 @@ Centi.prototype.gradR = function(_x0, _y0, _r0, _x1, _y1, _r1){
 Centi.prototype.gradColor = function(_ratio, _r, _g, _b, _a){
     if ( !this.gradient ) return;
     _ratio = this.minmax(_ratio, 0, 1);
-    _r = _r ===undefined ? 0 : _r;
-    _g = _g === undefined ? _r : _g;
-    _b = _b === undefined ? _g : _b;
-    _a = _a === undefined ? 255 : _a;
-    this.gradient.addColorStop(_ratio, this.colorString(_r, _g, _b, _a));
+    var a = [];
+    if ( arguments.length > 1 ) {
+        for ( var i=1; i<arguments.length; i++ ) a.push(arguments[i]);
+    }
+    this.gradient.addColorStop(_ratio, this.colorString.apply(this, a));
 };
 
 Centi.prototype.colorString = function(){
