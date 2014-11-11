@@ -986,7 +986,7 @@ Centi.prototype.col = function(){
         s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[1])/255.0 + ")";
     } else if ( len == 3 ) {    
         this.drawcolor.r = arguments[0];
-        this.coldrawcoloror.g = arguments[1];
+        this.drawcolor.g = arguments[1];
         this.drawcolor.b = arguments[2];
         this.drawcolor.a = 255;
         s = "rgb(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + ")";
