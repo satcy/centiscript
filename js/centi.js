@@ -109,6 +109,11 @@ var Centi = function(name){
 
     this.pluginInstances = [];
 
+    //staticies
+    this.Infinity = Infinity;
+    this.NaN = NaN;
+    this.null = null;
+
     if ( !CT_PROPS ) {
         var props = [];
         for(var prop in this){
