@@ -1035,6 +1035,16 @@ Centi.prototype.gradColor = function(_ratio, _r, _g, _b, _a){
     this.gradient.addColorStop(_ratio, this.colorString.apply(this, a));
 };
 
+Centi.prototype.gradHex = function(_ratio, _hex){
+    if ( !this.gradient ) return;
+    _ratio = this.minmax(_ratio, 0, 1);
+    var a = [];
+    _hex = _hex === undefined ? 0xFFFFFF : _hex;
+    if ( _hex >> 24 > 0 ) a = [_hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF];
+    else a = [_hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, 255];
+    this.gradient.addColorStop(_ratio, this.colorString.apply(this, a));
+};
+
 Centi.prototype.colorString = function(){
     var len = arguments.length;
     var s = "rgb(0,0,0)";
