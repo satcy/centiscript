@@ -29,8 +29,10 @@ var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
 PI2 = Math.PI2 = Math.PI*2.0;
 
+var CT_PROPS;
+
 var Centi = function(name){
-    this.ver = '0.4.3';
+    this.ver = '0.4.4';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -80,7 +82,9 @@ var Centi = function(name){
     this.initSec = this.now();
     //
     this.bgcolor = {r:0, g:0, b:0, a:255};
+    this.drawcolor = {r:0, g:0, b:0, a:255};
     this.bFill = true;
+    this.gradient = null;
     this.kdtree;
     //
     this.setupMethod = '';
@@ -105,11 +109,13 @@ var Centi = function(name){
 
     this.pluginInstances = [];
 
-    var props = [];
-    for(var prop in this){
-        if ( CT_FUNCS.indexOf(prop) == -1 ) props.push(prop);
+    if ( !CT_PROPS ) {
+        var props = [];
+        for(var prop in this){
+            if ( CT_FUNCS.indexOf(prop) == -1 ) props.push(prop);
+        }
+        CT_PROPS = props;
     }
-    this.ctProps = props;
 };
 
 Centi.plugins = [];
@@ -151,8 +157,6 @@ Centi.prototype.destroy = function(){
     this.wave = null;
 
     this.b3d = false;
-
-    this.unbindEvents();
 
     this.pluginInstances = null;
 };
@@ -213,11 +217,17 @@ Centi.prototype.init = function(canvas, audioContext){
             self.updateBeat();
             var outL = event.outputBuffer.getChannelData(0);
             var outR = event.outputBuffer.getChannelData(1);
+            var isNumber = (typeof self.doDsp() == 'number');
             for (var i = 0; i < this.bufferSize; i++) {
                 var t = self.time;
                 var value = self.doDsp();
-                outL[i] = value;
-                outR[i] = value;
+                if ( isNumber ) {
+                    outL[i] = value;
+                    outR[i] = value;
+                } else if ( value.length == 2 ) {
+                    outL[i] = value[0];
+                    outR[i] = value[1];
+                }
                 self.time += inc_time;
             }
         };
@@ -329,6 +339,7 @@ Centi.prototype.parse = function(tw){
         for ( var i=0; i<MATH_PROPS.length; i++ ) {
             str = str.replace(new RegExp(name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
         }
+
         return str;
     }
 
@@ -414,6 +425,8 @@ Centi.prototype.start = function(){
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].postSetup();
     }
+
+    this.col(255);
 
     if ( this.canvas.addEventListener ) {
         this.canvas.removeEventListener("mousemove", this);
@@ -508,6 +521,8 @@ Centi.prototype.modFunction = function(_str){
             current++;
         }
         _str = txt;
+
+        _str = _str.replace(';};);', ';});');
     }
     return _str;
 };
@@ -580,6 +595,8 @@ Centi.prototype.reset = function(){
     this.lj(0);
     this.lc(0);
     this.bm(0);
+    this.bg(0);
+    this.col(255);
     //this.b3d = false;
 };
 
@@ -687,6 +704,12 @@ Centi.prototype.noise = function(){
 };
 
 // Draw
+Centi.prototype.pixel = function(_x, _y, _snap){
+    if ( this.ctx == null ) return;
+    _snap = _snap === undefined ? true : _snap;
+    if ( _snap ) this.rect(Math.floor(_x),Math.floor(_y),1,1);
+    else this.rect(_x,_y,1,1);
+};
 
 Centi.prototype.tri = function(){
     if ( this.ctx == null ) return;
@@ -943,9 +966,76 @@ Centi.prototype.blendMode = function(_val){
 };
 
 Centi.prototype.hcol = function(_hex){
-    this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF);
+    if ( _hex >> 24 > 0 ) this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF);
+    else this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF);
 };
 Centi.prototype.col = function(){
+    var len = arguments.length;
+    var s = "rgb(0,0,0)";
+    if ( len == 1 ) {
+        this.drawcolor.r = arguments[0];
+        this.drawcolor.g = arguments[0];
+        this.drawcolor.b = arguments[0];
+        this.drawcolor.a = 255;
+        s = "rgb(" + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + ")";
+    } else if ( len == 2 ) {
+        this.drawcolor.r = arguments[0];
+        this.drawcolor.g = arguments[0];
+        this.drawcolor.b = arguments[0];
+        this.drawcolor.a = arguments[1];
+        s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[0]) + "," + parseInt(arguments[1])/255.0 + ")";
+    } else if ( len == 3 ) {    
+        this.drawcolor.r = arguments[0];
+        this.coldrawcoloror.g = arguments[1];
+        this.drawcolor.b = arguments[2];
+        this.drawcolor.a = 255;
+        s = "rgb(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + ")";
+    } else if ( len == 4 ) {
+        this.drawcolor.r = arguments[0];
+        this.drawcolor.g = arguments[1];
+        this.drawcolor.b = arguments[2];
+        this.drawcolor.a = arguments[3];
+        s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + "," + parseInt(arguments[3])/255.0 + ")";
+    }
+    this.ctx.fillStyle = s;
+    this.ctx.strokeStyle = s;
+    this.gradient = null;
+};
+
+Centi.prototype.fill = function(){
+    this.bFill = true;
+};
+
+Centi.prototype.strk = function(){ this.stroke(); };
+Centi.prototype.stroke = function(){
+    this.bFill = false;
+};
+
+Centi.prototype.grad = function(_x0, _y0, _x1, _y1){
+    this.bFill = true;
+    if ( !this.ctx ) return;
+    this.gradient = this.ctx.createLinearGradient(_x0, _y0, _x1, _y1);
+    this.ctx.fillStyle = this.gradient;
+};
+
+Centi.prototype.gradR = function(_x0, _y0, _r0, _x1, _y1, _r1){
+    this.bFill = true;
+    if ( !this.ctx ) return;
+    this.gradient = this.ctx.createRadialGradient(_x0, _y0, _r0, _x1, _y1, _r1);
+    this.ctx.fillStyle = this.gradient;
+};
+
+Centi.prototype.gradColor = function(_ratio, _r, _g, _b, _a){
+    if ( !this.gradient ) return;
+    _ratio = this.minmax(_ratio, 0, 1);
+    _r = _r ===undefined ? 0 : _r;
+    _g = _g === undefined ? _r : _g;
+    _b = _b === undefined ? _g : _b;
+    _a = _a === undefined ? 255 : _a;
+    this.gradient.addColorStop(_ratio, this.colorString(_r, _g, _b, _a));
+};
+
+Centi.prototype.colorString = function(){
     var len = arguments.length;
     var s = "rgb(0,0,0)";
     if ( len == 1 ) {
@@ -957,17 +1047,7 @@ Centi.prototype.col = function(){
     } else if ( len == 4 ) {
         s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + "," + parseInt(arguments[3])/255.0 + ")";
     }
-    this.ctx.fillStyle = s;
-    this.ctx.strokeStyle = s;
-};
-
-Centi.prototype.fill = function(){
-    this.bFill = true;
-};
-
-Centi.prototype.strk = function(){ this.stroke(); };
-Centi.prototype.stroke = function(){
-    this.bFill = false;
+    return s;
 };
 
 // Transform
@@ -1007,6 +1087,7 @@ Centi.prototype.transform = function(_a, _b, _c, _d, _e, _f){
 Centi.prototype.drawFFT = function(_x, _y, _w, _h, _skip, _barW){
     var barW = _barW || 2;
     var skip = _skip || 9;
+    if ( skip < 1 ) skip = 1;
     var n = this.fft.length;
     var cx = _w/n;
     var sc = _h/255;
@@ -1017,6 +1098,7 @@ Centi.prototype.drawFFT = function(_x, _y, _w, _h, _skip, _barW){
 
 Centi.prototype.drawWave = function(_x, _y, _w, _h, _skip){
     var skip = _skip || 9;
+    if ( skip < 1 ) skip = 1;
     var n = this.wave.length;
     var cx = _w/(n-1);
     var sc = _h/2;
@@ -1171,13 +1253,24 @@ Centi.prototype.bpm = function(_bpm, _divide){
     this.tempo.sec = (60/this.tempo.bpm*4)/this.tempo.divide;
     this.tempo.preSec = this.time;
 };
-// --private
-
 
 Centi.prototype.noteToFreq = function(_note) { return this.n2f(_note); };
 Centi.prototype.n2f = function(_note) {
     return Math.pow(2, (_note - 69) / 12) * 440.0;
 };
+
+// routine
+Centi.prototype.loop = function(_s,_e,_f){
+    var n = _s;
+    var t = _e;
+    var inc = _e - _s > 0 ? 1 : -1;
+    var cnt = inc == 1 ? _e - _s : -(_e - _s);
+    while ( cnt >= 0  ) {
+        _f(n);
+        n += inc;
+        cnt--;
+    }
+}
 
 // Array
 
@@ -1226,10 +1319,37 @@ Centi.prototype.clip = function(_arr, _num){
 Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
 Centi.prototype.vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
 // --private
+Centi.Numerical = new function(){
+    return {
+        EPSILON: 10e-12,
+        isZero: function(val){
+            return Math.abs(val) <= EPSILON;
+        }
+    };
+};
+
 Centi.Vec2 = function(_x, _y){
     this.x = _x || 0;
     this.y = _y || 0;
 };
+Centi.Vec2.prototype.set = function(_x, _y) {
+    this.x = _x;
+    this.y = _y;
+    return this;
+};
+
+Centi.Vec2.prototype.clone = function() {
+    return new Centi.Vec2(this.x, this.y);
+};
+
+Centi.Vec2.prototype.equals = function(point) {
+    return this === _vec2 || _vec2
+            && (this.x === _vec2.x && this.y === _vec2.y
+                || Array.isArray(_vec2)
+                    && this.x === _vec2[0] && this.y === _vec2[1])
+            || false;
+};
+
 Centi.Vec2.prototype.normalized = function(){
     var len = Math.sqrt(this.x*this.x + this.y*this.y);
     return new Centi.Vec2(this.x/len, this.y/len); 
@@ -1241,7 +1361,7 @@ Centi.Vec2.prototype.normalize = function(){
 };
 Centi.Vec2.prototype.dist = function(){
     return this.distance.apply(this, arguments);
-}
+};
 Centi.Vec2.prototype.distance = function(){
     var l = arguments.length;
     if ( l == 1 ) {
@@ -1263,6 +1383,110 @@ Centi.Vec2.prototype.distance = function(){
     }  
 };
 
+Centi.Vec2.prototype.dot = function(_vec2){
+    return this.x * _vec2.x + this.y + _vec2.y;
+};
+
+Centi.Vec2.prototype.cross = function(_vec2){
+    return this.x * _vec2.x - this.y + _vec2.y;
+};
+Centi.Vec2.prototype.angle = function() {
+    return this.getAngleInRadians.apply(this, arguments) * 180 / Math.PI;
+};
+Centi.Vec2.prototype.setAngle = function(angle) {
+    this.setAngleInRadians.call(this, angle * Math.PI / 180);
+};
+
+Centi.Vec2.prototype.getAngleInRadians = function() {
+    if (!arguments.length) {
+        return this.isZero()
+                ? this._angle || 0
+                : this._angle = Math.atan2(this.y, this.x);
+    } else {
+        var point = arguments[0];
+        var div = this.len() * point.len();
+        if (Numerical.isZero(div)) {
+            return NaN;
+        } else {
+            var a = this.dot(point) / div;
+            return Math.acos(a < -1 ? -1 : a > 1 ? 1 : a);
+        }
+    }
+};
+
+Centi.Vec2.prototype.setAngleInRadians = function(angle) {
+    this._angle = angle;
+    if (!this.isZero()) {
+        var length = this.len();
+        this.set(
+            Math.cos(angle) * length,
+            Math.sin(angle) * length
+        );
+    }
+};
+Centi.Vec2.prototype.len = function(){
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+};
+
+Centi.Vec2.prototype.setLen = function(_len){
+    if (this.isZero()) {
+        var angle = this._angle || 0;
+        this.set(
+            Math.cos(angle) * _len,
+            Math.sin(angle) * _len
+        );
+    } else {
+        var scale = _len / this.len();
+        if (Centi.Numerical.isZero(scale))
+            this.angle();
+        this.set(
+            this.x * scale,
+            this.y * scale
+        );
+    }
+};
+
+Centi.Vec2.prototype.rotate = function(angle, center) {
+    if (angle === 0)
+        return this.clone();
+    angle = angle * Math.PI / 180;
+    var point = center ? this.subtract(center) : this,
+        s = Math.sin(angle),
+        c = Math.cos(angle);
+    point = new Centi.Vec2(
+        point.x * c - point.y * s,
+        point.x * s + point.y * c
+    );
+    return center ? point.add(center) : point;
+};
+
+Centi.Vec2.prototype.add = function(_vec2) {
+    return new Centi.Vec2(this.x + _vec2.x, this.y + _vec2.y);
+};
+
+Centi.Vec2.prototype.subtract = function(_vec2) {
+    return new Centi.Vec2(this.x - _vec2.x, this.y - _vec2.y);
+};
+
+Centi.Vec2.prototype.multiply = function(_vec2) {
+    return new Centi.Vec2(this.x * _vec2.x, this.y * _vec2.y);
+};
+
+Centi.Vec2.prototype.divide = function(_vec2) {
+    return new Centi.Vec2(this.x / _vec2.x, this.y / _vec2.y);
+};
+
+Centi.Vec2.prototype.modulo = function(_vec2) {
+    return new Centi.Vec2(this.x % _vec2.x, this.y % _vec2.y);
+};
+
+Centi.Vec2.prototype.negate = function() {
+    return new Centi.Vec2(-this.x, -this.y);
+};
+
+Centi.Vec2.prototype.isZero = function() {
+    return Centi.Numerical.isZero(this.x) && Centi.Numerical.isZero(this.y);
+};
 
 // Utils
 Centi.prototype.now = function(){
