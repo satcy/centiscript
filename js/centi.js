@@ -32,7 +32,7 @@ PI2 = Math.PI2 = Math.PI*2.0;
 var CT_PROPS;
 
 var Centi = function(name){
-    this.ver = '0.4.4';
+    this.ver = '0.4.5';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -554,7 +554,6 @@ Centi.prototype.update = function(){
     for ( var i=0; i<this.pluginInstances.length; i++ ) {
         this.pluginInstances[i].preUpdate();
     }
-    
 
     if ( this.dsp.enable == false ) {
         this.time = this.now() - this.initSec;
@@ -566,6 +565,9 @@ Centi.prototype.update = function(){
             this.wave[i] = (this.waveUint[i]/255 - 0.5)*2.0;
         }
     }
+
+    TWEEN.update();
+
     this.push();
     if ( this.drawFunc ) this.drawFunc();
     this.pop();
@@ -575,6 +577,7 @@ Centi.prototype.update = function(){
     }
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
+
 };
 
 Centi.prototype.updateBeat = function(){
@@ -1509,6 +1512,13 @@ Centi.prototype.grid = function(_w, _h, _col, _row){
         }
     }
     return a;
+};
+
+// Tween
+Centi.prototype.tween = function(params){
+    if ( !this.ease ) this.ease = TWEEN.Easing;
+    var tw = new TWEEN.Tween(params);
+    return tw;
 };
 
 // OOP
