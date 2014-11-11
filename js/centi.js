@@ -1390,18 +1390,11 @@ Centi.Vec2.prototype.dot = function(_vec2){
 Centi.Vec2.prototype.cross = function(_vec2){
     return this.x * _vec2.x - this.y + _vec2.y;
 };
-Centi.Vec2.prototype.angle = function() {
-    return this.getAngleInRadians.apply(this, arguments) * 180 / Math.PI;
-};
-Centi.Vec2.prototype.setAngle = function(angle) {
-    this.setAngleInRadians.call(this, angle * Math.PI / 180);
-};
-
-Centi.Vec2.prototype.getAngleInRadians = function() {
+Centi.Vec2.prototype.rotation = function() {
     if (!arguments.length) {
         return this.isZero()
-                ? this._angle || 0
-                : this._angle = Math.atan2(this.y, this.x);
+                ? this._rotation || 0
+                : this._rotation = Math.atan2(this.y, this.x);
     } else {
         var point = arguments[0];
         var div = this.len() * point.len();
@@ -1413,32 +1406,32 @@ Centi.Vec2.prototype.getAngleInRadians = function() {
         }
     }
 };
-
-Centi.Vec2.prototype.setAngleInRadians = function(angle) {
-    this._angle = angle;
+Centi.Vec2.prototype.setRotation = function(radian) {
+    this._rotation = radian;
     if (!this.isZero()) {
         var length = this.len();
         this.set(
-            Math.cos(angle) * length,
-            Math.sin(angle) * length
+            Math.cos(radian) * length,
+            Math.sin(radian) * length
         );
     }
 };
+
 Centi.Vec2.prototype.len = function(){
     return Math.sqrt(this.x * this.x + this.y * this.y);
 };
 
 Centi.Vec2.prototype.setLen = function(_len){
     if (this.isZero()) {
-        var angle = this._angle || 0;
+        var rotation = this._rotation || 0;
         this.set(
-            Math.cos(angle) * _len,
-            Math.sin(angle) * _len
+            Math.cos(rotation) * _len,
+            Math.sin(rotation) * _len
         );
     } else {
         var scale = _len / this.len();
         if (Centi.Numerical.isZero(scale))
-            this.angle();
+            this.rotation();
         this.set(
             this.x * scale,
             this.y * scale
@@ -1446,13 +1439,12 @@ Centi.Vec2.prototype.setLen = function(_len){
     }
 };
 
-Centi.Vec2.prototype.rotate = function(angle, center) {
-    if (angle === 0)
+Centi.Vec2.prototype.rotate = function(radian, center) {
+    if (radian === 0)
         return this.clone();
-    angle = angle * Math.PI / 180;
     var point = center ? this.subtract(center) : this,
-        s = Math.sin(angle),
-        c = Math.cos(angle);
+        s = Math.sin(radian),
+        c = Math.cos(radian);
     point = new Centi.Vec2(
         point.x * c - point.y * s,
         point.x * s + point.y * c
