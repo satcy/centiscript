@@ -1004,11 +1004,13 @@ Centi.prototype.col = function(){
 
 Centi.prototype.fill = function(){
     this.bFill = true;
+    this.gradient = null;
 };
 
 Centi.prototype.strk = function(){ this.stroke(); };
 Centi.prototype.stroke = function(){
     this.bFill = false;
+    this.gradient = null;
 };
 
 Centi.prototype.grad = function(_x0, _y0, _x1, _y1){
