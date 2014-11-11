@@ -1323,7 +1323,7 @@ Centi.Numerical = new function(){
     return {
         EPSILON: 10e-12,
         isZero: function(val){
-            return Math.abs(val) <= EPSILON;
+            return Math.abs(val) <= this.EPSILON;
         }
     };
 };
