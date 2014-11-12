@@ -32,7 +32,7 @@ PI2 = Math.PI2 = Math.PI*2.0;
 var CT_PROPS;
 
 var Centi = function(name){
-    this.ver = '0.4.5';
+    this.ver = '0.4.5b';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -110,9 +110,6 @@ var Centi = function(name){
     this.pluginInstances = [];
 
     //staticies
-    this.Infinity = Infinity;
-    this.NaN = NaN;
-    this.null = null;
 
     if ( !CT_PROPS ) {
         var props = [];
@@ -345,6 +342,15 @@ Centi.prototype.parse = function(tw){
             str = str.replace(new RegExp(name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
         }
 
+        var BUILDIN_STATICIES = ["Infinity", "NaN", "undefined", "null", "this"];
+        for ( var i=0; i<BUILDIN_STATICIES.length; i++ ) {
+            str = str.replace(new RegExp(name + "." + BUILDIN_STATICIES[i], "g"), BUILDIN_STATICIES[i]);
+        }
+
+        var NUMBER_STATICIES = ["MAX_VALUE", "MIN_VALUE", "POSITIVE_INFINITY", "NEGATIVE_INFINITY"];
+        for ( var i=0; i<NUMBER_STATICIES.length; i++ ) {
+            str = str.replace(new RegExp(name + "." + NUMBER_STATICIES[i], "g"), "Number." + NUMBER_STATICIES[i]);
+        }
         return str;
     }
 
