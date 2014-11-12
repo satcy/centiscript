@@ -342,7 +342,7 @@ Centi.prototype.parse = function(tw){
             str = str.replace(new RegExp(name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
         }
 
-        var BUILDIN_STATICIES = ["Infinity", "NaN", "undefined", "null", "this"];
+        var BUILDIN_STATICIES = ["Infinity", "NaN", "undefined", "null", "this", "true", "false"];
         for ( var i=0; i<BUILDIN_STATICIES.length; i++ ) {
             str = str.replace(new RegExp(name + "." + BUILDIN_STATICIES[i], "g"), BUILDIN_STATICIES[i]);
         }
