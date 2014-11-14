@@ -32,7 +32,7 @@ PI2 = Math.PI2 = Math.PI*2.0;
 var CT_PROPS;
 
 var Centi = function(name){
-    this.ver = '0.4.5b';
+    this.ver = '0.4.6';
     this.name = name ? name : "ct";
 
     this.canvas = null;
@@ -108,6 +108,21 @@ var Centi = function(name){
     this.b3d = false;
 
     this.pluginInstances = [];
+
+    // Tween
+    if ( 1 ) {
+        this.ease = TWEEN.Easing;
+        this.Linear = TWEEN.Easing.Linear.None;
+        var short_eases = ["Quad", "Cubic", "Quart", "Quint", "Sine", 
+        "Expo", "Circ", "Elastic", "Back", "Bounce"];
+        var eases = ["Quadratic", "Cubic", "Quartic", "Quintic", "Sinusoidal", 
+        "Exponential", "Circular", "Elastic", "Back", "Bounce"];
+        for ( var i = 0; i<short_eases.length; i++ ) {
+            this[short_eases[i]+"In"] = TWEEN.Easing[eases[i]].In;
+            this[short_eases[i]+"Out"] = TWEEN.Easing[eases[i]].Out;
+            this[short_eases[i]+"InOut"] = TWEEN.Easing[eases[i]].InOut;
+        }
+    }
 
     //staticies
 
@@ -339,7 +354,7 @@ Centi.prototype.parse = function(tw){
             str = str.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
         }
         for ( var i=0; i<MATH_PROPS.length; i++ ) {
-            str = str.replace(new RegExp(name + "." + MATH_PROPS[i], "g"), "Math." + MATH_PROPS[i]);
+            str = str.replace(new RegExp(name + "." + MATH_PROPS[i] + "([\.\!\~\|\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,\^])", "g"), "Math." + MATH_PROPS[i]);
         }
 
         var BUILDIN_STATICIES = ["Infinity", "NaN", "undefined", "null", "this", "true", "false"];
@@ -682,6 +697,7 @@ Centi.prototype.clear = function(){
     this.ctx.fillStyle = "rgba("+this.bgcolor.r+","+this.bgcolor.g+","+this.bgcolor.b+","+(this.bgcolor.a/255.0)+")";
     this.ctx.fillRect(0,0,this.w, this.h);    
     this.ctx.globalCompositeOperation = mode;
+    this.col(255);
 };
 
 Centi.prototype.Obj = function(){ return new Object(); };
@@ -1285,7 +1301,7 @@ Centi.prototype.n2f = function(_note) {
     return Math.pow(2, (_note - 69) / 12) * 440.0;
 };
 
-// routine
+// iter
 Centi.prototype.loop = function(_s,_e,_f){
     var n = _s;
     var t = _e;
@@ -1527,7 +1543,6 @@ Centi.prototype.grid = function(_w, _h, _col, _row){
 
 // Tween
 Centi.prototype.tween = function(params){
-    if ( !this.ease ) this.ease = TWEEN.Easing;
     var tw = new TWEEN.Tween(params);
     return tw;
 };
