@@ -43,7 +43,7 @@ CENTI.init = function(){
     CENTI.inputTitle = document.getElementById('inputtitle');
     var canvas = document.getElementById("canvas0");
     if ( ct ) ct.destroy();
-    ct = new Centi();
+    ct = new Centi(null, CENTI.editor);
     if ( document.getElementById('version') ) document.getElementById('version').innerHTML = "ver. " + ct.ver;
     if ( !ct.init(canvas, getAudioContext()) ) {
         CENTI.editor.value = "disable canvas.";
@@ -120,6 +120,8 @@ CENTI.tweet = function(){
         formData.append("image", blob );
         formData.append("tweet", title + "(centiscript) " + url);
         formData.append("url", url);
+        formData.append("title", encodeURIComponent(title));
+        formData.append("code", encodeURIComponent(code));
         
         var xhr = new XMLHttpRequest;
         xhr.open( "POST", "http://ex.rzm.co.jp/centiscript/p/upload.php" );
@@ -420,6 +422,15 @@ window.onload = function(){
         if ( params["c"] ) {
             CENTI.editor.value = /*unescape*/(params["c"]);
             CENTI.run();
+        } else if ( params["f"] ) {
+            var httpObj = new XMLHttpRequest();
+            var path = "http://ex.rzm.co.jp/centiscript/p/codes/"+params["f"]+".ct";
+            httpObj.open("get", path, true);
+            httpObj.onload = function(){
+                CENTI.editor.value = (this.responseText);
+                CENTI.run();
+            }
+            httpObj.send(null);
         }
         CENTI.strlength(CENTI.editor.value);
 

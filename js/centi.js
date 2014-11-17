@@ -22,18 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "PI2", "SQRT1_2", "SQRT2"];
+
+var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "PI2", "HALF_PI", "SQRT1_2", "SQRT2"];
 var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
 var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
 PI2 = Math.PI2 = Math.PI*2.0;
+HALF_PI = Math.HALF_PI = Math.PI/2.0;
 
 var CT_PROPS;
 
-var Centi = function(name){
-    this.ver = '0.4.6';
+var Centi = function(name, editor){
+    this.ver = '0.4.7';
     this.name = name ? name : "ct";
+    this.editor = editor ? editor : null;
 
     this.canvas = null;
     this.ctx = null;
@@ -87,6 +90,7 @@ var Centi = function(name){
     this.gradient = null;
     this.kdtree;
     //
+    this.centiCode;
     this.setupMethod = '';
     this.drawMethod = '';
     this.beatMethod = '';
@@ -270,8 +274,85 @@ Centi.prototype.doDsp = function(){
     return ( this.dspFunc ) ? this.dspFunc() : 0;
 };
 
-Centi.prototype.parse = function(tw){
+Centi.prototype.feedback = function(value){
+    if ( !this.editor ) return;
+    var value_str = valueToString(value);
     
+    for(var pname in this){
+        if (this[pname] == value ){
+            this.centiCode = insertValue(this.centiCode, pname, value_str);
+            this.editor.value = this.centiCode;
+        }
+    }
+
+    function valueToString(value){
+        var s = "";
+        if ( is("Array", value) ) {
+            s = "[";
+            if ( value.length > 0 ) {
+                for ( var i=0; i<value.length; i++ ) {
+                    s += valueToString(value[i]) + ",";
+                }
+                s = s.slice(0, - 1);
+            }
+            s += "]";
+        } else if ( is("Number", value) ) {
+            s = value.toString();
+        } else if ( is("Object", value) ) {
+            s = objToString(value);
+        } else if ( is("Boolean", value) ) {
+            s = (value) ? "1" : "0";
+        }
+        return s;
+    }
+
+    function objToString(obj){
+        var s = "{";
+        for ( var pname in obj ) {
+            s += pname + ":" + obj[pname] + ",";
+        }
+        if ( s.length > 1 ) {
+            s = s.slice(0, - 1);
+        }
+        s += "}";
+        return s;
+    }
+
+    function is(type, obj) {
+        var clas = Object.prototype.toString.call(obj).slice(8, -1);
+        return obj !== undefined && obj !== null && clas === type;
+    }
+
+    function insertValue(src, name, val_str){
+        var txt = src;
+        if ( txt.length > 0 ) {
+            var current = 0;
+            current = txt.indexOf(name+"=");
+            if ( current == -1 ) current = txt.indexOf(name+" =");
+            if ( current > -1 ) {
+                var start = current;
+                var flag = 0;
+                var preFlag = flag;
+                while ( current < txt.length ) {
+                    var s = txt.charAt(current);
+                    if ( s == '(' ) flag++;
+                    if ( s == ')' ) flag--;
+                    if ( preFlag == 1 && flag == 0 ) {
+                        txt = txt.slice(0, start+1) + "=(" + val_str + ")" + txt.slice(current+1);
+                        break;
+                    }
+                    preFlag = flag;
+                    current++;
+                }
+            }
+        }
+        return txt;
+    }
+}
+
+Centi.prototype.parse = function(tw){
+    this.centiCode = tw;
+
     tw = tw.replace(/\s/g, "");
     tw = tw.replace(/\b/g, "");
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
@@ -366,6 +447,11 @@ Centi.prototype.parse = function(tw){
         for ( var i=0; i<NUMBER_STATICIES.length; i++ ) {
             str = str.replace(new RegExp(name + "." + NUMBER_STATICIES[i], "g"), "Number." + NUMBER_STATICIES[i]);
         }
+
+        var objParamsReg = new RegExp(name + "\.([A-Za-z0-9_]+)(\:)([A-Za-z0-9_\.\(\)]+)(\,)", "g");
+        str = str.replace(objParamsReg, "$1" + ":" + "$3" + ",");
+        var objParamsReg2 = new RegExp(name + "\.([A-Za-z0-9_]+)(\:)([A-Za-z0-9_\.\(\)]+)(\})", "g");
+        str = str.replace(objParamsReg2, "$1" + ":" + "$3" + "}");
         return str;
     }
 
@@ -1678,6 +1764,8 @@ Centi.prototype.crash = function(amount){
     this.ctx.drawImage(tempCanvas, 0, 0);
 };
 
+
 // centi funcs
 
 var CT_FUNCS = Object.getOwnPropertyNames(Centi.prototype);
+

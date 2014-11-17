@@ -21,122 +21,122 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+(function(_root){
+  if ( !_root.requestAnimationFrame ) {
 
-if ( !window.requestAnimationFrame ) {
+      _root.requestAnimationFrame = ( function() {
 
-    window.requestAnimationFrame = ( function() {
+          return _root.webkitRequestAnimationFrame ||
+          _root.mozRequestAnimationFrame ||
+          _root.oRequestAnimationFrame ||
+          _root.msRequestAnimationFrame ||
+          function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
 
-        return window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+              _root.setTimeout( callback, 1000 / 60 );
 
-            window.setTimeout( callback, 1000 / 60 );
+          };
 
-        };
+      } )();
 
-    } )();
-
-}
-if ( !window.cancelAnimationFrame ) {
-  window.cancelAnimationFrame = window.cancelAnimationFrame ||
-    window.mozCancelAnimationFrame ||
-    window.webkitCancelAnimationFrame ||
-    window.msCancelAnimationFrame;
-}
-
-if ( !window.XMLHttpRequest ){
-  window.XMLHttpRequest = function () {
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.6.0");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.3.0");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {}
-    throw new Error("This browser does not support XMLHttpRequest.");
-  };
-}
-
-if ( !window.evalInContext ) {
-  window.evalInContext = function(source, context) {
-      source = '(function(' + Object.keys(context).join(', ') + ') {' + source + '})';
-      
-      var compiled = eval(source);
-      return compiled.apply(context, values());
-      // you likely don't need this - use underscore, jQuery, etc
-      function values() {
-          var result = [];
-          for (var property in context)
-              if (context.hasOwnProperty(property))
-                  result.push(context[property]);
-          return result;
-      }
   }
-}
-
-if ( !window.get_url_vars ) {
-  window.get_url_vars = function(){
-    var vars = new Object();
-    var params;
-    var temp_params = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i <temp_params.length; i++) {
-      params = temp_params[i].split('=');
-      
-      if(params.length == 2) {
-          //vars[params[0]] = params[1];
-          vars[decodeURIComponent(params[0])] = decodeURIComponent(params[1]);
-      }
-    }
-    return vars;
+  if ( !_root.cancelAnimationFrame ) {
+    _root.cancelAnimationFrame = _root.cancelAnimationFrame ||
+      _root.mozCancelAnimationFrame ||
+      _root.webkitCancelAnimationFrame ||
+      _root.msCancelAnimationFrame;
   }
-}
 
-if ( !window.checkFileReaderApi ) {
-  window.checkFileReaderApi = function(){
-    return window.File && window.FileReader && window.FileList && window.Blob;
-  }
-}
-
-if ( !window.checkFileWriterApi ) {
-  window.checkFileWriterApi = function(){
-    return window.File && window.saveAs && window.FileList && window.Blob;
-  }
-}
-
-if ( !window.audioContext ) {
-  window.audioContext = null;
-}
-if ( !window.audioContextClass ) {
-  window.audioContextClass = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext;
-}
-if ( !window.getAudioContext ) {
-  window.getAudioContext = function(){
-    if ( window.audioContext ) return window.audioContext;
-    if ( !window.audioContext && window.audioContextClass ) return (window.audioContext = new window.audioContextClass());
-    else return null;
-  }
-}
-
-if ( !window.audioContext ) {
-  window.audioContext = null;
-}
-
-if ( !window.getAudioAnalyser ) {
-  window.getAudioAnalyser = function(){
-      return window.audioAnalyser || (window.audioAnalyser = window.getAudioContext().createAnalyser());
-  }
-}
-
-if ( !Array.prototype.forEach ) {
-    Array.prototype.forEach = function(callback, context){
-        for ( var i=0; i<this.length; i++ ) {
-            callback.call(context || null, this[i], i, this);
-        }
+  if ( !_root.XMLHttpRequest ){
+    _root.XMLHttpRequest = function () {
+      try {
+        return new ActiveXObject("Msxml2.XMLHTTP.6.0");
+      } catch (e) {}
+      try {
+        return new ActiveXObject("Msxml2.XMLHTTP.3.0");
+      } catch (e) {}
+      try {
+        return new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {}
+      throw new Error("This browser does not support XMLHttpRequest.");
     };
-}
+  }
 
+  if ( !_root.evalInContext ) {
+    _root.evalInContext = function(source, context) {
+        source = '(function(' + Object.keys(context).join(', ') + ') {' + source + '})';
+        
+        var compiled = eval(source);
+        return compiled.apply(context, values());
+        // you likely don't need this - use underscore, jQuery, etc
+        function values() {
+            var result = [];
+            for (var property in context)
+                if (context.hasOwnProperty(property))
+                    result.push(context[property]);
+            return result;
+        }
+    }
+  }
+
+  if ( !_root.get_url_vars ) {
+    _root.get_url_vars = function(){
+      var vars = new Object();
+      var params;
+      var temp_params = _root.location.href.slice(_root.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i <temp_params.length; i++) {
+        params = temp_params[i].split('=');
+        
+        if(params.length == 2) {
+            //vars[params[0]] = params[1];
+            vars[decodeURIComponent(params[0])] = decodeURIComponent(params[1]);
+        }
+      }
+      return vars;
+    }
+  }
+
+  if ( !_root.checkFileReaderApi ) {
+    _root.checkFileReaderApi = function(){
+      return _root.File && _root.FileReader && _root.FileList && _root.Blob;
+    }
+  }
+
+  if ( !_root.checkFileWriterApi ) {
+    _root.checkFileWriterApi = function(){
+      return _root.File && _root.saveAs && _root.FileList && _root.Blob;
+    }
+  }
+
+  if ( !_root.audioContext ) {
+    _root.audioContext = null;
+  }
+  if ( !_root.audioContextClass ) {
+    _root.audioContextClass = _root.AudioContext || _root.webkitAudioContext || _root.mozAudioContext || _root.oAudioContext || _root.msAudioContext;
+  }
+  if ( !_root.getAudioContext ) {
+    _root.getAudioContext = function(){
+      if ( _root.audioContext ) return _root.audioContext;
+      if ( !_root.audioContext && _root.audioContextClass ) return (_root.audioContext = new _root.audioContextClass());
+      else return null;
+    }
+  }
+
+  if ( !_root.audioContext ) {
+    _root.audioContext = null;
+  }
+
+  if ( !_root.getAudioAnalyser ) {
+    _root.getAudioAnalyser = function(){
+        return _root.audioAnalyser || (_root.audioAnalyser = _root.getAudioContext().createAnalyser());
+    }
+  }
+
+  if ( !Array.prototype.forEach ) {
+      Array.prototype.forEach = function(callback, context){
+          for ( var i=0; i<this.length; i++ ) {
+              callback.call(context || null, this[i], i, this);
+          }
+      };
+  }
+})(window);
 
