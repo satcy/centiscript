@@ -28,13 +28,14 @@ var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
 var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
+PI = Math.PI;
 PI2 = Math.PI2 = Math.PI*2.0;
 HALF_PI = Math.HALF_PI = Math.PI/2.0;
 
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.7';
+    this.ver = '0.4.7b';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -112,6 +113,13 @@ var Centi = function(name, editor){
     this.b3d = false;
 
     this.pluginInstances = [];
+
+    for ( var i=0; i<MATHS.length; i++ ) {
+        this[MATHS[i]] = Math[MATHS[i]];
+    }
+    for ( var i=0; i<MATH_PROPS.length; i++ ) {
+        this[MATH_PROPS[i]] = Math[MATH_PROPS[i]];
+    }
 
     // Tween
     if ( 1 ) {
@@ -430,13 +438,14 @@ Centi.prototype.parse = function(tw){
                 str = str.replace(threeReg, pluginInstances[i].prefix + ".");
             }
         }
+        /*
         for ( var i=0; i<MATHS.length; i++ ) {
             var math_word = name + "." + MATHS[i] + "\\(";
             str = str.replace(new RegExp(math_word, "g"), "Math." + MATHS[i] + "(");
-        }
-        for ( var i=0; i<MATH_PROPS.length; i++ ) {
+        }*/
+        /*for ( var i=0; i<MATH_PROPS.length; i++ ) {
             str = str.replace(new RegExp(name + "." + MATH_PROPS[i] + "([\.\!\~\|\%\&\:\(\)\{\}\;\=\+\-\<\>\*\/\[\]\,\^])", "g"), "Math." + MATH_PROPS[i]);
-        }
+        }*/
 
         var BUILDIN_STATICIES = ["Infinity", "NaN", "undefined", "null", "this", "true", "false"];
         for ( var i=0; i<BUILDIN_STATICIES.length; i++ ) {
@@ -591,6 +600,7 @@ Centi.prototype.handleEvent = function(e){
         case "touchmove":
             serTouchPosition(e);
             if ( this.mouseMove ) this.mouseMove(e);
+            e.preventDefault();
             break;
         case "touchend":
         case "touchcancel":

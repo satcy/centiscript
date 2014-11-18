@@ -372,6 +372,15 @@ CENTI.getTimeStampString = function(){
     return str;
 }
 
+CENTI.toggleTweetsList = function(){
+    if ( !document.getElementById("result") ) return;
+    if ( document.getElementById("result").style.display == 'block' ) {
+        document.getElementById("result").style.display = 'none';
+    } else {
+        document.getElementById("result").style.display = 'block';
+    }
+};
+
 CENTI.getTweetsList = function(){
     if ( !document.getElementById("result") ) return;
     var httpObj = new XMLHttpRequest();
@@ -429,6 +438,7 @@ window.onload = function(){
             httpObj.onload = function(){
                 CENTI.editor.value = (this.responseText);
                 CENTI.run();
+                CENTI.strlength(CENTI.editor.value);
             }
             httpObj.send(null);
         }

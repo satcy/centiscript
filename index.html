@@ -81,7 +81,7 @@ WebFontConfig = {
           <!--
           document.open();
           if ( checkFileReaderApi() ) {
-            document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></button></div>');
+            document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></input></div>');
           }
           document.close();
           // -->
@@ -118,8 +118,10 @@ WebFontConfig = {
     <canvas id="canvas0" width="720" height="360"></canvas>
   </div>
   <img id="gif_image" />
-
-  <div id="result"></div>
+  <div>
+    <div class="list_btn"><button type="button" id="toggleList" name="toggleList" onclick="CENTI.toggleTweetsList()"><span class="mega-octicon octicon-list-unordered text-muted"></button></span></div>
+    <div id="result"></div>
+  </div>
   <div class="footer" style="clear: both;">
     <p>DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</p>
     <p>Written by <a href="https://twitter.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></p>

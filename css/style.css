@@ -220,9 +220,30 @@ height: 300px;
 cursor: pointer;
 }
 
+.list_btn {
+	margin-bottom: 10px;
+}
+
 #result{
 width:720px;
 margin: 0 auto;
+display:none;
+}
+@media screen and (min-width: 1024px) {
+	#result{
+		display:block;
+	}
+	.list_btn {
+		display:none;
+	}
+}
+@media screen and (max-width: 1024px) {
+	#result{
+		display:none;
+	}
+	.list_btn {
+		display:block;
+	}
 }
 #result img{
 margin-bottom: 8px;
