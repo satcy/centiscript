@@ -22,20 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-
 var MATH_PROPS = ["E", "LN2", "LN10", "LOG2E", "LOG10E", "PI", "PI2", "HALF_PI", "SQRT1_2", "SQRT2"];
 var MATHS = ["abs", "acos", "asin", "atan", "atan2",
            "ceil", "cos", "exp", "floor", "imul", "log", "max", "min", "pow", "random", "round", "sin", "sqrt", "tan"];
 var CTX_FUNCS = Object.getOwnPropertyNames(CanvasRenderingContext2D.prototype);
 
-PI = Math.PI;
-PI2 = Math.PI2 = Math.PI*2.0;
-HALF_PI = Math.HALF_PI = Math.PI/2.0;
+Math.PI2 = Math.PI*2.0;
+Math.HALF_PI = Math.PI/2.0;
 
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.7b';
+    this.ver = '0.4.7c';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -287,9 +285,10 @@ Centi.prototype.feedback = function(value){
     var value_str = valueToString(value);
     
     for(var pname in this){
-        if (this[pname] == value ){
+        if (this[pname] === value ){
             this.centiCode = insertValue(this.centiCode, pname, value_str);
             this.editor.value = this.centiCode;
+            break;
         }
     }
 
@@ -346,7 +345,7 @@ Centi.prototype.feedback = function(value){
                     if ( s == '(' ) flag++;
                     if ( s == ')' ) flag--;
                     if ( preFlag == 1 && flag == 0 ) {
-                        txt = txt.slice(0, start+1) + "=(" + val_str + ")" + txt.slice(current+1);
+                        txt = txt.slice(0, start+name.length) + "=(" + val_str + ")" + txt.slice(current+1);
                         break;
                     }
                     preFlag = flag;
