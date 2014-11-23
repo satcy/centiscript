@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.7c';
+    this.ver = '0.4.8';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -120,19 +120,22 @@ var Centi = function(name, editor){
     }
 
     // Tween
-    if ( 1 ) {
-        this.ease = TWEEN.Easing;
-        this.Linear = TWEEN.Easing.Linear.None;
-        var short_eases = ["Quad", "Cubic", "Quart", "Quint", "Sine", 
-        "Expo", "Circ", "Elastic", "Back", "Bounce"];
-        var eases = ["Quadratic", "Cubic", "Quartic", "Quintic", "Sinusoidal", 
-        "Exponential", "Circular", "Elastic", "Back", "Bounce"];
-        for ( var i = 0; i<short_eases.length; i++ ) {
-            this[short_eases[i]+"In"] = TWEEN.Easing[eases[i]].In;
-            this[short_eases[i]+"Out"] = TWEEN.Easing[eases[i]].Out;
-            this[short_eases[i]+"InOut"] = TWEEN.Easing[eases[i]].InOut;
-        }
+    this.ease = TWEEN.Easing;
+    this.Linear = TWEEN.Easing.Linear.None;
+    this.eases = [this.Linear];
+    var short_eases = ["Quad", "Cubic", "Quart", "Quint", "Sine", 
+    "Expo", "Circ", "Elastic", "Back", "Bounce"];
+    var eases = ["Quadratic", "Cubic", "Quartic", "Quintic", "Sinusoidal", 
+    "Exponential", "Circular", "Elastic", "Back", "Bounce"];
+    for ( var i = 0; i<short_eases.length; i++ ) {
+        this[short_eases[i]+"In"] = TWEEN.Easing[eases[i]].In;
+        this[short_eases[i]+"Out"] = TWEEN.Easing[eases[i]].Out;
+        this[short_eases[i]+"InOut"] = TWEEN.Easing[eases[i]].InOut;
+        this.eases.push(this[short_eases[i]+"In"]
+            ,this[short_eases[i]+"Out"]
+            ,this[short_eases[i]+"InOut"]);
     }
+    
 
     //staticies
 
@@ -1705,6 +1708,18 @@ Centi.prototype.mosaic = function(radiusX, radiusY){
             this.ctx.fillRect( j*radiusX, i*radiusY, radiusX, radiusY );
         }
     }
+};
+
+Centi.prototype.glitch = function(amount, seed, iterations, quality){
+    amount = amount || 0;
+    seed = seed || 0;
+    iterations = iterations || 0;
+    quality = quality || 0;
+    var self = this;
+    var params = {"amount": amount, "seed": seed, "iterations": iterations, "quality": quality};
+    glitch(this.ctx.getImageData( 0, 0, this.w, this.h), params, function(image_data){
+        self.ctx.putImageData( image_data, 0, 0 );
+    });
 };
 
 Centi.prototype.crash = function(amount){
