@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.8';
+    this.ver = '0.4.9';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -288,7 +288,7 @@ Centi.prototype.feedback = function(value){
     var value_str = valueToString(value);
     
     for(var pname in this){
-        if (this[pname] === value ){
+        if ( CT_PROPS.indexOf(pname) == -1 && this[pname] === value ){
             this.centiCode = insertValue(this.centiCode, pname, value_str);
             this.editor.value = this.centiCode;
             break;
@@ -1456,8 +1456,10 @@ Centi.prototype.clip = function(_arr, _num){
 
 // Geometry
 
-Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
-Centi.prototype.vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); }
+Centi.prototype.Vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); };
+Centi.prototype.vec2 = function(_x, _y){ return new Centi.Vec2(_x, _y); };
+
+Centi.prototype.Rectangle = function(_x, _y, _w, _h){ return new Centi.Rectangle(_x, _y, _w, _h); };
 // --private
 Centi.Numerical = new function(){
     return {
@@ -1619,6 +1621,33 @@ Centi.Vec2.prototype.negate = function() {
 Centi.Vec2.prototype.isZero = function() {
     return Centi.Numerical.isZero(this.x) && Centi.Numerical.isZero(this.y);
 };
+
+Centi.Rectangle = function(_x, _y, _w, _h){
+    this.x = _x || 0;
+    this.y = _y || 0;
+    this.w = this.width = _w || 0;
+    this.h = this.height = _h || 0; 
+    this.r = this.right = this.x + this.w;
+    this.b = this.bottom = this.y + this.h;   
+};
+/*
+Centi.Rectangle.prototype = {
+    constructor: Centi.Rectangle,
+    set r(val){
+        this.r = val;
+        this.w = this.r - this.x;
+    },
+    get r(){
+        return this.r;
+    },
+    set b(val){
+        this.b = val;
+        this.h = this.b - this.y;
+    },
+    get b(){
+        return this.b;
+    }
+};*/
 
 // Utils
 Centi.prototype.now = function(){
