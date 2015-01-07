@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9';
+    this.ver = '0.4.9b';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -368,13 +368,13 @@ Centi.prototype.parse = function(tw){
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
     tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)\*\+\/]+)(\))/g, "for($2=$4;$2<$6;$2++)");
 
-    var frameMethod = this.getInnerExpression(tw.slice(tw.indexOf('frame(')));
-    var beatMethod = this.getInnerExpression(tw.slice(tw.indexOf('beat(')));
-    var dspMethod = this.getInnerExpression(tw.slice(tw.indexOf('dsp(')));
+    var frameMethod = this.getInnerExpression(tw.slice(tw.indexOf('frame(){')));
+    var beatMethod = this.getInnerExpression(tw.slice(tw.indexOf('beat(){')));
+    var dspMethod = this.getInnerExpression(tw.slice(tw.indexOf('dsp(){')));
 
-    var mouseMoveMethod = this.getInnerExpression(tw.slice(tw.indexOf('move(')));
-    var mouseDownMethod = this.getInnerExpression(tw.slice(tw.indexOf('down(')));
-    var mouseUpMethod = this.getInnerExpression(tw.slice(tw.indexOf('up(')));
+    var mouseMoveMethod = this.getInnerExpression(tw.slice(tw.indexOf('move(){')));
+    var mouseDownMethod = this.getInnerExpression(tw.slice(tw.indexOf('down(){')));
+    var mouseUpMethod = this.getInnerExpression(tw.slice(tw.indexOf('up(){')));
 
     var setupMethod = tw.replace('frame(){' + frameMethod + '}', '');
     setupMethod = setupMethod.replace('beat(){' + beatMethod + '}', '');
