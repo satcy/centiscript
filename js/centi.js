@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9b';
+    this.ver = '0.4.9c';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -969,6 +969,42 @@ Centi.prototype.lines = function(_pts, _closed){
                 this.lineTo(x, y);
             }
         }
+    }
+};
+
+Centi.prototype.boundingBox = function(_pts){
+    var l = _pts.length;
+    var min = this.Vec2(Infinity, Infinity);
+    var max = this.Vec2(-Infinity, -Infinity);
+    
+    if ( l > 0 ) {
+        var arr = _pts;
+        var first = arr[0];
+        var isPoint = ( first.hasOwnProperty("x") && first.hasOwnProperty("y") );
+        if ( isPoint ) {
+            var pt;
+            for ( var i=0; i<l; i++ ) {
+                pt = arr[i];
+                if( pt.x < min.x ) min.x = pt.x;
+                if( pt.y < min.y ) min.y = pt.y;
+                if( pt.x > max.x ) max.x = pt.x;
+                if( pt.y > max.y ) max.y = pt.y;
+                     
+            }
+        } else {
+            var x,y;
+            for ( var i=0; i<l; i+=2 ) {
+                x = arr[i];
+                y = arr[i+1];
+                if( x < min.x ) min.x = x;
+                if( y < min.y ) min.y = y;
+                if( x > max.x ) max.x = x;
+                if( y > max.y ) max.y = y;
+            }
+        }
+        return this.Rectangle(min.x, min.y, max.x-min.x, max.y - min.y);
+    } else {
+        return this.Rectangle(0,0,0,0);
     }
 };
 
