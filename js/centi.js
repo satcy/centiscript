@@ -1727,7 +1727,7 @@ Centi.prototype.seg = function(_num, _x, _y, _w, _h){
         if( n & 1 ){
             var p = (bin[i] & 7);
             var q = (bin[i] >> 3);
-            ct.line(_x+_w*(p & 1),_y+0.5*_h*( p >> 1),_x+_w*(q & 1),_y+0.5*_h*(q >> 1));
+            this.line(_x+_w*(p & 1),_y+0.5*_h*( p >> 1),_x+_w*(q & 1),_y+0.5*_h*(q >> 1));
         }
         n=(n >> 1);
     }
