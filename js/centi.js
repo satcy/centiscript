@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9d';
+    this.ver = '0.4.9e';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -971,6 +971,44 @@ Centi.prototype.lines = function(_pts, _closed){
         }
     }
 };
+
+Centi.prototype.text = function(){
+    if ( this.ctx == null ) return;
+    var len = arguments.length;
+    if ( len == 1 ) {
+        if ( this.bFill ) this.ctx.fillText(arguments[0], 0, 0);
+        else this.ctx.strokeText(arguments[0], 0, 0);
+    } else if ( len == 2 ) {
+        if ( this.bFill ) this.ctx.fillText(arguments[0], arguments[1], arguments[2]);
+        else this.ctx.strokeText(arguments[0], arguments[1], arguments[2]);
+    } else if ( len == 3 ) {
+        if ( this.bFill ) this.ctx.fillText(arguments[0], arguments[1], arguments[2]);
+        else this.ctx.strokeText(arguments[0], arguments[1], arguments[2]);
+    } else if ( len == 4 ) {
+        if ( this.bFill ) this.ctx.fillText(arguments[0], arguments[1], arguments[2], arguments[3]);
+        else this.ctx.strokeText(arguments[0], arguments[1], arguments[2], arguments[3]);
+    }
+    
+}
+
+Centi.prototype.font = function(){
+    var len = arguments.length;
+    if ( len == 1 ) {
+        if ( arguments[0] instanceof String ) {
+            this.ctx.font = "12px " + arguments[0];
+        } else {
+            this.ctx.font = arguments[0] + "px 'Helvetica'";
+        }    
+        
+    } else if ( len == 2 ) {
+        this.ctx.font = arguments[1] + "px " + arguments[0];
+    } else if ( len == 3 ) {
+        this.ctx.font = (arguments[2] ? "bold " : "") + arguments[1] + "px " + arguments[0];
+    } else if ( len == 4 ) {
+        this.ctx.font = (arguments[3] ? "italic " : "") + (arguments[2] ? "bold " : "") + arguments[1] + "px " + arguments[0];
+    }
+    
+}
 
 Centi.prototype.boundingBox = function(_pts){
     var l = _pts.length;
