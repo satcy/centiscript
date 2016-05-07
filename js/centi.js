@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9e';
+    this.ver = '0.4.9g';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -161,7 +161,7 @@ Centi.prototype.destroy = function(){
         this.dsp.analyser = null;
     }
     if ( this.dsp.context ) {
-        this.dsp.context.distination.disconnect();
+        //this.dsp.context.distination.disconnect();
     }
     this.dsp.context = null;
     this.canvas = null;
@@ -893,6 +893,15 @@ Centi.prototype.oval = function(_x, _y, _rad, _res) {
     }
 };
 
+Centi.prototype.arc = function(_x, _y, _rad, _start, _end, _anticlockwise) {
+    if ( this.ctx == null ) return;
+    if ( _anticlockwise == undefined ) _anticlockwise = false;
+    this.ctx.beginPath();
+    this.ctx.arc(_x, _y, _rad, _start, _end, _anticlockwise);
+    if ( this.bFill ) this.ctx.fill();
+    else this.ctx.stroke();
+};
+
 Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); };
 Centi.prototype.line = function(_x1, _y1, _x2, _y2){
     if ( this.ctx == null ) return;
@@ -991,7 +1000,7 @@ Centi.prototype.text = function(){
     
 }
 
-Centi.prototype.font = function(){
+Centi.prototype.font = function(){//font, size, bold, italic
     var len = arguments.length;
     if ( len == 1 ) {
         if ( arguments[0] instanceof String ) {

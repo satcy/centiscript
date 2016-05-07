@@ -441,6 +441,8 @@ window.onload = function(){
                 CENTI.strlength(CENTI.editor.value);
             }
             httpObj.send(null);
+        } else {
+            CENTI.run();
         }
         CENTI.strlength(CENTI.editor.value);
 
