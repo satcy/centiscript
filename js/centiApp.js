@@ -39,14 +39,13 @@ var CENTI = {
 };
 
 CENTI.init = function(){
-    CENTI.editor = document.getElementById('editor');
     CENTI.inputTitle = document.getElementById('inputtitle');
     var canvas = document.getElementById("canvas0");
     if ( ct ) ct.destroy();
     ct = new Centi(null, CENTI.editor);
     if ( document.getElementById('version') ) document.getElementById('version').innerHTML = "ver. " + ct.ver;
     if ( !ct.init(canvas, getAudioContext()) ) {
-        CENTI.editor.value = "disable canvas.";
+        CENTI.editor.setValue("disable canvas.");
     }
 
     if ( window.addEventListener ) window.addEventListener( 'resize', onResize, false );
@@ -59,7 +58,7 @@ CENTI.init = function(){
 
 CENTI.run = function(){
     var tw;
-    tw = CENTI.editor.value;
+    tw = CENTI.editor.getValue();
     //console.log(tw);
     var element = document.getElementById("canvas_wrap"); 
     while (element.firstChild) {
@@ -91,7 +90,7 @@ CENTI.onFrame = function(){
 
 CENTI.tweet = function(){
     var code;
-    code = CENTI.editor.value;
+    code = CENTI.editor.getValue();
     //code = code.replace(/\s/g, "");
     if ( !code ) {
         return;
@@ -230,7 +229,8 @@ CENTI.setTitle = function(str){
 CENTI.setSample = function(str){
     //console.log(str);
     //editor.value = "";
-    CENTI.editor.value = str;
+    CENTI.editor.setValue(str);
+    CENTI.editor.revealPositionInCenter({ lineNumber: 0, column: 0 });
     CENTI.strlength(str);
     CENTI.run();
 }
@@ -246,21 +246,21 @@ CENTI.onFileChanged = function(){
     
     var reader = new FileReader();
     reader.onloadend = function (e) {
-        CENTI.editor.value = this.result;
+        CENTI.editor.setValue(this.result);
     };
     
     reader.readAsText(file);
 }
 
 CENTI.saveFile = function(){
-    var blob = new Blob([CENTI.editor.value], {type:"text/plain"});
+    var blob = new Blob([CENTI.editor.getValue()], {type:"text/plain"});
     
     window.saveAs(blob, "centi_"+ CENTI.getTimeStampString() +".ct");
 }
 
 CENTI.exportFile = function(){
     var code;
-    code = CENTI.editor.value;
+    code = CENTI.editor.getValue();
     if ( !code ) {
         return;
     }
@@ -429,22 +429,22 @@ window.onload = function(){
         }
 
         if ( params["c"] ) {
-            CENTI.editor.value = /*unescape*/(params["c"]);
+            CENTI.editor.setValue(/*unescape*/(params["c"]));
             CENTI.run();
         } else if ( params["f"] ) {
             var httpObj = new XMLHttpRequest();
             var path = "http://ex.rzm.co.jp/centiscript/p/codes/"+params["f"]+".ct";
             httpObj.open("get", path, true);
             httpObj.onload = function(){
-                CENTI.editor.value = (this.responseText);
+                CENTI.editor.setValue(this.responseText);
                 CENTI.run();
-                CENTI.strlength(CENTI.editor.value);
+                CENTI.strlength(CENTI.editor.getValue());
             }
             httpObj.send(null);
         } else {
             CENTI.run();
         }
-        CENTI.strlength(CENTI.editor.value);
+        CENTI.strlength(CENTI.editor.getValue());
 
         CENTI.getTweetsList();
         
