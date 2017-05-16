@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9g';
+    this.ver = '0.4.9h';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -1777,6 +1777,24 @@ Centi.prototype.seg = function(_num, _x, _y, _w, _h){
             this.line(_x+_w*(p & 1),_y+0.5*_h*( p >> 1),_x+_w*(q & 1),_y+0.5*_h*(q >> 1));
         }
         n=(n >> 1);
+    }
+};
+
+// 7seg
+Centi.prototype.segs = function(_num, _x, _y, _w, _h, _spacing){
+    var l = arguments.length;
+    var spaceing = 0.1;
+    if ( l < 5 ) {
+        return;
+    } else if ( l == 6 ) {
+        spaceing = _spacing;
+    }
+    var str = _num.toString(10);
+    var x = _x;
+    for (var i = 0, chr; i < str.length; i++) {
+        var n = parseInt(str.charAt(i), 10);
+        this.seg(n, x, _y, _w, _h);
+        x += _w + _w*spaceing;
     }
 };
 
