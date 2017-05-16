@@ -290,7 +290,7 @@ Centi.prototype.feedback = function(value){
     for(var pname in this){
         if ( CT_PROPS.indexOf(pname) == -1 && this[pname] === value ){
             this.centiCode = insertValue(this.centiCode, pname, value_str);
-            this.editor.value = this.centiCode;
+            this.editor.setValue(this.centiCode);
             break;
         }
     }

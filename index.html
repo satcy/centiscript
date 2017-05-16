@@ -90,7 +90,7 @@ WebFontConfig = {
         </script>  
       <div class="editor_textarea">
         <textarea name="inputtitle" id="inputtitle" rows="1" cols="50" wrap="hard" maxlength="50" placeholder="Title"></textarea>
-        <textarea name="texterea" id="editor" rows="1" cols="50" wrap="hard" onkeydown="CENTI.insertTab(this, event);" onkeyup="CENTI.strlength(value)">sz(720,360)bg(0)a=([])for(i,0,w){a[i]=obj()a[i].x=(0)a[i].v=(0)}frame(){drawMe(0,0,w,h,-2,-2,w+4,h+4)for(i,0,w){a[i].v+=nz(i*0.004,c*0.01)a[i].x+=(a[i].v)a[i].v+=((0-a[i].x)*0.01)x=(i)y=(a[i].x)col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}</textarea>
+        <div id="editor"></div>
       </div>
       <div class="editor_tools">
         <span class="editor_btn">
@@ -131,6 +131,23 @@ WebFontConfig = {
   <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 </div>
+<script src="lib/monaco-editor/min/vs/loader.js"></script>
+<script>
+	require.config({ paths: { 'vs': 'lib/monaco-editor/min/vs' }});
+	require(['vs/editor/editor.main'], function() {
+    monaco.languages.register({ id: 'centi' });
+		CENTI.editor = monaco.editor.create(document.getElementById('editor'), {
+			value: [
+        'sz(720,360)bg(0)a=([])for(i,0,w){a[i]=obj()a[i].x=(0)a[i].v=(0)}frame(){drawMe(0,0,w,h,-2,-2,w+4,h+4)for(i,0,w){a[i].v+=nz(i*0.004,c*0.01)a[i].x+=(a[i].v)a[i].v+=((0-a[i].x)*0.01)x=(i)y=(a[i].x)col(rnd(255),rnd(255),rnd(100,255))rect(x,y+h/2,1,y)}}'
+			].join('\n'), 
+      theme: 'vs-dark',
+			language: 'centiscript'
+		});
+    CENTI.editor.onKeyUp(function(event) {
+      CENTI.strlength(CENTI.editor.getValue());
+    });
+	});
+</script>
 </body>
 
 </html>

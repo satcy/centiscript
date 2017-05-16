@@ -134,7 +134,7 @@ textarea:-ms-input-placeholder {
     color: #999;
 }
 
-textarea#editor{
+#editor{
 border:0;
 padding:0px 5px;
 font-size:1em;
