@@ -16,7 +16,7 @@ position: relative;
 font-family: 'Playfair Display', sans-serif ;
 color: #393939;
 line-height: 90%;
-font-size: 4.373em;
+font-size: 2.373em;
 margin: .93em 0 0.5em 0;
 letter-spacing: 0.39em;    
 text-shadow: 0px -1px 1px rgba(255,255,255,0.47);
@@ -38,7 +38,7 @@ font-style: italic;
 text-align: center;
 font-family: 'Droid Sans Mono', sans-serif ;
 color:#666;
-font-size:0.8em;
+font-size:0.7em;
 margin-bottom: 1em;
 }
 
@@ -143,7 +143,7 @@ color:#FFF;
 background-color: #232323;
 border:solid 0px #ccc;
 margin:0 0 10px;
-width:720px;   
+width:710px;   
 height:10em;
 line-height:1.7em;
 -webkit-border-radius: 2px;
@@ -152,6 +152,9 @@ border-radius: 2px;
 -moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
 -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+overflow: scroll;
+overflow-x:hidden;
+resize: vertical;
 }
 
 button{

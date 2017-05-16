@@ -32,7 +32,7 @@ var CENTI = {
     encoder:null,
     bToGif:false,
     gifFrameCnt:0,
-    maxGifFrameNum:90,
+    maxGifFrameNum:150,
 
     imageUrl:null,
     blob:null

@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9h';
+    this.ver = '0.4.9i';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
