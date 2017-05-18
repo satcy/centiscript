@@ -763,8 +763,7 @@ Centi.prototype.bg = function(){
 Centi.prototype.lg = function(){ console.log(arguments); };
 Centi.prototype.log = function(){ console.log(arguments); };
 
-Centi.prototype.sz = function(_w, _h){ this.size(_w, _h); };
-Centi.prototype.size = function(_w, _h){
+Centi.prototype.sz = Centi.prototype.size = function(_w, _h){
     this.sizeW = _w;
     this.sizeH = _h;
     var w, h;
@@ -785,8 +784,7 @@ Centi.prototype.size = function(_w, _h){
     this.tempCanvas.height = this.h;
 };
 
-Centi.prototype.clr = function(){ this.clear(); };
-Centi.prototype.clear = function(){
+Centi.prototype.clr = Centi.prototype.clear = function(){
     if ( this.ctx == null ) return;
     var mode = this.ctx.globalCompositeOperation;
     this.ctx.globalCompositeOperation = 'source-over';
@@ -798,13 +796,11 @@ Centi.prototype.clear = function(){
     this.col(255);
 };
 
-Centi.prototype.Obj = function(){ return new Object(); };
-Centi.prototype.obj = function(){ return new Object(); };
+Centi.prototype.Obj = Centi.prototype.obj = function(){ return new Object(); };
 
 // Randomize
 
-Centi.prototype.rnd = function(){ return this.rand.apply(this, arguments); };
-Centi.prototype.rand = function(){
+Centi.prototype.rnd = Centi.prototype.rand = function(){
     var len = arguments.length;
     if ( len == 1 ) {
         return Math.random()*arguments[0];   
@@ -815,11 +811,7 @@ Centi.prototype.rand = function(){
     }
 };
 
-Centi.prototype.nz = function() {
-    return this.noise.apply(this, arguments);
-};
-
-Centi.prototype.noise = function(){
+Centi.prototype.nz = Centi.prototype.noise = function(){
     var len = arguments.length;
     if ( len == 1 ) {
         return perlin.perlin2(arguments[0], 0);   
@@ -902,8 +894,7 @@ Centi.prototype.arc = function(_x, _y, _rad, _start, _end, _anticlockwise) {
     else this.ctx.stroke();
 };
 
-Centi.prototype.ln = function(_x1, _y1, _x2, _y2){ this.line(_x1, _y1, _x2, _y2); };
-Centi.prototype.line = function(_x1, _y1, _x2, _y2){
+Centi.prototype.ln = Centi.prototype.line = function(_x1, _y1, _x2, _y2){
     if ( this.ctx == null ) return;
     this.ctx.beginPath();
     this.ctx.moveTo(_x1, _y1);
@@ -1129,8 +1120,7 @@ Centi.prototype.endShape = function(){
     else this.ctx.stroke();
 };
 
-Centi.prototype.me = function(){ this.drawMe.apply(this, arguments); };
-Centi.prototype.drawMe = function(){
+Centi.prototype.me = Centi.prototype.drawMe = function(){
     if ( this.ctx == null ) return;
     var len = arguments.length;
     if ( len == 2 ) {
@@ -1142,30 +1132,26 @@ Centi.prototype.drawMe = function(){
     }
 };
 
-Centi.prototype.lw = function(_w){ this.lineWidth(_w); };
-Centi.prototype.lineWidth = function(_w){
+Centi.prototype.lw = Centi.prototype.lineWidth = function(_w){
     if ( this.ctx == null ) return;
     this.ctx.lineWidth = _w;
 };
 
-Centi.prototype.lj = function(_val){ this.lineJoin(_val); };
-Centi.prototype.lineJoin = function(_val){
+Centi.prototype.lj = Centi.prototype.lineJoin = function(_val){
     if ( this.ctx == null ) return;
     if ( _val == 0 ) this.ctx.lineJoin = 'bevel';
     else if ( _val == 1 ) this.ctx.lineJoin = 'round';
     else if ( _val == 2 ) this.ctx.lineJoin = 'miter';
 };
 
-Centi.prototype.lc = function(_val){ this.lineCap(_val); };
-Centi.prototype.lineCap = function(_val){
+Centi.prototype.lc = Centi.prototype.lineCap = function(_val){
     if ( this.ctx == null ) return;
     if ( _val == 0 ) this.ctx.lineCap = 'butt';
     else if ( _val == 1 ) this.ctx.lineCap = 'round';
     else if ( _val == 2 ) this.ctx.lineCap = 'square';
 };
 
-Centi.prototype.bm = function(_val){ this.blendMode(_val); };
-Centi.prototype.blendMode = function(_val){
+Centi.prototype.bm = Centi.prototype.blendMode = function(_val){
     if ( this.ctx == null ) return;
     var mode = 'source-over';
     var modes = ['source-over', 'multiply', 'screen', 'overlay', 'darken', 'lighten','color-dodge', 'color-burn',
@@ -1218,8 +1204,7 @@ Centi.prototype.fill = function(){
     this.gradient = null;
 };
 
-Centi.prototype.strk = function(){ this.stroke(); };
-Centi.prototype.stroke = function(){
+Centi.prototype.strk = Centi.prototype.stroke = function(){
     this.bFill = false;
     this.gradient = null;
 };
@@ -1360,8 +1345,7 @@ Centi.prototype.wrap = function(_a, _min, _max){
     }
 };
 
-Centi.prototype.minmax = function(_a, _min, _max){ return this.minMax(_a, _min, _max); };
-Centi.prototype.minMax = function(_a, _min, _max){
+Centi.prototype.minmax = Centi.prototype.minMax = function(_a, _min, _max){
     return Math.min(_max, Math.max(_a, _min));
 };
 
@@ -1447,13 +1431,11 @@ Centi.prototype.getPointOnCubicBezier = function(_t, _a, _b, _c, _d) {
     return (_k * _k * _k * _a) + (3 * _k * _k * _t * _b) + (3 * _k * _t * _t * _c) + (_t * _t * _t * _d);
 };
 
-Centi.prototype.radToDeg = function(_radian) { return this.r2d(_radian); }; 
-Centi.prototype.r2d = function(_radian) {
+Centi.prototype.radToDeg = Centi.prototype.r2d = function(_radian) {
     return (_radian * 180) / Math.PI;
 };
 
-Centi.prototype.degToRad = function(_degree) { return this.d2r(_degree); }; 
-Centi.prototype.d2r = function(_degree) {
+Centi.prototype.degToRad = Centi.prototype.d2r = function(_degree) {
     return (_degree * Math.PI) / 180;
 };
 
@@ -1477,8 +1459,7 @@ Centi.prototype.bpm = function(_bpm, _divide){
     this.tempo.preSec = this.time;
 };
 
-Centi.prototype.noteToFreq = function(_note) { return this.n2f(_note); };
-Centi.prototype.n2f = function(_note) {
+Centi.prototype.noteToFreq = Centi.prototype.n2f = function(_note) {
     return Math.pow(2, (_note - 69) / 12) * 440.0;
 };
 
@@ -1576,7 +1557,7 @@ Centi.Vec2.prototype.equals = function(point) {
 };
 
 Centi.Vec2.prototype.normalized = function(){
-    var len = Math.sqrt(this.x*this.x + this.y*this.y);
+    var len = 1.0 / Math.sqrt(this.x*this.x + this.y*this.y);
     return new Centi.Vec2(this.x/len, this.y/len); 
 };
 Centi.Vec2.prototype.normalize = function(){
@@ -1584,10 +1565,7 @@ Centi.Vec2.prototype.normalize = function(){
     this.x = this.x/len;
     this.y = this.y/len; 
 };
-Centi.Vec2.prototype.dist = function(){
-    return this.distance.apply(this, arguments);
-};
-Centi.Vec2.prototype.distance = function(){
+Centi.Vec2.prototype.dist = Centi.Vec2.prototype.distance = function(){
     var l = arguments.length;
     if ( l == 1 ) {
         var _pt = arguments[0];
