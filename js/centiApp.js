@@ -35,7 +35,9 @@ var CENTI = {
     maxGifFrameNum:150,
 
     imageUrl:null,
-    blob:null
+    blob:null,
+    
+    file_name:""
 };
 
 CENTI.init = function(){
@@ -419,6 +421,12 @@ CENTI.getTweetsList = function(){
     httpObj.send(null);
 }
 
+CENTI.fullscreen = function(){
+    if ( CENTI.file_name != "" ) {
+        window.location.href = "http://ex.rzm.co.jp/centiscript/full.html?f=" + CENTI.file_name;
+    }
+}
+
 window.onload = function(){
     setTimeout(function(){
         CENTI.init();
@@ -427,11 +435,11 @@ window.onload = function(){
         if ( params["t"] ) {
             CENTI.setTitle(/*unescape*/(params["t"]));
         }
-
         if ( params["c"] ) {
             CENTI.editor.setValue(/*unescape*/(params["c"]));
             CENTI.run();
         } else if ( params["f"] ) {
+            CENTI.file_name = params["f"];
             var httpObj = new XMLHttpRequest();
             var path = "http://ex.rzm.co.jp/centiscript/p/codes/"+params["f"]+".ct";
             httpObj.open("get", path, true);
@@ -448,6 +456,9 @@ window.onload = function(){
 
         CENTI.getTweetsList();
         
+        if ( CENTI.file_name == "" ) {
+            document.getElementById("fullscreen").style.display = 'none';
+        }
     }, 250);
      
 };

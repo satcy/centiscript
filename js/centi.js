@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9i';
+    this.ver = '0.4.9k';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -72,6 +72,7 @@ var Centi = function(name, editor){
     this.mx = 0;
     this.my = 0;
     this.down = false;
+    this.mouseScale = 1;
     //
     this.tempo = {
         bpm: 120,
@@ -613,13 +614,13 @@ Centi.prototype.handleEvent = function(e){
     }
     function setMousePosition(e){
         var rect = self.canvas.getBoundingClientRect();
-        self.mx = e.clientX - rect.left;
-        self.my = e.clientY - rect.top;
+        self.mx = (e.clientX - rect.left)*self.mouseScale;
+        self.my = (e.clientY - rect.top)*self.mouseScale;
     }
 
     function serTouchPosition(e){
-        self.mx = e.layerX;
-        self.my = e.layerY;   
+        self.mx = e.layerX * self.mouseScale;
+        self.my = e.layerY * self.mouseScale;   
     }
 };
 
@@ -691,6 +692,8 @@ Centi.prototype.update = function(){
     }
 
     TWEEN.update();
+    
+    this.ctx.shadowBlur = 0;
 
     this.push();
     if ( this.drawFunc ) this.drawFunc();
@@ -1786,9 +1789,14 @@ Centi.prototype.segs = function(_num, _x, _y, _w, _h, _spacing){
     var str = _num.toString(10);
     var x = _x;
     for (var i = 0, chr; i < str.length; i++) {
-        var n = parseInt(str.charAt(i), 10);
-        this.seg(n, x, _y, _w, _h);
-        x += _w + _w*spaceing;
+        var c = str.charAt(i);
+        var n = parseInt(c, 10);
+        if ( isNaN(n) ) {
+            x += _w*0.1 + _w*spaceing;
+        } else {
+            this.seg(n, x, _y, _w, _h);
+            x += _w + _w*spaceing;
+        }
     }
 };
 
@@ -1912,6 +1920,14 @@ Centi.prototype.crash = function(amount){
     this.ctx.drawImage(tempCanvas, 0, 0);
 };
 
+Centi.prototype.dropShadow = function(_x, _y, _blur, _hex_color){
+    this.ctx.shadowBlur = _blur == undefined ? 0 : _blur;
+    this.ctx.shadowOffsetX = _x == undefined ? 0 : _x;
+    this.ctx.shadowOffsetY = _y == undefined ? 0 : _y;
+    var str = _hex_color == undefined ? "000000" : _hex_color.toString(16);
+    while (str.length < 6) str = "0" + str;
+    this.ctx.shadowColor = "#" + str;
+};
 
 // centi funcs
 
