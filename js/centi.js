@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9k';
+    this.ver = '0.4.9l';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -1576,7 +1576,7 @@ Centi.Vec2.prototype.equals = function(point) {
 };
 
 Centi.Vec2.prototype.normalized = function(){
-    var len = 1.0 / Math.sqrt(this.x*this.x + this.y*this.y);
+    var len = Math.sqrt(this.x*this.x + this.y*this.y);
     return new Centi.Vec2(this.x/len, this.y/len); 
 };
 Centi.Vec2.prototype.normalize = function(){
