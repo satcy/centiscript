@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9l';
+    this.ver = '0.4.9m';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -152,19 +152,7 @@ var Centi = function(name, editor){
 Centi.plugins = [];
 
 Centi.prototype.destroy = function(){
-    if ( this.dsp.processor ) {
-        this.dsp.processor.disconnect();
-        this.dsp.processor.onaudioprocess = null;
-        this.dsp.processor = null;
-    }
-    if ( this.dsp.analyser ) {
-        this.dsp.analyser.disconnect();
-        this.dsp.analyser = null;
-    }
-    if ( this.dsp.context ) {
-        //this.dsp.context.distination.disconnect();
-    }
-    this.dsp.context = null;
+    this.clearDsp();
     this.canvas = null;
     this.ctx = null;
     this.tempCanvas = null;
@@ -192,6 +180,22 @@ Centi.prototype.destroy = function(){
     this.pluginInstances = null;
 };
 
+Centi.prototype.clearDsp = function(){
+    if ( this.dsp.processor ) {
+        this.dsp.processor.disconnect();
+        this.dsp.processor.onaudioprocess = null;
+        this.dsp.processor = null;
+    }
+    if ( this.dsp.analyser ) {
+        this.dsp.analyser.disconnect();
+        this.dsp.analyser = null;
+    }
+    if ( this.dsp.context ) {
+        //this.dsp.context.distination.disconnect();
+    }
+    this.dsp.context = null;
+};
+
 Centi.prototype.init = function(canvas, audioContext){
     this.canvas = canvas;
 
@@ -201,6 +205,24 @@ Centi.prototype.init = function(canvas, audioContext){
     this.initSec = this.now();
     this.time = 0;
     
+    this.initDsp(audioContext);
+
+    for ( var i=0; i<Centi.plugins.length; i++ ){
+        var plugin = new (Centi.plugins[i])(this);
+        this.pluginInstances.push(plugin);
+    }
+
+    if ( canvas.getContext ) {
+        //this.ctx = canvas.getContext("2d");
+        //this.clear();
+        return true;
+    } else {
+        return false;
+    }
+};
+
+Centi.prototype.initDsp = function(audioContext){
+    this.clearDsp();
     if ( audioContext ) {
         this.dsp.enable = true;
         this.dsp.context = audioContext;
@@ -265,20 +287,8 @@ Centi.prototype.init = function(canvas, audioContext){
     } else {
         this.dsp.enable = false;
     }
-
-    for ( var i=0; i<Centi.plugins.length; i++ ){
-        var plugin = new (Centi.plugins[i])(this);
-        this.pluginInstances.push(plugin);
-    }
-
-    if ( canvas.getContext ) {
-        //this.ctx = canvas.getContext("2d");
-        //this.clear();
-        return true;
-    } else {
-        return false;
-    }
 };
+
 
 Centi.prototype.doDsp = function(){
     return ( this.dspFunc ) ? this.dspFunc() : 0;
@@ -704,7 +714,7 @@ Centi.prototype.update = function(){
     }
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
-
+    if ( this.dsp.enable && this.c > 1 && this.time == 0 ) this.dsp.enable = false;
 };
 
 Centi.prototype.updateBeat = function(){

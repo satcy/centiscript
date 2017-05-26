@@ -70,6 +70,7 @@ CENTI.run = function(){
 
     ct.canvas = document.createElement('canvas');
     ct.canvas.id = 'canvas0';
+    ct.initDsp( getAudioContext() );
     document.getElementById("canvas_wrap").appendChild(ct.canvas);
     if ( ct.parse(tw) ) {
         //ct.reset();
@@ -464,6 +465,7 @@ window.onload = function(){
             document.getElementById("fullscreen").style.display = 'none';
         }
     }, 250);
-     
+    var runBtn = document.getElementById('run');
+    runBtn.addEventListener(/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'touchend' : 'click', CENTI.run, false);
 };
 
