@@ -17,11 +17,11 @@
         for ( var i=0; i<_str.length; i++ ) {
             var code = _str.charCodeAt(i);
             var hex = this.getBitmapFontCode(code);
-            this.bitmap5x8(hex, x, y, size/8);
+            this.bitmap5by8(hex, x, y, size/8);
             x += (size / 8) * 6;
         }
 	};
-    Centi.prototype.bitmap5x8 = function(bin, x, y, dot_size){
+    Centi.prototype.bitmap5by8 = function(bin, x, y, dot_size){
         var bit_max = Math.pow(2,32);
         var bin_32bit_arr = [bin%bit_max, Math.floor(bin/bit_max)];
         var c = 0;
