@@ -467,5 +467,11 @@ window.onload = function(){
     }, 250);
     var runBtn = document.getElementById('run');
     runBtn.addEventListener(/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'touchend' : 'click', CENTI.run, false);
+    
+    var appCache = window.applicationCache;
+    appCache.update();
+    if (appCache.status == window.applicationCache.UPDATEREADY) {
+        appCache.swapCache();
+    }
 };
 

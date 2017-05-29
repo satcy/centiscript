@@ -1,7 +1,9 @@
 (function (Centi) {
+    Centi.prototype.bmFont = 
     Centi.prototype.bitmapFont = function(size){
         this.bitmapFontSize = size;
 	};
+    Centi.prototype.bmTxt = 
     Centi.prototype.bitmapText = function(str, x, y, size){
         if ( this.bitmapFontSize == undefined ) {
             this.bitmapFontSize = 32;
@@ -21,6 +23,8 @@
             x += (size / 8) * 6;
         }
 	};
+    Centi.prototype.bm5x8 = 
+    Centi.prototype.bm5by8 = 
     Centi.prototype.bitmap5by8 = function(bin, x, y, dot_size){
         var bit_max = Math.pow(2,32);
         var bin_32bit_arr = [bin%bit_max, Math.floor(bin/bit_max)];
