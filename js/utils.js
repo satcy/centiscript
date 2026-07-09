@@ -114,10 +114,19 @@ THE SOFTWARE.
   if ( !_root.audioContextClass ) {
     _root.audioContextClass = _root.AudioContext || _root.webkitAudioContext || _root.mozAudioContext || _root.oAudioContext || _root.msAudioContext;
   }
+  if ( !_root.resumeAudioContext ) {
+    _root.resumeAudioContext = function(ctx){
+      if ( ctx && ctx.state === 'suspended' && ctx.resume ) {
+        ctx.resume();
+      }
+      return ctx;
+    }
+  }
+
   if ( !_root.getAudioContext ) {
     _root.getAudioContext = function(){
-      if ( _root.audioContext ) return _root.audioContext;
-      if ( !_root.audioContext && _root.audioContextClass ) return (_root.audioContext = new _root.audioContextClass());
+      if ( _root.audioContext ) return _root.resumeAudioContext(_root.audioContext);
+      if ( !_root.audioContext && _root.audioContextClass ) return _root.resumeAudioContext(_root.audioContext = new _root.audioContextClass());
       else return null;
     }
   }

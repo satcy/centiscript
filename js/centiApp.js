@@ -469,9 +469,11 @@ window.onload = function(){
     runBtn.addEventListener(/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'touchend' : 'click', CENTI.run, false);
     
     var appCache = window.applicationCache;
-    appCache.update();
-    if (appCache.status == window.applicationCache.UPDATEREADY) {
-        appCache.swapCache();
+    if (appCache) {
+        appCache.update();
+        if (appCache.status == appCache.UPDATEREADY) {
+            appCache.swapCache();
+        }
     }
 };
 

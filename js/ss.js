@@ -148,9 +148,11 @@ window.onload = function(){
     CENTI.init();
     
     var appCache = window.applicationCache;
-    appCache.update();
-    if (appCache.status == window.applicationCache.UPDATEREADY) {
-        appCache.swapCache();
+    if (appCache) {
+        appCache.update();
+        if (appCache.status == appCache.UPDATEREADY) {
+            appCache.swapCache();
+        }
     }
 };
 
