@@ -135,6 +135,7 @@ CENTI.endToGif = function(){
         CENTI.blob = blob;
         CENTI.imageUrl = URL.createObjectURL(blob);
         document.getElementById('gif_image').src = CENTI.imageUrl;
+        document.getElementById('gifResult').classList.add('is_visible');
         document.getElementById('togif').innerHTML = "REC";
         CENTI.encoder = null;
     });
@@ -231,8 +232,23 @@ CENTI.onFileChanged = function(){
 
 CENTI.saveFile = function(){
     var blob = new Blob([CENTI.editor.getValue()], {type:"text/plain"});
-    
+
     window.saveAs(blob, "centi_"+ CENTI.getTimeStampString() +".ct");
+}
+
+CENTI.saveGif = function(){
+    if ( !CENTI.blob ) return;
+    window.saveAs(CENTI.blob, "centi_"+ CENTI.getTimeStampString() +".gif");
+}
+
+CENTI.closeGifResult = function(){
+    document.getElementById('gifResult').classList.remove('is_visible');
+    document.getElementById('gif_image').src = "";
+    if ( CENTI.imageUrl ) {
+        URL.revokeObjectURL(CENTI.imageUrl);
+        CENTI.imageUrl = null;
+    }
+    CENTI.blob = null;
 }
 
 CENTI.exportFile = function(){

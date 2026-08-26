@@ -121,7 +121,13 @@ WebFontConfig = {
       <div class="canvas_wrap" id="canvas_wrap">
         <canvas id="canvas0" width="720" height="360"></canvas>
       </div>
-      <img id="gif_image" />
+      <div class="gif_result" id="gifResult">
+        <div class="gif_result_inner">
+          <img id="gif_image" />
+          <button type="button" class="gif_result_close" id="gifResultClose" title="Close" onclick="CENTI.closeGifResult()">✕</button>
+          <button type="button" class="gif_result_save" id="gifResultSave" title="Save" onclick="CENTI.saveGif()">SAVE</button>
+        </div>
+      </div>
       <div id="result"></div>
     </div>
   </div>

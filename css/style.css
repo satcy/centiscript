@@ -221,15 +221,69 @@ text-align: right;
 .editor_btn{
 float: left;
 }
-#gif_image{
+.gif_result{
 position: absolute;
 left: 16px;
 bottom: 16px;
 max-width: min(240px, 30%);
+z-index: 5;
+display: none;
+}
+.gif_result.is_visible{
+display: block;
+}
+.gif_result_inner{
+position: relative;
+display: inline-block;
+max-width: 100%;
+}
+#gif_image{
+display: block;
+max-width: 100%;
 max-height: 160px;
 border-radius: 6px;
 box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-z-index: 5;
+}
+.gif_result_close{
+position: absolute;
+top: 6px;
+left: 6px;
+width: 22px;
+height: 22px;
+padding: 0;
+border-radius: 50%;
+background-color: rgba(0,0,0,0.6);
+color: #fff;
+border: none;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 12px;
+line-height: 1;
+cursor: pointer;
+}
+.gif_result_close:hover{
+background-color: #00ffff;
+color: #000;
+}
+.gif_result_save{
+position: absolute;
+top: 6px;
+right: 6px;
+height: 20px;
+padding: 0 8px;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.6);
+color: #fff;
+border: none;
+font-size: 10px;
+font-weight: bold;
+letter-spacing: 0.05em;
+cursor: pointer;
+}
+.gif_result_save:hover{
+background-color: #00ffff;
+color: #000;
 }
 textarea#inputtitle{
 border:0;
