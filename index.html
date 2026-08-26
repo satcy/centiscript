@@ -135,17 +135,19 @@ WebFontConfig = {
 <script src="lib/monaco-editor/min/vs/loader.js"></script>
 <script>
 	require.config({ paths: { 'vs': 'lib/monaco-editor/min/vs' }});
-	require(['vs/editor/editor.main'], function() {
+	require(['vs/editor/editor.main', 'vs/basic-languages/src/centi'], function(editorMain, centi) {
     monaco.languages.register({ id: 'centi' });
+    monaco.languages.setLanguageConfiguration('centi', centi.conf);
+    monaco.languages.setMonarchTokensProvider('centi', centi.language);
 		CENTI.editor = monaco.editor.create(document.getElementById('editor'), {
 			value: [
-        'sz(720,360)bg(0)\nframe(){\nclr()col(170)\nvl=(h/2)w2=(w/3)\nfor(i,0,w2){\ncol((cos(c*0.01+i*0.25)/2+0.5)*255)\nx=(i*3)y=(cy)\nline(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)\n}\n}'
+        'sz(720,360)\nbg(0)\nframe(){\n clr()\n col(170)\n vl=(h/2)\n w2=(w/3)\n for(i,0,w2){\n  col((cos(c*0.01+i*0.25)/2+0.5)*255)\n  x=(i*3)\n  y=(cy)\n  line(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)\n }\n}'
 			].join('\n'),
             theme: 'vs-dark',
             fontSize: 14,
             automaticLayout: true,
             scrollbar: {verticalScrollbarSize: 20,  horizontalScrollbarSize:10},
-			language: 'centiscript'
+			language: 'centi'
 		});
     CENTI.editor.onKeyUp(function(event) {
       CENTI.strlength(CENTI.editor.getValue());
