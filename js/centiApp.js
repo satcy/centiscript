@@ -92,57 +92,6 @@ CENTI.onFrame = function(){
     ct.update();
 }; 
 
-CENTI.tweet = function(){
-    var code;
-    code = CENTI.editor.getValue();
-    //code = code.replace(/\s/g, "");
-    if ( !code ) {
-        return;
-    }
-    if ( CENTI.gifFrameCnt > 0 ) {
-        var blob = CENTI.blob;
-        if ( blob ) postData(blob);
-    } else if ( ct.canvas.toBlob ) {
-        ct.canvas.toBlob( postData, "image/png");
-    }
-
-    function postData(blob){
-        var formData = new FormData();
-
-        var url = "http://ex.rzm.co.jp/centiscript/?c="+encodeURIComponent(code);
-        
-        var title = CENTI.inputTitle.value;
-        if ( title == "Title" ) {
-            title = "";
-        }
-        if ( title != "" ) {
-            url += "&t="+encodeURIComponent(title);
-            title += " ";
-        }
-
-        formData.append("image", blob );
-        formData.append("tweet", title + "(centiscript) " + url);
-        formData.append("url", url);
-        formData.append("title", encodeURIComponent(title));
-        formData.append("code", encodeURIComponent(code));
-        
-        var xhr = new XMLHttpRequest;
-        xhr.open( "POST", "http://ex.rzm.co.jp/centiscript/p/upload.php" );
-        xhr.onreadystatechange = function(){
-            //console.log(xhr.readyState, xhr.status);
-            if (xhr.readyState === 4 && xhr.status === 200){
-              //console.log(1, xhr.responseText);
-                eval(xhr.responseText);
-            }
-            if (xhr.readyState === 4 && xhr.status === 0){
-              //console.log(2, xhr.responseText);
-                eval(xhr.responseText);
-            }
-        };
-        xhr.send(formData);
-    }
-}
-
 CENTI.togif = function(){
     if ( CENTI.bToGif ) {
         CENTI.endToGif();

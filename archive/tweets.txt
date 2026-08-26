@@ -19,12 +19,6 @@
     },
     {
         "url": "?f=1496841411313&t=10/365%20jumpjumpjump%20-%20Primary%20Games",
-        "user": "motoishmz",
-        "img": "archive/images/DdXq-QUUQAAt-7X.jpg",
-        "id": "996961260888514560"
-    },
-    {
-        "url": "?f=1496841411313&t=10/365%20jumpjumpjump%20-%20Primary%20Games",
         "user": "satcy",
         "img": "archive/images/ebtxGIqSpTkTypUE.jpg",
         "id": "996959304577048577"
