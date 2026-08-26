@@ -1,2 +1,4 @@
 .sync.ffs_db
 .DS_Store
+.claude
+.codex
