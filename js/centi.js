@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.4.9m';
+    this.ver = '0.5.0';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -375,7 +375,6 @@ Centi.prototype.parse = function(tw){
     this.centiCode = tw;
 
     tw = tw.replace(/\s/g, "");
-    tw = tw.replace(/\b/g, "");
     tw = tw.replace(/(\))([A-Za-z0-9_\}])/g, ");$2");
     tw = tw.replace(/(for\()([A-Za-z_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)]+)(\,)([A-Za-z0-9_\-\.\(\)\*\+\/]+)(\))/g, "for($2=$4;$2<$6;$2++)");
 
@@ -702,8 +701,8 @@ Centi.prototype.update = function(){
     }
 
     TWEEN.update();
-    
-    this.ctx.shadowBlur = 0;
+
+    if ( this.ctx ) this.ctx.shadowBlur = 0;
 
     this.push();
     if ( this.drawFunc ) this.drawFunc();
@@ -713,7 +712,7 @@ Centi.prototype.update = function(){
         this.pluginInstances[i].postUpdate();
     }
     this.c++;
-    if ( this.toGifFunc != null ) this.toGifFunc(this.ctx);
+    if ( this.toGifFunc != null ) this.toGifFunc(this.ctx || this.canvas);
     if ( this.dsp.enable && this.c > 1 && this.time == 0 ) this.dsp.enable = false;
 };
 
@@ -1011,14 +1010,15 @@ Centi.prototype.text = function(){
 }
 
 Centi.prototype.font = function(){//font, size, bold, italic
+    if ( !this.ctx ) return;
     var len = arguments.length;
     if ( len == 1 ) {
-        if ( arguments[0] instanceof String ) {
+        if ( typeof arguments[0] === "string" ) {
             this.ctx.font = "12px " + arguments[0];
         } else {
             this.ctx.font = arguments[0] + "px 'Helvetica'";
-        }    
-        
+        }
+
     } else if ( len == 2 ) {
         this.ctx.font = arguments[1] + "px " + arguments[0];
     } else if ( len == 3 ) {
@@ -1026,7 +1026,7 @@ Centi.prototype.font = function(){//font, size, bold, italic
     } else if ( len == 4 ) {
         this.ctx.font = (arguments[3] ? "italic " : "") + (arguments[2] ? "bold " : "") + arguments[1] + "px " + arguments[0];
     }
-    
+
 }
 
 Centi.prototype.boundingBox = function(_pts){
@@ -1187,7 +1187,7 @@ Centi.prototype.blendMode = function(_val){
 };
 
 Centi.prototype.hcol = function(_hex){
-    if ( _hex >> 24 > 0 ) this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF);
+    if ( (_hex >>> 24) > 0 ) this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF);
     else this.col( _hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF);
 };
 Centi.prototype.col = function(){
@@ -1218,8 +1218,10 @@ Centi.prototype.col = function(){
         this.drawcolor.a = arguments[3];
         s = "rgba(" + parseInt(arguments[0]) + "," + parseInt(arguments[1]) + "," + parseInt(arguments[2]) + "," + parseInt(arguments[3])/255.0 + ")";
     }
-    this.ctx.fillStyle = s;
-    this.ctx.strokeStyle = s;
+    if ( this.ctx ) {
+        this.ctx.fillStyle = s;
+        this.ctx.strokeStyle = s;
+    }
     this.gradient = null;
 };
 
@@ -1263,7 +1265,7 @@ Centi.prototype.gradHex = function(_ratio, _hex){
     _ratio = this.minmax(_ratio, 0, 1);
     var a = [];
     _hex = _hex === undefined ? 0xFFFFFF : _hex;
-    if ( _hex >> 24 > 0 ) a = [_hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF];
+    if ( (_hex >>> 24) > 0 ) a = [_hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, _hex >> 24 & 0xFF];
     else a = [_hex >> 16 & 0xFF, _hex >> 8 & 0xFF, _hex & 0xFF, 255];
     this.gradient.addColorStop(_ratio, this.colorString.apply(this, a));
 };
@@ -1578,10 +1580,10 @@ Centi.Vec2.prototype.clone = function() {
 };
 
 Centi.Vec2.prototype.equals = function(point) {
-    return this === _vec2 || _vec2
-            && (this.x === _vec2.x && this.y === _vec2.y
-                || Array.isArray(_vec2)
-                    && this.x === _vec2[0] && this.y === _vec2[1])
+    return this === point || point
+            && (this.x === point.x && this.y === point.y
+                || Array.isArray(point)
+                    && this.x === point[0] && this.y === point[1])
             || false;
 };
 
@@ -1616,11 +1618,11 @@ Centi.Vec2.prototype.dist = Centi.Vec2.prototype.distance = function(){
 };
 
 Centi.Vec2.prototype.dot = function(_vec2){
-    return this.x * _vec2.x + this.y + _vec2.y;
+    return this.x * _vec2.x + this.y * _vec2.y;
 };
 
 Centi.Vec2.prototype.cross = function(_vec2){
-    return this.x * _vec2.x - this.y + _vec2.y;
+    return this.x * _vec2.y - this.y * _vec2.x;
 };
 Centi.Vec2.prototype.rotation = function() {
     if (!arguments.length) {
@@ -1630,7 +1632,7 @@ Centi.Vec2.prototype.rotation = function() {
     } else {
         var point = arguments[0];
         var div = this.len() * point.len();
-        if (Numerical.isZero(div)) {
+        if (Centi.Numerical.isZero(div)) {
             return NaN;
         } else {
             var a = this.dot(point) / div;
@@ -1766,9 +1768,7 @@ Centi.prototype.tween = function(params){
 
 // OOP
 Centi.prototype.new = function(constructor, args){
-    function F() { constructor.apply(this, args); }
-    F.prototype = constructor.prototype;
-    return new F();
+    return Reflect.construct(constructor, args);
 };
 
 // 7seg

@@ -144,7 +144,9 @@ CENTI.tweet = function(){
 }
 
 CENTI.togif = function(){
-    if ( !CENTI.bToGif ) {
+    if ( CENTI.bToGif ) {
+        CENTI.endToGif();
+    } else if ( !CENTI.encoder ) {
         CENTI.encoder =  new GIF({
             workers: 2,
             quality: 10,
@@ -156,9 +158,8 @@ CENTI.togif = function(){
         CENTI.gifFrameCnt = 0;
         document.getElementById('togif').innerHTML = "Stop REC";
         ct.toGifFunc = CENTI.pushGif;
-    } else {
-        CENTI.endToGif();
     }
+    // else: previous recording is still being encoded ("Processing..."); ignore the click.
 }
 
 CENTI.pushGif = function(ctx){
@@ -173,17 +174,29 @@ CENTI.pushGif = function(ctx){
 CENTI.endToGif = function(){
     if ( !CENTI.bToGif ) return;
     CENTI.bToGif = false;
+    ct.toGifFunc = null;
+
+    if ( CENTI.gifFrameCnt === 0 ) {
+        CENTI.encoder = null;
+        document.getElementById('togif').innerHTML = "REC";
+        return;
+    }
+
     CENTI.encoder.on('finished', function(blob) {
         CENTI.blob = blob;
         CENTI.imageUrl = URL.createObjectURL(blob);
         document.getElementById('gif_image').src = CENTI.imageUrl;
         document.getElementById('togif').innerHTML = "REC";
+        CENTI.encoder = null;
     });
-    CENTI.encoder.render();
-    document.getElementById('togif').innerHTML = "Processing...";
-    CENTI.encoder = null;
-
-    ct.toGifFunc = null;
+    try {
+        CENTI.encoder.render();
+        document.getElementById('togif').innerHTML = "Processing...";
+    } catch (e) {
+        console.error("GIF encoding failed to start (Web Workers may be unavailable, e.g. when opening this page via file://).", e);
+        CENTI.encoder = null;
+        document.getElementById('togif').innerHTML = "REC";
+    }
 }
 
 CENTI.insertTab = function(o, e){
@@ -239,6 +252,17 @@ CENTI.setSample = function(str){
     CENTI.run();
 }
 
+CENTI.loadSample = function(path){
+    if ( !path ) return;
+    fetch(path).then(function(res){
+        return res.text();
+    }).then(function(str){
+        CENTI.setSample(str);
+    }).catch(function(e){
+        console.error("Failed to load sample: " + path, e);
+    });
+}
+
 CENTI.onFileChanged = function(){
     var file = document.getElementById('readfile').files[0];
     // console.log('File name: ' + file.name);
@@ -270,7 +294,7 @@ CENTI.exportFile = function(){
     }
     var ext = ".png";
     if ( CENTI.gifFrameCnt > 0 ) {
-        var blob = window.dataURLtoBlob && window.dataURLtoBlob(CENTI.imageUrl);
+        var blob = CENTI.blob;
         ext = ".gif";
         if ( blob ) postData(blob);
     } else if ( ct.canvas.toBlob ) {
@@ -302,7 +326,7 @@ CENTI.exportJS = function(){
     if ( !is3d ) is3d = /c3d\(\)/.test(f6);
 
     var temp = 
-    ((is3d) ? '//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>' + "\n" : "" ) + 
+    ((is3d) ? '//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>' + "\n" : "" ) +
     '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/release/centi.min.'+ct.ver+'.js"></script>' + "\n" +
     ((is3d) ? '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/plugin/centi.three.js"></script>' + "\n" : "" ) + 
     "//<canvas id='c'></canvas>" + "\n" +

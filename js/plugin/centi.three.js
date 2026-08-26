@@ -60,10 +60,11 @@ Centi.plugins.push(
 			if ( obj.b3d ) {
 		        obj.size(obj.w, obj.h);
 		        try {
-		            console.log(obj.canvas.width, obj.canvas.height);
 		            obj.renderer = new THREE.WebGLRenderer({canvas:obj.canvas, preserveDrawingBuffer: true});
+		            obj.renderer.setSize(obj.w, obj.h, false);
 		        } catch(e){
-		            obj.renderer = new THREE.CanvasRenderer({canvas:obj.canvas});
+		            console.log("WebGL is not available.", e);
+		            obj.renderer = null;
 		        }
 		        obj.cam = new THREE.PerspectiveCamera( 60, obj.w/obj.h, 1, 100000 );
 		        obj.cam.position.set( 0, 0, 367 );

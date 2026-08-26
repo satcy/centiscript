@@ -13,7 +13,7 @@
         }
         size = this.bitmapFontSize;
         var _str = str;
-        if ( !(str instanceof String) ) {
+        if ( typeof str !== "string" ) {
             _str = str.toString(10);
         }
         for ( var i=0; i<_str.length; i++ ) {

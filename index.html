@@ -60,34 +60,34 @@ WebFontConfig = {
 </head>
 <body>
 <div class="wrap">
-<a href="https://github.com/satcy/centiscript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<a href="https://github.com/satcy/centiscript" aria-label="Fork me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" fill="#6d6d6d" style="position: absolute; top: 0; right: 0; border: 0;"><path d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"/><path d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16"/><path d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"/></svg></a>
   <div class="title"><a href="./"></a>(centiscript)</div>
   <div class="version" id='version'>ver. 0.0.0</div>
   
   <div class="editor_wrap">
     <div class="sampler">
-      Sample: 
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nclear()\nfor(i,0,327){\ncol(255)\nx=(w/2)\ny=(h/2)\nline(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y,cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)\n}\n}')">1</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('size(720,360)\nframe()\n{\nclear()\nfor(i,0,1027)\n{\ncol(0,195,230)\nx=(w/2)\ny=(h/2)\nline(cos(c*0.04+i*0.02)*w+x,sin(c*0.03+i*0.013)*h+y,cos(c*0.032+i*0.013)*w+x,sin(c*0.054+i*0.012)*h+y)\n}\n}')">2</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nfor(i,0,127)\n{\ncol(rnd(255),rnd(255),rnd(255))\nline(rnd(w),rnd(h),rnd(w),rnd(h))\n}\n}')">3</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nframe()\n{\nfor(i,0,15)\n{\ncol(rnd(100,255))\nrect(0,rnd(h),w,rnd(30))\n}\n}')">4</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,360)\nbg(33,33,33)\nframe()\n{\nclear()\nfor(i,0,w)\n{\nx=(i)\ny=(nz(x*0.02,c*0.1)*h)\ncol(rnd(100,230),0,0)\nrect(x,h/2,1,y)\n}\n}')">5</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1080,540)\nbg(0)\nframe()\n{\nclr()\nfor(i,0,1000)\n{\nr=((sin(c*0.1+i*0.03)+1)*127.5)\na=((sin(c*0.1+i*0.04)+1)*127.5)\ncol(155,r,r,a)\nx=(sin(i*0.01+c*0.02)*sin(i*0.003+c*0.004)*w)\nline(cx+x,0,cx+x,h)\nline(cx-x,0,cx-x,h)\n}\n}')">6</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1040,520)\nbg(0)\nframe()\n{\nclr()\nww=(520)\nfor(j,0,15)\n{\nox=((ww/2)*(j%5))\noy=((ww/2)*floor(j/5))\nfor(i,0,150)\n{\nx=(cos(i*0.2+c*0.1)*ww/4)\ny=(sin(i*0.2+c*0.1)*ww/4)\nx2=(cos(i*0.2+c*0.11)*ww/6)\ny2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)\nline(ox+x,y+oy,ox+x2,y2+oy)\n}\n}\n}')">7</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1200,480)\nbg(0)\nframe()\n{\nclr()\ncol(170)\nvl=(h/2)\nw2=(w/3)\nfor(i,0,w2)\n{\ncol((cos(c*0.01+i*0.25)/2+0.5)*255)\nx=(i*3)\ny=(cy)\nline(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)\n}\n}')">8</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(1280,720)\nbg(0)\nframe()\n{\nclr()\ncol(170)\nvl=(15)\nw2=(w*2)\nphase=(0.13)\nfor(i,0,w2)\n{\nrad=(w-i)\nx=(cos((i+c)*phase)*rad+cx)\ny=(sin((i+c)*phase)*rad+cy)\nline(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)\n}\n}')">9</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(360,360)\nframe()\n{\nclr()\ncr=(PI*2/3)\nt=(c/1000)\np1=(sin(c*0.003)+1)\nfor(i,0,85)\n{\nrad=((c*10+i*5)%w)\ncol(255-i*3)\nfor(j,0,3)\n{\ntlt=(c*0.01+i*p1*0.03)\nline(cos(t+tlt+cr*j)*rad+cx,sin(t+tlt+cr*j)*rad+cy,cos(t+tlt+cr*(j+1))*rad+cx,sin(t+tlt+cr*(j+1))*rad+cy)\n}\n}\n}')">10</a>
-      <a href="javascript:void(0)" onClick="CENTI.setSample('sz(720,270)\nbg(0)\nframe()\n{\nclr()\nnum=(w/3)\nfor(i,0,num)\n{\nww=(cos(i*0.03+c*0.013)*w/2)\nhh=(30)\npush()\ntranslate(i*3,cy)\nrotate(nz(i*0.0015,c*0.002)*60)\ncol(0)\nfill()\nrect(-ww/2,-hh/2,ww,hh)\ncol(205,(sin(i*0.06+c*0.03)+1)*128,255)\nstrk()\nrect(-ww/2,-hh/2,ww,hh)\npop()\n}\n}')">11</a>
+      Sample:
+      <select id="sampleSelect" onchange="CENTI.loadSample(this.value); this.selectedIndex = 0;">
+        <option value="">-</option>
+        <option value="samples/sample01.ct">Example 1</option>
+        <option value="samples/sample02.ct">Example 2</option>
+        <option value="samples/sample03.ct">Example 3</option>
+        <option value="samples/sample04.ct">Example 4</option>
+        <option value="samples/sample05.ct">Example 5</option>
+        <option value="samples/sample06.ct">Example 6</option>
+        <option value="samples/sample07.ct">Example 7</option>
+        <option value="samples/sample08.ct">Example 8</option>
+        <option value="samples/sample09.ct">Example 9</option>
+        <option value="samples/sample10.ct">Example 10</option>
+        <option value="samples/sample11.ct">Example 11</option>
+        <option value="samples/sample12.ct">Example 12</option>
+      </select>
     </div>
     <form>
       <script type="text/javascript" language="javascript">
-          <!--
-          document.open();
           if ( checkFileReaderApi() ) {
             document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></input></div>');
           }
-          document.close();
-          // -->
         </script>  
       <div class="editor_textarea">
         <textarea name="inputtitle" id="inputtitle" rows="1" cols="50" wrap="hard" maxlength="50" placeholder="Title"></textarea>
@@ -97,17 +97,12 @@ WebFontConfig = {
         <span class="editor_btn">
           <button type="button" id="run" name="run" onclick="#">▶</button>  
           <button type="button" id="togif" name="togif" onclick="CENTI.togif()">REC</button>
-          <button type="button" id="tweet" name="tweet" onclick="CENTI.tweet()">Tweet</button> 
-           <script type="text/javascript" language="javascript">
-          <!--
-          document.open();
+          <script type="text/javascript" language="javascript">
           if ( checkFileWriterApi() ) {
             document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save</button>\n');
             document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>\n');
             document.write('<button type="button" id="exportjs" name="exportjs" onclick="CENTI.exportJS()">Export JS</button>\n');
           }
-          document.close();
-          // -->
         </script> 
         <button type="button" id="fullscreen" name="fullscreen" onclick="CENTI.fullscreen()">Full</button> 
         </span>
@@ -128,7 +123,7 @@ WebFontConfig = {
   </div>
   <div class="footer" style="clear: both;">
     <p>DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</p>
-    <p>Written by <a href="https://twitter.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></p>
+    <p>Written by <a href="https://x.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></p>
   </div>
   <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->

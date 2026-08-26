@@ -1,0 +1,10 @@
+sz(720,360)
+c3d()
+geo=(new(T.BoxGeometry,[100,100,100]))
+mat=(new(T.MeshNormalMaterial,[]))
+mesh=(new(T.Mesh,[geo,mat]))
+scene.add(mesh)
+frame(){
+    mesh.rotation.x+=(0.01)
+    mesh.rotation.y+=(0.02)
+}

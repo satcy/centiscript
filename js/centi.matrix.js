@@ -1,5 +1,16 @@
 (function(Centi) {
-	
+
+	function readVec2(args) {
+		var arg0 = args[0];
+		if (args.length >= 2 && typeof arg0 === 'number') {
+			return new Centi.Vec2(args[0], args[1]);
+		} else if (Array.isArray(arg0)) {
+			return new Centi.Vec2(arg0[0], arg0[1]);
+		} else if (arg0 && arg0.x !== undefined && arg0.y !== undefined) {
+			return new Centi.Vec2(arg0.x, arg0.y);
+		}
+		return new Centi.Vec2();
+	}
 
 	Centi.prototype.Matrix = function(){
 		return this.new(Centi.Matrix, arguments);
@@ -11,7 +22,8 @@
         if (count === 6) {
             this.set.apply(this, arguments);
         } else if (count === 1) {
-            if (arg instanceof Matrix) {
+            var arg = arguments[0];
+            if (arg instanceof Centi.Matrix) {
                 this.set(arg._a, arg._c, arg._b, arg._d, arg._tx, arg._ty);
             } else if (Array.isArray(arg)) {
                 this.set.apply(this, arg);
@@ -226,7 +238,7 @@
     };
 
     Centi.Matrix.prototype.transform = function(src, dst, count) {
-        return arguments.length < 3 ? this._transformPoint(Point.read(arguments)) : this._transformCoordinates(src, dst, count);
+        return arguments.length < 3 ? this._transformPoint(readVec2(arguments)) : this._transformCoordinates(src, dst, count);
     };
 
     Centi.Matrix.prototype._transformPoint = function(point, dest, _dontNotify) {
@@ -275,19 +287,16 @@
             else if (val > max[j])
                 max[j] = val;
         }
-        if (!dest)
-            dest = new Centi.Rectangle();
-        return dest.set(min[0], min[1], max[0] - min[0], max[1] - min[1],
-            _dontNotify);
+        return new Centi.Rectangle(min[0], min[1], max[0] - min[0], max[1] - min[1]);
     };
 
     Centi.Matrix.prototype.inverseTransform = function() {
-        return this._inverseTransform(Point.read(arguments));
+        return this._inverseTransform(readVec2(arguments));
     };
 
     Centi.Matrix.prototype._getDeterminant = function() {
         var det = this._a * this._d - this._b * this._c;
-        return isFinite(det) && !Numerical.isZero(det) && isFinite(this._tx) && isFinite(this._ty) ? det : null;
+        return isFinite(det) && !Centi.Numerical.isZero(det) && isFinite(this._tx) && isFinite(this._ty) ? det : null;
     };
 
     Centi.Matrix.prototype._inverseTransform = function(point, dest, _dontNotify) {
@@ -297,7 +306,7 @@
         var x = point.x - this._tx,
             y = point.y - this._ty;
         if (!dest)
-            dest = new Point();
+            dest = new Centi.Vec2();
         return dest.set(
             (x * this._d - y * this._b) / det, (y * this._a - x * this._c) / det,
             _dontNotify
@@ -309,7 +318,7 @@
             b = this._b,
             c = this._c,
             d = this._d;
-        if (Numerical.isZero(a * d - b * c))
+        if (Centi.Numerical.isZero(a * d - b * c))
             return null;
 
         var scaleX = Math.sqrt(a * a + b * b);
