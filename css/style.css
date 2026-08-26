@@ -8,7 +8,8 @@ background-color: #333;
 }
 
 .app_shell{
-min-height: 100vh;
+height: 100vh;
+height: 100dvh;
 display: flex;
 flex-direction: column;
 }
@@ -166,6 +167,20 @@ flex: 0 0 auto;
 flex: 0 0 auto;
 height: 36px;
 box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-color: #fff;
+color: #000;
+font-family: Arial, sans-serif;
+font-size: 13px;
+border: 1px solid #767676;
+border-radius: 2px;
+padding: 0 22px 0 8px;
+cursor: pointer;
+background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0 L5 6 L10 0 Z' fill='%23333'/></svg>");
+background-repeat: no-repeat;
+background-position: right 8px center;
 }
 
 #idStrlength{
@@ -177,8 +192,11 @@ letter-spacing: -1px;
 }
 
 .canvas_wrap{
-width: 100%;
-height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
 display: flex;
 align-items: center;
 justify-content: center;
