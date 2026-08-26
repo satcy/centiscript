@@ -33,7 +33,7 @@ Math.HALF_PI = Math.PI/2.0;
 var CT_PROPS;
 
 var Centi = function(name, editor){
-    this.ver = '0.5.0';
+    this.ver = '0.5.1';
     this.name = name ? name : "ct";
     this.editor = editor ? editor : null;
 
@@ -258,7 +258,10 @@ Centi.prototype.initDsp = function(audioContext){
         var processor = this.dsp.context.createScriptProcessor(getBufferSize(), 0, 2);
         this.dsp.processor = processor;
         var dummy = this.dsp.context.createBufferSource();
+        dummy.buffer = this.dsp.context.createBuffer(1, 1, this.dsp.context.sampleRate);
+        dummy.loop = true;
         dummy.connect(processor);
+        dummy.start(0);
         processor.connect(this.dsp.analyser);
 
         var self = this;
