@@ -37,7 +37,11 @@ white-space: nowrap;
 }
 
 .topbar_name{
+color: #393939;
 font-size: 1.3em;
+text-shadow: 0px -1px 1px rgba(255,255,255,0.47);
+-ms-filter:"progid:DXImageTransform.Microsoft.DropShadow(color=#ffffff,offx=0,offy=-1)"; /* IE8 */
+display:block; /* IE */
 }
 
 .topbar_version{
