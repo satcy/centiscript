@@ -132,11 +132,11 @@ CENTI.tweet = function(){
             //console.log(xhr.readyState, xhr.status);
             if (xhr.readyState === 4 && xhr.status === 200){
               //console.log(1, xhr.responseText);
-                eval(xhr.responseText);
+                JSON.parse(xhr.responseText);
             }
             if (xhr.readyState === 4 && xhr.status === 0){
               //console.log(2, xhr.responseText);
-                eval(xhr.responseText);
+                JSON.parse(xhr.responseText);
             }
         };
         xhr.send(formData);
