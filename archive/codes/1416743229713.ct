@@ -2,12 +2,14 @@ sz(720,360)
 bg(0)
 frame()
 {
-    strk()
-    clr()
-    for(i,0,20){
-        ww=((c+i)%40*20)
-        x=(-ww/2)
-        rect(x+cx,x+cy,ww,ww)
+    if(c%2==0){
+        strk()
+        clr()
+        for(i,0,20){
+            ww=((c+i)%40*20)
+            x=(-ww/2)
+            rect(x+cx,x+cy,ww,ww)
+        }
+        glitch(3,20,5,1)
     }
-    glitch(3,20,5,1)
 }
