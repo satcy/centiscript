@@ -1,0 +1,20 @@
+sz(720,360)
+bg(0)
+freq=n2f(24)
+mod=(1)
+bpm(160,16)
+bn=(1)
+frame(){
+    clr()col(255)
+    n=(wave.length)cep=(w/n)
+    for(i,0,n){
+        val=(wave[i])col(abs(val)*5*255)
+        rect(i*cep,cy,cep,h*val/abs(val))
+    }
+}
+dsp(){
+    return(sin(time*PI*freq+nz(time*12000,beat%4)*PI*bn)*cos(time*PI*mod))
+}
+beat(){
+    mod=((beat/16%4+beat/17%4)*7+1)bn=(((beat%8)*(beat/3%4+1)%(floor(c/60+1)%3+2))==0)
+}

@@ -9,7 +9,7 @@
 <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/octicons/octicons.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-<!--[if lt IE 9]><script type="text/javascript" src="lib/excanvas.js"></script><![endif]--> 
+<!--[if lt IE 9]><script type="text/javascript" src="lib/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
 WebFontConfig = {
   google: { families: [ 'Droid+Sans+Mono::latin', 'Playfair+Display::latin' ] }
@@ -22,7 +22,7 @@ WebFontConfig = {
   wf.async = 'true';
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(wf, s);
-})(); 
+})();
 </script>
 <script src="lib/perlin.min.js"></script>
 <script src="lib/kdTree-min.js"></script>
@@ -59,75 +59,79 @@ WebFontConfig = {
 </script>
 </head>
 <body>
-<div class="wrap">
-<a href="https://github.com/satcy/centiscript" aria-label="Fork me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" fill="#6d6d6d" style="position: absolute; top: 0; right: 0; border: 0;"><path d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"/><path d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16"/><path d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"/></svg></a>
-  <div class="title"><a href="./"></a>(centiscript)</div>
-  <div class="version" id='version'>ver. 0.0.0</div>
-  
-  <div class="editor_wrap">
-    <div class="sampler">
-      Sample:
-      <select id="sampleSelect" onchange="CENTI.loadSample(this.value); this.selectedIndex = 0;">
-        <option value="">-</option>
-        <option value="samples/sample01.ct">Example 1</option>
-        <option value="samples/sample02.ct">Example 2</option>
-        <option value="samples/sample03.ct">Example 3</option>
-        <option value="samples/sample04.ct">Example 4</option>
-        <option value="samples/sample05.ct">Example 5</option>
-        <option value="samples/sample06.ct">Example 6</option>
-        <option value="samples/sample07.ct">Example 7</option>
-        <option value="samples/sample08.ct">Example 8</option>
-        <option value="samples/sample09.ct">Example 9</option>
-        <option value="samples/sample10.ct">Example 10</option>
-        <option value="samples/sample11.ct">Example 11</option>
-        <option value="samples/sample12.ct">Example 12</option>
-      </select>
+<div class="app_shell">
+<a href="https://github.com/satcy/centiscript" aria-label="Fork me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" fill="#6d6d6d" style="position: absolute; top: 0; right: 0; border: 0; z-index: 20;"><path d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"/><path d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16"/><path d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"/></svg></a>
+
+  <div class="topbar">
+    <div class="topbar_title">
+      <span class="topbar_name">(centiscript)</span>
+      <span class="topbar_version" id="version">ver. 0.0.0</span>
     </div>
-    <form>
+    <div class="topbar_actions">
+      <button type="button" id="run" name="run" onclick="#">▶</button>
+      <button type="button" id="togif" name="togif" onclick="CENTI.togif()">REC</button>
       <script type="text/javascript" language="javascript">
-          if ( checkFileReaderApi() ) {
-            document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></input></div>');
-          }
-        </script>  
-      <div class="editor_textarea">
+      if ( checkFileWriterApi() ) {
+        document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save</button>\n');
+        document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>\n');
+        document.write('<button type="button" id="exportjs" name="exportjs" onclick="CENTI.exportJS()">Export JS</button>\n');
+      }
+      </script>
+      <button type="button" id="fullscreen" name="fullscreen" onclick="CENTI.fullscreen()">Full</button>
+      <button type="button" id="toggleList" name="toggleList" onclick="CENTI.toggleTweetsList()"><span class="mega-octicon octicon-list-unordered text-muted"></span></button>
+    </div>
+  </div>
+
+  <div class="app_main">
+    <div class="editor_pane">
+      <div class="sampler">
         <textarea name="inputtitle" id="inputtitle" rows="1" cols="50" wrap="hard" maxlength="50" placeholder="Title"></textarea>
+        <select id="sampleSelect" onchange="CENTI.loadSample(this.value); this.selectedIndex = 0;">
+          <option value="">Examples</option>
+          <option value="samples/sample01.ct">Example 1</option>
+          <option value="samples/sample02.ct">Example 2</option>
+          <option value="samples/sample03.ct">Example 3</option>
+          <option value="samples/sample04.ct">Example 4</option>
+          <option value="samples/sample05.ct">Example 5</option>
+          <option value="samples/sample06.ct">Example 6</option>
+          <option value="samples/sample07.ct">Example 7</option>
+          <option value="samples/sample08.ct">Example 8</option>
+          <option value="samples/sample09.ct">Example 9</option>
+          <option value="samples/sample10.ct">Example 10</option>
+          <option value="samples/sample11.ct">Example 11</option>
+          <option value="samples/sample12.ct">Example 12</option>
+          <option value="samples/sample13.ct">Example 13</option>
+          <option value="samples/sample14.ct">Example 14</option>
+        </select>
+        <script type="text/javascript" language="javascript">
+            if ( checkFileReaderApi() ) {
+              document.write('<div class="file"><input type="file" id="readfile" name="readfile" onchange="CENTI.onFileChanged()"><span class="mega-octicon octicon octicon-file-text text-muted"></span></input></div>');
+            }
+          </script>
+      </div>
+      <div class="editor_textarea">
         <div id="editor"></div>
       </div>
-      <div class="editor_tools">
-        <span class="editor_btn">
-          <button type="button" id="run" name="run" onclick="#">▶</button>  
-          <button type="button" id="togif" name="togif" onclick="CENTI.togif()">REC</button>
-          <script type="text/javascript" language="javascript">
-          if ( checkFileWriterApi() ) {
-            document.write('<button type="button" id="savefile" name="savefile" onclick="CENTI.saveFile()">Save</button>\n');
-            document.write('<button type="button" id="exportfile" name="exportfile" onclick="CENTI.exportFile()">Export Image</button>\n');
-            document.write('<button type="button" id="exportjs" name="exportjs" onclick="CENTI.exportJS()">Export JS</button>\n');
-          }
-        </script> 
-        <button type="button" id="fullscreen" name="fullscreen" onclick="CENTI.fullscreen()">Full</button> 
-        </span>
-        <span class="editor_remain">
-          <div id="idStrlength">0</div>
-        </span>
+      <div class="editor_remain">
+        <div id="idStrlength">0</div>
       </div>
-    
-    </form>
+    </div>
+    <div class="pane_divider" id="paneDivider"></div>
+    <div class="preview_pane">
+      <div class="canvas_wrap" id="canvas_wrap">
+        <canvas id="canvas0" width="720" height="360"></canvas>
+      </div>
+      <img id="gif_image" />
+      <div id="result"></div>
+    </div>
   </div>
-  <div class="canvas_wrap" id="canvas_wrap">
-    <canvas id="canvas0" width="720" height="360"></canvas>
-  </div>
-  <img id="gif_image" />
-  <div>
-    <div class="list_btn"><button type="button" id="toggleList" name="toggleList" onclick="CENTI.toggleTweetsList()"><span class="mega-octicon octicon-list-unordered text-muted"></button></span></div>
-    <div id="result"></div>
-  </div>
-  <div class="footer" style="clear: both;">
-    <p>DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</p>
-    <p>Written by <a href="https://x.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></p>
-  </div>
-  <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 </div>
+<div class="footer">
+  <p>DownLoad SceenSaver( <a href="./ss/(centiscript).saver.zip">Mac</a> )</p>
+  <p>Written by <a href="https://x.com/satcy/" target="_blank">Satoshi HORII</a> / <a href="http://rhizomatiks.com/" target="_blank">Rhizomatiks</a></p>
+</div>
+<!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ex.rzm.co.jp/centiscript/" data-text="(centiscript)" data-via="rhizomatiks">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 <script src="lib/monaco-editor/min/vs/loader.js"></script>
 <script>
 	require.config({ paths: { 'vs': 'lib/monaco-editor/min/vs' }});
@@ -136,17 +140,92 @@ WebFontConfig = {
 		CENTI.editor = monaco.editor.create(document.getElementById('editor'), {
 			value: [
         'sz(720,360)bg(0)\nframe(){\nclr()col(170)\nvl=(h/2)w2=(w/3)\nfor(i,0,w2){\ncol((cos(c*0.01+i*0.25)/2+0.5)*255)\nx=(i*3)y=(cy)\nline(x+cos(c*0.021+i*0.07)*vl,y+sin(c*0.021+i*0.11)*vl/3,x+sin(c*0.02+i*0.11)*vl/3,y+cos(c*0.02+i*0.15)*vl)\n}\n}'
-			].join('\n'), 
+			].join('\n'),
             theme: 'vs-dark',
             fontSize: 14,
             automaticLayout: true,
-            scrollbar: {verticalScrollbarSize: 10,  horizontalScrollbarSize:10},
+            scrollbar: {verticalScrollbarSize: 20,  horizontalScrollbarSize:10},
 			language: 'centiscript'
 		});
     CENTI.editor.onKeyUp(function(event) {
       CENTI.strlength(CENTI.editor.getValue());
     });
 	});
+</script>
+<script>
+(function(){
+  var divider = document.getElementById('paneDivider');
+  var editorPane = document.querySelector('.editor_pane');
+  var appMain = document.querySelector('.app_main');
+  var dragging = false;
+  var lastIsColumn = null;
+
+  function clientXOf(e){
+    return e.touches ? e.touches[0].clientX : e.clientX;
+  }
+  function clientYOf(e){
+    return e.touches ? e.touches[0].clientY : e.clientY;
+  }
+
+  function isColumnLayout(){
+    return getComputedStyle(appMain).flexDirection === 'column';
+  }
+
+  function syncModeReset(){
+    var col = isColumnLayout();
+    if ( lastIsColumn !== null && col !== lastIsColumn ) {
+      if ( col ) editorPane.style.width = '';
+      else editorPane.style.height = '';
+    }
+    lastIsColumn = col;
+  }
+
+  function onMove(e){
+    if ( !dragging ) return;
+    var rect = appMain.getBoundingClientRect();
+    if ( isColumnLayout() ) {
+      var minHeight = 120;
+      var maxHeight = rect.height - 120;
+      var newHeight = clientYOf(e) - rect.top;
+      if ( newHeight < minHeight ) newHeight = minHeight;
+      if ( newHeight > maxHeight ) newHeight = maxHeight;
+      editorPane.style.height = newHeight + 'px';
+    } else {
+      var minWidth = 280;
+      var maxWidth = rect.width - 280;
+      var newWidth = clientXOf(e) - rect.left;
+      if ( newWidth < minWidth ) newWidth = minWidth;
+      if ( newWidth > maxWidth ) newWidth = maxWidth;
+      editorPane.style.width = newWidth + 'px';
+    }
+    e.preventDefault();
+  }
+
+  function onUp(){
+    if ( !dragging ) return;
+    dragging = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  }
+
+  function onDown(e){
+    dragging = true;
+    document.body.style.cursor = isColumnLayout() ? 'row-resize' : 'col-resize';
+    document.body.style.userSelect = 'none';
+    e.preventDefault();
+  }
+
+  divider.addEventListener('mousedown', onDown, false);
+  window.addEventListener('mousemove', onMove, false);
+  window.addEventListener('mouseup', onUp, false);
+
+  divider.addEventListener('touchstart', onDown, {passive:false});
+  window.addEventListener('touchmove', onMove, {passive:false});
+  window.addEventListener('touchend', onUp, false);
+
+  window.addEventListener('resize', syncModeReset, false);
+  syncModeReset();
+})();
 </script>
 </body>
 
