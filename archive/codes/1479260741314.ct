@@ -1,9 +1,10 @@
 sz(360,360)
-frame(){
-clr()
-translate(cx,cy)
-f=(c/10)
-rotate(cos(f)*PI/3)
-arc(cos(f)*100,0,100,PI,PI2)
-arc(sin(f)*100,0,100,0,PI)
+frame()
+{
+    clr()
+    translate(cx,cy)
+    f=(c/10)
+    rotate(cos(f)*PI/3)
+    arc(cos(f)*100,0,100,PI,PI2)
+    arc(sin(f)*100,0,100,0,PI)
 }

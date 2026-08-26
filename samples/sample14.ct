@@ -1,0 +1,47 @@
+sz(0.5,0.5)
+bg(0)
+wh=(w+h)
+w2=(wh/20)
+w3=(wh/6)
+N=(99)
+v=(3)
+tv=(3)
+vol=(1)
+bpm(137,4)
+beat(){
+    tv=floor(rnd(3,10))
+    vol=(1)
+}
+dsp(){
+    vol+=((0-vol)/1999)
+    return(sin(time*PI2*n2f((10-tv)*7+60))*vol)
+}
+frame(){
+    clr()
+    f=(c/100+v)cnt=(0)v+=((tv-v)*0.2)
+    r=(PI2/v)
+    cr=(r/N)
+    for(j,0,v){
+        x1=(cos(r*j+f)*w3)
+        y1=(sin(r*j+f)*w3)
+        nr=r*(j+1)
+        l=(N)
+        if(j+1>v){
+            nr=(0)
+            l=(N*(v-j))
+        }
+        x2=(cos(nr+f)*w3)
+        y2=(sin(nr+f)*w3)
+        for(i,0,l){
+            x3=interp(x2,x1,i/l)
+            y3=interp(y2,y1,i/l)
+            push()
+            translate(x3+cx, y3+cy)
+            rotate(cnt)
+            col((sin(cnt+f)+1)*127, (sin(cnt+f/3)+1)*127, (cos(cnt*2+f/2)+1)*127)
+            rect(-w2/2,-w2/2,w2,w2)
+            pop()
+            cnt+=(cr)
+        }
+    }
+}

@@ -2,20 +2,24 @@ sz(720,720)
 bpm(100)
 a=vec2(0,0)
 a2=vec2(0,0)
-frame(){clr()
-push()
-translate(cx,cy)
-rotate(a2.y)
-for(i,0,a2.x){
-line(a.x,0,a.y,a.y+a.x)
-oval(a.x,0,3)oval(a.y,a.y+a.x,3)
-rotate(PI2/a2.x)
+frame()
+{
+    clr()
+    push()
+    translate(cx,cy)
+    rotate(a2.y)
+    for(i,0,a2.x){
+        line(a.x,0,a.y,a.y+a.x)
+        oval(a.x,0,3)
+        oval(a.y,a.y+a.x,3)
+        rotate(PI2/a2.x)
+    }
+    pop()
 }
-pop()
-}
-beat(){
-t=vec2(rnd(-100,100),rnd(-200,200))
-tween(a).to(t,500).easing(ease.Back.InOut).start()
-t=vec2(floor(rnd(2,10)),rnd(-1,1)*PI)
-tween(a2).to(t,500).easing(ease.Back.InOut).start()
+beat()
+{
+    t=vec2(rnd(-100,100),rnd(-200,200))
+    tween(a).to(t,500).easing(ease.Back.InOut).start()
+    t=vec2(floor(rnd(2,10)),rnd(-1,1)*PI)
+    tween(a2).to(t,500).easing(ease.Back.InOut).start()
 }

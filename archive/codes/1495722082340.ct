@@ -2,26 +2,29 @@ sz(720,360)
 bg(0)
 tos=([85,15,53,23,29,30,45])
 s=(27)
-frame(){
+frame()
+{
     clr()
     dropShadow(9,9,0,0x991100)
-    translate(40, 100)
-    for(i,0,7) {
+    translate(40,100)
+    for(i,0,7){
         x=((i*3+4)*s)
-        drawObj(tos[i], x, 0, s)
-        segs(tos[i], x, 5*s, s-2, s, 0.3)
+        drawObj(tos[i],x,0,s)
+        segs(tos[i],x,5*s,s-2,s,0.3)
     }
-    v = floor(c/20%256)
-    if(tos.indexOf(v) == -1 ) {col(0,200,255)}
-    drawObj(v, 0, 0, s)
-    segs(v, 0, 5*s, s-2, s, 0.3)
-    
+    v=floor(c/20%256)
+    if(tos.indexOf(v)==-1){
+        col(0,200,255)
+    }
+    drawObj(v,0,0,s)
+    segs(v,0,5*s,s-2,s,0.3)
 }
-
 drawObj=func(){
     o=($0)
-    for(j,0,8) {
-        if ( o & 1 ) { rect($1 + j%2*$3, $2 + floor(j/2)*$3, $3, $3) }
+    for(j,0,8){
+        if(o&1){
+            rect($1+j%2*$3,$2+floor(j/2)*$3,$3,$3)
+        }
         o=(o>>1)
     }
 }

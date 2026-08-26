@@ -1,17 +1,19 @@
-sz(720,360)bg(255,245,188)
+sz(720,360)
+bg(255,245,188)
 r=(20)
-frame(){
-clr()
-push()
-translate(cx,cy)
-for(i,0,13){
-a=(9*nz(c/99,i)+i)
-translate(cos(a)*r,sin(a)*r)
-gradR(0,0,0,0,0,h)
-gradColor(0, 0, i*14%255, i*53%255)
-gradColor(1, i*21%255,0,0)
-bm(10)
-oval(0,0,r*i)
-}
-pop()
+frame()
+{
+    clr()
+    push()
+    translate(cx,cy)
+    for(i,0,13){
+        a=(9*nz(c/99,i)+i)
+        translate(cos(a)*r,sin(a)*r)
+        gradR(0,0,0,0,0,h)
+        gradColor(0,0,i*14%255,i*53%255)
+        gradColor(1,i*21%255,0,0)
+        bm(10)
+        oval(0,0,r*i)
+    }
+    pop()
 }

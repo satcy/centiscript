@@ -1,25 +1,24 @@
 sz(500,500)
 bg(0,0,0)
-arr = ([])
-num = (1000)
+arr=([])
+num=(1000)
 for(i,0,num){
-	arr[i] = obj()
-	arr[i].vx = rnd(w)
-	arr[i].vy = rnd(h)
-	arr[i].nx = rnd(w)
-	arr[i].ny = rnd(h)
-	arr[i].lc = rnd(1)
-	arr[i].lcs= (rnd(1)-0.5)
-	arr[i].cl = ([rnd(100,255),rnd(100,255),rnd(100,255)])
+    arr[i]=obj()
+    arr[i].vx=rnd(w)
+    arr[i].vy=rnd(h)
+    arr[i].nx=rnd(w)
+    arr[i].ny=rnd(h)
+    arr[i].lc=rnd(1)
+    arr[i].lcs=(rnd(1)-0.5)
+    arr[i].cl=([rnd(100,255),rnd(100,255),rnd(100,255)])
 }
-frame(){
-	for(i,0,num){
-		col(arr[i].cl[0],arr[i].cl[1],arr[i].cl[2])
-		arr[i].lc += (arr[i].lcs)
-		arr[i].nx += (((arr[i].vx-arr[i].nx)*0.01)+sin(arr[i].lc))
-		arr[i].ny += (((arr[i].vy-arr[i].ny)*0.01)+cos(arr[i].lc))
-		oval(arr[i].nx,arr[i].ny,1)
-	}
+frame()
+{
+    for(i,0,num){
+        col(arr[i].cl[0],arr[i].cl[1],arr[i].cl[2])
+        arr[i].lc+=(arr[i].lcs)
+        arr[i].nx+=(((arr[i].vx-arr[i].nx)*0.01)+sin(arr[i].lc))
+        arr[i].ny+=(((arr[i].vy-arr[i].ny)*0.01)+cos(arr[i].lc))
+        oval(arr[i].nx,arr[i].ny,1)
+    }
 }
-
-

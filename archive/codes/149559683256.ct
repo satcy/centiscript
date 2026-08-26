@@ -1,66 +1,74 @@
-sz(720,360)bg(0)
+sz(720,360)
+bg(0)
 maxr=(40)
 arr=([])
 shots=([])
 enemies=([])
 torches=([])
 torch_cnt=(0)
-for(i,0,5) {
+for(i,0,5){
     o=obj()
-    o.x = ((i+0.5)*w/5)o.y=(h)
+    o.x=((i+0.5)*w/5)
+    o.y=(h)
     torches.push(o)
 }
 score=(0)
-frame(){
-    col(0,2)rect(0,30,w,h)
+frame()
+{
+    col(0,2)
+    rect(0,30,w,h)
     col(0)
     rect(0,0,w,30)
     col(255,255,0)
     segs(score,5,5,30,20)
-    
     cl=(c*999999%0xffffff)
-    if ( rnd(1) < 0.01 ) {
+    if(rnd(1)<0.01){
         o=obj()
-        o.tx=rnd(w)o.ty=(h)
-        o.x=rnd(w)o.y=(0)
+        o.tx=rnd(w)
+        o.ty=(h)
+        o.x=rnd(w)
+        o.y=(0)
         o.end=(0)
         enemies.push(o)
     }
-    
-    for ( i, 0, arr.length) {
-        o = (arr[i])
+    for(i,0,arr.length){
+        o=(arr[i])
         if(o.vr>0){
             hcol(cl)
             oval(o.x,o.y,o.r)
-        }else{
+        }
+        else{
             col(0)
             oval(o.x,o.y,maxr)
             hcol(cl)
             oval(o.x,o.y,o.r)
         }
-
         o.r+=(o.vr)
-        if(o.r>=maxr) {o.vr=(-1)}
-        if(o.r<0) {o.vr=(0)}
-        for ( j,0,enemies.length) {
+        if(o.r>=maxr){
+            o.vr=(-1)
+        }
+        if(o.r<0){
+            o.vr=(0)
+        }
+        for(j,0,enemies.length){
             enemy=(enemies[j])
-            
-            if ( enemy.end==(0) && vec2(enemy.x-o.x, enemy.y-o.y).len() <= o.r ) {
-                enemy.end = (1)
+            if(enemy.end==(0)&&vec2(enemy.x-o.x,enemy.y-o.y).len()<=o.r){
+                enemy.end=(1)
                 score+=(1)
             }
         }
     }
     arr=remove(arr,func(){return($0.vr==(0))})
-    for(i, 0, shots.length){
+    for(i,0,shots.length){
         o=(shots[i])
-        vel=vec2(o.tx-o.x, o.ty-o.y)
-        if ( vel.len() < 1 ) {
-            o.end = (1)
+        vel=vec2(o.tx-o.x,o.ty-o.y)
+        if(vel.len()<1){
+            o.end=(1)
             addCircle(o.x,o.y)
         }
         vel.normalize()
-        x=(o.x)y=(o.y)
+        x=(o.x)
+        y=(o.y)
         o.x+=(vel.x*2.0)
         o.y+=(vel.y*2.0)
         col(cl)
@@ -69,18 +77,17 @@ frame(){
         line(o.tx-5,o.ty,o.tx+5,o.ty)
         col(0,255,0)
         line(x,y,o.x,o.y)
-        
     }
     shots=remove(shots,isEnd)
-
-    for(i, 0, enemies.length){
+    for(i,0,enemies.length){
         o=(enemies[i])
-        vel=vec2(o.tx-o.x, o.ty-o.y)
-        if ( vel.len() < 1 ) {
-            o.end = (1)
+        vel=vec2(o.tx-o.x,o.ty-o.y)
+        if(vel.len()<1){
+            o.end=(1)
         }
         vel.normalize()
-        x=(o.x)y=(o.y)
+        x=(o.x)
+        y=(o.y)
         o.x+=(vel.x*0.7)
         o.y+=(vel.y*0.7)
         col(cl)
@@ -89,26 +96,30 @@ frame(){
         line(x,y,o.x,o.y)
     }
     enemies=remove(enemies,isEnd)
-
-    for ( i, 0, torches.length) {
+    for(i,0,torches.length){
         o=(torches[i])
         col(255)
         tri(o.x-10,o.y,o.x,o.y-10,o.x+10,o.y)
     }
 }
-down(){
+down()
+{
     o=obj()
     idx=((torch_cnt++)%torches.length)
-    o.tx=(mx)o.ty=(my)
-    o.x=(torches[idx].x)o.y=(h)
+    o.tx=(mx)
+    o.ty=(my)
+    o.x=(torches[idx].x)
+    o.y=(h)
     o.end=(0)
     shots.push(o)
 }
-isEnd=func(){return($0.end==(1))}
+isEnd=func(){
+    return($0.end==(1))
+}
 addCircle=func(){
     ccl=obj()
-    ccl.x = ($0)
-    ccl.y = ($1)
+    ccl.x=($0)
+    ccl.y=($1)
     ccl.r=(0)
     ccl.vr=(1)
     arr.push(ccl)

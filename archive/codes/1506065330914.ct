@@ -1,14 +1,17 @@
-sz(500,500)bg(200)
-cols=([0xff0000,0x027609, 0x019376,0x041358])
-frame(){
-clr()
-for(i,0,14){
-    hcol(cols[i%4])
-    x=min((i*50-200+c*5%200)%(w+200), w)
-    if (i%2==0) {
-        tri(0,0,w,cy,x,h-x/2)
-    } else {
-        tri(0,h,w,cy,x,x/2)
+sz(500,500)
+bg(200)
+cols=([0xff0000,0x027609,0x019376,0x041358])
+frame()
+{
+    clr()
+    for(i,0,14){
+        hcol(cols[i%4])
+        x=min((i*50-200+c*5%200)%(w+200),w)
+        if(i%2==0){
+            tri(0,0,w,cy,x,h-x/2)
+        }
+        else{
+            tri(0,h,w,cy,x,x/2)
+        }
     }
-}
 }

@@ -1,13 +1,21 @@
-sz(360,360)bg(170)frame(){clr()col(0,180)r=(h/2.1)
-push()
-translate(cx,cy)
-div=zmap(sin(c/100),-1,1,30,100)
-for(i,0,50){
-rad=(sin(c/60+i/div)*PI)
-x1=(cos(rad)*r)y1=(sin(rad)*r)
-rad=(sin(c/30+i/div)*PI+PI)
-x2=(cos(rad)*r)y2=(sin(rad)*r)
-line(x1,y1,x2,y2)
-}
-pop()
+sz(360,360)
+bg(170)
+frame()
+{
+    clr()
+    col(0,180)
+    r=(h/2.1)
+    push()
+    translate(cx,cy)
+    div=zmap(sin(c/100),-1,1,30,100)
+    for(i,0,50){
+        rad=(sin(c/60+i/div)*PI)
+        x1=(cos(rad)*r)
+        y1=(sin(rad)*r)
+        rad=(sin(c/30+i/div)*PI+PI)
+        x2=(cos(rad)*r)
+        y2=(sin(rad)*r)
+        line(x1,y1,x2,y2)
+    }
+    pop()
 }

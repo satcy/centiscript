@@ -1,13 +1,14 @@
-sz(360,360)bg(0)
-frame(){
-col(0)
-translate(cx,cy)
-oval(0,0,h/2,3)
-col(255)
-push()
-r=(c/30)
-rotate(r)
-oval(0,0,(h/2)/((r%1*(sqrt(5)))),3)
-pop()
-
+sz(360,360)
+bg(0)
+frame()
+{
+    col(0)
+    translate(cx,cy)
+    oval(0,0,h/2,3)
+    col(255)
+    push()
+    r=(c/30)
+    rotate(r)
+    oval(0,0,(h/2)/((r%1*(sqrt(5)))),3)
+    pop()
 }

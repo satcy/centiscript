@@ -1,20 +1,9 @@
 sz(720,720)
-bg(0);
-d = 0.0;
-frame(){
-    col(0, (cos(c * 0.01) + 1) * 4 + 3);
-    rect(0, 0, w, h);
-    col(150, 0, 0, 192);
-    for(i = 0; i < 32; i++) {
-        last = [cx + noise(i + d, c * 0.01) * cx, cy + noise(i + d * d, c * 0.01) * cx];
-        for(j = 0; j < 72; j++) {
-            curr = [
-                    last[0] + (noise(i * 0.1, d + j * 0.1, c * 0.01 + i)) * 16,
-                    last[1] + (noise(j * 0.1, d + i * 0.1, c * 0.01 + i)) * 16
-            ];
-            line(last[0],last[1], curr[0], curr[1]);
-            last = curr;
+bg(0);d=0.0;frame(){
+    col(0,(cos(c*0.01)+1)*4+3);rect(0,0,w,h);col(150,0,0,192);for(i=0;i<32;i++){
+        last=[cx+noise(i+d,c*0.01)*cx,cy+noise(i+d*d,c*0.01)*cx];for(j=0;j<72;j++){
+            curr=[last[0]+(noise(i*0.1,d+j*0.1,c*0.01+i))*16,last[1]+(noise(j*0.1,d+i*0.1,c*0.01+i))*16];line(last[0],last[1],curr[0],curr[1]);last=curr;
         }
     }
-    d += (cos(c) + 0.1) * 0.001;
+    d+=(cos(c)+0.1)*0.001;
 }

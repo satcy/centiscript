@@ -1,14 +1,23 @@
-sz(720,360)bg(0)sizes=([])sizes2=([])NUM=(100)
+sz(720,360)
+bg(0)
+sizes=([])
+sizes2=([])
+NUM=(100)
 bpm(143)
-frame(){
-    clr()col(170)
+frame()
+{
+    clr()
+    col(170)
     for(i,0,NUM){
         s=(sizes[i])
         col(i%2*255)
         rect(-s+cx,-s+cy,s*2,s*2)
     }
 }
-beat(){
-    for (i,0,NUM) { sizes2[i]=rnd((h-i)/2) }
+beat()
+{
+    for(i,0,NUM){
+        sizes2[i]=rnd((h-i)/2)
+    }
     tween(sizes).to(sizes2,333).easing(ExpoOut).start()
 }

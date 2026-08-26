@@ -1,21 +1,24 @@
-sz(500,500)bg(0)N=(1000)bpm(20)
-colors=([0xff8290, 0x548928, 0x290576])
+sz(500,500)
+bg(0)
+N=(1000)
+bpm(20)
+colors=([0xff8290,0x548928,0x290576])
 rots=([])
 for(i,0,N){
     rots[i]=vec2(0)
-    tween(rots[i]).to(vec2(PI*2+PI,0),2000).delay(i)
-    .easing(ExpoInOut).start()
+    tween(rots[i]).to(vec2(PI*2+PI,0),2000).delay(i).easing(ExpoInOut).start()
 }
-frame(){
-clr()
-for(i,0,N){
-    hcol(colors[floor(i/100)%3])
-    oval(cx+cos(rots[i].x)*100,cy+sin(rots[i].x)*100,70)
-}
-}
-beat(){
+frame()
+{
+    clr()
     for(i,0,N){
-    tween(rots[i]).to(vec2(rots[i].x+PI*2+PI,0),2000).delay(i)
-    .easing(ExpoInOut).start()
+        hcol(colors[floor(i/100)%3])
+        oval(cx+cos(rots[i].x)*100,cy+sin(rots[i].x)*100,70)
+    }
 }
+beat()
+{
+    for(i,0,N){
+        tween(rots[i]).to(vec2(rots[i].x+PI*2+PI,0),2000).delay(i).easing(ExpoInOut).start()
+    }
 }

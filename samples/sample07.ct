@@ -2,19 +2,19 @@ sz(1040,520)
 bg(0)
 frame()
 {
-clr()
-ww=(520)
-for(j,0,15)
-{
-ox=((ww/2)*(j%5))
-oy=((ww/2)*floor(j/5))
-for(i,0,150)
-{
-x=(cos(i*0.2+c*0.1)*ww/4)
-y=(sin(i*0.2+c*0.1)*ww/4)
-x2=(cos(i*0.2+c*0.11)*ww/6)
-y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)
-line(ox+x,y+oy,ox+x2,y2+oy)
-}
-}
+    clr()
+    ww=(520)
+    for(j,0,15)
+    {
+        ox=((ww/2)*(j%5))
+        oy=((ww/2)*floor(j/5))
+        for(i,0,150)
+        {
+            x=(cos(i*0.2+c*0.1)*ww/4)
+            y=(sin(i*0.2+c*0.1)*ww/4)
+            x2=(cos(i*0.2+c*0.11)*ww/6)
+            y2=(sin(i*(0.4+j*0.025)+c*0.11)*ww/6)col(255)
+            line(ox+x,y+oy,ox+x2,y2+oy)
+        }
+    }
 }

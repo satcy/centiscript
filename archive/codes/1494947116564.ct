@@ -1,1 +1,65 @@
-N=(3)P=(N+1)P2=(P*2)w=(720)h=(360)px=([])py=([])vx=([])vy=([])for(i,0,P2){px[i]=rnd(w)py[i]=rnd(h)vx[i]=(rnd(8)-4)vy[i]=(rnd(8)-4)}sz(w,h)bg(0)frame(){clear()for(i,0,P2){px[i]+=(vx[i])py[i]+=(vy[i])if(px[i]<0&&vx[i]<0){vx[i]*=(-1)}if(py[i]<0&&vy[i]<0){vy[i]*=(-1)}if(px[i]>w&&vx[i]>0){vx[i]*=(-1)}if(py[i]>h&&vy[i]>0){vy[i]*=(-1)}}for(i,1,101){r=(i/100)col(255*r,255*(1-r),255)tx=([])ty=([])for(j,0,2){tx[j]=([])ty[j]=([])for(k,0,P){tx[j][k]=(px[j*P+k])ty[j][k]=(py[j*P+k])}}for(j,0,2){for(k,0,N){for(l,0,N-k){tx[j][l]=interp(tx[j][l],tx[j][l+1],r)ty[j][l]=interp(ty[j][l],ty[j][l+1],r)}}}line(tx[0][0],ty[0][0],tx[1][0],ty[1][0])}for(i,0,N){col(255)line(px[i],py[i],px[i+1],py[i+1])line(px[i+P],py[i+P],px[i+P+1],py[i+P+1])}}
+N=(3)
+P=(N+1)
+P2=(P*2)
+w=(720)
+h=(360)
+px=([])
+py=([])
+vx=([])
+vy=([])
+for(i,0,P2){
+    px[i]=rnd(w)
+    py[i]=rnd(h)
+    vx[i]=(rnd(8)-4)
+    vy[i]=(rnd(8)-4)
+}
+sz(w,h)
+bg(0)
+frame()
+{
+    clear()
+    for(i,0,P2){
+        px[i]+=(vx[i])
+        py[i]+=(vy[i])
+        if(px[i]<0&&vx[i]<0){
+            vx[i]*=(-1)
+        }
+        if(py[i]<0&&vy[i]<0){
+            vy[i]*=(-1)
+        }
+        if(px[i]>w&&vx[i]>0){
+            vx[i]*=(-1)
+        }
+        if(py[i]>h&&vy[i]>0){
+            vy[i]*=(-1)
+        }
+    }
+    for(i,1,101){
+        r=(i/100)
+        col(255*r,255*(1-r),255)
+        tx=([])
+        ty=([])
+        for(j,0,2){
+            tx[j]=([])
+            ty[j]=([])
+            for(k,0,P){
+                tx[j][k]=(px[j*P+k])
+                ty[j][k]=(py[j*P+k])
+            }
+        }
+        for(j,0,2){
+            for(k,0,N){
+                for(l,0,N-k){
+                    tx[j][l]=interp(tx[j][l],tx[j][l+1],r)
+                    ty[j][l]=interp(ty[j][l],ty[j][l+1],r)
+                }
+            }
+        }
+        line(tx[0][0],ty[0][0],tx[1][0],ty[1][0])
+    }
+    for(i,0,N){
+        col(255)
+        line(px[i],py[i],px[i+1],py[i+1])
+        line(px[i+P],py[i+P],px[i+P+1],py[i+P+1])
+    }
+}

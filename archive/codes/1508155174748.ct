@@ -1,23 +1,27 @@
-sz(720,720)bg(0)R=(w/2.6)
-frame(){
-clr()col(255)
-beginShape()
-for(i,0,36){
-    x=cos(i*PI/18)
-    y=sin(i*PI/18)
-    rr= R*map(nz(x,y,c/50),-1,1,0.5,1)
-    lineTo(x*rr+cx, y*rr+cy)
-}
-endShape()
-col(0)lw(5)
-for(i,0,h/10){
-    line(0,i*10,w,i*10)
-}
-
-for(i,0,3){
-    bm(i%3+5)
-    translate(w,0)
-    rotate(PI/2)
-    drawMe(0,0)
-}
+sz(720,720)
+bg(0)
+R=(w/2.6)
+frame()
+{
+    clr()
+    col(255)
+    beginShape()
+    for(i,0,36){
+        x=cos(i*PI/18)
+        y=sin(i*PI/18)
+        rr=R*map(nz(x,y,c/50),-1,1,0.5,1)
+        lineTo(x*rr+cx,y*rr+cy)
+    }
+    endShape()
+    col(0)
+    lw(5)
+    for(i,0,h/10){
+        line(0,i*10,w,i*10)
+    }
+    for(i,0,3){
+        bm(i%3+5)
+        translate(w,0)
+        rotate(PI/2)
+        drawMe(0,0)
+    }
 }

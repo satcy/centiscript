@@ -1,6 +1,11 @@
-sz(400,400)bg(200)bpm(120, 4)
-colors=([0xc5994c, 0xff3355, 0x2039ef])sc=([1])rot=(0)
-frame(){
+sz(400,400)
+bg(200)
+bpm(120,4)
+colors=([0xc5994c,0xff3355,0x2039ef])
+sc=([1])
+rot=(0)
+frame()
+{
     clr()
     dropShadow(0,0,32,0xffffff)
     translate(cx,cy)
@@ -8,12 +13,15 @@ frame(){
         hcol(colors[(i+beat)%3])
         push()
         rotate(rot)
-        scale(i==2 ? min(sc[0], 1) : 1, 1)
+        scale(i==2?min(sc[0],1):1,1)
         oval(0,0,h/2.3)
         pop()
     }
 }
-beat(){
-    rot=rnd(PI)sc=([0])tsc=([1])
-    tween(sc).to(tsc, 500).easing(ExpoInOut).start()
+beat()
+{
+    rot=rnd(PI)
+    sc=([0])
+    tsc=([1])
+    tween(sc).to(tsc,500).easing(ExpoInOut).start()
 }

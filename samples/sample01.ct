@@ -1,11 +1,11 @@
 sz(720,360)
 frame()
 {
-clear()
-for(i,0,327){
-col(255)
-x=(w/2)
-y=(h/2)
-line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y,cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)
-}
+    clear()
+    for(i,0,327){
+        col(255)
+        x=(w/2)
+        y=(h/2)
+        line(cos(c*0.04+i*0.02)*x+x,sin(c*0.03+i*0.013)*y+y,cos(c*0.032+i*0.013)*x+x,sin(c*0.054+i*0.012)*y+y)
+    }
 }

@@ -2,19 +2,25 @@ sz(720,405)
 bg(0)
 lfo=(1)
 bpm(133,4)
-sub=func(){return(sin($0*$1+PI2*time))}
-tri=func(){return(abs(1-(2*time*$0)%2)*2-1)}
-dsp(){
-	n=n2f(60+sin(time)*20)
-	bass_osc=(0.8*tri(n/10)+0.05*sin(PI2*time*n*2))
-	lfo=sin(PI2*time*GOLD)
-	lfo_mul=sin(PI2*time*0.01)
-	bass_sub=(0.8*sub(bass_osc,2+((1+lfo)*(2+(1+lfo_mul)*12)))+0.7*sin(PI2*n*time))
-	return(0.5*bass_sub)
+sub=func(){
+    return(sin($0*$1+PI2*time))
 }
-frame(){
-	drawMe(0,-10,w,h)
-	col(255,(lfo+1)*200)
-	strk()
-	drawWave(0,h*0.8-2,w,h*0.17)
+tri=func(){
+    return(abs(1-(2*time*$0)%2)*2-1)
+}
+dsp()
+{
+    n=n2f(60+sin(time)*20)
+    bass_osc=(0.8*tri(n/10)+0.05*sin(PI2*time*n*2))
+    lfo=sin(PI2*time*GOLD)
+    lfo_mul=sin(PI2*time*0.01)
+    bass_sub=(0.8*sub(bass_osc,2+((1+lfo)*(2+(1+lfo_mul)*12)))+0.7*sin(PI2*n*time))
+    return(0.5*bass_sub)
+}
+frame()
+{
+    drawMe(0,-10,w,h)
+    col(255,(lfo+1)*200)
+    strk()
+    drawWave(0,h*0.8-2,w,h*0.17)
 }

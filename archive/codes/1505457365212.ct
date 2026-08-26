@@ -1,15 +1,20 @@
-sz(720,360)bg(0)bpm(30)
-a=vec2()b=vec2()
-frame(){
+sz(720,360)
+bg(0)
+bpm(30)
+a=vec2()
+b=vec2()
+frame()
+{
     clr()
     for(i=60;i>0;i--){
         col(i/6%2*255)
-        vec=(i%2==1 ? 1 : -1)
-        ox = zmap(i,1,60,0,3)
+        vec=(i%2==1?1:-1)
+        ox=zmap(i,1,60,0,3)
         curve(0,cy,a.x,cy+vec*a.y*ox,b.x,cy+vec*b.y*ox,w,cy)
     }
 }
-beat(){
+beat()
+{
     tween(a).to(vec2(rnd(w),rnd(-h,h)/4),2000).easing(BackOut).start()
     tween(b).to(vec2(rnd(w),rnd(-h,h)/4),2000).easing(BackOut).start()
 }

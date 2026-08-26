@@ -1,66 +1,78 @@
-sz(720,720)bg(0)a=([])
-cols=([0x1661B1,0xFFFFFF,0x81E4E3,0xE7633E,0xB10D00,0xF6ED9E, 0xF1B02F,0xF2811C,0xF23810,0x272727,0xFFFFFF])
-frame(){
-clr()
-for(i,0,a.length){
-r=(a[i])
-hcol(r.col)
-rect(r.x,r.y,r.w-1,r.h-1)
-m=Matrix()
-sca=(1.003)
-m.scale(sca,sca,cx,cy)
-m.translate(r.x,r.y)p1=m.getTranslation()
-m=Matrix()
-m.scale(sca,sca,cx,cy)
-m.translate(r.x+r.w,r.y+r.h)p2=m.getTranslation()
-r.x=(p1.x)r.y=(p1.y)
-r.w=(p2.x-r.x)r.h=(p2.y-r.y)
-}
-a=remove(a, isout)
-addRect()
+sz(720,720)
+bg(0)
+a=([])
+cols=([0x1661B1,0xFFFFFF,0x81E4E3,0xE7633E,0xB10D00,0xF6ED9E,0xF1B02F,0xF2811C,0xF23810,0x272727,0xFFFFFF])
+frame()
+{
+    clr()
+    for(i,0,a.length){
+        r=(a[i])
+        hcol(r.col)
+        rect(r.x,r.y,r.w-1,r.h-1)
+        m=Matrix()
+        sca=(1.003)
+        m.scale(sca,sca,cx,cy)
+        m.translate(r.x,r.y)
+        p1=m.getTranslation()
+        m=Matrix()
+        m.scale(sca,sca,cx,cy)
+        m.translate(r.x+r.w,r.y+r.h)
+        p2=m.getTranslation()
+        r.x=(p1.x)
+        r.y=(p1.y)
+        r.w=(p2.x-r.x)
+        r.h=(p2.y-r.y)
+    }
+    a=remove(a,isout)
+    addRect()
 }
 isout=func(){
-return($0.x+$0.w<0 || $0.y+$0.h<0 || $0.x>w || $0.y>h)
+    return($0.x+$0.w<0||$0.y+$0.h<0||$0.x>w||$0.y>h)
 }
 addRect=func(){
-if(a.length==0){
-r=Rectangle(0,0,w,h)
-r.col=(cols[floor(rand(cols.length))])
-a.push(r)
-}else{
-pre=(a[floor(rand(a.length))])
-while(pre.w<10||pre.h<10){pre=(a[floor(rand(a.length))])}
-dice=floor(rand(4))
-r = Rectangle(0,0,0,0)
-r.col=(cols[floor(rand(cols.length))])
-if ( dice == 0 ) {
-pre.w /= (2)
-r.x = (pre.x + pre.w)
-r.y = (pre.y)
-r.w = (pre.w)
-r.h = (pre.h)
-} elseIf ( dice == 1 ) {
-pre.h /= (2)
-r.x = (pre.x)
-r.y = (pre.y + pre.h)
-r.w = (pre.w)
-r.h = (pre.h)
-} elseIf ( dice == 2 ) {
-pre.w /= (2)
-r.x = (pre.x)
-r.y = (pre.y)
-r.w = (pre.w)
-r.h = (pre.h)
-pre.x += (pre.w)
-} elseIf ( dice == 3 ) {
-pre.h /= (2)
-r.x = (pre.x)
-r.y = (pre.y)
-r.w = (pre.w)
-r.h = (pre.h)
-pre.y += (pre.h)
-}
-a.push(r)
-}
-
+    if(a.length==0){
+        r=Rectangle(0,0,w,h)
+        r.col=(cols[floor(rand(cols.length))])
+        a.push(r)
+    }
+    else{
+        pre=(a[floor(rand(a.length))])
+        while(pre.w<10||pre.h<10){
+            pre=(a[floor(rand(a.length))])
+        }
+        dice=floor(rand(4))
+        r=Rectangle(0,0,0,0)
+        r.col=(cols[floor(rand(cols.length))])
+        if(dice==0){
+            pre.w/=(2)
+            r.x=(pre.x+pre.w)
+            r.y=(pre.y)
+            r.w=(pre.w)
+            r.h=(pre.h)
+        }
+        elseIf(dice==1){
+            pre.h/=(2)
+            r.x=(pre.x)
+            r.y=(pre.y+pre.h)
+            r.w=(pre.w)
+            r.h=(pre.h)
+        }
+        elseIf(dice==2){
+            pre.w/=(2)
+            r.x=(pre.x)
+            r.y=(pre.y)
+            r.w=(pre.w)
+            r.h=(pre.h)
+            pre.x+=(pre.w)
+        }
+        elseIf(dice==3){
+            pre.h/=(2)
+            r.x=(pre.x)
+            r.y=(pre.y)
+            r.w=(pre.w)
+            r.h=(pre.h)
+            pre.y+=(pre.h)
+        }
+        a.push(r)
+    }
 }

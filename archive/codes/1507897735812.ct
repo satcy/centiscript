@@ -1,20 +1,25 @@
-sz(720,720)bg(190)L=(130)AMP=(30)
-frame(){
-clr()col(10)lw(3)
-translate(cx,cy)
-for(i,0,10){
-    for(j,0,3){
-        push()
-        translate(AMP+j*AMP*2, 0)
-        y0=(cos(c/23+j*PI+PI/2)*AMP)
-        y1=(cos(c/23+j*PI+PI)*AMP)
-        y2=(cos(c/23+j*PI+PI*1.5)*AMP)
-        y3=(cos(c/23+j*PI+PI*2)*AMP)
-        strk()
-        curve(0,y0,L/3,y1,L*2/3,y2,L,y3)
-        pop()
+sz(720,720)
+bg(190)
+L=(130)
+AMP=(30)
+frame()
+{
+    clr()
+    col(10)
+    lw(3)
+    translate(cx,cy)
+    for(i,0,10){
+        for(j,0,3){
+            push()
+            translate(AMP+j*AMP*2,0)
+            y0=(cos(c/23+j*PI+PI/2)*AMP)
+            y1=(cos(c/23+j*PI+PI)*AMP)
+            y2=(cos(c/23+j*PI+PI*1.5)*AMP)
+            y3=(cos(c/23+j*PI+PI*2)*AMP)
+            strk()
+            curve(0,y0,L/3,y1,L*2/3,y2,L,y3)
+            pop()
+        }
+        rotate(PI/5)
     }
-    rotate(PI/5)
-}
-    
 }

@@ -1,5 +1,9 @@
-sz(720,360)bg(22)R=(30)h2=(h-10)
-frame(){
+sz(720,360)
+bg(22)
+R=(30)
+h2=(h-10)
+frame()
+{
     clr()
     col(255)
     for(i,0,12){
@@ -8,11 +12,13 @@ frame(){
     for(i,0,8){
         push()
         y=(h-abs(cos(c/18+i/3))*h2)
-        if ( y > h2 - R/5) { y = (h2 - R/5) }
-        translate(i*100, y)
+        if(y>h2-R/5){
+            y=(h2-R/5)
+        }
+        translate(i*100,y)
         sc=(1)
-        if ( y > h2 - R) {
-            sc = ((h2-y)/R)
+        if(y>h2-R){
+            sc=((h2-y)/R)
         }
         scale(2-sc,sc)
         rotate(c/18+i/3)

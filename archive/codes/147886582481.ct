@@ -2,19 +2,21 @@ sz(360,360)
 bpm(100)
 g=grid(w*2,h*2,10,10)
 a=vec2(0,0)
-frame(){
-clr()
-push()
-translate(-cx,-cy)
-for(i,0,g.length){
-push()
-translate(g[i].x, g[i].y)
-line(a.x,0,a.y,a.y+a.x)
-pop()
+frame()
+{
+    clr()
+    push()
+    translate(-cx,-cy)
+    for(i,0,g.length){
+        push()
+        translate(g[i].x,g[i].y)
+        line(a.x,0,a.y,a.y+a.x)
+        pop()
+    }
+    pop()
 }
-pop()
-}
-beat(){
-t=vec2(rnd(-100,100),rnd(-200,200))
-tween(a).to(t,500).easing(ease.Back.InOut).start()
+beat()
+{
+    t=vec2(rnd(-100,100),rnd(-200,200))
+    tween(a).to(t,500).easing(ease.Back.InOut).start()
 }

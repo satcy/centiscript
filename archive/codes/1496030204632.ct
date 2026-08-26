@@ -1,11 +1,17 @@
-sz(720,360)bg(203,201,190)v=vec2(0)bpm(50)
-frame(){
-clr()col(70)
-dropShadow(5,5,0,0x888877)
-n=floor(v.x)
-bmTxt("0x"+n.toString(16).toUpperCase(),250,cy-20,40)
-bm5x8(n,6,6,43)
+sz(720,360)
+bg(203,201,190)
+v=vec2(0)
+bpm(50)
+frame()
+{
+    clr()
+    col(70)
+    dropShadow(5,5,0,0x888877)
+    n=floor(v.x)
+    bmTxt("0x"+n.toString(16).toUpperCase(),250,cy-20,40)
+    bm5x8(n,6,6,43)
 }
-beat(){
+beat()
+{
     tween(v).to(vec2(getBitmapFontCode(floor(rnd(0x20,0x7f)))),600).easing(eases[9]).start()
 }

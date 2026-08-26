@@ -1,19 +1,23 @@
-sz(360,360)bg(0)S=sqrt(2)*(h)NUM=(9)
-rots=([])colors=([0x157293,0x3023D7, 0x08A637])
+sz(360,360)
+bg(0)
+S=sqrt(2)*(h)
+NUM=(9)
+rots=([])
+colors=([0x157293,0x3023D7,0x08A637])
 for(i,0,NUM){
-    color = (colors[i%3])
+    color=(colors[i%3])
     rots[i]=vec2(0,color)
-    tween(rots[i]).to(vec2(PI*2,color),2000-50*i)
-    .easing(ExpoInOut).repeat(Infinity).start()
+    tween(rots[i]).to(vec2(PI*2,color),2000-50*i).easing(ExpoInOut).repeat(Infinity).start()
 }
-frame(){
-clr()
-for(i,0,NUM){
-    push()
-    hcol(rots[i].y)
-    translate(cx,cy)
-    rotate(PI/4+rots[i].x)
-    rect(-S/2, 0, S, S)
-    pop()
-}
+frame()
+{
+    clr()
+    for(i,0,NUM){
+        push()
+        hcol(rots[i].y)
+        translate(cx,cy)
+        rotate(PI/4+rots[i].x)
+        rect(-S/2,0,S,S)
+        pop()
+    }
 }

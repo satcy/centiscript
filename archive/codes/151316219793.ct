@@ -1,1 +1,28 @@
-sz(720,1280)frame(){drawMe(0,0,w,h,0,-3,w,h)hh=(h/3)num=(50)cw=(w/(num-1))col((cos(c*0.01)+1)*127,50,(sin(c*0.011)+1)*127)fill()beginShape()lineTo(0,h)for(i,0,num){x=(i*cw)y=((nz(i*0.03,c*0.01)-1)*hh+nz(c*0.05,i*0.3)*hh*0.05)lineTo(x,y+h+hh)}lineTo(w,h)endShape()col(255)strk()beginShape()for(i,0,num){x=(i*cw)y=((nz(i*0.03,c*0.01)-1)*hh+nz(c*0.05,i*0.3)*hh*0.05)lineTo(x,y+h+hh)}endShape()}
+sz(720,1280)
+frame()
+{
+    drawMe(0,0,w,h,0,-3,w,h)
+    hh=(h/3)
+    num=(50)
+    cw=(w/(num-1))
+    col((cos(c*0.01)+1)*127,50,(sin(c*0.011)+1)*127)
+    fill()
+    beginShape()
+    lineTo(0,h)
+    for(i,0,num){
+        x=(i*cw)
+        y=((nz(i*0.03,c*0.01)-1)*hh+nz(c*0.05,i*0.3)*hh*0.05)
+        lineTo(x,y+h+hh)
+    }
+    lineTo(w,h)
+    endShape()
+    col(255)
+    strk()
+    beginShape()
+    for(i,0,num){
+        x=(i*cw)
+        y=((nz(i*0.03,c*0.01)-1)*hh+nz(c*0.05,i*0.3)*hh*0.05)
+        lineTo(x,y+h+hh)
+    }
+    endShape()
+}

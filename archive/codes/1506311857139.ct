@@ -1,9 +1,12 @@
-sz(720,360)bg(0)HH=(60)
-frame(){
-drawMe(-1,0)
-for(i,0,6){
-    cc=(c*(i+1))
-h1=(floor(cc/HH)%2 ? 60-(cc%HH) : cc%HH)
-rect(w-2,i*HH,1,h1)
-}
+sz(720,360)
+bg(0)
+HH=(60)
+frame()
+{
+    drawMe(-1,0)
+    for(i,0,6){
+        cc=(c*(i+1))
+        h1=(floor(cc/HH)%2?60-(cc%HH):cc%HH)
+        rect(w-2,i*HH,1,h1)
+    }
 }

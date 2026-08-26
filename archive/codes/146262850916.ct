@@ -1,25 +1,32 @@
 sz(720,720)
 sub=(0)
-frame(){
-clr()
-for(j,0,9){
-push()
-translate((j%3)*w/3+w/3/2,floor(j/3)*h/3+h/3/2)
-for(i,0,4+j*2){
-push()
-rotate(i*PI/(j+2))
-translate(0,cos(c/53)*75)
-arc(0,0,50,0,PI/(sub+1))
-pop()
+frame()
+{
+    clr()
+    for(j,0,9){
+        push()
+        translate((j%3)*w/3+w/3/2,floor(j/3)*h/3+h/3/2)
+        for(i,0,4+j*2){
+            push()
+            rotate(i*PI/(j+2))
+            translate(0,cos(c/53)*75)
+            arc(0,0,50,0,PI/(sub+1))
+            pop()
+        }
+        pop()
+    }
 }
-pop()
-}
-}
-beat(){
-if(beat%4 == 0 ){
-if(bFill){stroke()}else{fill()}
-}
-if(beat%8 == 0 ){
-sub=((sub+1)%4)
-}
+beat()
+{
+    if(beat%4==0){
+        if(bFill){
+            stroke()
+        }
+        else{
+            fill()
+        }
+    }
+    if(beat%8==0){
+        sub=((sub+1)%4)
+    }
 }

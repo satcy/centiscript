@@ -1,15 +1,16 @@
-sz(720,720)bg(180)
+sz(720,720)
+bg(180)
 a=(10)
-frame(){
+frame()
+{
     translate(cx,cy)
-    a=map(cos(c/500), -1, 1, 3, 30)
-    for(i,0,30) {
-        col(i%5 < 4 ? 0 : 255,100)
+    a=map(cos(c/500),-1,1,3,30)
+    for(i,0,30){
+        col(i%5<4?0:255,100)
         push()
         rotate(c/40+i*PI/500)
         for(j,-30,30){
-            line(j*10,nz(c/6,(j)/a)*(60-abs(j)),
-            (j+1)*10,nz(c/6,(j+1)/a)*(60-abs(j+1)))
+            line(j*10,nz(c/6,(j)/a)*(60-abs(j)),(j+1)*10,nz(c/6,(j+1)/a)*(60-abs(j+1)))
         }
         pop()
     }

@@ -1,19 +1,21 @@
-sz(360,360)bg(232,190,160)
-frame(){
-clr()
-push()
-translate(0,cy-50)
-scale(1,minmax(sin(c/10)*3,1,1.3))
-fill()
-col(0,8,19)
-oval(cx-50,0,30)
-oval(cx+50,0,30)
-pop()
-col(179,21,9)
-cc=(cos(c/10)+1)
-arc(cx,cy-cc*30,100,cc*PI/5,PI-cc*PI/5)
-col(13,33,55)
-for(i,0,w){
-rect(i,0,1,abs(cos(i*0.011-c/99)*cos(i*0.0143+c/73))*h/2)
-}
+sz(360,360)
+bg(232,190,160)
+frame()
+{
+    clr()
+    push()
+    translate(0,cy-50)
+    scale(1,minmax(sin(c/10)*3,1,1.3))
+    fill()
+    col(0,8,19)
+    oval(cx-50,0,30)
+    oval(cx+50,0,30)
+    pop()
+    col(179,21,9)
+    cc=(cos(c/10)+1)
+    arc(cx,cy-cc*30,100,cc*PI/5,PI-cc*PI/5)
+    col(13,33,55)
+    for(i,0,w){
+        rect(i,0,1,abs(cos(i*0.011-c/99)*cos(i*0.0143+c/73))*h/2)
+    }
 }

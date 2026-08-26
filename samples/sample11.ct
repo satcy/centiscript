@@ -1,22 +1,20 @@
 sz(720,270)
 bg(0)
-frame()
-{
-clr()
-num=(w/3)
-for(i,0,num)
-{
-ww=(cos(i*0.03+c*0.013)*w/2)
-hh=(30)
-push()
-translate(i*3,cy)
-rotate(nz(i*0.0015,c*0.002)*60)
-col(0)
-fill()
-rect(-ww/2,-hh/2,ww,hh)
-col(205,(sin(i*0.06+c*0.03)+1)*128,255)
-strk()
-rect(-ww/2,-hh/2,ww,hh)
-pop()
-}
+frame(){
+    clr()
+    num=(w/3)
+    for(i,0,num){
+        ww=(cos(i*0.03+c*0.013)*w/2)
+        hh=(30)
+        push()
+        translate(i*3,cy)
+        rotate(nz(i*0.0015,c*0.002)*60)
+        col(0)
+        fill()
+        rect(-ww/2,-hh/2,ww,hh)
+        col(205,(sin(i*0.06+c*0.03)+1)*128,255)
+        strk()
+        rect(-ww/2,-hh/2,ww,hh)
+        pop()
+    }
 }

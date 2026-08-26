@@ -3,67 +3,70 @@ a=([])
 current=([])
 frame()
 {
-clear()
-strk()
-lw(3)
-for(i,0,a.length){
-tailing(a[i])
+    clear()
+    strk()
+    lw(3)
+    for(i,0,a.length){
+        tailing(a[i])
+    }
+    a=remove(a,isOut)
+    for(i,0,a.length){
+        for(ii,0,9){
+            push()
+            translate((ii%3-1)*w,floor(ii/3-1)*h)
+            beginShape()
+            lines(a[i],0)
+            endShape()
+            pop()
+        }
+    }
+    beginShape()
+    lines(current,0)
+    endShape()
 }
-a=remove(a,isOut)
-
-for(i,0,a.length){
-for(ii,0,9){
-push()
-translate((ii%3-1)*w,floor(ii/3-1)*h)
-beginShape()
-lines(a[i],0)
-endShape()
-pop()
+move()
+{
+    if(down){
+        current.push(Vec2(mx,my))
+    }
 }
+up()
+{
+    if(current.length>0){
+        a.push(current)
+    }
+    current=([])
 }
-beginShape()
-lines(current,0)
-endShape()
-}
-
-move(){
-if(down){
-current.push(Vec2(mx,my))
-}
-}
-up(){
-if(current.length>0){a.push(current)}
-current=([])
-}
-down(){
-current=([])
+down()
+{
+    current=([])
 }
 tailing=func(){
-a2=($0)
-l=(a2.length)
-if(l>1){
-j=(l-1)
-a2[0].x+=(a2[l-2].x-a2[l-1].x)
-a2[0].y+=(a2[l-2].y-a2[l-1].y)
-while(j>=(0)){
-if(j>0){
-a2[j].x=(a2[j-1].x)
-a2[j].y=(a2[j-1].y)
-}
-j-=(1)
-}
-}
+    a2=($0)
+    l=(a2.length)
+    if(l>1){
+        j=(l-1)
+        a2[0].x+=(a2[l-2].x-a2[l-1].x)
+        a2[0].y+=(a2[l-2].y-a2[l-1].y)
+        while(j>=(0)){
+            if(j>0){
+                a2[j].x=(a2[j-1].x)
+                a2[j].y=(a2[j-1].y)
+            }
+            j-=(1)
+        }
+    }
 }
 wrapArray=func(){
-a3=($0)
-offsetX=($1)
-offsetY=($2)
-for(jj,0,a3.length){
-a3[jj].x+=(offsetX)
-a3[jj].y+=(offsetY)
-}
+    a3=($0)
+    offsetX=($1)
+    offsetY=($2)
+    for(jj,0,a3.length){
+        a3[jj].x+=(offsetX)
+        a3[jj].y+=(offsetY)
+    }
 }
 isOut=func(){
-bb=boundingBox($0)
-return((bb.r<-w)||(bb.x>w*2)||(bb.b<-h)||(bb.y>h*2))
+    bb=boundingBox($0)
+    return((bb.r<-w)||(bb.x>w*2)||(bb.b<-h)||(bb.y>h*2))
 }

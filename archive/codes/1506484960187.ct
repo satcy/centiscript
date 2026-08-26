@@ -1,16 +1,24 @@
-sz(720,360)bg(180)freq=(440)
+sz(720,360)
+bg(180)
+freq=(440)
 bpm(120,4)
-frame(){
-	clr()hcol(0x024756)strk()lw(5)
+frame()
+{
+    clr()
+    hcol(0x024756)
+    strk()
+    lw(5)
     dropShadow(0,4,16,0x333333)
-    for(i,0,12) {
-	    if ( beat%12 == i ) {
+    for(i,0,12){
+        if(beat%12==i){
             drawWave(0,i*h/12,w,h/12)
-        } else {
-            line(0,(i+0.5)*h/12, w, (i+0.5)*h/12)
+        }
+        else{
+            line(0,(i+0.5)*h/12,w,(i+0.5)*h/12)
         }
     }
 }
-dsp(){
-	return(sin(PI2*time*n2f(beat%12+12*5)))
+dsp()
+{
+    return(sin(PI2*time*n2f(beat%12+12*5)))
 }

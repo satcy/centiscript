@@ -1,19 +1,20 @@
-sz(720,360)bg(0)frame(){clr()
-
-for(ii,0,10){
-col(ii*25)
-for(i,0,36*3*4){
-j=(i+noise(i*0.1,ii,c*0.001)*5)
-ri=(i*PI/18)
-rj=(j*PI/18)
-o=(c*0.01+ii*0.1)
-x1=(cos(ri*3+o)*cx+cx)
-y1=(sin(ri*4+o)*cy+cy)
-x2=(cos(rj*3+o)*cx+cx)
-y2=(sin(rj*4+o)*cy+cy)
-line(x1,y1,x2,y2)
-
-}
-}
-
+sz(720,360)
+bg(0)
+frame()
+{
+    clr()
+    for(ii,0,10){
+        col(ii*25)
+        for(i,0,36*3*4){
+            j=(i+noise(i*0.1,ii,c*0.001)*5)
+            ri=(i*PI/18)
+            rj=(j*PI/18)
+            o=(c*0.01+ii*0.1)
+            x1=(cos(ri*3+o)*cx+cx)
+            y1=(sin(ri*4+o)*cy+cy)
+            x2=(cos(rj*3+o)*cx+cx)
+            y2=(sin(rj*4+o)*cy+cy)
+            line(x1,y1,x2,y2)
+        }
+    }
 }

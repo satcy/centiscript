@@ -1,21 +1,6 @@
-ww = 720;
-wh = 90;
-sz(ww,wh);
-d = 0.0;
-frame(){
-    t_w = (cos(c * 0.05) * 0.5 + 0.5) * 0.8 + 0.2; 
-    t_w_s = ww * t_w;
-    sz(t_w_s,wh);
-    col(255);
-    for(i, 0, w){
-        y = cos((i + c * 2.0) / w * 50) * 20.0 + 40;
-        pixel(i, y);
-        y = cos((i + c * 6.0) / w * 30) * 10.0 + 10;
-        pixel(i, y);
-        y = cos((i + c * 0.5) / w * 120) * 15.0 + 75;
-        pixel(i, y);
+ww=720;wh=90;sz(ww,wh);d=0.0;frame(){
+    t_w=(cos(c*0.05)*0.5+0.5)*0.8+0.2;t_w_s=ww*t_w;sz(t_w_s,wh);col(255);for(i,0,w){
+        y=cos((i+c*2.0)/w*50)*20.0+40;pixel(i,y);y=cos((i+c*6.0)/w*30)*10.0+10;pixel(i,y);y=cos((i+c*0.5)/w*120)*15.0+75;pixel(i,y);
     }
-    col(150);
-    line(0, 20, t_w_s, 20);
-    line(0, 60, t_w_s, 60);
+    col(150);line(0,20,t_w_s,20);line(0,60,t_w_s,60);
 }

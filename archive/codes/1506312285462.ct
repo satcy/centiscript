@@ -1,11 +1,14 @@
-sz(720,360)bg(255)
+sz(720,360)
+bg(255)
 cols=([0xffff00,0x00ffff,0xff00ff])
-frame(){
-clr()bm(1)
-translate(cx,cy)
-for(i,0,3){
-    hcol(cols[i%3])
-    r=(pow(cos(c/30),3)*h/2)
-    oval(cos(i*PI*2/3)*r,sin(i*PI*2/3)*r,h/2,3)
-}
+frame()
+{
+    clr()
+    bm(1)
+    translate(cx,cy)
+    for(i,0,3){
+        hcol(cols[i%3])
+        r=(pow(cos(c/30),3)*h/2)
+        oval(cos(i*PI*2/3)*r,sin(i*PI*2/3)*r,h/2,3)
+    }
 }

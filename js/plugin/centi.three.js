@@ -68,11 +68,20 @@ Centi.plugins.push(
 		        }
 		        obj.cam = new THREE.PerspectiveCamera( 60, obj.w/obj.h, 1, 100000 );
 		        obj.cam.position.set( 0, 0, 367 );
+		        this.lastW = obj.w;
+		        this.lastH = obj.h;
 		    }
 		};
 
 		this.preUpdate = function(){
-
+			var obj = this.target;
+			if ( obj.b3d && obj.renderer && (obj.w !== this.lastW || obj.h !== this.lastH) ) {
+				this.lastW = obj.w;
+				this.lastH = obj.h;
+				obj.renderer.setSize(obj.w, obj.h, false);
+				obj.cam.aspect = obj.w / obj.h;
+				obj.cam.updateProjectionMatrix();
+			}
 		};
 
 		this.postUpdate = function(){

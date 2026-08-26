@@ -2,16 +2,16 @@ sz(1280,720)
 bg(0)
 frame()
 {
-clr()
-col(170)
-vl=(15)
-w2=(w*2)
-phase=(0.13)
-for(i,0,w2)
-{
-rad=(w-i)
-x=(cos((i+c)*phase)*rad+cx)
-y=(sin((i+c)*phase)*rad+cy)
-line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)
-}
+    clr()
+    col(170)
+    vl=(15)
+    w2=(w*2)
+    phase=(0.13)
+    for(i,0,w2)
+    {
+        rad=(w-i)
+        x=(cos((i+c)*phase)*rad+cx)
+        y=(sin((i+c)*phase)*rad+cy)
+        line(x+cos(c*0.1+i*0.013)*vl,y+sin(c*0.14+i*0.02)*vl,x+sin(c*0.1+i*0.013)*vl,y+cos(c*0.14+i*0.02)*vl)
+    }
 }

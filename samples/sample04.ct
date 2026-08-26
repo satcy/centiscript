@@ -1,9 +1,9 @@
 sz(720,360)
 frame()
 {
-for(i,0,15)
-{
-col(rnd(100,255))
-rect(0,rnd(h),w,rnd(30))
-}
+    for(i,0,15)
+    {
+        col(rnd(100,255))
+        rect(0,rnd(h),w,rnd(30))
+    }
 }

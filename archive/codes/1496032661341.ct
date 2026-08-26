@@ -1,6 +1,12 @@
-sz(720,360)bg(200)bpm(30)num=(48)
+sz(720,360)
+bg(200)
+bpm(30)
+num=(48)
 arr=([])
-for(i,0,num){v=vec2(0,60*floor(i/4))arr.push(v)}
+for(i,0,num){
+    v=vec2(0,60*floor(i/4))
+    arr.push(v)
+}
 to=func(){
     for(i,0,num){
         v=(arr[i])
@@ -8,7 +14,8 @@ to=func(){
     }
 }
 to()
-frame(){
+frame()
+{
     clr()
     for(i,0,num){
         col(i*3)
@@ -16,4 +23,7 @@ frame(){
         bm5x8(floor(v.x),5+v.y,5+(i%4)*90,10)
     }
 }
-beat(){ to() }
+beat()
+{
+    to()
+}

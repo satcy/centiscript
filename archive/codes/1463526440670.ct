@@ -1,62 +1,74 @@
-sz(720,360)bg(0)frame(){clr()
-scale(0.9,0.9)
-translate(0,-50)
-for(j,0,13){
-push()
-scale(1,j*0.035+0.2)
-if(j%2==0){translate(0,j*100)} 
-else{translate(-70,j*100)}
-for(i,0,7){
-if(j%2==0){drawBox1()}
-else{drawBox2()}
-translate(130,cos(i+j+c/20)*10)
-}
-pop()
-}
+sz(720,360)
+bg(0)
+frame()
+{
+    clr()
+    scale(0.9,0.9)
+    translate(0,-50)
+    for(j,0,13){
+        push()
+        scale(1,j*0.035+0.2)
+        if(j%2==0){
+            translate(0,j*100)
+        }
+        else{
+            translate(-70,j*100)
+        }
+        for(i,0,7){
+            if(j%2==0){
+                drawBox1()
+            }
+            else{
+                drawBox2()
+            }
+            translate(130,cos(i+j+c/20)*10)
+        }
+        pop()
+    }
 }
 drawBox1=func(){
-col(255)
-beginShape()
-moveTo(0,0)
-lineTo(100,100)
-lineTo(70,130)
-lineTo(-30,30)
-endShape()
-col(33)
-beginShape()
-moveTo(100,100)
-lineTo(100,h)
-lineTo(70,h)
-lineTo(70,130)
-endShape()
-col(155)
-beginShape()
-moveTo(70,130)
-lineTo(70,h)
-lineTo(-30,h)
-lineTo(-30,30)
-endShape()
+    col(255)
+    beginShape()
+    moveTo(0,0)
+    lineTo(100,100)
+    lineTo(70,130)
+    lineTo(-30,30)
+    endShape()
+    col(33)
+    beginShape()
+    moveTo(100,100)
+    lineTo(100,h)
+    lineTo(70,h)
+    lineTo(70,130)
+    endShape()
+    col(155)
+    beginShape()
+    moveTo(70,130)
+    lineTo(70,h)
+    lineTo(-30,h)
+    lineTo(-30,30)
+    endShape()
 }
 drawBox2=func(){
-col(255)
-beginShape()
-moveTo(100,0)
-lineTo(130,30)
-lineTo(30,130)
-lineTo(0,100)
-endShape()
-col(55)
-beginShape()
-moveTo(130,30)
-lineTo(130,h)
-lineTo(30,h)
-lineTo(30,130)
-endShape()
-col(155)
-beginShape()
-moveTo(30,130)
-lineTo(30,h)
-lineTo(0,h)
-lineTo(0,100)
-endShape()
+    col(255)
+    beginShape()
+    moveTo(100,0)
+    lineTo(130,30)
+    lineTo(30,130)
+    lineTo(0,100)
+    endShape()
+    col(55)
+    beginShape()
+    moveTo(130,30)
+    lineTo(130,h)
+    lineTo(30,h)
+    lineTo(30,130)
+    endShape()
+    col(155)
+    beginShape()
+    moveTo(30,130)
+    lineTo(30,h)
+    lineTo(0,h)
+    lineTo(0,100)
+    endShape()
 }

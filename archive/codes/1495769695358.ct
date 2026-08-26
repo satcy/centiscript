@@ -1,15 +1,23 @@
-sz(720,360)font(90)bg(203,201,190)v=vec2(0)
-frame(){
-clr()col(70)
-dropShadow(5,5,0,0x888877)
-n=floor(v.x)
-text("0x"+n.toString(16).toUpperCase(),360,90)
-scale(90,90)
-for(i,0,16){
-    if ( n & 1 ) {rect(i%4, floor(i/4),0.9,0.9)}
-    n=(n>>1)
+sz(720,360)
+font(90)
+bg(203,201,190)
+v=vec2(0)
+frame()
+{
+    clr()
+    col(70)
+    dropShadow(5,5,0,0x888877)
+    n=floor(v.x)
+    text("0x"+n.toString(16).toUpperCase(),360,90)
+    scale(90,90)
+    for(i,0,16){
+        if(n&1){
+            rect(i%4,floor(i/4),0.9,0.9)
+        }
+        n=(n>>1)
+    }
 }
-}
-beat(){
+beat()
+{
     tween(v).to(vec2(rnd(0xffff)),100).easing(ease.Bounce.Out).start()
 }

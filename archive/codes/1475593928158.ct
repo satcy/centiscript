@@ -1,1 +1,9 @@
-sz(720,360)frame(){clr()strk()for(i,0,49){oval(i*30-cx+sin(i/2+c/99)*9,0,cx)}}
+sz(720,360)
+frame()
+{
+    clr()
+    strk()
+    for(i,0,49){
+        oval(i*30-cx+sin(i/2+c/99)*9,0,cx)
+    }
+}

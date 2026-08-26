@@ -1,15 +1,20 @@
-sz(720,360)bg(120)R=(20)
-frame(){
+sz(720,360)
+bg(120)
+R=(20)
+frame()
+{
     clr()
     for(i,0,15){
         push()
         y=(h-abs(cos(c/(80+i)))*h)
-        if ( y > h - R/4) { y = (h - R/4) }
-        translate(i*R*2.5, y)
+        if(y>h-R/4){
+            y=(h-R/4)
+        }
+        translate(i*R*2.5,y)
         sc=(1)
         col(250)
-        if ( y > h - R) {
-            sc = ((h-y)/R)
+        if(y>h-R){
+            sc=((h-y)/R)
         }
         scale(1,sc)
         oval(0,0,R)
