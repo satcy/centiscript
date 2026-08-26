@@ -307,6 +307,18 @@ background-color: #00ffff;
 color: #000;
 }
 
+#run{
+width: 40px;
+padding: 0;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background-color: #e6e6e6;
+}
+
 #tweet{
 margin-left: 6px;
 }
