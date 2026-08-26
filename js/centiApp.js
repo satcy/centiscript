@@ -327,8 +327,8 @@ CENTI.exportJS = function(){
 
     var temp = 
     ((is3d) ? '//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>' + "\n" : "" ) +
-    '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/release/centi.min.'+ct.ver+'.js"></script>' + "\n" +
-    ((is3d) ? '//<script src="http://cdn.rawgit.com/satcy/centiscript/master/js/plugin/centi.three.js"></script>' + "\n" : "" ) + 
+    '//<script src="https://cdn.jsdelivr.net/gh/satcy/centiscript@master/js/release/centi.min.'+ct.ver+'.js"></script>' + "\n" +
+    ((is3d) ? '//<script src="https://cdn.jsdelivr.net/gh/satcy/centiscript@master/js/plugin/centi.three.js"></script>' + "\n" : "" ) +
     "//<canvas id='c'></canvas>" + "\n" +
     "\n" +
     "(function(){" + "\n" +
@@ -412,7 +412,7 @@ CENTI.toggleTweetsList = function(){
 CENTI.getTweetsList = function(){
     if ( !document.getElementById("result") ) return;
     var httpObj = new XMLHttpRequest();
-    var path = "http://ex.rzm.co.jp/centiscript/p/searchimg.php";
+    var path = "archive/tweets.txt";
     httpObj.open("get", path, true);
     httpObj.onload = function(){
 
@@ -427,7 +427,7 @@ CENTI.getTweetsList = function(){
                 var url = myData[i].url;
                 var name = myData[i].user;
                 var id_str = myData[i].id;
-                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n<span id='list_one_name'>(<a href='https://twitter.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</span></div>\n";
+                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n<span id='list_one_name'>(<a href='https://x.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</span></div>\n";
                 if ( i%3 == 0 ) d1 += txt;
                 else if ( i%3 == 1 ) d2 += txt;
                 else d3 += txt;
@@ -449,9 +449,9 @@ CENTI.getTweetsList = function(){
 
 CENTI.fullscreen = function(){
     if ( CENTI.file_name != "" ) {
-        window.location.href = "http://ex.rzm.co.jp/centiscript/full.html?f=" + CENTI.file_name;
+        window.location.href = "full.html?f=" + CENTI.file_name;
     } else if ( CENTI.code_from_url_params != "" ) {
-        window.location.href = "http://ex.rzm.co.jp/centiscript/full.html?c=" + escape(CENTI.code_from_url_params);
+        window.location.href = "full.html?c=" + escape(CENTI.code_from_url_params);
     }
 }
 
@@ -470,7 +470,7 @@ window.onload = function(){
         } else if ( params["f"] ) {
             CENTI.file_name = params["f"];
             var httpObj = new XMLHttpRequest();
-            var path = "http://ex.rzm.co.jp/centiscript/p/codes/"+params["f"]+".ct";
+            var path = "archive/codes/"+params["f"]+".ct";
             httpObj.open("get", path, true);
             httpObj.onload = function(){
                 CENTI.editor.setValue(this.responseText);

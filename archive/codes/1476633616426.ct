@@ -1,0 +1,17 @@
+sz(720,720)
+x1=(cx)y1=(cy)
+frame(){
+clr()strk()
+a=(20)t1=(c*0.001)t2=(c*0.001)
+for(i,0,a){
+x1=(cx+sin(2*PI*i/a)*(200))
+y1=(cy+cos(2*PI*i/a)*(200))
+for(j,0,a){
+r=(255.*i/a)g=(255.*(a-j)/a)b=((255.*(a-i)/a))
+col(r,g,b)
+x2=(x1+sin(t1+2*PI*j/a)*(50))
+y2=(y1+cos(t1+2*PI*j/a)*(50))
+oval(x2,y2,sin(t2)*360,64)
+}
+}
+}

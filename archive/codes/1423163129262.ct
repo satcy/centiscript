@@ -1,0 +1,7 @@
+sz(720,360)bg(0)num=(1000)
+arr=([])for(i,0,num){pt=Vec2(0,0)arr.push(pt)}
+frame(){clr()nn=(c%num)for(i,0,nn){pt=(arr[i])oval(pt.x,pt.y,8)}}
+beat(){
+for(i,0,num){pt=(arr[i])sep=(20)
+tween(pt).to(Vec2(floor(rnd(w/sep+1))*sep,floor(rnd(h/sep+1))* sep),rnd(112,271)).easing(ExpoOut).start()}
+}

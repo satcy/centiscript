@@ -1,0 +1,32 @@
+sz(720,720)
+num=(30)
+num2=(num-1)
+cr=(PI/45.0)
+edge=([])
+r=(50)
+r2=(r*7)
+arm=r*sqrt(3)
+for(j,0,3){
+for(i,0,30){
+p=vec2(arm-i*arm/15.0,r)
+p=p.rotate(j*PI2/3-PI/6)
+edge.push(p)
+}
+}
+edge_len=(edge.length)
+frame(){
+clr()
+translate(cx,cy)
+for(j,0,num){
+for(i,0,edge_len){
+p=vec2(cos(i*cr)*r2, sin(i*cr)*r2)
+px=interp(p.x, edge[i].x, j/num2)
+py=interp(p.y, edge[i].y, j/num2)
+p2=vec2(cos((i+1)*cr)*r2, sin((i+1)*cr)*r2)
+p2x=interp(p2.x, edge[(i+1)%edge_len].x, j/num2)
+p2y=interp(p2.y, edge[(i+1)%edge_len].y, j/num2)
+line(px,py,p2x, p2y)
+
+}
+}
+}

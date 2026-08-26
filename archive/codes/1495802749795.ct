@@ -1,0 +1,11 @@
+sz(720,360)font(60)bg(203,201,190)v=vec2(0)
+frame(){
+clr()col(70)
+dropShadow(5,5,0,0x888877)
+n=floor(v.x)
+text("0x"+n.toString(16).toUpperCase(),250,cy)
+bitmap5by8(n,0,0,45)
+}
+beat(){
+    tween(v).to(vec2(getBitmapFontCode(floor(rnd(0x20,0x7f)))),200).easing(ease.Back.Out).start()
+}

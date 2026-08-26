@@ -1,0 +1,31 @@
+sz(720,360)bg(203,201,190)
+rad=(0)
+acc=(0)
+vel=vec2(0,0)
+pos=vec2(0,0)
+arr=([])
+for(i,0,100){arr.push(vec2(rnd(-1,1)*cx, rnd(-1,1)*cy))}
+frame(){
+clr()
+dropShadow(2,7,0,0x888877)
+rad=atan2(my-cy,mx-cx)
+if(down){acc=(0.2)}else{acc=(0)}
+vel.x+=(cos(rad)*acc)vel.y+=(sin(rad)*acc)
+x=(pos.x)y=(pos.y)
+x+=(vel.x)y+=(vel.y)
+vel.x*=(0.995)vel.y*=(0.995)
+if ( x > cx ) {x-=(w)}
+if ( x < -cx ) {x+=(w)}
+if ( y > cy ) {y-=(h)}
+if ( y < -cy ) {y+=(h)}
+pos.x=(x)pos.y=(y)
+col(58)
+push()
+translate(cx,cy)
+for(i,0,100){oval(arr[i].x,arr[i].y,2)}
+translate(x,y)
+rotate((rad))
+if ( down) {tri(-10,-7,-10,7,-18,0)}
+tri(20,0,-10,11,-10,-11)
+pop()
+}

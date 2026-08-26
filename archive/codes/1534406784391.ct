@@ -1,0 +1,11 @@
+sz(360,640)bg(0)n=(50)ch=(h/n)
+frame(){
+clr()col(255)
+for(i,0,n){
+    ii = (i + 1)
+    for(x,0,w){
+        y = (cos(c / ii + x * ii) * ch / 2 + ch * (i + 0.5))
+        pixel(x, y)
+    }
+}
+}

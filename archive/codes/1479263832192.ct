@@ -1,0 +1,39 @@
+sz(360,360)
+arr=([])
+frame(){
+clr()
+strk()
+translate(cx,cy)
+
+trans(f,cos,100)
+trans(f,cos,-100)
+trans(f,sin,100)
+trans(f,sin,-100)
+for(i,0,arr.length){
+col(255,zmap(i,0,arr.length,0,255))
+oval(arr[i].x,arr[i].y,2)
+}
+for(i,0,4){
+col(255,0,0)
+oval(arr[arr.length-1-i].x,arr[arr.length-1-i].y,2)
+}
+while ( arr.length > 200 ) {
+arr.shift()
+}
+col(200)
+f=(c/10)
+rotate(cos(f*0.9)*PI/3)
+arc(cos(f)*100,0,100,PI,PI2)
+arc(sin(f)*100,0,100,0,PI)
+line(cos(f)*100-100,0,cos(f)*100+100,0)
+line(sin(f)*100-100,0,sin(f)*100+100,0)
+
+}
+trans=func(){
+f=($0)
+m=Matrix()
+m.rotate(cos(f*0.9)*180/3, 0, 0)
+m.translate($1(f)*100+$2, 0)
+p=m.getTranslation()
+arr.push(p)
+}

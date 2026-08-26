@@ -1,0 +1,4 @@
+sz(999,999)bg(0)frame(){
+a=(c*.12)b=(c*.01)strk()col(rnd(255),rnd(255),rnd(255))
+line(cx+(sin(a))*90,cy+(cos(a))*90,cx+(sin(b))*cx,cy+(cos(b))*cy)
+}

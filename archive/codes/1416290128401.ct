@@ -1,0 +1,9 @@
+sz(720,360)
+frame()
+{
+for(i,0,100)
+{
+col(rnd(255),rnd(200),rnd(210))
+line(rnd(w),rnd(h),rnd(w),rnd(h))
+}
+}

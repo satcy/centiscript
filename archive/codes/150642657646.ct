@@ -1,0 +1,24 @@
+sz(720,360)bg(0)
+rad=(20)arad=(20)
+frame(){
+clr()col(170)
+p=vec2(0)
+n=vec2(0)
+n2=vec2(0)
+rad = (20)
+translate(cx,cy)
+for(i,0,60){
+    n.x=(cos(PI/10*i)*rad)
+    n.y=(sin(PI/10*i)*rad)
+    n2.x=(cos(PI/10*(i))*(rad+arad))
+    n2.y=(sin(PI/10*(i))*(rad+arad))
+    if(i>0){
+        tri(n.x, n.y, p.x, p.y, n2.x, n2.y)
+    }
+    p.x=(n.x)
+    p.y=(n.y)
+    if(i%20==19){
+        rad += (arad)
+    }
+}
+}

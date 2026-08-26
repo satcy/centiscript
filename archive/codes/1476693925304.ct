@@ -1,0 +1,8 @@
+sz(720,360)bg(0)a=([])
+frame(){
+clr()strk()
+o=Vec2(mx,my)a.push(o)
+l=(a.length)
+for(i,0,l){col(255)oval(a[i].x,a[i].y,15*(l-i))}
+a=clip(a,100)
+}

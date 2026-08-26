@@ -1,0 +1,4 @@
+sz(999,999)bg(0)frame(){
+a=(c*.1)b=(c*.7)strk()col(a%255,c%96,b%96)
+oval((sin(a)+1)*cx,(cos(a)+1)*cy,cx+(sin(b)+1)*20-10,cy+(cos(b)+1)*20-10)
+}

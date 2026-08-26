@@ -1,0 +1,19 @@
+sz(720,360)bg(200)bpm(120, 4)
+colors=([0xc5994c, 0xff3355])sc=([1])rot=(0)
+frame(){
+    clr()
+    translate(cx,cy)
+    for(i,0,2){
+        hcol(colors[(i+beat)%2])
+        push()
+        rotate(rot)
+        scale(i%2 ? sc[0] : 1, 1)
+        oval(0,0,h/2)
+        pop()
+    }
+}
+beat(){
+    rot=rnd(PI)
+    sc=([0])tsc=([1])
+    tween(sc).to(tsc, 500).easing(ExpoInOut).start()
+}

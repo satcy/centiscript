@@ -1,0 +1,21 @@
+sz(720,360)bg(180)
+freq=(440)
+vel=(0)
+bpm(120,8)
+frame(){
+	clr()hcol(0x024756)strk()lw(5)
+    for(i,0,12) {
+	    if ( beat%12 == i ) {
+            drawWave(0,i*h/12,w,h/12)
+        } else {
+            line(0,(i+0.5)*h/12, w, (i+0.5)*h/12)
+        }
+    }
+}
+dsp(){
+	vel+=((0 - vel)*0.0001)
+	return(sin(PI2*time*n2f(beat%12+12*5))*vel)
+}
+beat(){
+	vel=(1)
+}

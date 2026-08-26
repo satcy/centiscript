@@ -1,0 +1,16 @@
+sz(1536,1536)bg(0)x1=(0)y1=(0)d=(1)s=(40)cyc=(5.0)
+r=rnd(255)g=rnd(255)b=rnd(255)d=(1)strk()
+frame(){
+col(r,g,b)
+oval(x1+sin(PI*(c%cyc)/cyc)*s*0.5,y1+cos(PI*(c%cyc)/cyc)*s*0.5,rnd(20),ceil(rnd(6)))
+if(c%5==0){
+  x1+=(s)
+  y1+=(d*s)
+  d=(-d)
+}
+if(x1>w){
+x1=(0)
+y1+=(s*2.1)
+}
+r+=rnd(-10,10)g+=rnd(-10,10)b+=rnd(-10,10)
+}

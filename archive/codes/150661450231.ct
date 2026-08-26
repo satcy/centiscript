@@ -1,0 +1,18 @@
+sz(500,500)bg(200)bpm(120, 4)
+colors=([0xc5994c, 0xff3355, 0x2039ef])rot=(0)
+sc=([])
+for(i,0,4){
+sc[i]=vec2(0)
+tween(sc[i]).to(vec2(h/2.5), 500-i*30).delay(i*30).repeat(Infinity).easing(QuartOut).start()
+}
+frame(){
+    clr()
+    translate(cx,cy)
+    for(i,0,4){
+        hcol(colors[(i)%3])
+        push()
+        rotate(rot)
+        oval(0,0,i>0 ? sc[i].x : h/2.5)
+        pop()
+    }
+}

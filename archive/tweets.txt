@@ -1,0 +1,782 @@
+[
+    {
+        "url": "?f=1560957398783&t=FREQUENCY",
+        "user": "satcy",
+        "img": "archive/images/D9bwqwGUEAAaF95.jpg",
+        "id": "1141364176750698496"
+    },
+    {
+        "url": "?f=1537869509109&t=",
+        "user": "AsaiOnTheTable",
+        "img": "archive/images/Dn7nW6VU0AAYiSR.png",
+        "id": "1044526545681899521"
+    },
+    {
+        "url": "?f=1534406968189&t=cos(x)",
+        "user": "satcy",
+        "img": "archive/images/DktO0DcU4AELot_.jpg",
+        "id": "1030003600099966976"
+    },
+    {
+        "url": "?f=1496841411313&t=10/365%20jumpjumpjump%20-%20Primary%20Games",
+        "user": "motoishmz",
+        "img": "archive/images/DdXq-QUUQAAt-7X.jpg",
+        "id": "996961260888514560"
+    },
+    {
+        "url": "?f=1496841411313&t=10/365%20jumpjumpjump%20-%20Primary%20Games",
+        "user": "satcy",
+        "img": "archive/images/ebtxGIqSpTkTypUE.jpg",
+        "id": "996959304577048577"
+    },
+    {
+        "url": "?f=1518781714902&t=16bit%20Icons",
+        "user": "satcy",
+        "img": "archive/images/DWJ5N9bVwAA87NH.jpg",
+        "id": "964466555940564992"
+    },
+    {
+        "url": "?f=149559683256&t=missile%20command",
+        "user": "satcy",
+        "img": "archive/images/DTuJqNbV4AAknn6.jpg",
+        "id": "953507106765733888"
+    },
+    {
+        "url": "?f=1503644155793&t=",
+        "user": "satcy",
+        "img": "archive/images/DIDoB1kV0AATZU1.jpg",
+        "id": "900975046537101312"
+    },
+    {
+        "url": "?f=1496841411313&t=10/365%20jumpjumpjump%20-%20Primary%20Games",
+        "user": "satcy",
+        "img": "archive/images/DBuJm2tUwAE7u_E.jpg",
+        "id": "872442258787778560"
+    },
+    {
+        "url": "?f=1496305073640&t=9/365%20stacking%20tetris%20objects%20-%20Not%20Game",
+        "user": "satcy",
+        "img": "archive/images/DBOLnn6VoAAe06q.jpg",
+        "id": "870192667849744385"
+    },
+    {
+        "url": "?f=1496300902807&t=switch",
+        "user": "satcy",
+        "img": "archive/images/DBOBJT1VYAAOMce.jpg",
+        "id": "870181571143229440"
+    },
+    {
+        "url": "?f=1496034162287&t=",
+        "user": "satcy",
+        "img": "archive/images/DA-CMjgVwAABeWQ.jpg",
+        "id": "869056410738343936"
+    },
+    {
+        "url": "?f=1495596735953&t=asteroids'%20motion",
+        "user": "satcy",
+        "img": "archive/images/DAj9i9NWsAERpDh.jpg",
+        "id": "867221710956892162"
+    },
+    {
+        "url": "?f=1495111622583&t=",
+        "user": "2bbb",
+        "img": "archive/images/DAHC99XUQAEAGNu.jpg",
+        "id": "865186975531151360"
+    },
+    {
+        "url": "?f=149493429082&t=2/356%20tic%20tac%20toe%20(random)%20-%20Primary%20Games",
+        "user": "satcy",
+        "img": "archive/images/C_8efp_UAAATjjp.jpg",
+        "id": "864443184952123393"
+    },
+    {
+        "url": "?f=1494902875171&t=1/365%20void%20pong%20-%20Primary%20Games",
+        "user": "satcy",
+        "img": "archive/images/C_6mqCdVwAAXBCF.jpg",
+        "id": "864311421416255488"
+    },
+    {
+        "url": "?f=1494518075270&t=",
+        "user": "satcy",
+        "img": "archive/images/C_jqyhpVYAEIrzj.jpg",
+        "id": "862697486950907904"
+    },
+    {
+        "url": "?f=1493609393233&t=10",
+        "user": "satcy",
+        "img": "archive/images/C-tgbB5UQAAM7aB.jpg",
+        "id": "858886174718296064"
+    },
+    {
+        "url": "./",
+        "user": "IOTforce",
+        "img": "archive/images/C5h3KoLWMAE7zXe.jpg",
+        "id": "835548864044236800"
+    },
+    {
+        "url": "?f=1480307074195&t=TP1",
+        "user": "satcy",
+        "img": "archive/images/CyUoGP2UAAASqMe.jpg",
+        "id": "803092197901881348"
+    },
+    {
+        "url": "?f=1479263832192&t=????",
+        "user": "satcy",
+        "img": "archive/images/CxWcctvUUAANUOP.jpg",
+        "id": "798716529265127425"
+    },
+    {
+        "url": "?f=1479260741314&t=??????",
+        "user": "satcy",
+        "img": "archive/images/CxWQp2yVIAE7fZR.jpg",
+        "id": "798703559986450432"
+    },
+    {
+        "url": "?f=1478755689123&t=????????????????.?????:Mitsuo%20Katsui.",
+        "user": "satcy",
+        "img": "archive/images/Cw4KCOcVIAAr_1j.jpg",
+        "id": "796585219222425600"
+    },
+    {
+        "url": "?f=1476694982926&t=",
+        "user": "norimiso",
+        "img": "archive/images/Cu9VEB2VUAALNgo.jpg",
+        "id": "787941990054760448"
+    },
+    {
+        "url": "?f=147669425487&t=",
+        "user": "norimiso",
+        "img": "archive/images/Cu9SSBGUEAAcchA.jpg",
+        "id": "787938930960183296"
+    },
+    {
+        "url": "?f=1476693925304&t=MousePosition",
+        "user": "norimiso",
+        "img": "archive/images/Cu9RBqqUMAA46BO.jpg",
+        "id": "787937550652485633"
+    },
+    {
+        "url": "?f=147574167432&t=",
+        "user": "satcy",
+        "img": "archive/images/CuEgfBGUMAAgNHd.jpg",
+        "id": "783943530083291137"
+    },
+    {
+        "url": "?f=1463818376396&t=elseq",
+        "user": "satcy",
+        "img": "archive/images/Ci90tOzUgAA2-2H.jpg",
+        "id": "733933584944234496"
+    },
+    {
+        "url": "?f=1463620665402&t=trace%20Marcello%20Morandini's%20composition",
+        "user": "satcy",
+        "img": "archive/images/CiyCgJbVAAAuZPV.jpg",
+        "id": "733104328471273472"
+    },
+    {
+        "url": "?f=1463526604827&t=??%20Marcello%20Morandini's%20composition",
+        "user": "_danisdead",
+        "img": "archive/images/Cisbr-eVEAExZmb.jpg",
+        "id": "732709806897664000"
+    },
+    {
+        "url": "?f=1463526440670&t=??%20Marcello%20Morandini's%20composition",
+        "user": "satcy",
+        "img": "archive/images/CisbD56VAAIYYuC.jpg",
+        "id": "732709118780149761"
+    },
+    {
+        "url": "?f=1463501172857&t=??%20Marcello%20Morandini's%20composition",
+        "user": "satcy",
+        "img": "archive/images/Ciq6q89UoAANog9.jpg",
+        "id": "732603136712396801"
+    },
+    {
+        "url": "?f=1463490313840&t=Marcello%20Morandini%20composition",
+        "user": "satcy",
+        "img": "archive/images/CiqRP3XVEAERG-p.jpg",
+        "id": "732557591411200001"
+    },
+    {
+        "url": "?f=1463074197582&t=babyface",
+        "user": "satcy",
+        "img": "archive/images/CiRd42_VAAEJyez.jpg",
+        "id": "730812271400607748"
+    },
+    {
+        "url": "?f=1463070826750&t=wacom",
+        "user": "satcy",
+        "img": "archive/images/CiRRCEKUYAQgt1n.jpg",
+        "id": "730798135925047296"
+    },
+    {
+        "url": "?f=1463065226218&t=circle%20in%20circle%20nofill",
+        "user": "satcy",
+        "img": "archive/images/CiQ7qpVVAAQMRVt.jpg",
+        "id": "730774643594797057"
+    },
+    {
+        "url": "?f=1463054325535&t=Helmut's%20sequence",
+        "user": "satcy",
+        "img": "archive/images/CiQSFWDVAAAlOKP.jpg",
+        "id": "730728922753552384"
+    },
+    {
+        "url": "?f=1463050160689&t=circle%20in%20circle",
+        "user": "satcy",
+        "img": "archive/images/CiQCMpLUUAAbbVc.jpg",
+        "id": "730711456069521408"
+    },
+    {
+        "url": "https://t.co/dV7d6DvuQB",
+        "user": "enjoygms",
+        "img": "archive/images/BwF9uOeCUAAOpIZ.png",
+        "id": "573728629827330048"
+    },
+    {
+        "url": "?f=1423163129262&t=",
+        "user": "satcy",
+        "img": "archive/images/B9GlPxYCYAE3eIh.png",
+        "id": "563413118898819072"
+    },
+    {
+        "url": "?f=1420038374809&t=NEW%20YEAR!!!!!",
+        "user": "satcy",
+        "img": "archive/images/B6MVQgWIMAIOlS2.png",
+        "id": "550306952862265344"
+    },
+    {
+        "url": "?f=1419510536421&t=HALF%20AND%20HALF",
+        "user": "satcy",
+        "img": "archive/images/B5s3tcpCUAA8xFp.png",
+        "id": "548093033695023105"
+    },
+    {
+        "url": "?f=1416743229713&t=glitch(from%200.4.8)",
+        "user": "satcy",
+        "img": "archive/images/B3H7Rd2CQAILdRU.png",
+        "id": "536486108310167552"
+    },
+    {
+        "url": "?f=1416423148347&t=????",
+        "user": "satcy",
+        "img": "archive/images/B202Q3LIAAEGurt.png",
+        "id": "535143594408300544"
+    },
+    {
+        "url": "?f=1416326313386&t=DrawTweet",
+        "user": "satcy",
+        "img": "archive/images/B2vE3RrCUAIRJ12.png",
+        "id": "534737434924163072"
+    },
+    {
+        "url": "?f=141632561726&t=DrawTweet",
+        "user": "satcy",
+        "img": "archive/images/B2vCNUiCcAAXYcT.png",
+        "id": "534734515080400896"
+    },
+    {
+        "url": "?f=1416272140670&t=DrawTweet",
+        "user": "satcy",
+        "img": "archive/images/B2r2NlbCIAA0K0j.png",
+        "id": "534510219200454657"
+    },
+    {
+        "url": "?f=14162379701&t=DrawTweet",
+        "user": "satcy",
+        "img": "archive/images/B2pz3B9CIAEB_Rw.png",
+        "id": "534366895294513152"
+    },
+    {
+        "url": "?c=sz(960%2C320)bg(0)a%3D(%5B%5D)num%3D(3)cw%3D(w%2Fnum)%0Afor(i%2C0%2Cnum)%7Ba.push(%5B0%5D)tween(a%5Bi%5D).to(%5B255%5D%2C199%2Bi*33).easing(SineInOut).yoyo(1).repeat(Infinity).start()%7D%0Aframe()%7B%0Aclr()grad(0%2C0%2C0%2Ch)gradHex(0.5%2C0xFFFFFF)gradHex(1%2C0)gradHex(0%2C0)rect(0%2C0%2Cw%2Ch)for(i%2C0%2Cnum)%7Bcol(0%2Ca%5Bi%5D)rect(i*cw%2C0%2Ccw%2Ch)%7D%0A%7D&t=frequencies",
+        "user": "satcy",
+        "img": "archive/images/B2aPH5iCIAAxB3A.png",
+        "id": "533270971948343296"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)a%3D(%5B%5D)num%3D(5)rad%3D(w%2F2%2Fnum)%0Afor(i%2C0%2Cnum)%7B%0Ap%3Dvec2(0%2Crad)a.push(p)t%3Dvec2(0%2Ch-rad)%0Atween(p).to(t%2C999%2Bi*33).easing(ease.Bounce.Out).yoyo(1).repeat(Infinity).start()%0A%7D%0Aframe()%7B%0Aclr()grad(0%2C0%2Cw%2Ch)gradHex(0%2C0xff0000)gradHex(1%2C0x00ffff)%0Afor(i%2C0%2Cnum)%7Boval(i*rad*2%2Brad%2Ca%5Bi%5D.y%2Crad)%7D%0A%7D&t=%E3%82%B0%E3%83%A9%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8Tween(from%20ver.0.4.5",
+        "user": "satcy",
+        "img": "archive/images/B2PmtiKCYAA1Dy6.png",
+        "id": "532522851165679616"
+    },
+    {
+        "url": "?c=sz(720%2C720)bg(0)cl%3D(3)num%3D(100)a%3D(%5B%5D)for(j%2C0%2C%20cl)%7Ba%5Bj%5D%3D(%5B%5D)for(i%2C0%2Cnum)%7Ba%5Bj%5D%5Bi%5D%3DVec2(cx%2Ccy)%7D%7Dframe()%7B%0Aclr()col(255)fill()%0Afor(j%2C0%2Ccl)%7B%0Acol(100%2Bj*50)%0Afor(i%2C0%2Cnum-1)%7Ba%5Bj%5D%5Bi%5D.x%3D(a%5Bj%5D%5Bi%2B1%5D.x)a%5Bj%5D%5Bi%5D.y%3D(a%5Bj%5D%5Bi%2B1%5D.y)%7D%0Alast%3D(a%5Bj%5D%5Bnum-1%5D)%0Alast.x%2B%3D(nz(c%2F(90%2Bj*10)%2Cj)*(40%2Bj*9))%20last.y%2B%3D(nz(c%2F(77%2Bj*9)%2Cj)*(40%2Bj*9))%0Alast.x%2B%3D((cx-last.x)*0.03)last.y%2B%3D((cy-last.y)*0.03)%0Aa2%3Dstrk2fill(a%5Bj%5D%2C69%2C20)%0AbeginShape()lines(a2%2C1)endShape()%0A%7D%0A%7D&t=%E4%B8%8D%E7%B4%B0%E5%B7%A5%E3%81%AA%E7%B7%9A",
+        "user": "satcy",
+        "img": "archive/images/B1wy5dnCEAAY_Id.png",
+        "id": "530354819169406976"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)strk()NUM%3D(50)lw(10)CW%3D(w%2F(NUM-1))cols%3D(%5B0xFF0000%2C0x00FF00%2C0x0000FF%5D)%0Aframe()%7B%0Aclr()bm(2)%0Afor(i%2C0%2C3)%7B%0AbeginShape()hcol(cols%5Bi%5D)%0Afor(j%2C0%2CNUM)%7BlineTo(CW*j%2Ccy%2Bnz(j%2F9%2Ci%2F5%2Cc*0.03)*h%2F2)%7D%0AendShape()%0A%7D%0Aif(c%2560%3C30)%7Bbm(0)mosaic(rnd(10%2C20))%0A%7Delse%7Bbm(2)shrink(1%2Crnd(90%2C100))%7D%0A%7D&t=Shrink%26Mosaic(from%200.4.2",
+        "user": "satcy",
+        "img": "archive/images/B1Hc4KrCYAAjt0p.png",
+        "id": "527445489147314176"
+    },
+    {
+        "url": "?c=sz(640%2C360)bg(0)a%3D(%5B1%5D)strk()c0%3D(0)lc(1)lj(1)lw(20)%0Afor(i%2C0%2C200)%7Bpt%3DObj()pt.x%3D(nz(i%2F43)*w%2Bcx)pt.y%3D(nz(i%2F49)*h%2Bcy)a.push(pt)%7D%0Aframe()%7B%0Aclr()%0Acol(255)%0Al%3D(a.length)%0AbeginShape()%0Aif(l%3E1)%7B%0Afor(i%2C0%2Cl)%7B%0Aif(a%5Bi%5D%3D%3D(1))%7B%0Ai%2B%3D(1)%0AmoveTo((down)%3Fa%5Bi%5D.x%3A((a%5Bi%5D.x-cx)*cos((c%2Bi*2)*0.1)%2Bcx)%2Ca%5Bi%5D.y)%0A%7Delse%7B%0AlineTo((down)%3Fa%5Bi%5D.x%3A((a%5Bi%5D.x-cx)*cos((c%2Bi*2)*0.1)%2Bcx)%2Ca%5Bi%5D.y)%0A%7D%0A%7D%0A%7D%0AendShape()%0A%7D%0Amove()%7Bif(down)%7Bpt%3DObj()pt.x%3D(mx)pt.y%3D(my)a.push(pt)%7D%7D%0Adown()%7Ba%3D(%5B1%5D)%7D&t=rotateY",
+        "user": "satcy",
+        "img": "archive/images/B1DhkjyCQAA6nCu.png",
+        "id": "527169174875799552"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)freq%3Dn2f(24)mod%3D(1)bpm(160%2C16)bn%3D(1)%0Aframe()%7B%0Aclr()col(255)%0An%3D(wave.length)cep%3D(w%2Fn)%0Afor(i%2C0%2Cn)%7B%0Aval%3D(wave%5Bi%5D)col(abs(val)*5*255)%0Arect(i*cep%2Ccy%2Ccep%2Ch*val%2Fabs(val))%0A%7D%0A%7D%0Adsp()%7Breturn(sin(time*PI*freq%2Bnz(time*96000%2Cbeat%254)*PI*bn)*cos(time*PI*mod)%2F5)%7D%0Abeat()%7Bmod%3D((beat%2F16%254%2Bbeat%2F17%254)*7%2B1)bn%3D(((beat%258)*(beat%2F3%254%2B1)%25(floor(c%2F60%2B1)%253%2B2))%3D%3D0)%7D&t=%E9%9F%B3%E6%B3%A8%E6%84%8F",
+        "user": "satcy",
+        "img": "archive/images/B1DRvETCEAAVPr_.png",
+        "id": "527151763183247360"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)a%3D(%5B%5D)%0Aframe()%7B%0Aclr()%0Ao%3DVec2(mx%2Brnd(-1%2C1)*100%2Cmy%2Brnd(-1%2C1)*100)o.life%3Drnd(1)a.push(o)%0Afor(i%2C0%2Ca.length)%7Bcol(255%2Ca%5Bi%5D.life*255)oval(a%5Bi%5D.x%2Ca%5Bi%5D.y%2Ca%5Bi%5D.life*100)a%5Bi%5D.y%2B%3D(9)a%5Bi%5D.life-%3D(0.03)%7D%0Aa%3Dremove(a%2CisLifeZero)%0A%7D%0AisLifeZero%3Dfunc()%7Breturn(%240.life%3C%3D0)%7D&t=test%20remove",
+        "user": "satcy",
+        "img": "archive/images/B1DQGtqCIAAoo-X.png",
+        "id": "527149970353184768"
+    },
+    {
+        "url": "?c=sz(720,360)bg(0)strk()frame()%7Bcrash(c%254)col(255)oval(cx,cy,h/2,rnd(3,9))%7D&t=crash",
+        "user": "satcy",
+        "img": "archive/images/B0_9NoLCUAAoaX8.png",
+        "id": "526918092249505792"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)a%3D(%5B%5D)%0Aframe()%7B%0Aclr()strk()%0Ao%3DVec2(mx%2Cmy)a.push(o)%0Al%3D(a.length)%0Afor(i%2C0%2Cl)%7Bcol(255)oval(a%5Bi%5D.x%2Ca%5Bi%5D.y%2C15*(l-i))%7D%0Aa%3Dclip(a%2C100)%0A%7D&t=MousePosition",
+        "user": "satcy",
+        "img": "archive/images/B09q0BzCUAAFNjP.png",
+        "id": "526757123862970368"
+    },
+    {
+        "url": "?c=sz(720,360)bg(0)frame()%7Bclr()col(255)for(i,0,21)%7Bfor(j,0,11)%7Boval(i*36,j*36,18,sin(c/55+j*(i+c/99))*3+6)%7D%7D%7D&t=Circle%20Resolution",
+        "user": "satcy",
+        "img": "archive/images/Bz_6PMpCEAAZKS9.png",
+        "id": "522411220981149696"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)%0ANUM%3D(50)%0ACW%3D(w%2F(NUM-1))%0ACR%3D(PI%2F(NUM-1))%0Acols%3D(%5B0xFF0000%2C0x00FF00%2C0x0000FF%5D)%0Abm(2)%0Aframe()%7B%0Aclr()%0Afor(i%2C0%2C3)%7B%0AbeginShape()%0Ahcol(cols%5Bi%5D)%0Afor(j%2C0%2CNUM)%7B%0Ax%3D(CW*j)%0Ay%3D(h-sin(CR*j)*(nz(j%2F9%2Ci%2F5%2Cc*0.03)%2B1)*h%2F2)%0AlineTo(x%2Cy)%0A%7D%0AendShape()%0A%7D%0A%7D&t=Blendmode",
+        "user": "satcy",
+        "img": "archive/images/Bz9NaDwCUAErQio.png",
+        "id": "522221192116068352"
+    },
+    {
+        "url": "?c=sz(1280%2C720)bg(0)%0Astrk()%0ANUM%3D(30)cnt%3D(0)arr%3D(%5B%5D)ly%3D(0)%0Acep%3D(50*sqrt(3))%0Afor(j%2C0%2CNUM)%7B%0Aob%3Dobj()ob.x%3D(0)ob.y%3D(0)ob.c%3D(0)ob.m%3D(100)ob.p%3Dfloor(rnd(100))%0Aarr.push(ob)%7D%0Aframe()%7B%0Aclr()%0Acol(255)%0Aif(c%256%3D%3D0)%7B%0Awm%3D(arr%5Bcnt%5D)wm.c%3D(1)wm.x%3D(cx)wm.y%3D(ly-cep*(floor(ly%2Fcep)))%0Acnt%2B%3D(1)%0Aif(cnt%3E%3DNUM)%7Bcnt%3D(0)%7D%0A%7D%0Afor(j%2C0%2CNUM)%7B%0Awm%3D(arr%5Bj%5D)%0Aif(wm.c%3E(0)%26%26wm.c%3C(wm.m*2))%7B%0Alines(wm)%0Awm.y%2B%3D(1)%0Awm.c%2B%3D(1)%0Aly%3D(wm.y)%0A%7D%0A%7D%0A%7D%0Alines%3Dfunc()%7B%0Ao%3D(%240)%0An%3D(o.p)cr%3D(PI%2F1.5)%0Ax%3D(o.x)y%3D(o.y)%0Arad%3D(n*cr*2)arc%3D(50)%0AbeginShape()%0As%3D(o.c-o.m)%0As%3D(s%3C0)%3F(0)%3A(s)%0Al%3D(o.c%3Eo.m)%3F(o.m)%3A(o.c)%0Afor(i%2C0%2Cl)%7B%0Aval%3Dfloor(nz(n%2Ci*0.09)*5)%0Arad%2B%3D(val*cr)%0Ax%2B%3D(cos(rad)*arc)%0Ay%2B%3D(sin(rad)*arc)%0Aif(i%3E%3Ds)%7BlineTo(x%2Cy)%7D%0A%7D%0AendShape()%0A%7D&t=TriadWarm",
+        "user": "satcy",
+        "img": "archive/images/BzG9c22CQAIGss9.png",
+        "id": "518403735957929984"
+    },
+    {
+        "url": "?c=sz(720%2C405)bg(255)N%3D(99)R%3D(15)%0Acols%3D(%5B0x33ffEE%2C0xCF3EAE%5D)%0Aframe()%7B%0Afor(j%2C0%2C3)%7B%0Ax%3D(cx)y%3D(cy)%0Afor(i%2C0%2CN)%7B%0Ahcol(cols%5Bfloor(nz(i%2F6%2Cc%2F60)%2B1)%5D)%0Ar%3Dj*PI2%2F3%2BPI%2F3*floor(5*nz(i%2F10%2Cc%2F100))%0Aoval(x%2Cy%2CR%2F2)%0Ax%2B%3DR*cos(r)%0Ay%2B%3DR*sin(r)%0A%7D%0A%7D%0A%7D&t=KNIT",
+        "user": "satcy",
+        "img": "archive/images/Bxqz7gyCIAAe6PF.png",
+        "id": "511919342930243584"
+    },
+    {
+        "url": "?c=sz(720%2C%20480)%0Abin%20%3D%20(%5B1%2C%202%2C%2011%2C%2019%2C%2020%2C%2029%2C%2037%5D)%0Adata%20%3D%20(%5B0x77%2C%200x24%2C%200x5D%2C%200x6D%2C%200x2E%2C%200x6B%2C%200x7B%2C%200x25%2C%200x7F%2C%200x6F%5D)%0Aseg%20%3D%20func()%20%7B%0A%20%20num%20%3D%20(data%5B%240%5D)%0A%20%20for(i%2C%200%2C%207)%20%7B%0A%20%20%20%20if(num%20%26%201)%20%7B%0A%20%20%20%20%20%20line(%241%20%2B%20%243%20*%20((bin%5Bi%5D%20%26%207)%20%26%201)%2C%20%242%20%2B%200.5%20*%20%244%20*%20((bin%5Bi%5D%20%26%207)%20%3E%3E%201)%2C%20%20%241%20%2B%20%243%20*%20((bin%5Bi%5D%20%3E%3E%203)%20%26%201)%2C%20%242%20%2B%200.5%20*%20%244%20*%20((bin%5Bi%5D%20%3E%3E%203)%20%3E%3E%201))%0A%20%20%20%20%7D%0A%20%20%20%20num%20%3D%20(num%20%3E%3E%201)%0A%20%20%7D%0A%7D%0Abg(0)%0Afn%20%3D%20(0)%0Aframe()%20%7B%0A%20%20col(0%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(255)%0A%20%20for(m%2C%200%2C%2032)%20%7B%0A%20%20%20%20for(n%2C%200%2C%2080)%20%7B%0A%20%20%20%20%20%20seg(((noise(n%20%2F%2019%2C%20m%20%2F%207%2C%20fn)%20%2B%201.0)%20*%205)%20%7C%200%2C%201%20%2B%209%20*%20n%2C%202%20%2B%2015%20*%20m%2C%205%2C%2010)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(0.02)%0A%7D&t=%E3%81%95%E3%81%99%E3%81%8C%E3%81%AB%E9%87%8D%E3%81%95%E6%84%9F%E3%81%98%E3%82%8B",
+        "user": "2bbb",
+        "img": "archive/images/BxgQJCtCcAIsuBl.png",
+        "id": "511176305509818368"
+    },
+    {
+        "url": "?c=sz(720%2C%20480)%0Abin%20%3D%20(%5B1%2C%202%2C%2011%2C%2019%2C%2020%2C%2029%2C%2037%5D)%0Adata%20%3D%20(%5B0x77%2C%200x24%2C%200x5D%2C%200x6D%2C%200x2E%2C%200x6B%2C%200x7B%2C%200x25%2C%200x7F%2C%200x6F%5D)%0Aseg%20%3D%20func()%20%7B%0A%20%20num%20%3D%20(data%5B%240%5D)%0A%20%20for(i%2C%200%2C%207)%20%7B%0A%20%20%20%20if(num%20%26%201)%20%7B%0A%20%20%20%20%20%20line(%241%20%2B%20%243%20*%20((bin%5Bi%5D%20%26%207)%20%26%201)%2C%20%242%20%2B%200.5%20*%20%244%20*%20((bin%5Bi%5D%20%26%207)%20%3E%3E%201)%2C%20%20%241%20%2B%20%243%20*%20((bin%5Bi%5D%20%3E%3E%203)%20%26%201)%2C%20%242%20%2B%200.5%20*%20%244%20*%20((bin%5Bi%5D%20%3E%3E%203)%20%3E%3E%201))%0A%20%20%20%20%7D%0A%20%20%20%20num%20%3D%20(num%20%3E%3E%201)%0A%20%20%7D%0A%7D%0Abg(255)%0Afn%20%3D%20(0)%0Aframe()%20%7B%0A%20%20col(255%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(0)%0A%20%20for(m%2C%200%2C%208)%20%7B%0A%20%20%20%20for(n%2C%200%2C%2020)%20%7B%0A%20%20%20%20%20%20seg(((noise(n%20%2F%2019%2C%20m%20%2F%207%2C%20fn)%20%2B%201.0)%20*%205)%20%7C%200%2C%206%20%2B%2040%20*%20n%2C%205%20%2B%2060%20*%20m%2C%2025%2C%2050)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(0.02)%0A%7D&t=7segs",
+        "user": "2bbb",
+        "img": "archive/images/BxgF6MSCEAAF0wq.png",
+        "id": "511165055308537856"
+    },
+    {
+        "url": "?c=sz(400%2C%20100)%0Abg(0)%0Abin%20%3D%20(%5B1%2C%202%2C%2011%2C%2019%2C%2020%2C%2029%2C%2037%5D)%0Adata%20%3D%20(%5B0x77%2C%200x24%2C%200x5D%2C%200x6D%2C%200x2E%2C%200x6B%2C%200x7B%2C%200x25%2C%200x7F%2C%200x6F%5D)%0Aseg%20%3D%20func()%20%7B%0A%20%20n%20%3D%20(data%5B%240%5D)%0A%20%20for(i%2C%200%2C%207)%20%7B%0A%20%20%20%20if(n%20%26%201)%20%7B%0A%20%20%20%20%20%20p%20%3D%20(bin%5Bi%5D%20%26%207)%0A%20%20%20%20%20%20q%20%3D%20(bin%5Bi%5D%20%3E%3E%203)%0A%20%20%20%20%20%20line(%241%20%2B%20%243%20*%20(p%20%26%201)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%242%20%2B%200.5%20*%20%244%20*%20(p%20%3E%3E%201)%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%241%20%2B%20%243%20*%20(q%20%26%201)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%242%20%2B%200.5%20*%20%244%20*%20(q%20%3E%3E%201))%0A%20%20%20%20%7D%0A%20%20%20%20n%20%3D%20(n%20%3E%3E%201)%0A%20%20%7D%0A%7D%0Af%20%3D%20(0)%0Aframe()%7B%0A%20%20clr()%0A%20%20col(255)%0A%20%20g%20%3D%20(f)%0A%20%20for(j%2C%200%2C%208)%20%7B%0A%20%20%20%20seg(g%20%25%2010%2C%205%20%2B%2050%20*%20(7%20-%20j)%2C%2010%2C%2040%2C%2080)%0A%20%20%20%20g%20%3D%20((g%20%2F%2010)%20%5E%200)%0A%20%20%7D%0A%20%20f%20%3D%20(f%20%2B%201)%0A%7D&t=7seg",
+        "user": "2bbb",
+        "img": "archive/images/BxcHCBHCYAAjNeW.png",
+        "id": "510884814824562688"
+    },
+    {
+        "url": "?c=sz(720%2C405)bg(0)cols%3D(%5B0x00FEAF%2C0x00130F%2C0xEFEFEF%2C0xFF4466%5D)%0Ag%3Dgrid(w%2Ch%2C16%2C9)l%3D(g.length)%0Aframe()%7B%0Amod%3D(sin(c%2F100%2Bcos(c%2F30))%2F10%2B3)%0Afor(i%2C0%2Cl)%7B%0Au%3D(g%5Bi%5D)f%3D(i%2F59%2Bc%2F200)%0Ahcol(cols%5Bfloor((sin(f%2Bu.ix*mod)%2B1)*2)%5D)%0Atri(u.x%2Cu.y%2Cu.x%2Bu.w%2Cu.y%2Cu.x%2Bu.iy%252*u.w%2Cu.y%2Bu.h)%0Ahcol(cols%5Bfloor((cos(f%2Bu.iy)%2B1)*2)%5D)%0Atri(u.x%2B(1-u.iy%252)*u.w%2Cu.y%2Cu.x%2Bu.w%2Cu.y%2Bu.h%2Cu.x%2Cu.y%2Bu.h)%0A%7D%0A%7D&t=SWIPE",
+        "user": "satcy",
+        "img": "archive/images/Bxa-ZA7CMAAz9tB.png",
+        "id": "510804944912261120"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0)%0Anx%3D(30)%0Any%3D(20)%0Acx%3D(w%2Fnx)%0Acy%3D(h%2Fny)%0A%0Aframe()%7B%0Aclr()%0Afor(y%2C0%2Cny)%7B%0Afor(x%2C-1%2Cnx%2B1)%7B%0Aif((x%2By)%252%3D%3D0)%7B%0Acol(255)%0Arect(x*cx%2Bnz(y%2Cc%2F77)*cx%2C%20y*cy%2C%20cx%2C%20cy-2)%0A%7D%0A%7D%0A%7D%7D&t=%E6%96%9C%E3%82%81%E3%81%AB%E8%A6%8B%E3%81%88%E3%81%A1%E3%82%83%E3%81%86%E3%82%A2%E3%83%AC",
+        "user": "unamu",
+        "img": "archive/images/BxUQPfuCQAAIDD8.png",
+        "id": "510331992341106688"
+    },
+    {
+        "url": "?c=b%2520=%2520(500)s%2520=%2520(50)sz(b,b)bg(0)a=(%5B%5D)for(i,0,s*s)%257Ba%5Bi%5D=obj()a%5Bi%5D.x=(i%25s)a%5Bi%5D.y=(floor(i/s))a%5Bi%5D.cl=(%5Brnd(255),rnd(255),rnd(255)%5D)a%5Bi%5D.p=(floor(rnd(5)))%257Dframe()%257Bfor(i,0,s*s)%257Bcol(a%5Bi%5D.cl%5B0%5D,a%5Bi%5D.cl%5B1%5D,a%5Bi%5D.cl%5B2%5D)oval(a%5Bi%5D.x,a%5Bi%5D.y,1)%257Dfor(i,0,30)%257Bc%2520=%2520floor(rnd(s*s))if(a%5Bc-s%5D)%257Ba%5Bc-s%5D.cl%2520-=1%257Dif(a%5Bc+s%5D)%257Ba%5Bc+s%5D.cl%2520-=1%257D%257DdrawMe(0,0,s,s,0,0,b,b)%257D&t=DEFRAG",
+        "user": "qanta",
+        "img": "archive/images/BxUO6mzCAAApKLG.png",
+        "id": "510330533075644416"
+    },
+    {
+        "url": "?c=cs%20%3D%20(%5B%5B215%2C212%2C203%5D%2C%5B63%2C157%2C115%5D%2C%5B188%2C172%2C158%5D%2C%5B146%2C199%2C155%5D%5D)%0Ao%20%3D%20(320)%0Amr%20%3D%20(o%20*%202)%0Amax%20%3D%20(80)%0Af%20%3D%20(0)%0Al%20%3D%20(0)%0Ap%20%3D%20(%5B%5D)%0Asz(o*2%2Co*2)%0Abg(18%2C30%2C42)%0A%0Apush()%0Atranslate(o%2C%20o)%0Arotate(PI%2F4)%0A%0Aframe()%7B%0A%09if%20(f%2B%2B%2510%20%3D%3D%200%20%26%26%20p.length%20%3C%3D%20max)%20%7B%0A%09%09i%20%3D%20(p.length)%0A%09%09p%5Bi%5D%20%3D%20obj()%0A%09%09p%5Bi%5D.r%20%3D%20(0)%0A%09%09p%5Bi%5D.a%20%3D%20rnd(2*PI)%0A%09%09p%5Bi%5D.m%20%3D%20(0)%0A%09%09p%5Bi%5D.c%20%3D%20cs%5Bfloor(rnd(4))%5D%0A%09%7D%0A%0A%09len%3D(p.length)%0A%09for(i%2C0%2Cp.length)%20%7B%0A%09%09j%20%3D%20(p.length-i-1)%0A%09%09a%20%3D%20(p%5Bj%5D.a)%0A%09%09x%20%3D%20(p%5Bj%5D.r*(%20cos(a)%20%2B%20cos(6*a)%2F6%20))%0A%09%09y%20%3D%20(p%5Bj%5D.r*(%20sin(a)%20-%20sin(6*a)%2F6%20))%0A%0A%09%09col(p%5Bj%5D.c%5B0%5D%2Cp%5Bj%5D.c%5B1%5D%2Cp%5Bj%5D.c%5B2%5D)%0A%09%09oval(x%2C%20y%2C%20rnd(1)%2B1)%0A%09%09%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%200)%7B%0A%09%09%09p%5Bj%5D.r%20%3D%20((p%5Bj%5D.r%20%2B%201)%20%25%20mr)%0A%09%09%7D%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%201)%7B%0A%09%09%09p%5Bj%5D.a%20%2B%3D%20(1%2Fp%5Bj%5D.r)%0A%09%09%7D%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%202)%7B%0A%09%09%09p%5Bj%5D.a%20-%3D%20(1%2Fp%5Bj%5D.r)%0A%09%09%7D%0A%0A%09%09if%20(rnd(50)%20%3C%201)%7B%0A%09%09%09p%5Bj%5D.m%20%3D%20floor(rnd(3))%0A%09%09%7D%0A%09%7D%0A%7D&t=%E3%81%8F%E3%82%82%E3%81%AE%E3%81%99",
+        "user": "Voxel_pm",
+        "img": "archive/images/BxTaK6iCYAEt0HJ.png",
+        "id": "510272539298242561"
+    },
+    {
+        "url": "?c=sz(0.5%2C0.5)bg(0)wh%3D(w%2Bh)w2%3D(wh%2F20)w3%3D(wh%2F6)N%3D(99)v%3D(3)tv%3D(3)vol%3D(0)bpm(137%2C4)%0Abeat()%7Btv%3Dfloor(rnd(3%2C10))vol%3D(1)%7D%0Adsp()%7Bvol%2B%3D((0-vol)%2F1999)return(sin(time*PI2*n2f((10-tv)*7%2B60))*vol)%7D%0Aframe()%7Bclr()f%3D(c%2F100%2Bv)cnt%3D(0)v%2B%3D((tv-v)*0.2)r%3D(PI2%2Fv)cr%3D(r%2FN)for(j%2C0%2Cv)%7Bx1%3D(cos(r*j%2Bf)*w3)y1%3D(sin(r*j%2Bf)*w3)nr%3Dr*(j%2B1)l%3D(N)if(j%2B1%3Ev)%7Bnr%3D(0)l%3D(N*(v-j))%7Dx2%3D(cos(nr%2Bf)*w3)y2%3D(sin(nr%2Bf)*w3)for(i%2C0%2Cl)%7Bx3%3Dinterp(x2%2Cx1%2Ci%2Fl)y3%3Dinterp(y2%2Cy1%2Ci%2Fl)push()translate(x3%2Bcx%2C%20y3%2Bcy)rotate(cnt)col((sin(cnt%2Bf)%2B1)*127%2C%20(sin(cnt%2Bf%2F3)%2B1)*127%2C%20(cos(cnt*2%2Bf%2F2)%2B1)*127)rect(-w2%2F2%2C-w2%2F2%2Cw2%2Cw2)pop()cnt%2B%3D(cr)%7D%7D%7D&t=%E9%9F%B3%E4%BB%98%E3%81%8D",
+        "user": "satcy",
+        "img": "archive/images/BxPZRSZCQAExxXy.png",
+        "id": "509990074461589504"
+    },
+    {
+        "url": "?c=cs%20%3D%20(%5B%5B219%2C75%2C100%5D%2C%5B115%2C190%2C192%5D%2C%5B196%2C233%2C186%5D%2C%5B103%2C77%2C113%5D%5D)%0Ao%20%3D%20(320)%0Amr%20%3D%20(o%20*%20sqrt(2))%0Amax%20%3D%20(80)%0Af%20%3D%20(0)%0Al%20%3D%20(0)%0Ap%20%3D%20(%5B%5D)%0Asz(o*2%2Co*2)%0Abg(189)%0A%0Aframe()%7B%0A%09if%20(f%2B%2B%2510%20%3D%3D%200%20%26%26%20p.length%20%3C%3D%20max)%20%7B%0A%09%09i%20%3D%20(p.length)%0A%09%09p%5Bi%5D%20%3D%20obj()%0A%09%09p%5Bi%5D.r%20%3D%20(0)%0A%09%09p%5Bi%5D.a%20%3D%20rnd(2*PI)%0A%09%09p%5Bi%5D.m%20%3D%20(0)%0A%09%09p%5Bi%5D.c%20%3D%20cs%5Bfloor(rnd(4))%5D%0A%09%7D%0A%0A%09len%3D(p.length)%0A%09for(i%2C0%2Cp.length)%20%7B%0A%09%09j%20%3D%20(p.length-i-1)%0A%09%09x%20%3D%20(o%2Bp%5Bj%5D.r*cos(p%5Bj%5D.a))%0A%09%09y%20%3D%20(o%2Bp%5Bj%5D.r*sin(p%5Bj%5D.a))%0A%0A%09%09col(p%5Bj%5D.c%5B0%5D%2Cp%5Bj%5D.c%5B1%5D%2Cp%5Bj%5D.c%5B2%5D)%0A%09%09oval(x%2C%20y%2C%20rnd(1)%2B1)%0A%09%09%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%200)%7B%0A%09%09%09p%5Bj%5D.r%20%3D%20((p%5Bj%5D.r%20%2B%201)%20%25%20mr)%0A%09%09%7D%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%201)%7B%0A%09%09%09p%5Bj%5D.a%20%2B%3D%20(1%2Fp%5Bj%5D.r)%0A%09%09%7D%0A%09%09if%20(p%5Bj%5D.m%20%3D%3D%202)%7B%0A%09%09%09p%5Bj%5D.a%20-%3D%20(1%2Fp%5Bj%5D.r)%0A%09%09%7D%0A%0A%09%09if%20(rnd(50)%20%3C%201)%7B%0A%09%09%09p%5Bj%5D.m%20%3D%20floor(rnd(3))%0A%09%09%7D%0A%09%7D%0A%7D&t=%E6%94%BE%E5%B0%84%E7%B7%9A%E3%81%A8%E7%92%B0%E7%8A%B6%E7%B7%9A",
+        "user": "Voxel_pm",
+        "img": "archive/images/BxMsOWDCIAA9VcN.png",
+        "id": "509799808240852992"
+    },
+    {
+        "url": "?c=sz(0.5%2C0.5)bg(0)N%3D(200)r%3D(PI2%2F3)cr%3D(r%2FN)wh%3D(w%2Bh)w2%3D(wh%2F20)w3%3D(wh%2F6)%0Aframe()%7B%0Aclr()f%3D(c%2F100)cnt%3D(0)%0Afor(j%2C0%2C3)%7B%0Ax1%3D(cos(r*j%2Bf)*w3)y1%3D(sin(r*j%2Bf)*w3)%0Ax2%3D(cos(r*(j%2B1)%2Bf)*w3)y2%3D(sin(r*(j%2B1)%2Bf)*w3)%0Afor(i%2C0%2CN)%7B%0Ax3%3Dinterp(x2%2Cx1%2Ci%2FN)y3%3Dinterp(y2%2Cy1%2Ci%2FN)%0Apush()translate(x3%2Bcx%2C%20y3%2Bcy)rotate(cnt)%0Acol((sin(cnt%2Bf)%2B1)*127%2C%20(sin(cnt%2Bf%2F3)%2B1)*127%2C%20(cos(cnt%2Bf%2F2)%2B1)*127)%0Arect(-w2%2F2%2C-w2%2F2%2Cw2%2Cw2)%0Apop()%0Acnt%2B%3D(cr)%0A%7D%0A%7D%0A%7D",
+        "user": "satcy",
+        "img": "archive/images/BxMo5BRCEAAk2Lp.png",
+        "id": "509796143132209152"
+    },
+    {
+        "url": "?c=qp%20%3D%20(%5B22%2C24%2C23%2C23%2C23%2C23%2C19%2C6%2C7%2C8%2C8%2C7%2C6%2C19%2C23%2C24%2C23%2C23%2C25%2C22%2C23%2C25%2C25%2C25%2C22%2C9%2C8%2C7%2C7%2C7%2C7%2C8%2C8%2C8%2C8%2C22%2C25%2C25%2C24%2C24%2C24%2C25%2C22%2C20%2C9%2C6%2C2%2C6%2C6%2C5%2C7%2C5%2C5%2C11%2C10%2C9%2C19%2C23%2C25%2C23%2C23%2C25%2C19%2C3%2C8%2C0%2C0%2C7%2C7%2C7%2C7%2C7%2C7%2C9%2C13%2C10%2C4%2C19%2C24%2C24%2C23%2C23%2C9%2C8%2C0%2C0%2C7%2C10%2C8%2C10%2C9%2C9%2C10%2C7%2C9%2C12%2C10%2C9%2C23%2C23%2C23%2C9%2C6%2C0%2C0%2C7%2C15%2C19%2C17%2C17%2C16%2C17%2C18%2C12%2C8%2C8%2C13%2C10%2C8%2C23%2C18%2C8%2C5%2C0%2C6%2C15%2C22%2C24%2C21%2C23%2C23%2C22%2C22%2C20%2C12%2C8%2C10%2C16%2C10%2C18%2C6%2C10%2C15%2C9%2C9%2C22%2C25%2C24%2C25%2C22%2C22%2C25%2C25%2C24%2C19%2C8%2C12%2C19%2C12%2C6%2C7%2C10%2C14%2C9%2C9%2C24%2C25%2C25%2C22%2C15%2C15%2C22%2C25%2C24%2C24%2C8%2C11%2C19%2C13%2C6%2C7%2C10%2C13%2C9%2C10%2C25%2C25%2C23%2C14%2C15%2C14%2C14%2C23%2C25%2C24%2C9%2C12%2C20%2C11%2C7%2C7%2C9%2C14%2C9%2C10%2C24%2C25%2C22%2C15%2C14%2C15%2C15%2C22%2C25%2C25%2C9%2C11%2C19%2C12%2C6%2C10%2C9%2C13%2C10%2C9%2C21%2C25%2C25%2C22%2C15%2C15%2C22%2C25%2C25%2C23%2C7%2C16%2C19%2C9%2C12%2C16%2C7%2C8%2C14%2C9%2C10%2C21%2C25%2C25%2C23%2C22%2C25%2C25%2C21%2C8%2C18%2C21%2C11%2C6%2C18%2C21%2C13%2C7%2C10%2C13%2C10%2C9%2C17%2C16%2C16%2C18%2C15%2C16%2C10%2C17%2C20%2C11%2C6%2C14%2C23%2C24%2C18%2C12%2C6%2C9%2C13%2C11%2C7%2C7%2C8%2C7%2C7%2C6%2C17%2C20%2C12%2C6%2C14%2C22%2C23%2C23%2C25%2C15%2C9%2C9%2C7%2C14%2C18%2C19%2C18%2C18%2C18%2C18%2C19%2C12%2C7%2C10%2C18%2C24%2C24%2C24%2C25%2C23%2C18%2C12%2C7%2C11%2C16%2C16%2C15%2C15%2C17%2C15%2C10%2C6%2C15%2C21%2C24%2C25%2C23%2C23%2C25%2C24%2C22%2C20%2C14%2C10%2C6%2C6%2C7%2C6%2C6%2C7%2C12%2C16%2C22%2C24%2C25%2C25%2C24%2C23%2C25%2C25%2C25%2C24%2C19%2C18%2C15%2C16%2C15%2C15%2C16%2C15%2C20%2C23%2C25%2C25%2C25%2C25%2C24%2C22%2C24%2C24%2C23%2C24%2C23%2C22%2C17%2C17%2C18%2C18%2C18%2C17%2C22%2C24%2C23%2C23%2C24%2C24%2C22%5D)%0A%0Asz(500%2C500)%0Abg(0%2C0%2C0)%0Aarr%20%3D%20(%5B%5D)%0Anum%20%3D%20(1000)%0Abk%20%3D%20(100)%0A%0A%0Afor(i%2C0%2Cnum)%7B%0A%09arr%5Bi%5D%20%3D%20obj()%0A%09arr%5Bi%5D.vx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.vy%20%3D%20rnd(h)%0A%09arr%5Bi%5D.nx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.ny%20%3D%20rnd(h)%0A%09arr%5Bi%5D.lc%20%3D%20rnd(1)%0A%09arr%5Bi%5D.lcs%3D%20(rnd(0.2)-0.1)%0A%09arr%5Bi%5D.cl%20%3D%20(%5Brnd(255)%2Crnd(170%2C255)%2Crnd(170%2C255)%5D)%0A%7D%0Aframe()%7B%0A%09for(i%2C0%2Cnum)%7B%0A%09%09arr%5Bi%5D.lc%20%2B%3D%20(arr%5Bi%5D.lcs)%0A%09%09arr%5Bi%5D.nx%20%2B%3D%20(((arr%5Bi%5D.vx-arr%5Bi%5D.nx)*0.001)%2Btan(arr%5Bi%5D.lc))%0A%09%09arr%5Bi%5D.ny%20%2B%3D%20(((arr%5Bi%5D.vy-arr%5Bi%5D.ny)*0.001)%2Btan(arr%5Bi%5D.lc))%0A%09%09ind%20%3D%20(floor((arr%5Bi%5D.nx%2Fw)*20)*20%2Bfloor((arr%5Bi%5D.ny%2Fh)*20))%0A%09%09bk%20%3D%20(qp%5Bind%5D*10)%0A%09%09col((arr%5Bi%5D.cl%5B0%5D-bk)%2C(arr%5Bi%5D.cl%5B1%5D-bk)%2C(arr%5Bi%5D.cl%5B2%5D-bk))%0A%09%09oval(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2C1)%0A%09%7D%0A%7D%0A%0A&t=Xevious",
+        "user": "qanta",
+        "img": "archive/images/BxJ7pw6CUAAUu7U.png",
+        "id": "509605666575503360"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)Z%3D(-0.2)t%3D(0)%0As%3Dfunc()%7B%0A%09r%3D(w%2F10)R%3D(w%2F3)b%3D(-20*cos(%240*5%2Bt))%0A%09return(vec2(w%2F2%2B(R*cos(%240)%2Br*sin(%241%2B2*t))%2F%241%2Bcos(%240)*b%2Ch%2F2%2B(R*sin(%240))%2F%241%2Bsin(%240)*b))%0A%7D%0Aq%3Dfunc()%7B%09%09%09%09%0A%09v%3D(%5Bs(%240%2C%242)%2Cs(%240%2B%241%2C%242)%2Cs(%240%2B%241%2C%242%2B%243)%2Cs(%240%2C%242%2B%243)%5D)%0A%09fill()%0A%09beginShape()%0A%09moveTo(v%5B0%5D.x%2Cv%5B0%5D.y)%0A%09for(ii%2C0%2C4)%7BlineTo(v%5Bii%5D.x%2Cv%5Bii%5D.y)%7D%09%09%09%0A%09endShape()%0A%7D%0Aframe()%7B%0A%09clr()%0A%09t%2B%3D(1%2F30)%09%09%09%09%09%0A%09n%3D(30)%0A%09a%3D(0)%0A%09da%3D(2*PI%2Fn)%0A%09dz%3D(0.25)%0A%09z%3D(Z%2B8)%0A%09while(z%3EZ)%7B%09%09%09%09%0A%09%09for(i%2C0%2Cn)%7B%0A%09%09%09fog%3D(1%2F(max((z%2B0.7)-3%2C1)))%0A%09%09%09if(z%3C%3D2)%7B%0A%09%09%09%09fog%20%3D%20max(0%2Cz%2F2*z%2F2)%0A%09%09%09%7D%09%09%09%09%09%09%0A%09%09%09k%3Dfloor(205*(fog*abs(sin(i%2Fn*2*PI%2Bt))))%0A%09%09%09k*%3D(0.55%2B0.45*cos((i%2Fn%2B0.25)*PI*5))%0A%09%09%09k%3Dfloor(k)%0A%09%09%09col(k)%0A%09%09%09q(a%2Cda%2Cz%2Cdz)%09%09%09%09%09%0A%09%09%09if(i%253%3D%3D%200)%7B%0A%09%09%09%09col(0)%0A%09%09%09%09q(a%2Cda%2F10%2Cz%2Cdz)%0A%09%09%09%7D%09%09%09%09%09%09%0A%09%09%09a%20%2B%3D%20(da)%0A%09%09%7D%0A%09%09z-%3D(dz)%0A%09%7D%09%09%09%09%09%0A%09Z-%3D(0.05)%0A%09if(Z%3C%3Ddz)%7BZ%2B%3D(dz)%7D%0A%7D&t=%E3%83%88%E3%83%B3%E3%83%8D%E3%83%AB(%E9%96%A2%E6%95%B0%E3%83%87%E3%83%A2%20from%20ver%200.2.8",
+        "user": "masamiiiiiiii",
+        "img": "archive/images/BxJxsqpCMAAMpOL.png",
+        "id": "509594720373202944"
+    },
+    {
+        "url": "?c=sz(500%2C500)%0Abg(0%2C0%2C0)%0Aarr%20%3D%20(%5B%5D)%0Anum%20%3D%20(1000)%0Afor(i%2C0%2Cnum)%7B%0A%09arr%5Bi%5D%20%3D%20obj()%0A%09arr%5Bi%5D.vx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.vy%20%3D%20rnd(h)%0A%09arr%5Bi%5D.nx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.ny%20%3D%20rnd(h)%0A%09arr%5Bi%5D.lc%20%3D%20rnd(1)%0A%09arr%5Bi%5D.lcs%3D%20(rnd(1)-0.5)%0A%09arr%5Bi%5D.cl%20%3D%20(%5Brnd(100%2C255)%2Crnd(100%2C255)%2Crnd(100%2C255)%5D)%0A%7D%0Aframe()%7B%0A%09for(i%2C0%2Cnum)%7B%0A%09%09col(arr%5Bi%5D.cl%5B0%5D%2Carr%5Bi%5D.cl%5B1%5D%2Carr%5Bi%5D.cl%5B2%5D)%0A%09%09arr%5Bi%5D.lc%20%2B%3D%20(arr%5Bi%5D.lcs)%0A%09%09arr%5Bi%5D.nx%20%2B%3D%20(((arr%5Bi%5D.vx-arr%5Bi%5D.nx)*0.01)%2Bsin(arr%5Bi%5D.lc))%0A%09%09arr%5Bi%5D.ny%20%2B%3D%20(((arr%5Bi%5D.vy-arr%5Bi%5D.ny)*0.01)%2Bcos(arr%5Bi%5D.lc))%0A%09%09oval(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2C1)%0A%09%7D%0A%7D%0A%0A%0A&t=prominent%20casu%20marzu",
+        "user": "qanta",
+        "img": "archive/images/BxJlkbZCcAAkmQx.png",
+        "id": "509581384772366336"
+    },
+    {
+        "url": "?c=sz(500%2C500)%0Abg(0%2C0%2C0)%0Anum%20%3D%20(200)%0Acnt%20%3D%20(0)%0Agrid%20%3D%20(0)%0Abw%20%3D%20(0)%0Abh%20%3D%20(0)%0Acolr%20%3D%20(%5B%5D)%0Aframe()%7B%0A%09if((cnt%2560)%20%3D%3D%200)%7B%0A%09%09clr()%0A%09%09colr%5B0%5D%20%3D%20rnd(50%2C255)%0A%09%09colr%5B1%5D%20%3D%20rnd(50%2C255)%0A%09%09colr%5B2%5D%20%3D%20rnd(50%2C255)%0A%09%09col(colr%5B0%5D%2Ccolr%5B1%5D%2Ccolr%5B2%5D)%0A%09%09grid%20%3D%20floor(rnd(4%2C30))%0A%09%09bw%20%3D%20(w%2Fgrid)%0A%09%09bh%20%3D%20(w%2Fgrid)%0A%09%09num%20%3D%20((grid%2B1)*(grid%2B1))%0A%09%09arr%3D(%5B%5D)%0A%09%09for(i%2C0%2Cnum)%7B%0A%09%09%09arr%5Bi%5D%20%3D%20obj()%0A%09%09%09arr%5Bi%5D.vx%20%3D%20(bw*(i%25(grid%2B1)))%0A%09%09%09arr%5Bi%5D.vy%20%3D%20(bh*floor(i%2F(grid%2B1)))%0A%09%09%09dir%20%3D%20floor(rnd(0%2C3.999))%0A%09%09%09arr%5Bi%5D.dir%20%3D%20(dir)%0A%09%09%09if(dir%20%3D%3D%200)%7B%0A%09%09%09%09arr%5Bi%5D.dx%20%3D%20(arr%5Bi%5D.vx)%0A%09%09%09%09arr%5Bi%5D.dy%20%3D%20(arr%5Bi%5D.vy-bh)%0A%09%09%09%7D%0A%09%09%09if(dir%20%3D%3D%201)%7B%0A%09%09%09%09arr%5Bi%5D.dx%20%3D%20(arr%5Bi%5D.vx%2Bbw)%0A%09%09%09%09arr%5Bi%5D.dy%20%3D%20(arr%5Bi%5D.vy)%0A%09%09%09%7D%0A%09%09%09if(dir%20%3D%3D%202)%7B%0A%09%09%09%09arr%5Bi%5D.dx%20%3D%20(arr%5Bi%5D.vx)%0A%09%09%09%09arr%5Bi%5D.dy%20%3D%20(arr%5Bi%5D.vy%2Bbh)%0A%09%09%09%7D%0A%09%09%09if(dir%20%3D%3D%203)%7B%0A%09%09%09%09arr%5Bi%5D.dx%20%3D%20(arr%5Bi%5D.vx-bw)%0A%09%09%09%09arr%5Bi%5D.dy%20%3D%20(arr%5Bi%5D.vy)%0A%09%09%09%7D%0A%09%09%09oval(arr%5Bi%5D.vx%2Carr%5Bi%5D.vy%2C1)%0A%09%09%7D%0A%09%7Delse%7B%0A%09%09col(colr%5B0%5D%2Ccolr%5B1%5D%2Ccolr%5B2%5D)%0A%09%09for(i%2C0%2Cnum)%7B%0A%09%09%09arr%5Bi%5D.vx%20%2B%3D%20((arr%5Bi%5D.dx-arr%5Bi%5D.vx)*(1%2Fbw)*4)%0A%09%09%09arr%5Bi%5D.vy%20%2B%3D%20((arr%5Bi%5D.dy-arr%5Bi%5D.vy)*(1%2Fbh)*4)%0A%09%09%09oval(arr%5Bi%5D.vx%2Carr%5Bi%5D.vy%2C1)%0A%09%09%7D%0A%09%7D%0A%09%09%0A%09cnt%20%3D%20(cnt%20%2B1)%0A%7D%0A%0A%0A&t=mazelike",
+        "user": "qanta",
+        "img": "archive/images/BxJgP-SCAAAoPkD.png",
+        "id": "509575535718957056"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0%2C0%2C0)%0Alw(4)%0Anum%20%3D%20(200)%0Aarr%3D(%5B%5D)%0Asd%20%3D%20(0)%0Afor(i%2C0%2Cnum)%7B%0A%09arr%5Bi%5D%20%3D%20obj()%0A%09arr%5Bi%5D.nx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.ny%20%3D%20rnd(h)%0A%09arr%5Bi%5D.nr%20%3D%20rnd(40)%0A%09arr%5Bi%5D.rd%20%3D%20rnd(50%2C255)%0A%09arr%5Bi%5D.rr%20%3D%20rnd(50%2C255)%0A%09arr%5Bi%5D.px%20%3D%20rnd(w)%0A%09arr%5Bi%5D.py%20%3D%20rnd(h)%0A%09arr%5Bi%5D.pr%20%3D%20rnd(40)%0A%09arr%5Bi%5D.dir%20%3D%20rnd(10%2C100)%0A%09arr%5Bi%5D.cnt%20%3D%200%0A%0A%7D%0Aframe()%7B%0A%09for(i%2C0%2Cnum)%7B%0A%09%09col((255-arr%5Bi%5D.rd)%2Carr%5Bi%5D.rd%2C0)%0A%09%09if(arr%5Bi%5D.cnt%20%3Carr%5Bi%5D.dir)%7B%0A%09%09%09arr%5Bi%5D.nx%20%3D(arr%5Bi%5D.nx%2B(arr%5Bi%5D.px-arr%5Bi%5D.nx)*0.01)%0A%09%09%09arr%5Bi%5D.ny%20%3D(arr%5Bi%5D.ny%2B(arr%5Bi%5D.py-arr%5Bi%5D.ny)*0.01)%0A%09%09%09arr%5Bi%5D.nr%20%3D(arr%5Bi%5D.nr%2B(arr%5Bi%5D.pr-arr%5Bi%5D.nr)*0.01)%0A%09%09%09arr%5Bi%5D.rd%20%3D(arr%5Bi%5D.rd%2B(arr%5Bi%5D.rr-arr%5Bi%5D.rd)*0.01)%0A%09%09%09for(j%2C0%2Cnum)%7B%0A%09%09%09%09if(j%20!%3D%20i)%7B%0A%09%09%09%09%09dis%20%3D%20dist(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2Carr%5Bj%5D.nx%2Carr%5Bj%5D.ny)%0A%09%09%09%09%09if(dis%3C(arr%5Bi%5D.nr%2Barr%5Bj%5D.nr))%7B%0A%09%09%09%09%09%09arr%5Bi%5D.nx%20%3D%20(arr%5Bi%5D.nx%20%2B(arr%5Bi%5D.nx-arr%5Bj%5D.nx)%2F20)%0A%09%09%09%09%09%09arr%5Bi%5D.ny%20%3D%20(arr%5Bi%5D.ny%20%2B(arr%5Bi%5D.ny-arr%5Bj%5D.ny)%2F20)%0A%09%09%09%09%09%7D%0A%09%09%09%09%7D%0A%09%09%09%7D%0A%09%09%09arr%5Bi%5D.cnt%20%3D(arr%5Bi%5D.cnt%2B1)%0A%09%09%7Delse%7B%0A%09%09%09arr%5Bi%5D.px%20%3D%20rnd(w)%0A%09%09%09arr%5Bi%5D.py%20%3D%20rnd(h)%0A%09%09%09arr%5Bi%5D.pr%20%3D%20rnd(40)%0A%09%09%09arr%5Bi%5D.rr%20%3D%20rnd(50%2C255)%0A%09%09%09arr%5Bi%5D.cnt%20%3D%200%0A%09%09%7D%0A%09%09%0A%09%09oval(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2Carr%5Bi%5D.nr)%0A%09%7D%0A%0A%09sd%20%3D%20(sd%2B0.01)%0A%09res%20%3D%20((sin(sd)*10)%2B11)%0A%09drawMe(0%2C0%2C720%2C405%2C0%2C0%2C(720%2Fres)%2C(405%2Fres))%0A%09drawMe(0%2C0%2C(720%2Fres)%2C(405%2Fres)%2C0%2C0%2C720%2C405)%0A%7D%0A&t=%E3%82%82%E3%82%8F%E3%82%82%E3%82%8F%0A%E3%81%8C%E3%81%B3%E3%81%8C%E3%81%B3%EF%BC%92",
+        "user": "qanta",
+        "img": "archive/images/BxImXQ1CEAAC07s.png",
+        "id": "509511889521360896"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0%2C0%2C0)%0Alw(4)%0Anum%20%3D%20(200)%0Aarr%3D(%5B%5D)%0Afor(i%2C0%2Cnum)%7B%0A%09arr%5Bi%5D%20%3D%20obj()%0A%09arr%5Bi%5D.nx%20%3D%20rnd(w)%0A%09arr%5Bi%5D.ny%20%3D%20rnd(h)%0A%09arr%5Bi%5D.nr%20%3D%20rnd(40)%0A%09arr%5Bi%5D.rd%20%3D%20rnd(50%2C255)%0A%09arr%5Bi%5D.rr%20%3D%20rnd(50%2C255)%0A%09arr%5Bi%5D.px%20%3D%20rnd(w)%0A%09arr%5Bi%5D.py%20%3D%20rnd(h)%0A%09arr%5Bi%5D.pr%20%3D%20rnd(40)%0A%09arr%5Bi%5D.dir%20%3D%20rnd(10%2C100)%0A%09arr%5Bi%5D.cnt%20%3D%200%0A%0A%7D%0Aframe()%7B%0A%09clr()%0A%09for(i%2C0%2Cnum)%7B%0A%09%09col(arr%5Bi%5D.rd%2C0%2C0)%0A%09%09if(arr%5Bi%5D.cnt%20%3Carr%5Bi%5D.dir)%7B%0A%09%09%09arr%5Bi%5D.nx%20%3D(arr%5Bi%5D.nx%2B(arr%5Bi%5D.px-arr%5Bi%5D.nx)*0.01)%0A%09%09%09arr%5Bi%5D.ny%20%3D(arr%5Bi%5D.ny%2B(arr%5Bi%5D.py-arr%5Bi%5D.ny)*0.01)%0A%09%09%09arr%5Bi%5D.nr%20%3D(arr%5Bi%5D.nr%2B(arr%5Bi%5D.pr-arr%5Bi%5D.nr)*0.01)%0A%09%09%09arr%5Bi%5D.rd%20%3D(arr%5Bi%5D.rd%2B(arr%5Bi%5D.rr-arr%5Bi%5D.rd)*0.01)%0A%09%09%09for(j%2C0%2Cnum)%7B%0A%09%09%09%09if(j%20!%3D%20i)%7B%0A%09%09%09%09%09dis%20%3D%20dist(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2Carr%5Bj%5D.nx%2Carr%5Bj%5D.ny)%0A%09%09%09%09%09if(dis%3C(arr%5Bi%5D.nr%2Barr%5Bj%5D.nr))%7B%0A%09%09%09%09%09%09arr%5Bi%5D.nx%20%3D%20(arr%5Bi%5D.nx%20%2B(arr%5Bi%5D.nx-arr%5Bj%5D.nx)%2F20)%0A%09%09%09%09%09%09arr%5Bi%5D.ny%20%3D%20(arr%5Bi%5D.ny%20%2B(arr%5Bi%5D.ny-arr%5Bj%5D.ny)%2F20)%0A%09%09%09%09%09%7D%0A%09%09%09%09%7D%0A%09%09%09%7D%0A%09%09%09arr%5Bi%5D.cnt%20%3D(arr%5Bi%5D.cnt%2B1)%0A%09%09%7Delse%7B%0A%09%09%09arr%5Bi%5D.px%20%3D%20rnd(w)%0A%09%09%09arr%5Bi%5D.py%20%3D%20rnd(h)%0A%09%09%09arr%5Bi%5D.pr%20%3D%20rnd(40)%0A%09%09%09arr%5Bi%5D.rr%20%3D%20rnd(50%2C255)%0A%09%09%09arr%5Bi%5D.cnt%20%3D%200%0A%09%09%7D%0A%09%09%0A%09%09oval(arr%5Bi%5D.nx%2Carr%5Bi%5D.ny%2Carr%5Bi%5D.nr)%0A%09%7D%0A%09res%20%3D%20rnd(6%2C30)%0A%0A%09drawMe(0%2C0%2C720%2C405%2C0%2C0%2C(720%2Fres)%2C(405%2Fres))%0A%09drawMe(0%2C0%2C(720%2Fres)%2C(405%2Fres)%2C0%2C0%2C720%2C405)%0A%7D%0A%0A%0A&t=%E3%81%8C%E3%81%B3%E3%81%8C%E3%81%B32%0A%E3%81%8C%E3%81%B3%E3%81%8C%E3%81%B3%EF%BC%92",
+        "user": "qanta",
+        "img": "archive/images/BxIGDw6CIAATxTl.png",
+        "id": "509476369999204352"
+    },
+    {
+        "url": "?c=size(720%2C%20480)%0Abg(255)%0Adw%20%3D%20(40)%0Adh%20%3D%20(50)%0Asx%20%3D%20(40)%0Asy%20%3D%20(20)%0AW%20%3D%20(w%20%2F%20dw)%0AH%20%3D%20(h%20%2F%20dh)%0Ao%20%3D%20(0)%0Aframe()%20%7B%0A%20%20clr()%0A%20%20col(0)%0A%20%20ox%20%3D%20(cos(o%20%2F%20100.0)%20*%20sx)%0A%20%20for(j%2C%200%2C%20H)%20%7B%0A%20%20%20%20line(0%2C%20j%20*%20dh%2C%20w%2C%20j%20*%20dh%20%2B%201)%0A%20%20%20%20for(i%2C%200%2C%20W%20%2B%201)%20%7B%0A%20%20%20%20%20%20line(i%20*%20dw%20%2B%20(j%20%25%202%20%3F%20-ox%20%3A%20ox)%2C%0A%20%20%20%20%20%20%20%20%20%20%20j%20*%20dh%20%2B%20sy%2C%0A%20%20%20%20%20%20%20%20%20%20%20i%20*%20dw%20%2B%20(j%20%25%202%20%3F%20ox%20%3A%20-ox)%2C%0A%20%20%20%20%20%20%20%20%20%20%20j%20*%20dh%20-%20sy)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20o%20%2B%3D%20(1)%0A%7D",
+        "user": "2bbb",
+        "img": "archive/images/BxGgxPGCIAAzjJo.png",
+        "id": "509365000796782593"
+    },
+    {
+        "url": "?c=sz(720%2C480)%0Adh%3D(20)%0AH%3D(h%2Fdh)%0Abg(0)%0Aframe()%7B%0A%20%20clr()%0A%20%20col(255%2C255%2C255)%0A%20%20for(y%2C0%2CH)%7B%0A%20%20%20%20line(0%2C%20y%20*%20dh%20%2B%20(y%20%25%202%20%3F%20-3%20%3A%203)%2C%20w%2C%20y%20*%20dh%20%2B%20(y%20%25%202%20%3F%203%20%3A%20-3))%0A%20%20%7D%0A%7D&t=%E6%96%9C%E3%82%81%E3%81%AB%E8%A6%8B%E3%81%88%E3%81%A1%E3%82%83%E3%81%86%E3%82%A2%E3%83%AC",
+        "user": "2bbb",
+        "img": "archive/images/BxGWcrZCcAANvXE.png",
+        "id": "509353652524294144"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0)%0Anx%3D(30)%0Any%3D(20)%0Acx%3D(w%2Fnx)%0Acy%3D(h%2Fny)%0A%0Aframe()%7B%0Aclr()%0Afor(y%2C0%2Cny)%7B%0Afor(x%2C-1%2Cnx%2B1)%7B%0Aif((x%2By)%252%3D%3D0)%7B%0Acol(255)%0Arect(x*cx%2Bnz(y%2Cc%2F77)*cx%2C%20y*cy%2C%20cx%2C%20cy-2)%0A%7D%0A%7D%0A%7D%7D&t=%E6%96%9C%E3%82%81%E3%81%AB%E8%A6%8B%E3%81%88%E3%81%A1%E3%82%83%E3%81%86%E3%82%A2%E3%83%AC",
+        "user": "satcy",
+        "img": "archive/images/BxGT3dICMAAiAQH.png",
+        "id": "509350814091993089"
+    },
+    {
+        "url": "?c=c3d()sz(720%2C320)%0Ageometry%3Dnew(THREE.BoxGeometry%2C%20%5B36%2C9%2C420%5D)%0Aprop%3DObj()%0Aprop.color%3D(0x0099FF)%0Amaterial%3Dnew(THREE.MeshPhongMaterial%2C%5Bprop%5D)%0Afor(i%2C0%2C20)%7B%0Amesh%20%3D%20new(THREE.Mesh%2C%20%5Bgeometry%2Cmaterial%5D%20)%0Amesh.position.x%3D(i*36-36*10%2B36%2F2)%0Ascene.add(%20mesh%20)%0A%7D%0AdirectionalLight%3Dnew(THREE.DirectionalLight%2C%20%5B0xffffff%2C%200.5%5D%20)%0AdirectionalLight.position.set(0%2C0%2C1)%0Ascene.add(%20directionalLight%20)%3B%0Aframe()%7B%0Afor(i%2C0%2C20)%7B%0Ascene.children%5Bi%5D.rotation.x%2B%3D(nz(c%2F(100%2Bi))%2F10)%0Ascene.children%5Bi%5D.rotation.z%2B%3D(nz(c%2F(190%2Bi%2F3))%2F10)%0A%7D%0A%7D&t=wip",
+        "user": "satcy",
+        "img": "archive/images/BxB2-D1CAAACwip.png",
+        "id": "509037566733996032"
+    },
+    {
+        "url": "?c=sz(720%2C405)bg(0)%0AlineJoin(2)lineWidth(25)blendMode(2)strk()%0Aframe()%7B%0Aclr()%0Acol(255%2C0%2C0)lines(0)%0Acol(0%2C255%2C0)lines(1)%0Acol(0%2C0%2C255)lines(2)%0A%7D%0Alines%3Dfunc()%7B%0An%3D(%240)cr%3D(PI%2F3)%0Ax%3D(cx)y%3D(cy)%0Arad%3D(n*cr*2)arc%3D(100)%0AbeginShape()%0AlineTo(x%2Cy)%0Afor(i%2C0%2C200)%7B%0Aval%3Dfloor(nz(c*0.001%2Cn%2F3%2Ci*0.1)*3)%0Arad%2B%3D(val*cr)%0Ax%2B%3D(cos(rad)*arc)%0Ay%2B%3D(sin(rad)*arc)%0AlineTo(x%2Cy)%0A%7D%0AendShape()%0A%7D",
+        "user": "satcy",
+        "img": "archive/images/BxBeOQGCEAAaEpw.png",
+        "id": "509010357084377088"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)col(255)sc%3D(300)%0Aframe()%7B%0Aclr()%0Apush()%0Atranslate(0%2C50)%0Acnt%3D(0)%0Afor(j%2C0%2C7)%7B%0An%3D(a%5Bj%5D.length)%0Afor(i%2C0%2Cn)%7B%0Aline(a%5Bj%5D%5Bi%5D%2Bwave%5Bcnt%5D*sc%2Ca%5Bj%5D%5Bi%2B1%5D%2Bwave%5Bcnt%2B1%5D*sc%2Ca%5Bj%5D%5Bi%2B2%5D%2Bwave%5Bcnt%2B2%5D*sc%2Ca%5Bj%5D%5Bi%2B3%5D%2Bwave%5Bcnt%2B3%5D*sc)%0Ai%2B%3D(1)%0Acnt%2B%3D(2)%0A%7D%0A%7D%0Apop()%0A%7D%0Adsp()%7Bvol%2B%3D((0-vol)%2F10000)return(nz(time*cos(time%2F10)*30000%2C1)*vol)%7D%0Abeat()%7Bvol%3D(1)%7D%0A%0Aa%3D(%5B%5B132%2C126%2C126%2C111%2C117%2C100%2C104%2C93%2C87%2C90%2C60%2C96%2C43%2C112%2C34%2C134%2C31%2C161%2C34%2C185%2C43%2C206%2C59%2C221%2C84%2C227%2C103%2C224%2C118%2C215%2C128%2C201%2C133%2C183%2C164%2C183%2C155%2C212%2C138%2C234%2C115%2C248%2C84%2C253%2C47%2C246%2C21%2C227%2C5%2C198%2C0%2C161%2C5%2C123%2C21%2C92%2C47%2C72%2C85%2C64%2C113%2C68%2C137%2C79%2C154%2C98%2C162%2C126%2C132%2C126%2C132%2C126%5D%2C%5B351%2C191%2C341%2C218%2C324%2C237%2C301%2C249%2C273%2C253%2C236%2C246%2C209%2C226%2C193%2C196%2C187%2C158%2C193%2C120%2C211%2C91%2C238%2C71%2C272%2C64%2C312%2C74%2C337%2C99%2C350%2C133%2C353%2C167%2C218%2C167%2C221%2C190%2C231%2C209%2C249%2C222%2C275%2C227%2C291%2C224%2C305%2C218%2C315%2C207%2C321%2C191%2C351%2C191%2C351%2C191%5D%2C%5B322%2C141%2C317%2C121%2C306%2C105%2C290%2C94%2C270%2C90%2C249%2C94%2C233%2C105%2C223%2C122%2C218%2C141%2C322%2C141%2C322%2C141%5D%2C%5B384%2C68%2C412%2C68%2C412%2C97%2C413%2C97%2C424%2C82%2C437%2C72%2C453%2C66%2C471%2C64%2C501%2C69%2C520%2C83%2C530%2C103%2C533%2C130%2C533%2C249%2C504%2C249%2C504%2C127%2C501%2C112%2C494%2C100%2C482%2C93%2C467%2C90%2C444%2C95%2C427%2C106%2C417%2C124%2C414%2C147%2C414%2C249%2C384%2C249%2C384%2C68%2C384%2C68%5D%2C%5B619%2C68%2C655%2C68%2C655%2C94%2C619%2C94%2C619%2C206%2C620%2C215%2C624%2C220%2C630%2C222%2C642%2C222%2C655%2C222%2C655%2C249%2C633%2C249%2C613%2C247%2C600%2C241%2C592%2C229%2C590%2C209%2C590%2C94%2C559%2C94%2C559%2C68%2C590%2C68%2C590%2C14%2C619%2C14%2C619%2C68%2C619%2C68%5D%2C%5B720%2C36%2C690%2C36%2C690%2C0%2C720%2C0%2C720%2C36%2C720%2C36%5D%2C%5B690%2C68%2C720%2C68%2C720%2C249%2C690%2C249%2C690%2C68%2C690%2C68%5D%5D)&t=%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E9%9F%B3",
+        "user": "satcy",
+        "img": "archive/images/Bwx7jEeCYAAfMHy.png",
+        "id": "507916700797259776"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0)%0Alfo%3D(0)%0Abpm(133%2C4)%0Asub%3Dfunc()%7Breturn(sin(%240*%241%2BPI2*time))%7D%0Atri%3Dfunc()%7Breturn(abs(1-(2*time*%240)%252)*2-1)%7D%0Adsp()%7B%0A%09n%3Dn2f(60%2Bsin(time)*20)%0A%09bass_osc%3D(0.8*tri(n%2F10)%2B0.05*sin(PI2*time*n*2))%0A%09lfo%3Dsin(PI2*time*GOLD)%0A%09lfo_mul%3Dsin(PI2*time*0.01)%0A%09bass_sub%3D(0.8*sub(bass_osc%2C2%2B((1%2Blfo)*(2%2B(1%2Blfo_mul)*12)))%2B0.7*sin(PI2*n*time))%0A%09return(0.5*bass_sub)%0A%7D%0Aframe()%7B%0A%09drawMe(0%2C-10%2Cw%2Ch)%0A%09col(255%2C(lfo%2B1)*200)%0A%09strk()%0A%09drawWave(0%2Ch*0.8-2%2Cw%2Ch*0.17)%0A%7D&t=WayaWaya",
+        "user": "satcy",
+        "img": "archive/images/Bwp48_0CAAEUTDh.png",
+        "id": "507350897588854785"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)%0Afreq%3D(440)%0Amod%3D(GOLD*10)%0Avel%3D(0)%0Atvel%3D(0)%0Abpm(120%2C8)%0Anotes%3D(%5B60%2C62%2C64%2C64%2C64%2C64%2C62%2C60%2C60%2C60%2C60%2C62%2C64%2C62%2C60%2C62%2C62%2C62%2C62%2C62%2C62%2C62%2C62%2C62%5D)%0Avels%3D(%5B1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C0%2C0%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C0%2C0%2C0%2C0%5D)%0AN%3D(notes.length)%0Aframe()%7B%0A%09clr()%0A%09col(255)%0A%09strk()%0A%09drawWave(0%2C0%2Cw%2Ch)%0A%09col(255%2C0%2C0)%0A%09fill()%09%0A%09drawFFT(0%2C0%2Cw%2Ch%2C30%2C20)%0A%7D%0Adsp()%7B%0A%09vel%2B%3D((tvel%20-%20vel)*0.001)%0A%09return(sin(PI2*time*freq)*sin(PI2*time*mod)*vel)%0A%7D%0Abeat()%7B%0A%09freq%3Dn2f(notes%5Bbeat%25N%5D%2B12)%0A%09tvel%3D(vels%5Bbeat%25N%5D)%0A%7D&t=%E3%83%81%E3%83%A3%E3%83%AB%E3%83%A1%E3%83%A9%E3%82%B5%E3%82%A6%E3%83%B3%E3%83%89",
+        "user": "satcy",
+        "img": "archive/images/BwmT-kBCMAAKbsY.png",
+        "id": "507099136416432128"
+    },
+    {
+        "url": "?c=sz(720%2C360)%0Abg(0)%0Afreq%3Drnd(120%2C1300)%0Amod%3Drnd(10%2C440)%0Abpm(133%2C4)%0Aframe()%7B%0A%09clr()%0A%09col(255)%0A%09n%3D(wave.length)%0A%09cep%3D(w%2Fn)%0A%09for(i%2C0%2Cn)%7B%0A%09%09rect(i*cep%2Ccy%2C2%2Cwave%5Bi%5D*h%2F2)%0A%09%09i%2B%3D(13)%0A%09%7D%0A%09col(255%2C0%2C0)%0A%09n%3D(fft.length)%0A%09cep%3D(w%2Fn)%0A%09for(i%2C0%2Cn)%7B%0A%09%09rect(i*cep%2Ccy%2C2%2C-fft%5Bi%5D)%0A%09%09i%2B%3D(7)%0A%09%7D%0A%7D%0Adsp()%7Breturn(sin(time*PI*freq)*cos(time*PI*mod))%7D%0Abeat()%7Bfreq%3Drnd(120%2C15000)mod%3Drnd(6%2C110)%7D&t=%E3%82%B5%E3%82%A4%E3%83%B3%E6%B3%A2(DSP%E3%81%AE%E3%83%87%E3%83%A2%20from%200.3.0%20%E8%A6%81WebAudio",
+        "user": "satcy",
+        "img": "archive/images/BwiLlvgCYAEKPuD.png",
+        "id": "506808438941155328"
+    },
+    {
+        "url": "?c=sz(720%2C%20360)%0Abg(255)%0Ads%20%3D%20(40)%0Asc%20%3D%20(1.5)%0AW%20%3D%20(w%20%2F%20ds%20%2B%201)%0AH%20%3D%20(h%20%2F%20ds%20%2B%201)%0Aas%20%3D%20(%5B%5D)%0Atri%20%3D%20func()%20%7B%0A%20%20return%20(%240%20*%20%240%20*%20%240)%0A%7D%0Afor(j%2C%200%2C%20H%20%2B%201)%20%7B%0A%20%20for(i%2C%200%2C%20W%20%2B%201)%20%7B%0A%20%20%20%20o%20%3D%20(%7B%7D)%0A%20%20%20%20o.x%20%3D%20((i%20%2B%20sc%20*%20tri(noise(i%20%2F%20W%2C%20j)))%20*%20ds)%0A%20%20%20%20o.y%20%3D%20((j%20%2B%20sc%20*%20tri(noise(i%2C%20j%20%2F%20H)))%20*%20ds)%0A%20%20%20%20as%5Bi%20%2B%20j%20*%20W%5D%20%3D%20(o)%0A%20%20%7D%0A%7D%0At%20%3D%20(0)%0Aframe()%7B%0A%20%20r%20%3D%20rand()%0A%20%20col(255%2C%20r%20*%20r%20*%20r%20*%2032%20%2B%2012)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(rand()%20*%20128%2C%20rand()%20*%20128%2C%20rand()%20*%20128%2C%2048)%0A%20%20for(j%2C%200%2C%20H)%20%7B%0A%20%20%20%20for(i%2C%200%2C%20W%20-%201)%20%7B%0A%20%20%20%20%20%20n%20%3D%20(i%20%2B%20j%20*%20W)%0A%20%20%20%20%20%20if(rand()%20%3C%200.05)%20%7B%0A%20%20%20%20%20%20%20%20line(as%5Bn%5D.x%2C%20as%5Bn%5D.y%2C%20as%5Bn%20%2B%201%5D.x%2C%20as%5Bn%20%2B%201%5D.y)%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%0A%20%20for(i%2C%201%2C%20W)%20%7B%0A%20%20%20%20for(j%2C%200%2C%20H%20-%201)%20%7B%0A%20%20%20%20%20%20n%20%3D%20(i%20%2B%20j%20*%20W)%0A%20%20%20%20%20%20if(rand()%20%3C%200.05)%20%7B%0A%20%20%20%20%20%20%20%20line(as%5Bn%5D.x%2C%20as%5Bn%5D.y%2C%20as%5Bn%20%2B%20W%5D.x%2C%20as%5Bn%20%2B%20W%5D.y)%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%0A%20%20t%20%2B%3D%20(0.02)%0A%20%20for(j%2C%200%2C%20H)%20%7B%0A%20%20%20%20for(i%2C%200%2C%20W)%20%7B%0A%20%20%20%20%20%20as%5Bi%20%2B%20j%20*%20W%5D.x%20%3D%20((i%20%2B%20sc%20*%20tri(nz(i%20%2F%20W%2C%20j%2C%20t)))%20*%20ds)%0A%20%20%20%20%20%20as%5Bi%20%2B%20j%20*%20W%5D.y%20%3D%20((j%20%2B%20sc%20*%20tri(nz(i%2C%20j%20%2F%20H%2C%20t)))%20*%20ds)%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&t=%E3%81%AA%E3%82%93%E3%81%8B%E7%BE%8E%E5%A4%A7%E7%94%9F%E3%81%8C%E5%8D%92%E5%88%B6%E3%81%A7%E4%BD%9C%E3%82%8B%E6%89%8B%E6%9B%B8%E3%81%8D%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA",
+        "user": "2bbb",
+        "img": "archive/images/Bwg3tGUCIAAUU7r.png",
+        "id": "506716207240577024"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(20%2C112%2C255)%0Ann%3D(20)d%3D(100)a%3D(%5B%5D)%0Afor(i%2C0%2Cnn)%7Ba.push(i*d)%7D%0An1%3D(0)n2%3D(0)n%3D(30)cr%3D(PI*2%2Fn)%0Asun%3Dfunc()%7B%0A%09r%3D(%240)%0A%09col(255%2C255-%240%2F3%2C0)%0A%09beginShape()%0A%09for(i%2C0%2Cn%2B1)%7B%0A%09%09rad%3D(cr*i%2Bn1)%0A%09%09rr%3D(r-n1*(i%252)*r*0.2)%0A%09%09x%3D(cos(rad)*rr%2Bcx)%0A%09%09y%3D(sin(rad)*rr%2Bcy)%0A%09%09lineTo(x%2Cy)%0A%09%7D%0A%09endShape()%0A%7D%0Aframe()%7B%0A%09clr()%0A%09if(c%2530%3D%3D0)%7Bn2%3D((floor(c%2F30)%252%3D%3D0)%3F-1%3A1)%7D%0A%09n1%2B%3D((n2-n1)%2F4)%0A%09for(j%2C0%2Cnn)%7B%0A%09%09sun(a%5Bj%5D)%0A%09%09a%5Bj%5D%2B%3D(4)%0A%09%09if(a%5Bj%5D%3Enn*d)%7Ba%5Bj%5D-%3D(nn*d)%7D%0A%09%7D%0A%09sortNum(a)%0A%09reverse(a)%0A%7D&t=%E5%A4%8F%E5%A4%8F%E5%A4%8F%E5%A4%8F%E2%99%AA",
+        "user": "satcy",
+        "img": "archive/images/BwYNuoZCQAA9p-r.png",
+        "id": "506107103241453569"
+    },
+    {
+        "url": "?c=sz(720%2C%20480)%0Anums%20%3D%20(%5B0xfb6f%2C%200xf49a%2C%200xf2a3%2C%200x38a3%2C%200xc9ed%2C%200x38cf%2C%200xfbcb%2C%200x24a7%2C%200xfbef%2C%200xf9ef%5D)%3B%0Adraw%20%3D%20func()%20%7B%0A%20%20num%20%3D%20(nums%5B%240%5D)%0A%20%20x%20%3D%20(%241)%0A%20%20y%20%3D%20(%242)%0A%20%20s%20%3D%20(%243)%0A%20%20for(j%2C%200%2C%205)%20%7B%0A%20%20%20%20for(i%2C%200%2C%203)%20%7B%0A%20%20%20%20%20%20if(num%20%25%202)%20%7B%0A%20%20%20%20%20%20%20%20oval(x%20%2B%20s%20*%20i%2C%20y%20%2B%20s%20*%20j%2C%20s%20*%200.4)%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20num%20%3D%20((num%20*%200.5)%20%7C%200)%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0Abg(0)%0Afn%20%3D%20(0)%0Aframe()%20%7B%0A%20%20col(0%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(255)%0A%20%20for(m%2C%200%2C%208)%20%7B%0A%20%20%20%20for(n%2C%200%2C%2020)%20%7B%0A%20%20%20%20%20%20draw(((noise(n%20%2F%2019%2C%20m%20%2F%207%2C%20fn)%20%2B%201.0)%20*%205)%20%7C%200%2C%2017.5%20%2B%2035%20*%20n%2C%2010%20%2B%2060%20*%20m%2C%2010)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(0.02)%0A%7D&t=%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%80%82",
+        "user": "2bbb",
+        "img": "archive/images/BwXxHpwCMAA9tG-.png",
+        "id": "506075647374934016"
+    },
+    {
+        "url": "?c=sz(720%2C%20120)%0Anums%3D(%5B%5B1%2C1%2C1%2C1%2C0%2C1%2C1%2C0%2C1%2C1%2C0%2C1%2C1%2C1%2C1%5D%2C%5B0%2C1%2C0%2C1%2C1%2C0%2C0%2C1%2C0%2C0%2C1%2C0%2C1%2C1%2C1%5D%2C%5B1%2C1%2C0%2C0%2C0%2C1%2C0%2C1%2C0%2C1%2C0%2C0%2C1%2C1%2C1%5D%2C%5B1%2C1%2C0%2C0%2C0%2C1%2C0%2C1%2C0%2C0%2C0%2C1%2C1%2C1%2C0%5D%2C%5B1%2C0%2C1%2C1%2C0%2C1%2C1%2C1%2C1%2C0%2C0%2C1%2C0%2C0%2C1%5D%2C%5B1%2C1%2C1%2C1%2C0%2C0%2C1%2C1%2C0%2C0%2C0%2C1%2C1%2C1%2C0%5D%2C%5B1%2C1%2C0%2C1%2C0%2C0%2C1%2C1%2C1%2C1%2C0%2C1%2C1%2C1%2C1%5D%2C%5B1%2C1%2C1%2C0%2C0%2C1%2C0%2C1%2C0%2C0%2C1%2C0%2C0%2C1%2C0%5D%2C%5B1%2C1%2C1%2C1%2C0%2C1%2C1%2C1%2C1%2C1%2C0%2C1%2C1%2C1%2C1%5D%2C%5B1%2C1%2C1%2C1%2C0%2C1%2C1%2C1%2C1%2C0%2C0%2C1%2C1%2C1%2C1%5D%5D)%0Abg(0)%0Adraw%20%3D%20func()%20%7B%0A%20%20num%20%3D%20(nums%5B%240%5D)%0A%20%20x%20%3D%20(%241)%0A%20%20y%20%3D%20(%242)%0A%20%20s%20%3D%20(%243)%0A%20%20for(j%2C%200%2C%205)%20%7B%0A%20%20%20%20for(i%2C%200%2C%203)%20%7B%0A%20%20%20%20%20%20if(num%5Bi%20%2B%20j%20*%203%5D)%20%7B%0A%20%20%20%20%20%20%20%20oval(x%20%2B%20s%20*%20i%2C%20y%20%2B%20s%20*%20j%2C%20s%20*%200.4)%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0Afn%20%3D%20(0)%0Aframe()%20%7B%0A%20%20col(0%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(255)%0A%20%20for(n%2C%200%2C%2010)%20%7B%0A%20%20%20%20draw(((noise(n%20*%200.1%2C%20fn)%20%2B%201.0)%20*%205)%20%7C%200%2C%2025%20%2B%2070%20*%20n%2C%2020%2C%2020)%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(0.02)%0A%7D&t=%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%80%82",
+        "user": "2bbb",
+        "img": "archive/images/BwXrejnCAAAMUvw.png",
+        "id": "506069443768623104"
+    },
+    {
+        "url": "?c=sz(720%2C%20720)%0Abg(255)%0As%20%3D%20(%5B%5B%5D%2C%20%5B%5D%2C%20%5B%5D%5D)%0At%20%3D%20(%5B%5B%5D%2C%20%5B%5D%2C%20%5B%5D%5D)%0Afor(c%2C%200%2C%203)%20%7B%0A%20%20for(i%2C%200%2C%20w)%20%7B%0A%20%20%20%20s%5Bc%5D%5Bi%5D%20%3D%20noise(c%20%2F%202.0%2C%20i%20%2F%20w)%0A%20%20%20%20t%5Bc%5D%5Bi%5D%20%3D%20noise(c%20%2F%202.0%2C%20s%5Bc%5D%5Bi%5D)%0A%20%20%7D%0A%7D%0Afn%20%3D%20(0)%0Adf%20%3D%20(0)%0Aframe()%20%7B%0A%20%20col(255%2C%208)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20for(c%2C%200%2C%203)%20%7B%0A%20%20%20%20if(c%20%3D%3D%200)%20%7B%0A%20%20%20%20%20%20col(255%2C%20255%2C%200%2C%2064)%0A%20%20%20%20%7D%0A%20%20%20%20elseIf(c%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20col(0%2C%20255%2C%20255%2C%2064)%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20col(255%2C%200%2C%20255%2C%2064)%0A%20%20%20%20%7D%0A%20%20%20%20for(i%2C%200%2C%20w)%20%7B%0A%20%20%20%20%20%20y%20%3D%20(0.5%20*%20sin(3.14%20*%20s%5Bc%5D%5Bi%5D)%20%2B%200.5)%0A%20%20%20%20%20%20k%20%3D%20(0.5%20*%20cos(3.14%20*%20t%5Bc%5D%5Bi%5D)%20%2B%200.5)%0A%20%20%20%20%20%20l%20%3D%20(k%20*%20k%20*%20k%20*%20(1.0%20-%20y)%20%2B%20y)%0A%20%20%20%20%20%20line(i%2C%20y%20*%20l%20*%20h%2C%20i%2C%20l%20*%20l%20*%20h)%0A%20%20%20%20%7D%0A%0A%20%20%20%20for(i%2C%200%2C%20w)%20%7B%0A%20%20%20%20%20%20s%5Bc%5D%5Bi%5D%20%3D%20noise(c%20%2F%202.0%2C%20i%20%2F%20w%2C%20fn)%0A%20%20%20%20%20%20t%5Bc%5D%5Bi%5D%20%3D%20noise(c%20%2F%202.0%2C%20s%5Bc%5D%5Bi%5D%2C%20fn)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(cos(df)%20*%200.01)%0A%20%20df%20%2B%3D%20(0.001)%0A%7D&t=%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%80%82",
+        "user": "2bbb",
+        "img": "archive/images/BwXllq0CIAAlmEv.png",
+        "id": "506062969088647168"
+    },
+    {
+        "url": "?c=sz(720%2C%20720)%0Abg(255)%0Adx%20%3D%20(40)%0Ady%20%3D%20(40)%0Adw%20%3D%20(w%2Fdx)%0Adh%20%3D%20(h%2Fdy)%0Afn%20%3D%20(0)%0Ass%20%3D%20(%5B%5D)%0Afor(j%2C%200%2C%20dh%20%2B%201)%20%7B%0A%20%20for(i%2C%200%2C%20dw%20%2B%201)%20%7B%0A%20%20%20%20ss%5Bi%20%2B%20j%20*%20(dw%20%2B%201)%5D%20%3D%20(noise(i%20%2F%20dw%2C%20j%20%2F%20dh%2C%200))%0A%20%20%7D%0A%7D%0Aframe()%20%7B%0A%20%20col(255%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(0%2C%2016)%0A%20%20for(j%2C%200%2C%20dh%20%2B%201)%20%7B%0A%20%20%20%20line(0%2C%20j%20*%20dy%2C%20w%2C%20j%20*%20dy)%0A%20%20%20%20for(i%2C%200%2C%20dw%20%2B%201)%20%7B%0A%20%20%20%20%20%20if(j%20%3D%3D%200)%20%7B%0A%20%20%20%20%20%20%20%20line(i%20*%20dx%2C%200%2C%20i%20*%20dx%2C%20h)%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20c%20%3D%20(abs(ss%5Bi%20%2B%20j%20*%20(dw%20%2B%201)%5D))%0A%20%20%20%20%20%20p%20%3D%20(c%20*%201.2)%0A%20%20%20%20%20%20col(c%20*%20256%2C%2016)%0A%20%20%20%20%20%20s%20%3D%20(2%20%2B%20(dx%20-%202)%20*%20p%20*%20p%20*%20p)%0A%20%20%20%20%20%20rect(i%20*%20dx%20-%20s%20*%200.5%2C%20j%20*%20dy%20-%20s%20*%200.5%2C%20s%2C%20s)%0A%20%20%20%20%20%20col(0%2C%2016)%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20fn%20%2B%3D%20(0.02)%0A%20%20for(j%2C%200%2C%20dh%20%2B%201)%20%7B%0A%20%20%20%20for(i%2C%200%2C%20dw%20%2B%201)%20%7B%0A%20%20%20%20%20%20ss%5Bi%20%2B%20j%20*%20(dw%20%2B%201)%5D%20%3D%20(noise(i%20%2F%20dw%2C%20j%20%2F%20dh%2C%20fn))%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&t=%E3%81%B1%E3%83%BC%E3%82%8A%E3%82%93%E3%80%82",
+        "user": "2bbb",
+        "img": "archive/images/BwXZWUcCEAAQKw1.png",
+        "id": "506049511068663809"
+    },
+    {
+        "url": "?c=sz(720%2C360)bg(0)Z%3D(-0.2)t%3D(0)%0As%3Dfunc()%7B%0A%09r%3D(w%2F10)R%3D(w%2F3)b%3D(-20*cos(%240*5%2Bt))%0A%09return(vec2(w%2F2%2B(R*cos(%240)%2Br*sin(%241%2B2*t))%2F%241%2Bcos(%240)*b%2Ch%2F2%2B(R*sin(%240))%2F%241%2Bsin(%240)*b))%0A%7D%0Aq%3Dfunc()%7B%09%09%09%09%0A%09v%3D(%5Bs(%240%2C%242)%2Cs(%240%2B%241%2C%242)%2Cs(%240%2B%241%2C%242%2B%243)%2Cs(%240%2C%242%2B%243)%5D)%0A%09fill()%0A%09beginShape()%0A%09moveTo(v%5B0%5D.x%2Cv%5B0%5D.y)%0A%09for(ii%2C0%2C4)%7BlineTo(v%5Bii%5D.x%2Cv%5Bii%5D.y)%7D%09%09%09%0A%09endShape()%0A%7D%0Aframe()%7B%0A%09clr()%0A%09t%2B%3D(1%2F30)%09%09%09%09%09%0A%09n%3D(30)%0A%09a%3D(0)%0A%09da%3D(2*PI%2Fn)%0A%09dz%3D(0.25)%0A%09z%3D(Z%2B8)%0A%09while(z%3EZ)%7B%09%09%09%09%0A%09%09for(i%2C0%2Cn)%7B%0A%09%09%09fog%3D(1%2F(max((z%2B0.7)-3%2C1)))%0A%09%09%09if(z%3C%3D2)%7B%0A%09%09%09%09fog%20%3D%20max(0%2Cz%2F2*z%2F2)%0A%09%09%09%7D%09%09%09%09%09%09%0A%09%09%09k%3Dfloor(205*(fog*abs(sin(i%2Fn*2*PI%2Bt))))%0A%09%09%09k*%3D(0.55%2B0.45*cos((i%2Fn%2B0.25)*PI*5))%0A%09%09%09k%3Dfloor(k)%0A%09%09%09col(k)%0A%09%09%09q(a%2Cda%2Cz%2Cdz)%09%09%09%09%09%0A%09%09%09if(i%253%3D%3D%200)%7B%0A%09%09%09%09col(0)%0A%09%09%09%09q(a%2Cda%2F10%2Cz%2Cdz)%0A%09%09%09%7D%09%09%09%09%09%09%0A%09%09%09a%20%2B%3D%20(da)%0A%09%09%7D%0A%09%09z-%3D(dz)%0A%09%7D%09%09%09%09%09%0A%09Z-%3D(0.05)%0A%09if(Z%3C%3Ddz)%7BZ%2B%3D(dz)%7D%0A%7D&t=%E3%83%88%E3%83%B3%E3%83%8D%E3%83%AB(%E9%96%A2%E6%95%B0%E3%83%87%E3%83%A2%20from%20ver%200.2.8",
+        "user": "satcy",
+        "img": "archive/images/BwNXLTwCIAE7Vj6.png",
+        "id": "505343435587334144"
+    },
+    {
+        "url": "?c=size(720%2C%20720)%0AlineNum%20%3D%20(72)%0AoffsetX%20%3D%20(0)%0AoffsetY%20%3D%20(0)%0Aox%20%3D%20(0)%0Aoy%20%3D%20(0)%0Abg(255)%0Aframe()%20%7B%0A%20%20col(0%2C%2032)%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20col(255)%0A%20%20ox%20%3D%20(0.8%20*%20ox%20%2B%200.2%20*%20offsetX)%0A%20%20oy%20%3D%20(0.8%20*%20oy%20%2B%200.2%20*%20offsetY)%0A%20%20if(rand()%20%3C%200.01)%20%7B%0A%20%20%20%20ox%20%3D%20(12%20%2B%20rand()%20*%208)%0A%20%20%20%20ox%20*%3D%20((rand()%20%7C%200)%20*%202%20-%201)%0A%20%20%7D%0A%20%20if(rand()%20%3C%200.01)%20%7B%0A%20%20%20%20oy%20%3D%20(12%20%2B%20rand()%20*%208)%0A%20%20%20%20oy%20*%3D%20((rand()%20%7C%200)%20*%202%20-%201)%0A%20%20%7D%0A%20%20for(i%2C%20-40%2C%20lineNum%20%2B%2040)%20%7B%0A%20%20%20%20line(i%20*%2010%20%2B%20ox%2C%200%2C%20i%20*%2010%20-%20ox%2C%20h)%0A%20%20%20%20line(0%2C%20i%20*%2010%20%2B%20oy%2C%20w%2C%20i%20*%2010%20-%20oy)%0A%20%20%7D%0A%20%20offsetX%20%2B%3D%20(rand()%20-%200.5)%0A%20%20offsetY%20%2B%3D%20(rand()%20-%200.5)%0A%7D&t=%E3%82%82%E3%82%84%E3%82%82%E3%82%84%E3%81%99%E3%82%8B%E7%B7%9A",
+        "user": "2bbb",
+        "img": "archive/images/BwM287NCUAAIrGZ.png",
+        "id": "505308003961040896"
+    },
+    {
+        "url": "?c=sz(720%2C360)%0Acs%20%3D%20(%5B%5D)%0Ac_num%20%3D%20(320)%0Afor(i%2C%200%2C%20c_num)%20%7B%0A%20%20c%20%3D(obj())%0A%20%20c.x%20%3D%20(rand()%20*%20w%20-%2020.0)%0A%20%20c.dx%20%3D%20(rand()%20*%202%20%2B%201)%0A%20%20c.y%20%3D%20(rand()%20*%20h)%0A%20%20c.r%20%3D%20(rand()%20*%204%20%2B%203)%0A%20%20c.f%20%3D%20(rand())%0A%20%20c.df%20%3D%20(rand()%20*%200.1)%0A%20%20c.a%20%3D%20(rand()%20*%200.1)%0A%20%20c.da%20%3D%20(rand()%20*%200.1)%0A%20%20cs%5Bi%5D%20%3D%20(c)%0A%7D%0Aca%20%3D%20(0)%0Adca%20%3D%20(rand())%0Abg(0)%0Aframe()%20%7B%0A%20%20ca%20%2B%3D%20(dca)%0A%20%20col(0%2C%2032%20%2B%2032%20*%20cos(ca))%0A%20%20rect(0%2C%200%2C%20w%2C%20h)%0A%20%20for(i%2C%200%2C%20c_num)%20%7B%0A%20%20%20%20col(255%2C%2096%20%2B%2032%20*%20(cs%5Bi%5D.a%20%2B%201.0))%0A%20%20%20%20oval(cs%5Bi%5D.x%2C%20cs%5Bi%5D.y%2C%20cs%5Bi%5D.r%2C%20cs%5Bi%5D.r)%0A%20%20%20%20cs%5Bi%5D.x%20%2B%3D%20(cs%5Bi%5D.dx)%0A%20%20%20%20cs%5Bi%5D.y%20%2B%3D%20(cos(cs%5Bi%5D.f))%0A%20%20%20%20cs%5Bi%5D.f%20%2B%3D%20(cs%5Bi%5D.df)%0A%20%20%20%20cs%5Bi%5D.a%20%2B%3D%20(cs%5Bi%5D.da)%0A%20%20%20%20if(w%20%3C%20cs%5Bi%5D.x%20-%20cs%5Bi%5D.r)%20%7B%0A%20%20%20%20%20%20cs%5Bi%5D.x%20%3D%20(rand()%20*%20-20.0)%0A%20%20%20%20%20%20cs%5Bi%5D.dx%20%3D%20(rand()%20*%202%20%2B%201)%0A%20%20%20%20%20%20cs%5Bi%5D.y%20%3D%20(rand()%20*%20h)%0A%20%20%20%20%20%20cs%5Bi%5D.r%20%3D%20(rand()%20*%204%20%2B%203)%0A%20%20%20%20%20%20cs%5Bi%5D.f%20%3D%20(rand())%0A%20%20%20%20%20%20cs%5Bi%5D.df%20%3D%20(rand()%20*%200.1)%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&t=%E3%81%86%E3%81%AD%E3%81%86%E3%81%AD",
+        "user": "2bbb",
+        "img": "archive/images/BwMpn7mCUAACeGL.png",
+        "id": "505293349738119168"
+    },
+    {
+        "url": "?c=sz(720%2C720)%0Abg(0)%0An%3D(1)%0AW%3D(w%2F10)%0AH%3D(h%2F10)%0Aframe()%0A%7B%0A%20%20col(0)%0A%20%20rect(0%2C0%2Cw%2Ch)%0A%20%20for(j%2C%200%2C%20H)%20%7B%0A%20%20%20%20for(i%2C%200%2C%20W)%20%7B%0A%20%20%20%20%20%20c%20%3D%20(sin(i%20%2B%20n%20*%200.0628%20%2B%20(i%20-%20W%20%2F%202)%20*%20(i%20-%20W%20%2F%202)%20*%20(j%20-%20H%20%2F%202)%20%2F%20n%20%2B%20(j%20-%20H%20%2F%202)%20*%20n)%20*%20128%20%2B%20127)%0A%20%20%20%20%20%20col(c%2C%20c%2C%20c)%0A%20%20%20%20%20%20x%20%3D%20((w%20%2B%20(10%20*%20i%20%2B%205)%20%2B%20w%20*%20sin(n%20*%200.01))%20%25%20w)%0A%20%20%20%20%20%20y%20%3D%20((h%20%2B%20(10%20*%20j%20%2B%205)%20%2B%20h%20*%20cos(n%20*%200.005))%20%25%20h)%0A%20%20%20%20%20%20oval(x%2C%20y%2C%203%20%2B%20cos((i%20%2B%20n)%20*%200.1)%20%2B%20sin((j%20%2B%20n)%20*%200.1))%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20n%20%3D%20(n%20%2B%201)%0A%7D&t=%E4%B8%89%E8%A7%92%E9%96%A2%E6%95%B0",
+        "user": "2bbb",
+        "img": "archive/images/BwF9uOeCUAAOpIZ.png",
+        "id": "504822866752188417"
+    },
+    {
+        "url": "?c=sz(1280%2C720)%0Abg(0)%0ANUM%3D(200)%0Aa%3D(%5B%5D)%0Afor(i%2C0%2CNUM)%0A%7B%0Aa%5Bi%5D%3Dvec2(rnd(w)%2Ch%2Brnd(h))%0Aa%5Bi%5D.vx%3D(0)%0Aa%5Bi%5D.vy%3D(0)%0Aa%5Bi%5D.r%3Drnd(8%2C30)%0A%7D%0Aframe()%0A%7B%0Acol(0%2C40)%0Arect(0%2C0%2Cw%2Ch)%0Atree(a)%0Afor(i%2C0%2CNUM)%0A%7B%0Ax%3D(a%5Bi%5D.x)%0Ay%3D(a%5Bi%5D.y)%0Avx%3D(a%5Bi%5D.vx)%0Avy%3D(a%5Bi%5D.vy)%0Ar%3D(a%5Bi%5D.r)%0Ab%3Dnears(a%5Bi%5D%2C10%2C3600)%0Ann%3D(b.length)%0Afor(j%2C0%2Cnn)%0A%7B%0Ap%3D(b%5Bj%5D%5B0%5D)%0Ad%3Dsqrt(b%5Bj%5D%5B1%5D)%0Aif((d%3E0)%20%26%26%20(d%3Cr%2Bp.r))%0A%7B%0Avx-%3D((p.x-x)*0.04)%0Avy-%3D((p.y-y)*0.04)%0A%7D%0A%7D%0Aif(y%3Ccy)%0A%7B%0Avy%2B%3D(1)%0A%7D%0Aelse%0A%7B%0Avy-%3D(1%2F2)%0Avx%2B%3D(nz(x*0.001%2Cy*0.003%2Cc*0.01)*GOLD)%0Avy%2B%3D(nz(y*0.002%2Cx*0.003%2Cc*0.02)*2)%0A%7D%0Ax%2B%3D(vx)%0Ay%2B%3D(vy)%0Aif((x%3C0)%7C%7C(x%3Ew))%7Bx%3Drnd(w)%7D%0Aa%5Bi%5D.x%3D(x)%0Aa%5Bi%5D.y%3D(y)%0Aa%5Bi%5D.vx%3D(vx*0.9)%0Aa%5Bi%5D.vy%3D(vy*0.97)%0Acol(nn*24%2Cnn*20%2B60%2Cnn*10%2B150)%0Aoval(x%2Cy%2Cr)%0A%7D%0A%7D&t=%E6%B0%B7%E6%B0%B4%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%B0%B4%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%84%E3%81%A4",
+        "user": "satcy",
+        "img": "archive/images/BwF4XQiCUAA7tF-.png",
+        "id": "504816974937874432"
+    },
+    {
+        "url": "?c=sz(720%2C405)%0Abg(0)lw(2)%0ANUM%3D(150)%0Aa%3D(%5B%5D)%0Afor(i%2C0%2CNUM)%0A%7B%0Aa%5Bi%5D%3Dvec2()%0Aa%5Bi%5D.x%3Drnd(w)a%5Bi%5D.y%3Drnd(h)%0Aa%5Bi%5D.px%3D(0)a%5Bi%5D.py%3D(0)%0Aa%5Bi%5D.r%3Drnd(5%2C20)%0A%7D%0Aframe()%0A%7B%0Aclr()%0Atree(a)%0Afor(i%2C0%2CNUM)%0A%7B%0Aa%5Bi%5D.px%3D(a%5Bi%5D.x)%0Aa%5Bi%5D.py%3D(a%5Bi%5D.y)%0Ax%3D(a%5Bi%5D.x)%0Ay%3D(a%5Bi%5D.y)%0Ab%3Dnears(a%5Bi%5D%2C10%2C1600)%0Ann%3D(b.length)%0Afor(j%2C0%2Cnn)%0A%7B%0Ap%3D(b%5Bj%5D%5B0%5D)%0Ad%3Dsqrt(b%5Bj%5D%5B1%5D)%0Aif((d%3E0))%7B%0Ax-%3D((p.x-x)*0.1)%0Ay-%3D((p.y-y)*0.1)%0Acol(255)%0Aline(x%2Cy%2Cp.x%2Cp.y)%0A%7D%0A%7D%0Ax%2B%3D(nz(x*0.004%2Cy*0.003%2Cc*0.02)*6)%0Ay%2B%3D(nz(y*0.002%2Cx*0.003%2Cc*0.03)*6)%0Ax%2B%3D((cx-x)*0.002)%0Ay%2B%3D((cy-y)*0.002)%0Avx%3D(x-a%5Bi%5D.px)%0Avy%3D(y-a%5Bi%5D.py)%0Aa%5Bi%5D.x%2B%3D(vx)%0Aa%5Bi%5D.y%2B%3D(vy)%0Acol(nn*70%2C255%2C(sin(c*0.07%2Bx*0.01)%2B1)*128%2C180)%0Aoval(a%5Bi%5D.x%2Ca%5Bi%5D.y%2Ca%5Bi%5D.r)%0A%7D%0A%7D&t=%E6%B6%B2%E4%BD%93%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%84%E3%81%A4%E3%80%82",
+        "user": "satcy",
+        "img": "archive/images/Bv-NmdaCUAAAcIM.png",
+        "id": "504277375450742785"
+    },
+    {
+        "url": "?c=sz(720%2C720)bg(0)%0AN1%3D(1000)N2%3D(50)%0Aa%3D(%5B%5D)b%3D(%5B%5D)%0Afor(i%2C0%2CN1)%0A%7B%0Aa%5Bi%5D%3Dvec2()%0Aa%5Bi%5D.x%3Drnd(w)%0Aa%5Bi%5D.y%3Drnd(h)%0A%7D%0Afor(i%2C0%2CN2)%0A%7B%0Ab%5Bi%5D%3Dvec2()%0Ab%5Bi%5D.x%3Drnd(w)%0Ab%5Bi%5D.y%3Drnd(h)%0A%7D%0Atree(a)%0Aframe()%0A%7B%0Aclr()%0Afor(i%2C0%2CN2)%0A%7B%0Ax%3D(b%5Bi%5D.x)y%3D(b%5Bi%5D.y)%0Aaa%3Dnears(b%5Bi%5D%2C8%2C1600)%0Ann%3D(aa.length)%0Afor(j%2C0%2Cnn)%0A%7B%0Ap%3D(aa%5Bj%5D%5B0%5D)%0Ad%3D(aa%5Bj%5D%5B1%5D)%0Aif(d%3E0)%7B%0Acol(255%2C170)%0Aline(x%2Cy%2Cp.x%2Cp.y)%0Aoval(p.x%2Cp.y%2C3)%0A%7D%0A%7D%0Ax%2B%3D(nz(x*0.02%2Cy*0.023%2Ci%2Bc*0.03)*50)%0Ay%2B%3D(nz(y*0.01%2Cx*0.03%2Ci%2Bc*0.02)*50)%0Ax%3Dwrap(x%2C0%2Cw)%0Ay%3Dwrap(y%2C0%2Ch)%0Acol(80%2C255%2C255%2C170)%0Aoval(x%2Cy%2C7)%0Ab%5Bi%5D.x%3D(x)b%5Bi%5D.y%3D(y)%0A%7D%0A%7D&t=%E8%99%AB%E3%81%BF%E3%81%9F%E3%81%84.%20Demo%20tree()%20%26%20nears()%20from%200.2.6",
+        "user": "satcy",
+        "img": "archive/images/Bv-BZcqCMAA1olx.png",
+        "id": "504263957759029248"
+    },
+    {
+        "url": "?c=sz%28720%2C720%29bg%280%29frame%28%29%7Bfill%28%29col%280%2C15%29rect%280%2C0%2Cw%2Ch%29if%28c%25%2815%29%3D%3D0%29%7Bstrk%28%29num%3D%28100%29v1%3D%28%5Brnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%5D%29v2%3D%28%5Brnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%2Crnd%28w%29%2Crnd%28h%29%5D%29a%3Dcurves%28num%2Cv1%29b%3Dcurves%28num%2Cv2%29col%28255%29for%28i%2C0%2Cnum%29%7Bline%28a%5Bi*2%5D%2Ca%5Bi*2+1%5D%2Cb%5Bi*2%5D%2Cb%5Bi*2+1%5D%29%7Dcol%28255%2C0%2C0%29curve%28v1%29col%28255%2C255%2C0%29curve%28v2%29col%280%2C255%2C255%29for%28i%2C0%2C3%29%7Bline%28v1%5Bi*2%5D%2Cv1%5Bi*2+1%5D%2Cv1%5Bi*2+2%5D%2Cv1%5Bi*2+3%5D%29line%28v2%5Bi*2%5D%2Cv2%5Bi*2+1%5D%2Cv2%5Bi*2+2%5D%2Cv2%5Bi*2+3%5D%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bv42-MoCIAAA3tQ.png",
+        "id": "503900650850103296"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29bg%280%29NUM%3D%28100%29a%3D%28%5B%5D%29for%28i%2C0%2CNUM%29%7Ba%5Bi%5D%3Dvec2%28%29a%5Bi%5D.x%3Drnd%28w%29a%5Bi%5D.y%3Drnd%28h%29a%5Bi%5D.px%3D%280%29a%5Bi%5D.py%3D%280%29a%5Bi%5D.r%3Drnd%285%2C20%29%7Dframe%28%29%7Bcol%280%2C3%29rect%280%2C0%2Cw%2Ch%29for%28i%2C0%2CNUM%29%7Ba%5Bi%5D.px%3D%28a%5Bi%5D.x%29a%5Bi%5D.py%3D%28a%5Bi%5D.y%29x%3D%28a%5Bi%5D.x%29y%3D%28a%5Bi%5D.y%29for%28j%2C0%2CNUM%29%7Bif%28%28i%21%3Dj%29%26%26%28dist%28a%5Bi%5D%2Ca%5Bj%5D%29%3Ca%5Bi%5D.r+a%5Bj%5D.r%29%29%7Bx-%3D%28%28a%5Bj%5D.x-x%29*0.05%29y-%3D%28%28a%5Bj%5D.y-y%29*0.05%29%7D%7Dx+%3D%28nz%28x*0.01%2Ci/10%2Cc*0.01%29*5%29y+%3D%28nz%28i/10%2Cy*0.01%2Cc*0.01%29*5%29x+%3D%28%28cx-x%29*0.003%29y+%3D%28%28cy-y%29*0.003%29vx%3D%28x-a%5Bi%5D.px%29vy%3D%28y-a%5Bi%5D.py%29a%5Bi%5D.x+%3D%28vx%29a%5Bi%5D.y+%3D%28vy%29%7Dfor%28i%2C0%2CNUM%29%7Bcol%28i+155%2C205%2C%28sin%28c*0.01+i*0.1%29+1%29*128%29oval%28a%5Bi%5D.x%2Ca%5Bi%5D.y%2Ca%5Bi%5D.r%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bv41t4lCUAACq8k.png",
+        "id": "503899271062507520"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29bg%280%29frame%28%29%7Bclr%28%29num%3D%2850%29cw%3D%28w/num%29for%28i%2C0%2Cnum*1.5%29%7Bww%3D%28w/3%29hh%3D%28h/3%29x%3D%28i*cw-w/4%29y%3D%28cy%29push%28%29translate%28x%2Cy%29push%28%29strk%28%29n1%3Dsin%28c*0.015+1+i*0.07%29n2%3Dsin%28c*0.03+3-i*0.1%29transform%281%2Cn1%2C-n2%2C1%2C0%2C0%29fill%28%29col%280%29rect%28-ww/2%2C-hh/2%2Cww%2Chh%29strk%28%29col%28%28sin%28c*0.02+%28i%29*0.01%29+1%29*127%2C%28155%29%2C%28cos%28c*0.01+%28i%29*0.06%29+1%29*127%29rect%28-ww/2%2C-hh/2%2Cww%2Chh%29pop%28%29pop%28%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bv41jV6CYAAZ2oI.png",
+        "id": "503899090871013376"
+    },
+    {
+        "url": "?c=sz%28720%2C720%29bg%280%29GOLDEN%3D%28%281+sqrt%285%29%29/2%29RAD%3D%28%28360/%281+GOLDEN%29%29/180*PI%29frame%28%29%7Bclr%28%29a%3Dfloor%28%28cos%28c*0.01%29+1%29*2000%29for%28i%2C0%2Ca%29%7Bcol%28255%2C%28i/3%29%25%28255%29%2C%28i/6%29%25%28255%29%29x%3D%28cos%28RAD*i%29*i*0.1+cx%29y%3D%28sin%28RAD*i%29*i*0.1+cy%29oval%28x%2Cy%2Ci*0.001+1%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bv41Y6YCUAIDaGP.png",
+        "id": "503898910868267009"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7BdrawMe%280%2C0%2Cw%2Ch%2C0%2C-2%2Cw%2Ch%29num%3D%2850%29cw%3D%28w/%28num-1%29%29for%28j%2C0%2C100%29%7Bpush%28%29translate%280%2C5*j%29col%28%28cos%28c*0.01+j*0.03%29+1%29*127%2C150%2C%28sin%28c*0.011+j*0.01%29+1%29*127%29fill%28%29beginShape%28%29lineTo%280%2Ch%29for%28i%2C0%2Cnum%29%7Bx%3D%28i*cw%29y%3D%28%28nz%28j*0.1%2Ci*0.03%2Cc*0.01%29-1%29*h+nz%28c*0.05%2Ci*0.3%2Cj%29*h*0.05%29lineTo%28x%2Cy+h%29%7DlineTo%28w%2Ch%29endShape%28%29pop%28%29push%28%29translate%280%2C5*j%29col%28255%29strk%28%29beginShape%28%29for%28i%2C0%2Cnum%29%7Bx%3D%28i*cw%29y%3D%28%28nz%28j*0.1%2Ci*0.03%2Cc*0.01%29-1%29*h+nz%28c*0.05%2Ci*0.3%2Cj%29*h*0.05%29lineTo%28x%2Cy+h%29%7DendShape%28%29pop%28%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bvkq90ECEAAac3T.png",
+        "id": "502480075606859776"
+    },
+    {
+        "url": "?c=sz%28720%2C1280%29frame%28%29%7BdrawMe%280%2C0%2Cw%2Ch%2C0%2C-3%2Cw%2Ch%29hh%3D%28h/3%29num%3D%2850%29cw%3D%28w/%28num-1%29%29col%28%28cos%28c*0.01%29+1%29*127%2C50%2C%28sin%28c*0.011%29+1%29*127%29fill%28%29beginShape%28%29lineTo%280%2Ch%29for%28i%2C0%2Cnum%29%7Bx%3D%28i*cw%29y%3D%28%28nz%28i*0.03%2Cc*0.01%29-1%29*hh+nz%28c*0.05%2Ci*0.3%29*hh*0.05%29lineTo%28x%2Cy+h+hh%29%7DlineTo%28w%2Ch%29endShape%28%29col%28255%29strk%28%29beginShape%28%29for%28i%2C0%2Cnum%29%7Bx%3D%28i*cw%29y%3D%28%28nz%28i*0.03%2Cc*0.01%29-1%29*hh+nz%28c*0.05%2Ci*0.3%29*hh*0.05%29lineTo%28x%2Cy+h+hh%29%7DendShape%28%29%7D",
+        "user": "satcy",
+        "img": "archive/images/Bvkp787IgAAq-KJ.png",
+        "id": "502478943879176193"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29s%3D%28%5B%5D%29for%28j%2C0%2C10%29%7Bs%5Bj%5D%3D%283-j*0.3%29%7Dframe%28%29%7Bnum%3D%2850%29sortNum%28s%29reverse%28s%29for%28j%2C0%2C10%29%7Bpush%28%29translate%28cx%2Ccy%29sc%3D%28s%5Bj%5D%29scale%28sc%2Csc%29s%5Bj%5D+%3D%280.01%29s%5Bj%5D%3D%28s%5Bj%5D%253%29beginShape%28%29for%28i%2C0%2Cnum%29%7Br%3D%28%28nz%28i*0.19%2Cc*0.0008%2Csc*0.3%29+1%29*w/3%29rad%3D%28%28PI2/num%29*i%29x%3D%28cos%28rad%29*r%29y%3D%28sin%28rad%29*r%29col%28%28sin%28c*0.0055+sc%29+1%29*127%2C100%2C%28cos%28c*0.0025+sc*2%29+1%29*127%29lineTo%28x%2Cy%29%7DendShape%28%29pop%28%29c++%7Dc--%7D",
+        "user": "satcy",
+        "img": "archive/images/BvfgS_XCcAA5M2Y.png",
+        "id": "502116501655007232"
+    },
+    {
+        "url": "?c=sz%28270*3%2C270%29bg%280%29frame%28%29%7Bclear%28%29ww%3D%28h%29for%28j%2C0%2C3%29%7Bstep%3D%28abs%28nz%28j%2Cc*0.0031%29%29*0.3+0.001%29freq%3D%28nz%283%2Cj%2Cc*0.013%29*0.007%29for%28i%2C0%2C3333%29%7Brad%3D%28sin%28i*freq%29*ww/4+ww/4%29x%3D%28cos%28i*step+c*0.1%29*rad+j*ww+ww/2%29y%3D%28sin%28i*step+c*0.1%29*rad+cy%29col%28255%29rect%28x%2Cy%2C1%2C1%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BvTM2cCCcAQg4_5.png",
+        "id": "501250694519586816"
+    },
+    {
+        "url": "?c=sz%281080%2C540%29bg%28255%2C80%2C90%29frame%28%29%7Bclr%28%29col%28255%29for%28i%2C0%2C629%29%7Bx%3D%28cos%28i*0.01+c*0.01%29*w/4+cx%29y%3D%28sin%28i*0.03+c*0.1%29*h/12+cy%29b%3D%28sin%28i*0.01+c*0.01%29%29line%28x%2Cy-7*b%2Cx%2Cy+7*b%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bur0KPrCUAANmE6.png",
+        "id": "498479165767565312"
+    },
+    {
+        "url": "?c=sz%281080%2C540%29bg%280%29frame%28%29%7Bclr%28%29for%28i%2C0%2C1000%29%7Br%3D%28%28sin%28c*0.1+i*0.03%29+1%29*127.5%29a%3D%28%28sin%28c*0.1+i*0.04%29+1%29*127.5%29col%28155%2Cr%2Cr%2Ca%29x%3D%28sin%28i*0.01+c*0.02%29*sin%28i*0.003+c*0.004%29*w%29line%28cx+x%2C0%2Ccx+x%2Ch%29line%28cx-x%2C0%2Ccx-x%2Ch%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Burvd9HCMAEKgkC.png",
+        "id": "498474007063064576"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29bg%280%29frame%28%29%7Bcr%3D%28PI2/16%29brad%3D%28h*0.45-20%29clr%28%29col%2855%29oval%28cx%2Ccy%2Ch*0.45%29col%28255%29num%3D%28%28sin%28c/50%29/2+0.5%29*8%29for%28i%2C0%2Cnum%29%7Brad%3D%28cos%28c*0.03+i*cr%29*brad%29x%3D%28cos%28cr*i%29*rad+cx%29y%3D%28sin%28cr*i%29*rad+cy%29oval%28x%2Cy%2C10%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BtSe3lSCEAACRJQ.png",
+        "id": "492192937124442112"
+    },
+    {
+        "url": "?c=sz%28720%2C270%29bg%280%29frame%28%29%7Bclr%28%29numX%3D%2840%29numY%3D%285%29ww%3D%28w/numX%29hh%3D%28h/numY%29col%28255%29for%28a%2C0%2CnumX%29%7Bfor%28b%2C0%2CnumY%29%7Box%3D%28a*ww%29oy%3D%28b*hh%29for%28i%2C0%2C2%29%7Bx%3D%28%28cos%28c*%280.0617+a*0.001+b*0.00833%29+i*%28a*0.173+b*0.123%29%29*0.5+0.5%29*ww%29line%28ox+x%2Coy+0%2Cox+x%2Coy+hh%29%7D%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bs-xj4FCYAALkaV.png",
+        "id": "490806114628280320"
+    },
+    {
+        "url": "?c=sz%281040%2C520%29bg%280%29frame%28%29%7Bclr%28%29ww%3D%28520%29for%28j%2C0%2C15%29%7Box%3D%28%28ww/2%29*%28j%255%29%29oy%3D%28%28ww/2%29*floor%28j/5%29%29for%28i%2C0%2C150%29%7Bx%3D%28cos%28i*0.2+c*0.1%29*ww/4%29y%3D%28sin%28i*0.2+c*0.1%29*ww/4%29x2%3D%28cos%28i*0.2+c*0.11%29*ww/6%29y2%3D%28sin%28i*%280.4+j*0.025%29+c*0.11%29*ww/6%29col%28255%29line%28ox+x%2Cy+oy%2Cox+x2%2Cy2+oy%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bs9vVgEIYAA3W9Y.png",
+        "id": "490733299946762240"
+    },
+    {
+        "url": "?c=sz%28360%2C360%29frame%28%29%7Bclr%28%29cr%3D%28PI*2/3%29t%3D%28c/1000%29p1%3D%28sin%28c*0.003%29+1%29for%28i%2C0%2C85%29%7Brad%3D%28%28c*10+i*5%29%25w%29col%28255-i*3%29for%28j%2C0%2C3%29%7Btlt%3D%28c*0.01+i*p1*0.03%29line%28cos%28t+tlt+cr*j%29*rad+cx%2Csin%28t+tlt+cr*j%29*rad+cy%2Ccos%28t+tlt+cr*%28j+1%29%29*rad+cx%2Csin%28t+tlt+cr*%28j+1%29%29*rad+cy%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BsmbMuSCYAAIbxv.png",
+        "id": "489092680366833665"
+    },
+    {
+        "url": "?c=sz%28480%2C320%29bg%280%29frame%28%29%7Bclr%28%29col%28170%29vl%3D%2880%29w2%3D%28w*2%29phase%3D%280.0023%29for%28i%2C0%2Cw2%29%7Brad%3D%28w-i%29x%3D%28cos%28%28i+c%29*phase%29*rad+cx%29y%3D%28sin%28%28i+c%29*phase%29*rad+cy%29line%28x+cos%28c*0.09+i*0.022%29*vl%2Cy+sin%28c*0.11+i*0.015%29*vl%2Cx+sin%28c*0.1+i*0.03%29*vl%2Cy+cos%28c*0.13+i*0.02%29*vl%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BslhZe8CEAAv-rj.png",
+        "id": "489029127941259264"
+    },
+    {
+        "url": "?c=sz%281200%2C480%29bg%280%29frame%28%29%7Bclr%28%29col%28170%29vl%3D%28h/2%29w2%3D%28w/3%29for%28i%2C0%2Cw2%29%7Bcol%28%28cos%28c*0.01+i*0.25%29/2+0.5%29*255%29x%3D%28i*3%29y%3D%28cy%29line%28x+cos%28c*0.021+i*0.07%29*vl%2Cy+sin%28c*0.021+i*0.11%29*vl/3%2Cx+sin%28c*0.02+i*0.11%29*vl/3%2Cy+cos%28c*0.02+i*0.15%29*vl%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BsmmAw3CIAAycqL.png",
+        "id": "489104566860783616"
+    },
+    {
+        "url": "?c=size%28720%2C720%29bg%28255%2C255%2C255%29frame%28%29%7Bfor%28i%2C0%2C100%29%7Bcol%28sin%28%28c+i*0.12%29*0.03%29*128+128%2Csin%28%28c+i*0.13%29*0.07%29*128+128%2Csin%28%28c+i*0.19%29*0.13%29*128+128%29x%3D%28cos%28%28c*1+i*1.03%29*0.0313%29*300+w/2%29y%3D%28sin%28%28c*1+i*0.99%29*0.0373%29*300+h/2%29oval%28x%2Cy%2C30+60+60*sin%28%28c*0.005+i*0.12%29%29%29%7D%7D",
+        "user": "_nabe",
+        "img": "archive/images/BsFnEE9CIAAQzhI.png",
+        "id": "486783554748026880"
+    },
+    {
+        "url": "?c=sz%28720%2C720%29bg%280%29frame%28%29%7Bclr%28%29stroke%28%29arc%3D%28%28cos%28c*0.01%29+1%29*w/3%29for%28i%2C0%2C100%29%7Br%3D%28%28sin%28c*0.02+i*0.03%29+1%29*w/2%29rad%3D%28cos%28c*0.013+i*0.05%29*PI2%29x%3D%28cos%28rad%29*r%29y%3D%28sin%28rad%29*r%29col%280%2Cr/2%2C255%29oval%28x+cx%2Cy+cy%2Carc%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Brxu-FWCIAA4nLD.png",
+        "id": "485384873171906561"
+    },
+    {
+        "url": "?c=sz%281280%2C720%29bg%280%29frame%28%29%7Bclr%28%29col%28170%29vl%3D%2815%29w2%3D%28w*2%29phase%3D%280.13%29for%28i%2C0%2Cw2%29%7Brad%3D%28w-i%29x%3D%28cos%28%28i+c%29*phase%29*rad+cx%29y%3D%28sin%28%28i+c%29*phase%29*rad+cy%29line%28x+cos%28c*0.1+i*0.013%29*vl%2Cy+sin%28c*0.14+i*0.02%29*vl%2Cx+sin%28c*0.1+i*0.013%29*vl%2Cy+cos%28c*0.14+i*0.02%29*vl%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Bro7nLvCEAAEPZs.png",
+        "id": "484765454464864257"
+    },
+    {
+        "url": "?c=size%28720%2C360%29frame%28%29%7Bfor%28i%2C0%2C427%29%7Bcol%28sin%28c*0.03+i*0.013%29*128+128%2Csin%28c*0.07+i*0.013%29*128+128%2Csin%28c*0.13+i*0.013%29*128+128%29x%3D%28w/2%29y%3D%28h/2%29line%28cos%28c*0.04+i*0.02%29*w+x%2Csin%28c*0.063+i*0.013%29*h+y%2Ccos%28c*0.071+i*0.013%29*w+x%2Csin%28c*0.054+i*0.012%29*h+y%29%7D%7D",
+        "user": "_nabe",
+        "img": "archive/images/Brg_HyICYAA-Kmb.png",
+        "id": "484206363342417920"
+    },
+    {
+        "url": "?c=size%28720%2C360%29frame%28%29%7Bclear%28%29for%28i%2C0%2C1027%29%7Bcol%28sin%28c*0.03+i*0.013%29*128+128%2Csin%28c*0.07+i*0.013%29*128+128%2Csin%28c*0.13+i*0.013%29*128+128%29x%3D%28w/2%29y%3D%28h/2%29line%28cos%28c*0.04+i*0.02%29*w+x%2Csin%28c*0.063+i*0.013%29*h+y%2Ccos%28c*0.071+i*0.013%29*w+x%2Csin%28c*0.054+i*0.012%29*h+y%29%7D%7D",
+        "user": "_nabe",
+        "img": "archive/images/Brg-g02CUAAnRRH.png",
+        "id": "484205694044741633"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7Bclr%28%29cr%3D%28PI*2/3%29t%3D%28c/100%29for%28i%2C0%2C85%29%7Brad%3D%28i*6%29col%28255-i*3%29for%28j%2C0%2C3%29%7Btlt%3D0.24*sin%28%28c+i%29*0.1%29line%28cos%28t+tlt+cr*j%29*rad+cx%2Csin%28t+tlt+cr*j%29*rad+cy%2Ccos%28t+tlt+cr*%28j+1%29%29*rad+cx%2Csin%28t+tlt+cr*%28j+1%29%29*rad+cy%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/Brd6_VqCMAEyaBq.png",
+        "id": "483990714250850304"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7Bfor%28i%2C0%2C127%29%7Bcol%28rnd%28255%29%2Crnd%28255%29%2Crnd%28255%29%29line%28360%2C180%2Crnd%28720%29%2Crnd%28360%29%29%7D%7D",
+        "user": "_nabe",
+        "img": "archive/images/BrcZJ76CAAE4nKk.png",
+        "id": "483883143934377985"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7Bclear%28%29step%3D%286%29for%28i%2C0%2C70%29%7Bcol%28i*3%2C255-i*3%2C255%29stroke%28%29oval%28cx+tan%28c*0.13+i+0.1%29*step%2Ccy+tan%28c*0.01+i+0.13%29*step%2Ci*step%29%7D%7D",
+        "user": "_nabe",
+        "img": "archive/images/BrcYAVfCEAAuk3O.png",
+        "id": "483881879284617218"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7Bclear%28%29step%3D%286%29for%28i%2C0%2C70%29%7Bcol%28255-i*3%29stroke%28%29oval%28cx+cos%28c*0.13+i+0.1%29*step%2Ccy+sin%28c*0.1+i+0.13%29*step%2Ci*step%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BrcGtJKCQAAWAUw.png",
+        "id": "483862857860136960"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29bg%2820%29frame%28%29%7Bclear%28%29a%3D%2820%29ww%3D%28w*0.9%29for%28i%2C0%2Cww%29%7Bcol%28250.0/w*i%2Ci/2%2Ci/2%29for%28j%2C0%2Ca%29%7Brect%28w/2/a*%282*j+1%29+noise%280.0001*i*%28a-j+1%29+c*0.02+%28a-j%29*0.05%29*w-i/a/8.0%2Ci/2.0%2Ci/a/4.0%2Ci/a/4.0%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BrZhYrfCAAA_wxD.png",
+        "id": "483681086837227520"
+    },
+    {
+        "url": "?c=sz%28720%2C720%29bg%28255%29frame%28%29%7Bclear%28%29col%280%29cw%3D%2872%29for%28i%2C-1%2C12%29%7Bfor%28j%2C-1%2C12%29%7Bx%3D%28cw*i+sin%28c*0.013%29*cw%29y%3D%28cw*j+cos%28c*0.01%29*cw%29rect%28x%2Cy%2Ccw/5%2Ccw/5%29rect%28x%2Cy%2Csin%28c*0.023+i+j*10%29*cw*2%2Ccw/5%29rect%28x%2Cy%2Ccw/5%2Ccos%28c*0.05+i*sin%28c*0.002%29+j*8.3%29*cw*2%29%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BrZKuRtCMAA-exX.png",
+        "id": "483656169085337602"
+    },
+    {
+        "url": "?c=sz(720,360)bg(0)frame()%7Bclear()for(i,0,w)%7Bcol(250.0/w*i,i/2,i/2)rect(w/2.0+noise(0.002*i+c*0.005)*w-i/8.0,i/2.0,i/4.0,i/4.0)%7D%7D",
+        "user": "yui1048kitenoz",
+        "img": "archive/images/BrUP8A4CMAI8zjz.png",
+        "id": "483310058898337792"
+    },
+    {
+        "url": "?c=size%28720%2C360%29frame%28%29%7Bclear%28%29for%28i%2C0%2C10%29%7Bfor%28j%2C0%2C100%29%7Bcol%280%2C195+j%2C230+i%29x%3D%28w/2%29y%3D%28h/2%29line%28noise%28c*0.04+i*0.002+j*0.03%29*w+x%2Cnoise%28c*0.003+i*0.0055+j*0.05%29*h+y%2Cnoise%28c*0.03+i*0.0013+j*0.01%29*w+x%2Cnoise%28c*0.02+i*0.0012+j*0.032%29*h+y%29%7D%7D%7D",
+        "user": "yui1048kitenoz",
+        "img": "archive/images/BrUB-70CUAE9QTH.png",
+        "id": "483294716545355776"
+    },
+    {
+        "url": "?c=sz%281280%2C720%29bg%280%29frame%28%29%7Bss%3D%28h*0.45%29cr%3D%28PI/12%29cx%3D%28w/2%29cy%3D%28h/2%29for%28i%2C0%2C24%29%7Bfor%28j%2C0%2C24%29%7Bcol%28rnd%28255%29%29if%28j%252%3D%3D0%29%7Bline%28cos%28i*cr%29*ss+cx%2Csin%28i*cr%29*ss+cy%2Ccos%28i*cr+j*cr%29*ss+cx%2Csin%28i*cr+j*cr%29*ss+cy%29%7D%7D%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BrT31ggCIAAhSyt.png",
+        "id": "483283558933348352"
+    },
+    {
+        "url": "?c=sz%28720%2C360%29frame%28%29%7Bfor%28i%2C0%2C100%29%7Bcol%28rnd%28255%29%2Crnd%28100%2C255%29%2Crnd%28130%2C255%29%29x%3D%28%28c*3+i%29%25%28w+300%29-150%29line%28x+cos%28c*0.037+i*0.055%29*100%2C0%2Cx+sin%28c*0.013+i*0.037%29*100%2Ch%29%7D%7D",
+        "user": "satcy",
+        "img": "archive/images/BrTyGLQCQAAy-aT.png",
+        "id": "483277248464568321"
+    }
+]

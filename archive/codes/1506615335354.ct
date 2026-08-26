@@ -1,0 +1,21 @@
+sz(500,500)bg(200)bpm(120, 4)
+colors=([0xc5994c, 0xff3355, 0x2039ef])rot=(0)
+sc=([])
+for(i,0,12){
+sc[i]=vec2(h/2.5)
+tween(sc[i]).to(vec2(h/4), 2000-i*100).delay(i*100).yoyo(1).repeat(Infinity).easing(ExpoOut).start()
+}
+frame(){
+    dropShadow(0,0,8,0x666666)
+    clr()
+    translate(cx,cy)
+    for(i,0,12){
+        hcol(colors[(i)%3])
+        push()
+        rotate(c/100+i*PI/6)
+
+        arc(0,0,sc[i].x, 0, PI/2)
+        pop()
+
+    }
+}

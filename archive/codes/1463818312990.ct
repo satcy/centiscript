@@ -1,0 +1,18 @@
+sz(720,720)bg(255)shifts=([0,0,0,0])scales=([1,1,1,05])defscales=([0, 0.5,1,1.1])frame(){
+clr()
+if(rnd(1)<0.1){
+index=floor(rnd(4))
+shifts[index]=rnd(-1,1)
+scales[index]=defscales[floor(rnd(4))]
+}
+col(35,31,32)
+for(i,0,4){
+f=(c/49+shifts[i]*PI)
+_cos=(cos(f)<0?0:cos(f))
+push()
+translate(cx-w/4+w/2*(i%2),cy-h/4+h/2*floor(i/2))
+rotate(_cos*PI-PI/4)
+oval(0,0,(h/4)*(_cos==0 ? (sqrt(2)-1-0.02)+1 : scales[i]), _cos*50+4)
+pop()
+}
+}

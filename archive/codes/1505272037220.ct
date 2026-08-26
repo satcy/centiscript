@@ -1,0 +1,16 @@
+sz(360,360)bg(0)segments=([])N=(36)
+frame(){
+    clr()
+    for(j,0,N+1){
+        p0=vec2(j*10,h)p1=vec2(j*10,h)
+        r=(0)
+        vr=(cos(c/(13+j))*0.02)
+        for(i,0,N){
+            pp = vec2(0, -10)pp = pp.rotate(r)
+            p1.x += (pp.x)p1.y += (pp.y)
+            line(p0.x, p0.y, p1.x, p1.y)
+            p0.x = (p1.x)p0.y = (p1.y)
+            r += (vr)
+        }
+    }
+}

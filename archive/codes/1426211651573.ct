@@ -1,0 +1,37 @@
+sz(720,400)bg(0)lw(0.1)
+frame(){
+clr()
+translate(120,40)
+scale(4,4)
+num=((nz(c*0.03)+0.5)*810)
+for(j,0,num){line81()}
+}
+line81=func(){
+pts=([[0,40,60,40,60,60,0,60],[20,20,40,20,40,80,20,80],[100,0,120,0,120,80,100,80]])
+patt=floor(rnd(5))
+if ( patt < 3 ) {
+pts2=(pts[patt])
+res=([])
+for(i,0,2){
+index=(floor(rnd(4))*2)
+pt1=Vec2(pts2[index], pts2[index+1])
+pt2=Vec2(pts2[(index+2)%8], pts2[(index+3)%8])
+pt3=interpolate(pt1,pt2,(sin(c*0.012))*rnd(1))
+res.push(pt3)
+}
+line(res[0].x, res[0].y, res[1].x, res[1].y)
+} else {
+rnum=((sin(c*0.006)+1)*5)
+cr=(PI2/rnum)
+x=(80)y=(20+40*(patt-3))
+r=floor(rnd(rnum))
+pt1=Vec2(cos(cr*r)*20+x,sin(cr*r)*20+y)
+r=floor(rnd(rnum))
+pt2=Vec2(cos(cr*r)*20+x,sin(cr*r)*20+y)
+line(pt1.x, pt1.y, pt2.x, pt2.y)
+}
+}
+
+interpolate=func(){
+return(Vec2(interp($0.x,$1.x,$2), interp($0.y,$1.y,$2)))
+}

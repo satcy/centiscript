@@ -1,0 +1,17 @@
+sz(720,720)
+frame(){
+strk()
+clr()
+for(j,0,9){
+push()
+translate((j%3)*w/3+w/3/2, floor(j/3)*h/3+h/3/2)
+for(i,0,(j*2+12)){
+push()
+rotate(cos(c/50+i*(PI/(j*0.02+1)+PI))*PI)
+translate(0,sin(c/20)*60)
+line(0,0,(1+i)*10,0)
+pop()
+}
+pop()
+}
+}

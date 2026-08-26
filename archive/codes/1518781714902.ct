@@ -1,0 +1,21 @@
+sz(700,350)bg(0)v=([])
+NM=(14)NMY=(7)beat_cnt=(0)
+for(i,0,NM*NMY){ v[i] = vec2(0) }
+frame(){
+    clr()col(255)
+    sc=(10)
+    for ( j,0,NM*NMY) {
+        n=floor(v[j].x)
+        for(i,0,16){
+            if ( n & 1 ) {
+                rect((0.5 + i%4 + j%NM*5)*sc, 
+                (0.5 + floor(j/NM)*5 + floor(i/4))*sc,
+                0.9*sc,0.9*sc)
+            }
+            n=(n>>1)
+        }
+    }
+    tween(v[beat_cnt%(NM*NMY)]).to(vec2(rnd(0xffff)),500)
+    .easing(ExpoOut).start()
+    beat_cnt+=(1)
+}

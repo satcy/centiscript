@@ -1,0 +1,40 @@
+sz(720,540)bg(0)
+o=({x:0,y:0,vx:1,vy:1,speed:4,s:20})
+bw=(100)
+wait=(0)
+score=(0)
+frame(){
+h=(360)
+clr()col(170)
+wait-=(1)
+if(wait<=0){
+	o.x+=(o.vx*o.speed)
+	o.y+=(o.vy*o.speed)
+}else{
+	hcol(0xff0000)
+	if(score>0){score-=(1)}
+}
+if ( o.x > w-o.s ) {o.vx*=(-1)o.x=(w*2-o.x-o.s*2)}
+if ( o.x < 0 ) {o.vx*=(-1)o.x=(-o.x)}
+if ( o.y > h-o.s ) {o.vy*=(-1)o.y=(h*2-o.y-o.s*2)wait=(60)}
+if ( o.y < 0 ) {o.vy*=(-1)o.y=(-o.y)}
+x=minmax(mx,0,w-bw)
+y=(h-40)
+if ((o.x>=x)&&(o.x<x+bw-o.s) && (o.y >= y-o.s) ) {
+	rate=zmap((x-o.s+bw/2 - o.x), -bw/2, bw/2, -1, 1)
+	o.vx*=(sin(rate))o.vx=(-sin(rate)*2)
+	o.vy*=(-cos(rate))o.vy=(-cos(rate)*2)
+	o.y=(y*2-o.y-o.s*2)
+	score+=(1)
+	hcol(0x00ff00)
+}
+rect(o.x,o.y,o.s,o.s)
+rect(x,y,bw,20)
+x=(c*3%30-30)
+while(x<w) {
+	rect(x,h-5,15,5)
+	x+=(30)
+}
+hcol(0xffff00)
+segs(score,9,9,99,99)
+}

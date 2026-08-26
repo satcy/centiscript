@@ -1,0 +1,25 @@
+sz(720,360)bg(0)frame(){clr()
+ww=(w/10)
+ww2=(ww/2)
+for(j,0,5){
+push()
+for(i,0,10){
+f=((i+j)/2)
+drawTris(ww,cos(f+c/93)* ww2 + ww2,sin(f+c/90)* ww2 + ww2)
+translate(ww,0)
+}
+pop()
+translate(0, ww)
+}
+
+}
+drawTris=func(){
+col(235)
+tri(0,0,$0,0,$1,$2)
+col(33)
+tri($0,0,$0,$0,$1,$2)
+col(22)
+tri($0,$0,0,$0,$1,$2)
+col(155)
+tri(0,$0,0,0,$1,$2)
+}

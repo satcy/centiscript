@@ -1,0 +1,32 @@
+sz(720,360)bg(0)
+arr=([vec2(rnd(w),rnd(h)), vec2(rnd(w),rnd(h)), vec2(rnd(w),rnd(h))])
+frame(){
+clr()col(170)
+strk()
+tri(arr[0], arr[1], arr[2])
+fill()
+for ( x,0,11) {
+    for (y,0,11) {
+        pos = pointOnTri(arr[0], arr[1], arr[2], x/10, y/10)
+        oval(pos.x, pos.y, 2)
+    }
+}
+}
+pointOnTri = func(){
+    p0=vec2(0)p1=vec2(0)
+    mid = vec2(($0.x + $1.x + $2.x)/3, ($0.y + $1.y + $2.y)/3)
+    ratio =(0)
+    if ( $3 < 1/3 ) {
+        p0.set($0.x, $0.y)p1.set($1.x, $1.y)
+        ratio = zmap($3, 0, 1/3, 0, 1)
+    } elseIf ( $3 < 2/3 ) {
+        p0.set($1.x, $1.y)p1.set($2.x, $2.y)
+        ratio = zmap($3, 1/3, 2/3, 0, 1)
+    } else {
+        p0.set($2.x, $2.y)p1.set($0.x, $0.y)
+        ratio = zmap($3, 2/3, 1, 0, 1)
+    }
+    p2=vec2(interp(mid.x, p0.x, ratio), interp(mid.y, p0.y, ratio))
+    p3=vec2(interp(mid.x, p1.x, ratio), interp(mid.y, p1.y, ratio))
+    return(vec2(interp(p2.x, p3.x, $4), interp(p2.y, p3.y, $4)))
+}

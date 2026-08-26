@@ -1,0 +1,20 @@
+sz(720,720)bg(90,100,100)L=(230)AMP=(60)SEP=(50)
+frame(){
+clr()col(60,190,150)lw(3)
+translate(cx,cy)
+for(i,0,20){
+    for(j,0,3){
+        push()
+        translate(SEP+j*SEP, 0)
+        y0=(cos(c/23+j*PI+PI/2)*AMP)
+        y1=(cos(c/23+j*PI+PI)*AMP)
+        y2=(cos(c/23+j*PI+PI*1.5)*AMP)
+        y3=(cos(c/23+j*PI+PI*2)*AMP)
+        strk()
+        curve(0,y0,L/3,y1,L*2/3,y2,L,y3)
+        pop()
+    }
+    rotate(PI/10)
+}
+    
+}

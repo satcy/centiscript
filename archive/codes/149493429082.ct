@@ -1,0 +1,60 @@
+sz(720,540)bg(0)wait=(0)hitted=(0)scores=([0,0])
+ww=(540)
+g=grid(ww,h,3,3)
+for(i,0,9){g[i].s=(0)}
+inc=(0)
+frame(){
+clr()
+cnt=(0)
+writed=(0)
+strk()
+for(i,0,9){
+r=(g[i])
+col(255)
+rect(r.x, r.y, r.w-1, r.h-1)
+strk()col(0,255,0)
+if ( r.s==1 ) { oval(r.x+r.w/2,r.y+r.h/2,min(r.w,r.h)*0.45) }
+if ( r.s==2 ) { line(r.x+5, r.y+5, r.x+r.w-10, r.y+r.h-10) line(r.x+r.w-10, r.y+5, r.x+5, r.y+r.h-10) }
+if ( wait<=0 ) { 
+if ( writed==0 && rnd(1)<(0.1) && r.s == 0 ) { write=(1)r.s=((inc++)%2+1) }
+if ( r.s != 0 ) { cnt++ }
+}
+}
+fill()
+for(i,0,3){
+r=(g[i])
+hit=(0)
+if ( r.s != 0 ) { for(j,1,3){ if ( r.s==g[i+j*3].s ) { hit+=(1) } } }
+if ( hit == 2 ) { hitted=(r.s)col(255,70,0,100)rect(r.x, r.y, r.w*3, r.h) } 
+}
+for(i,0,3){
+r=(g[i*3])
+hit=(0)
+if ( r.s != 0 ) { for(j,1,3){ if ( r.s==g[i*3+j].s ) { hit+=(1) } } }
+if ( hit == 2 ) { hitted=(r.s)col(0,90,255,100)rect(r.x, r.y, r.w, r.h*3) } 
+}
+{
+r=(g[0])
+hit=(0)
+if ( r.s != 0 ) { for(j,1,3){ if ( r.s==g[j*4].s ) { hit+=(1) } } }
+if ( hit == 2 ) { hitted=(r.s)col(0,90,255,100)
+beginShape()
+moveTo(r.x,r.y)lineTo(r.x+r.w, r.y)lineTo(r.x+r.w*3, r.h*2)lineTo(r.x+r.w*3, r.h*3)lineTo(r.x+r.w*2, r.h*3)lineTo(r.x, r.h)
+endShape()
+} 
+}
+{
+r=(g[2])
+hit=(0)
+if ( r.s != 0 ) { for(j,1,3){ if ( r.s==g[2+j*2].s ) { hit+=(1) } } }
+if ( hit == 2 ) { hitted=(r.s)col(0,190,55,100)
+beginShape()
+moveTo(r.x,r.y+r.h)lineTo(r.x, r.y)lineTo(r.x+r.w*2, 0)lineTo(r.x+r.w*3, 0)lineTo(r.x+r.w*3, r.h)lineTo(r.x+r.w, r.h*3)
+endShape() } 
+}
+if ( ( wait<=0 && hitted>0 ) || cnt==9 ) { wait=(60)if(hitted>0){scores[hitted-1]+=(1)} }
+wait-=(1)
+if ( wait == 0 ) { hitted=(0)for(i,0,9){g[i].s=(0)} }
+col(0,255,0)
+segs(scores[0], ww+10, 10, w/19,h/5)segs(scores[1], ww+10, h-10-h/5, w/19,h/5) 
+}

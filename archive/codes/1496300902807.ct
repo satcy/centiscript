@@ -1,0 +1,16 @@
+sz(720,360)bg(0)
+frame(){
+clr()col(170)
+translate(cx,cy)
+oval(0,0,h/2)
+hh=(h/3)
+col(0)
+v = (minmax(cos(c/60)*2, -1, 1)/2 + 0.5)
+for(i,0,2){
+    push()
+    rotate(c/15+PI*i)
+    oval( (1-v)*hh*1.25, 0, hh*(v*0.8+0.2) )
+    pop()
+    v = (1-v)
+}
+}

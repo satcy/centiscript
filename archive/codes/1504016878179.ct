@@ -1,0 +1,22 @@
+sz(720,360)bg(120)R=(50)h2=(h-10)
+frame(){
+    clr()
+    col(100)
+    rect(0,h2,w,10)
+    col(255)
+    for(i,0,12){
+        rect(w-(c*9+i*60)%w,h2,30,10)
+    }
+    push()
+    y=(h-abs(cos(c/18))*h2)
+    if ( y > h2 - R/5) { y = (h2 - R/5) }
+    translate(cx, y)
+    sc=(1)
+    if ( y > h2 - R) {
+        sc = ((h2-y)/R)
+    }
+    scale(2-sc,sc)
+    rotate(c/18)
+    rect(-R,-R,R*2,R*2)
+    pop()
+}

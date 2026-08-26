@@ -713,7 +713,6 @@ Centi.prototype.update = function(){
     }
     this.c++;
     if ( this.toGifFunc != null ) this.toGifFunc(this.ctx || this.canvas);
-    if ( this.dsp.enable && this.c > 1 && this.time == 0 ) this.dsp.enable = false;
 };
 
 Centi.prototype.updateBeat = function(){

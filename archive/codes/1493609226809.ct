@@ -1,0 +1,13 @@
+sz(720,360)bg(0)frame(){
+clr()
+for(i,0,5000){
+r=rnd(PI2)
+rr=(pow(rnd(1), sin(c*0.1)*3)*h/8+h/4)
+x=(cos(r)*rr)
+y=(sin(r)*rr)
+pixel(x+cx+h/6,y+cy)
+y=(sin(rnd(PI2))*rr)
+x=(cos(rnd(PI2))*rr/4-y*0.25)
+pixel(x+cx-h/3,y+cy)
+}
+}

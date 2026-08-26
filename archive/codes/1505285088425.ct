@@ -1,0 +1,14 @@
+sz(360,360)bg(0)
+a=vec2()b=vec2()
+frame(){
+    clr()
+    for(i=60;i>0;i--){
+        col(i%2*255)
+        ox = zmap(i,1,60,0,3)
+        curve(0,0,a.x,a.y*ox,b.x,b.y*ox,w,0)
+    }
+}
+beat(){
+    tween(a).to(vec2(rnd(w),rnd(h)),500).easing(BackOut).start()
+    tween(b).to(vec2(rnd(w),rnd(h)),500).easing(ElasticOut).start()
+}

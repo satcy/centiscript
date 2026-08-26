@@ -1,0 +1,17 @@
+sz(720,360)bg(0)frame(){clr()translate(cx,cy)
+strk()
+col(255)
+for(j,0,5){
+push()
+iter=(24)
+lw((5-j)*(5-j)/3)
+for(i,0,iter){
+push()
+x=((j+1)*50)
+rotate(i*PI2/iter+c/(j*99+99))
+line(x,-x*0.12,x,w)
+pop()
+}
+pop()
+}
+}

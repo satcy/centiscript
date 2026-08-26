@@ -110,7 +110,7 @@ window.onload = function(){
             CENTI.run();
         } else if ( params["f"] ) {
             var httpObj = new XMLHttpRequest();
-            var path = "http://ex.rzm.co.jp/centiscript/p/codes/"+params["f"]+".ct";
+            var path = "archive/codes/"+params["f"]+".ct";
             httpObj.open("get", path, true);
             httpObj.onload = function(){
                 CENTI.code = this.responseText;

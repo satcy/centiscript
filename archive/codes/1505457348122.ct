@@ -1,0 +1,19 @@
+sz(720,360)bg(0)bpm(30)
+a=vec2()b=vec2()
+frame(){
+    clr()
+    a.x=(cos(c/11)*cx+cx)a.y=(sin(c/13)*cy)
+    b.x=(cos(c/19)*cx+cx)b.y=(sin(c/20)*cy)
+    for(i=60;i>0;i--){
+        col(i/6%2*255)
+        vec=(i%2==1 ? 1 : -1)
+        ox = zmap(i,1,60,0,3)
+        curve(0,cy,a.x,cy+vec*a.y*ox,b.x,cy+vec*b.y*ox,w,cy)
+    }
+    col(255,0,0)
+    oval(a.x,cy+a.y,10)
+    oval(b.x,cy+b.y,10)
+}
+
+
+

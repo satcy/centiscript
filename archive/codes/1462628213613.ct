@@ -1,0 +1,14 @@
+sz(720,720)bg(0)
+r=(60)
+frame(){
+clr()
+strk()
+push()
+translate(cx,cy)
+for(i,0,9){
+a=(9*nz(c/99,i)+i)
+translate(cos(a)*r,sin(a)*r)
+oval(0,0,r*i)
+}
+pop()
+}

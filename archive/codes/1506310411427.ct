@@ -1,0 +1,14 @@
+sz(360,360)bg(0)
+frame(){
+    clr()
+    col(100)
+    translate(cx,cy)
+    oval(0,0,h/2,3)
+    col(255)
+    push()
+    rotate(d2r(c))
+    rate=((floor(c/60)%2 ? 60-(c%60) : c%60)/60)
+    oval(0,0,(h/2)*(1-sin(rate)/(5/3)),3)
+    pop()
+
+}

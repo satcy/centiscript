@@ -1,0 +1,23 @@
+sz(500,500)bg(0)N=(900)bpm(60)
+colors=([0xff8290, 0x548928, 0x290576])
+rots=([])
+for(i,0,N){
+    rots[i]=vec2(0)
+}
+doTween = func(){
+for(i,0,N){
+    tween(rots[i]).to(vec2(rots[i].x+PI,0),500).delay(i/2)
+    .easing(QuartInOut).start()
+}
+}
+doTween()
+frame(){
+clr()
+for(i,0,N){
+    hcol(colors[floor(i/300)%3])
+    oval(cx+cos(rots[i].x)*100,cy+sin(rots[i].x)*100,70)
+}
+}
+beat(){
+    doTween()
+}

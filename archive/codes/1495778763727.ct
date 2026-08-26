@@ -1,0 +1,27 @@
+sz(720,720)
+bpm(50)
+a=vec2(0,0)
+a2=vec2(0,0)lw(2)
+frame(){clr()
+push()
+translate(cx,cy)
+rotate(a2.y)
+for(i,0,a2.x){
+    push()
+    for(j,0,4){
+        line(a.x,0,a.y,a.y+a.x)
+        oval(a.x,0,6)oval(a.y,a.y+a.x,6)
+        translate(a.y,a.x);
+        rotate(-a2.y)
+    }
+    pop()
+rotate(PI2/a2.x)
+}
+pop()
+}
+beat(){
+t=vec2(rnd(-100,100),rnd(-200,200))
+tween(a).to(t,900).easing(eases[floor(rnd(31))]).start()
+t=vec2(floor(rnd(2,10)),rnd(-1,1)*PI)
+tween(a2).to(t,900).easing(eases[floor(rnd(31))]).start()
+}

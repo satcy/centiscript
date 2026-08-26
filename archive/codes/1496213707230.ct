@@ -1,0 +1,15 @@
+sz(512,512)bg(200)
+frame(){
+clr()col(0,90)
+strk()
+push()
+translate(cx,cy)
+for(i,0,314){
+    fr=(i/100)
+    push()
+    scale(abs(cos(fr)), abs(cos(fr)/3))
+    oval(0,cos(fr+c/30)*h,h/2)
+    pop()
+}
+pop()
+}

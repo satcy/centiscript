@@ -1,0 +1,8 @@
+sz(720,480)bg(255)
+frame(){
+clr()col(255,0,0)
+strk()
+for(i,0,cy/5*3){
+oval(cx,cy,i+minmax(cos(c/10-i/20),0,1)*cy/5*2)
+}
+}

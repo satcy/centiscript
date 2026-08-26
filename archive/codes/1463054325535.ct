@@ -1,0 +1,26 @@
+sz(720,360)bg(235,255,255)
+frame(){
+	clr()
+	translate(cx,cy)
+	gradR(0,0,0,0,0,h/2)
+	gradColor(0, 0, 0, 0)
+	gradColor(1, 5,37,65)
+	for(i,0,4){
+		push()
+		rotate(i*PI/2)
+		drawArc(0,cos(floor(c/30)*30/70)*h/2,h/4,0,PI)
+		pop()
+	}
+}
+drawArc=func(){
+	_res=(30)
+	cr = (($4-$3)/_res);
+	beginShape()
+	for ( j,0,_res+1 ) {
+		r1 = (cr*j+$3)
+            	x1 = (cos(r1)*$2 + $0)
+            	y1 = (sin(r1)*$2 + $1)
+            	lineTo(x1, y1)
+	}
+	endShape()
+}

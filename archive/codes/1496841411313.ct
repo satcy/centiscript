@@ -1,0 +1,70 @@
+sz(405,720)bg(0)
+p=vec2()
+p.v=vec2()
+p.r=(20)
+offy=(0)
+hist=([])
+cnt=(0)
+score=(0)
+frame(){
+clr()col(170)
+push()
+translate(cx,cy+offy)
+hist.push(vec2(p.x,p.y))
+if(hist.length>5){hist.shift()}
+for(i,0,hist.length-1){
+    for(j,0,10){
+        oval(interp(hist[i].x, hist[i+1].x, j/9),
+        interp(hist[i].y, hist[i+1].y, j/9),
+        p.r)
+    }
+}
+col(170)
+offy2=(offy%(h*3)+h/2 - offy)
+for(i,0,60){
+    lw(min(abs(p.y)/500.0 + 1, 5))
+    line(-w/2,-i*54+offy2+h/4,0,-i*54+offy2)
+    line(0,-i*54+offy2,w/2,-i*54+offy2+h/4)
+}
+lw(1)
+for(i,0,120){
+    line(-6,-i*27+offy2,6,-i*27+offy2)
+}
+col(255)
+oval(p.x,p.y,p.r)
+col(170)
+rect(-w/2,0,w,h)
+
+col(220)
+cs = floor(abs(p.y+p.r))
+bmTxt(cs +" / " + score, -cx + 5, p.y - p.r - 40)
+pop()
+
+bmTxt(cnt+"CHAIN", 5, 5)
+
+
+p.y+=(p.v.y)
+p.v.y+=(0.5)
+
+if ( p.y>-p.r ) {
+    p.y =(-p.r)
+    p.v.y *=(-0.2)
+}
+
+
+offy+=(-p.y - offy)*(zmap(abs(p.y - offy), 0, h, 0.1, 0.5, 1))
+
+if(cs >score){score=(cs)}
+}
+
+down(){
+    if ( p.y > -p.r*2){
+        if ( p.v.y <= 0 ) {
+            cnt+=(1);
+        } else {
+            cnt = (0);
+        }
+        p.v.y *= (cnt+1)
+        p.v.y-=(12)
+    }
+}

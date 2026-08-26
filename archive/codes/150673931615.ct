@@ -1,0 +1,12 @@
+sz(720,720)bg(0)
+frame(){
+clr()col(180)oval(cx,cy,h/2.67)col(30)
+for(y,0,h*2){
+    for(x,0,w){
+        inc = zmap(cos(c/47+y/83+x/71+cos(c/200+x/177)), -1, 1, 10, 220)
+        line(x,y+x-h, x+inc,y+x+inc-h)
+        x+=(inc+20)
+    }
+    y+=(5)
+}
+}

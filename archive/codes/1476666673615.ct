@@ -1,0 +1,9 @@
+sz(720,720)bg(0)
+cw=(w/10)ch=(h/10)
+frame(){clr()for(i,0,11){for(j,0,11){
+k=(j+i)
+x=(i*cw+sin(c*.05+k*.3)*50)
+y=(j*ch+cos(c*.05+k*.1)*25)
+r=(cos((c*.025+(j+i)*.2))*35)
+oval(x,y,r,6)
+}}}

@@ -1,0 +1,15 @@
+sz(360,360)bg(0)
+frame(){
+    clr()
+    translate(cx,cy)
+    px=(0)py=(0)
+    for(i,0,13){
+        rad=(c*(1+i*0.01)*0.3)
+        r=(20*i)
+        x=(cos(rad)*r)
+        y=(sin(rad)*r)
+        oval(x,y,3)
+        line(px,py,x,y)
+        px=(x)py=(y)
+    }
+}

@@ -1,0 +1,11 @@
+sz(720,360)
+frame()
+{
+clear()
+for(i,0,150){
+col(128,128,255)
+x=(w/2)
+y=(h/2)
+line(i*sin(c*0.08)+x,i*cos(c*0.08)+y,i*cos(c*0.01)+x,i*sin(c*0.01)+y)
+}
+}
