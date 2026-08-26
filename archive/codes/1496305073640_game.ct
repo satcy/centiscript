@@ -1,0 +1,140 @@
+sz(720,450)
+bg(0)
+types=([[0x0F00,0x2222,0x00F0,0x4444],[0x44C0,0x8E00,0x6440,0x0E20],[0x4460,0x0E80,0xC440,0x2E00],[0xCC00,0xCC00,0xCC00,0xCC00],[0x06C0,0x8C40,0x6C00,0x4620],[0x0E40,0x4C40,0x4E00,0x4640],[0x0C60,0x4C80,0xC600,0x2640]])
+stg=([])
+ww=(32)
+for(i,0,20){
+    stg[i]=(0)
+}
+fits=func(){
+    tx=($0)
+    ty=($1)
+    tr=($2)
+    v=(types[crr.t][tr])
+    ok=(1)
+    for(i,0,16){
+        if(v&1){
+            xx=(tx+floor(i/4))
+            yy=(ty+i%4)
+            if(xx<0||xx>=ww){
+                ok=(0)
+            }
+            if(yy>=20){
+                ok=(0)
+            }
+            if(ok&&yy>=0){
+                if((stg[yy]>>xx)&1){
+                    ok=(0)
+                }
+            }
+        }
+        v=(v>>1)
+    }
+    return(ok)
+}
+nextObj=func(){
+    crr=({x:2})
+    crr.x=floor(ww/2-2)
+    crr.y=(-2)
+    crr.t=floor(rnd(7))
+    crr.r=(0)
+}
+nextObj()
+gameover=(0)
+sc=(22.5)
+downPrev=(0)
+frame()
+{
+    clr()
+    col(50)
+    push()
+    scale(sc,sc)
+    for(j,0,20){
+        v=(stg[j])
+        for(i,0,ww){
+            if(v&1){
+                pixel(i,j)
+            }
+            v=(v>>1)
+        }
+    }
+    push()
+    translate(crr.x,crr.y)
+    v=(types[crr.t][crr.r])
+    for(i,0,16){
+        if(v&1){
+            pixel(floor(i/4),i%4)
+        }
+        v=(v>>1)
+    }
+    pop()
+    pop()
+    if(!gameover){
+        tx=(floor(mx/sc)-2)
+        if(fits(tx,crr.y,crr.r)){
+            crr.x=(tx)
+        }
+        if(down&&!downPrev){
+            if(fits(crr.x,crr.y,(crr.r+1)%4)){
+                crr.r=((crr.r+1)%4)
+            }
+        }
+        fallSpeed=(down?4:20)
+        if(c%fallSpeed==0){
+            proc()
+        }
+    }
+    else{
+        gameover-=(1)
+        if(gameover==0){
+            for(i,0,20){
+                stg[i]=(0)
+            }
+            nextObj()
+        }
+    }
+    downPrev=(down)
+}
+proc=func(){
+    if(fits(crr.x,crr.y+1,crr.r)){
+        crr.y+=(1)
+    }
+    else{
+        v=(types[crr.t][crr.r])
+        for(i,0,16){
+            if(v&1){
+                xx=(crr.x+floor(i/4))
+                yy=(crr.y+i%4)
+                if(xx>=0&&xx<ww&&yy>=0&&yy<20){
+                    stg[yy]=(stg[yy]|(1<<xx))
+                }
+            }
+            v=(v>>1)
+        }
+        for(j,0,20){
+            idx=(19-j)
+            if((stg[idx]>>>0)==pow(2,ww)-1){
+                for(jj,0,20){
+                    if(idx-jj>=0){
+                        stg[idx-jj]=(idx-1-jj>=0?stg[idx-1-jj]:0)
+                    }
+                }
+                j-=(1)
+            }
+        }
+        v=(types[crr.t][crr.r])
+        over=(0)
+        for(i,0,16){
+            if(v&1){
+                if(crr.y+i%4<0){
+                    over=(1)
+                }
+            }
+            v=(v>>1)
+        }
+        if(over){
+            gameover=(60)
+        }
+        nextObj()
+    }
+}
