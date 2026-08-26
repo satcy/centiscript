@@ -333,6 +333,14 @@ CENTI.exportJS = function(){
     "\n" +
     "(function(){" + "\n" +
     "window.onload = function(){" + "\n" +
+    "   window.addEventListener('pointerdown', async function startAudio() {" + "\n" +
+    "       window.removeEventListener('pointerdown', startAudio);" + "\n" +
+    "       const audio = getAudioContext();" + "\n" +
+    "       if (audio && audio.state === 'suspended') {" + "\n" +
+    "           await audio.resume();" + "\n" +
+    "       }" + "\n" +
+    "       __ctName.vol = 1;" + "\n" +
+    "   });" + "\n" +
     "   var __ctName;" + "\n" +
     "   var canvas = document.getElementById('c');" + "\n" +
     "   __ctName = new Centi('__ctName');" + "\n" + 
@@ -419,23 +427,15 @@ CENTI.getTweetsList = function(){
         var myData = JSON.parse(this.responseText);
         if (myData.length > 0) {
             var l = myData.length;
-            var d1 = "<span style='width:233px;margin-right:10px;float:left;'>\n";
-            var d2 = "<span style='width:233px;margin-right:10px;float:left;'>\n";
-            var d3 = "<span style='width:233px;float:left;'>\n";
+            var html = "";
             for (var i=0; i<l; i++){
                 var img = myData[i].img;
                 var url = myData[i].url;
                 var name = myData[i].user;
                 var id_str = myData[i].id;
-                var txt = "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='233'></a>\n<span id='list_one_name'>(<a href='https://x.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</span></div>\n";
-                if ( i%3 == 0 ) d1 += txt;
-                else if ( i%3 == 1 ) d2 += txt;
-                else d3 += txt;
+                html += "<div id='list_one'><a href='" + url + "'><img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' alt='' data-echo='" + img + "' width='100%'></a>\n<span id='list_one_name'>(<a href='https://x.com/" + name + "/status/" + id_str + "' target='_blank'>" + name + "</a>)</span></div>\n";
             }
-            d1 += "</span>";
-            d2 += "</span>";
-            d3 += "</span>";
-            document.getElementById("result").innerHTML = (d1 + "\n" + d2 + "\n" + d3);
+            document.getElementById("result").innerHTML = html;
         }
         echo.init({
           offset: 100,
