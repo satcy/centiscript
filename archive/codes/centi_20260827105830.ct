@@ -1,0 +1,30 @@
+sz(360,720)
+c3d()
+bg(0)
+a=([])
+prop=Obj()
+prop.color=(0xFFFFFF)
+material=new(T.MeshPhongMaterial,[prop])
+for(i,0,50){
+    geom=new(T.TorusGeometry, [500 - (i+1)*10,1,4,60])
+    mesh = new(T.Mesh, [geom,material] )
+    scene.add( mesh )
+}
+directionalLight=new(T.DirectionalLight, [0xffffff, 0.8] )
+directionalLight.position.set(0,1,1)
+scene.add( directionalLight );
+frame()
+{
+
+    o=Vec2(mx - cx,cy - my)
+    a.push(o)
+    l=(a.length)
+    for(i,0,l){
+        scene.children[i].position.x = (a[i].x)
+        scene.children[i].position.y = (a[i].y)
+        scene.children[i].rotation.x+=(nz(c/(100+i))/10)
+        scene.children[i].rotation.y+=(nz(c/(190+i/3))/10)
+        
+    }
+    a=clip(a,50)
+}
