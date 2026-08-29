@@ -213,6 +213,21 @@ CENTI.loadSample = function(path){
     });
 }
 
+CENTI.readFileToEditor = function(file){
+    if ( !file ) return;
+
+    CENTI.setTitle(file.name);
+
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        CENTI.editor.setValue(this.result);
+        CENTI.editor.focus();
+        CENTI.strlength(CENTI.editor.getValue());
+    };
+
+    reader.readAsText(file);
+}
+
 CENTI.onFileChanged = function(){
     var file = document.getElementById('readfile').files[0];
     // console.log('File name: ' + file.name);
@@ -220,14 +235,29 @@ CENTI.onFileChanged = function(){
     // console.log('Size: ' + file.size);
     // console.log('Last modified date: ' + file.lastModifiedDate);
 
-    CENTI.setTitle(file.name);
-    
-    var reader = new FileReader();
-    reader.onloadend = function (e) {
-        CENTI.editor.setValue(this.result);
-    };
-    
-    reader.readAsText(file);
+    CENTI.readFileToEditor(file);
+}
+
+CENTI.enableEditorDrop = function(){
+    if ( !CENTI.editor || !window.FileReader ) return;
+    var node = CENTI.editor.getDomNode();
+    if ( !node ) return;
+
+    function stop(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if ( e.dataTransfer ) e.dataTransfer.dropEffect = 'copy';
+    }
+
+    node.addEventListener('dragenter', stop, true);
+    node.addEventListener('dragover', stop, true);
+    node.addEventListener('drop', function(e){
+        stop(e);
+        var files = e.dataTransfer && e.dataTransfer.files;
+        if ( files && files.length > 0 ) {
+            CENTI.readFileToEditor(files[0]);
+        }
+    }, true);
 }
 
 CENTI.saveFile = function(){
@@ -465,4 +495,3 @@ window.onload = function(){
         }
     }
 };
-
